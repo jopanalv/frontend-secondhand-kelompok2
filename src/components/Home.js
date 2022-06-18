@@ -9,7 +9,7 @@ function Home() {
   return (
     <>
     <Container>
-      <Row>
+      <Row >
         <Col sm={3}>
           <div className='side_left'></div>
         </Col>
@@ -17,7 +17,7 @@ function Home() {
           <div className='hero'>
             <Container>
                 <Row>
-                  <Col sm={7} md={7} lg={7} className="main-section-left pb-3 pt-5 px-5">
+                  <Col sm={7} md={7} lg={7} className="main-section-left pb-3 pt-5 px-4">
                   <Image src={Gift} className="img-fluid hadiah pt-2" alt="gift" />
                     <h2>
                       <strong>Bulan Ramadhan Banyak diskon!</strong>

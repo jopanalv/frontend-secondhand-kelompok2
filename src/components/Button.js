@@ -13,15 +13,15 @@ const Buttons = ({ filterItem, setItem, menuItems }) => {
     <div className="d-flex item-center justify-content-center tab-category">
         <div id='slider' className='w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide d-flex'>
         <button
-          className="btn p-1 px-2 mx-3 flex"
+          className="btn p-1 px-2 mx-3"
           onClick={() => setItem(Data)}
         >
-          All
+          Semua
         </button>
         {menuItems.map((list, id) => {
           return (
             <button
-              className="btn p-1 px-2 mx-3 btn"
+              className="btn p-1 px-2 mx-3"
               onClick={() => filterItem(list)}
               key={id}
             >

@@ -7,23 +7,23 @@ const Product = ({ item }) => {
     <Container>
       <div className="container-fluid">
         <div className="row justify-content-center category">
-          {item.map((list) => {
+          {item.map((Val) => {
             return (
-            <div class="card product-card">
-              <div class="card-body product-detail">
-                <div
-                  className="border-0"
-                  key={list.id}
-                >
-                    <img src={list.image}
-                    alt="produk_1"
-                    className="img-fluid mb-3 product_image" />
-                    <h4 className="name mb-2">{list.name}</h4>
-                    <p className="type mb-3">{list.category}</p>
-                    <h4 className="price mb-4">Rp. {list.price}</h4>
+              <div
+                className="col-md-3 col-sm-6 py-3 my-3 card border-1"
+                key={Val.id}
+              >
+                <div className="card-img-top text-center">
+                  <img src={Val.image} className="photo w-75 pb-2" />
                 </div>
+                  <div className="card-title name mb-2">
+                    {Val.name}
+                  </div>
+                  <div className="card-text type mb-3">{Val.category}</div>
+                  <div className="card-title price mb-4">
+                    Rp. {Val.price}
+                  </div>
               </div>
-            </div>
             );
           })}
         </div>
