@@ -1,0 +1,41 @@
+import React from "react";
+import Data from "../data/data";
+import { Container } from "react-bootstrap";
+
+
+const Buttons = ({ filterItem, setItem, menuItems }) => {
+  return (
+    <>
+    <Container>
+    <div className='kata_2'>
+        Telusuri Kategori
+      </div>
+    <div className="d-flex item-center justify-content-center tab-category">
+        <div id='slider' className='w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide d-flex'>
+        <button
+          className="btn p-1 px-2 mx-3 flex"
+          onClick={() => setItem(Data)}
+        >
+          All
+        </button>
+        {menuItems.map((list, id) => {
+          return (
+            <button
+              className="btn p-1 px-2 mx-3 btn"
+              onClick={() => filterItem(list)}
+              key={id}
+            >
+              {list}
+            </button>
+          );
+        })}
+        
+        </div>
+      </div>
+    </Container>
+      
+    </>
+  );
+};
+
+export default Buttons;

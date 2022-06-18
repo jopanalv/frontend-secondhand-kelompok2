@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './assets/style.css';
+import Home from './components/Home';
+import Navbar from './components/Navbar';
+import Filter from './components/Filter';
+import React, { useState } from "react";
+import Data from "./data/data";
+import Buttons from "./components/Button";
+import Product from './components/Product';
 
-function App() {
+const App = () => {
+  const [item, setItem] = useState(Data);
+
+  const menuItems = [...new Set(Data.map((Val) => Val.category))];
+
+  const filterItem = (curcat) => {
+    const newItem = Data.filter((newVal) => {
+      return newVal.category === curcat;
+    });
+    setItem(newItem);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      <Home />
+      <Buttons
+            filterItem={filterItem}
+            setItem={setItem}
+            menuItems={menuItems}
+          />
+      <Product item={item} />
     </div>
   );
 }
