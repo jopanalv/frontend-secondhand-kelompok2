@@ -1,0 +1,13 @@
+{
+  "id" : 1,
+  "image" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9-846lPaZVDgy8kofUQo5R11Jf9ytcLptaw&usqp=CAU", 
+  "name" : "Customer 1", 
+  "city" : "Jakarta", 
+  "tawaran" : {
+    "productImage" : "https://c.ndtvimg.com/2021-04/37hi8sl_rava-upma_625x300_17_April_21.jpg?im=FeatureCrop,algorithm=dnn",
+    "product" : "Mangkok",
+    "price" : "200.000", 
+    "bid" : "180.000", 
+    "date" : "18 Juni 2022"
+  }
+}
