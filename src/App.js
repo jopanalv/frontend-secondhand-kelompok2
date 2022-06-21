@@ -1,14 +1,21 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/style.css';
-import Header from './components/Header';
-import Profile from './components/Profile'
+import InfoProduk from './pages/InfoProduk';
+import Profile from './pages/Profile'
+import InfoPenawaran from "./pages/InfoPenawaran";
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <Profile />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/">
+          <Route path="/info-profile" element={<Profile />} />
+          <Route path="/info-produk" element={<InfoProduk />} />
+          <Route path="/info-penawaran" element={<InfoPenawaran />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

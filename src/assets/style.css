@@ -5,6 +5,7 @@ body {
     font-size: 12px;
 }
 
+/* navbar */
 #title {
     font-size: 16px;
     text-align: center;
@@ -12,6 +13,7 @@ body {
     font-weight: 400;
 }
 
+/* profile */
 .container {
     margin: auto;
 }
@@ -34,8 +36,58 @@ option[value=""][disabled] {
 }
 
 #save {
+    border-color: #7126B5;
     background: #7126B5;
     border-radius: 16px;
+}
+
+/* info produk */
+#preview {
+    border-color: #7126B5;
+    border-radius: 16px;
+    color: black;
+}
+
+#preview:hover {
+    background: #7126B5;
+    color: white;
+}
+
+#terbitkan {
+    border-color: #7126B5;
+    background: #7126B5;
+    border-radius: 16px;
+}
+
+.btn-action {
+    width: 100%;
+}
+
+/* info penawaran */
+.card-title {
+    font-size: 14px;
+}
+
+.card-text {
+    font-size: 10px;
+}
+
+.btn-penawaran {
+    width: 158px;
+    height: 36px;
+}
+
+#modal-button {
+    border-color: #7126B5;
+    background: #7126B5;
+    border-radius: 16px;
+    font-size: 14px;
+    padding: 12px 24px;
+    width: 27rem;
+}
+
+.modal-body h4 {
+    font-size: 14px;
 }
 
 /* mobile interface*/
@@ -46,13 +98,44 @@ option[value=""][disabled] {
     #profile {
         width: 90%;
     }
+
+    .back {
+        display: none;
+    }
+
+    /* info produk */
+    #info-produk {
+        width: 90%;
+    }
+
+    /* info penawaran */
+    #info-penawaran {
+        width: 90%;
+    }
+
+    .img-fluid {
+        width: 100%;
+    }
+
+    
+    
 }
 
 @media screen and (min-width: 915px){
+    /* profile */
     #profile {
         width: 50%;
     }
-    #formUpload {
-        padding-left: 70px;
+
+    /* info produk */
+    #info-produk {
+        width: 50%;
     }
+
+    /* info penawaran */
+    #info-penawaran {
+        width: 50%;
+    }
+
+    
 }
