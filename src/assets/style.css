@@ -94,15 +94,20 @@ option[value=""][disabled] {
     font-size: 14px;
 }
 
-/* mobile interface*/
+/* medium device*/
 @media screen and (max-width: 915px){
-    
-    #profile {
-        width: 90%;
-    }
-
+    /* navbar */
     .navbar-brand {
         visibility: hidden;
+    }
+
+    #title {
+        left: 49%;
+    }
+
+    /* profile */
+    #profile {
+        width: 90%;
     }
 
     /* info produk */
@@ -114,11 +119,7 @@ option[value=""][disabled] {
     #info-penawaran {
         width: 90%;
     }
-    
-    #title {
-        left: 49%;
-    }
-    
+       
 }
 
 @media screen and (min-width: 915px){
@@ -135,10 +136,10 @@ option[value=""][disabled] {
     /* info penawaran */
     #info-penawaran {
         width: 50%;
-    }
-   
+    }  
 }
 
+/* small device */
 @media screen and (max-width: 600px) {
     #title {
         left: 49%;

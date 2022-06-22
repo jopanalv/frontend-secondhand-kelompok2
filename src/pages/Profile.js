@@ -9,7 +9,7 @@ function Profile() {
       <Navbar judul="Lengkapi Info Akun" />
       <div className="container mt-5" id="profile">
         <div className="row justify-content-center">
-          <div className="col-lg-1 col-sm-12">
+          <div className="col-lg-1 col-sm-12 mb-1">
             <Image src={icon_back} />
           </div>
           <div className="col-lg-11 col-sm-12">

@@ -1,5 +1,4 @@
 import { Image } from "react-bootstrap";
-import Logo from "../assets/images/Rectangle 127.png";
 
 function Navbar(props) {
   const { judul } = props;
