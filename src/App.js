@@ -7,6 +7,7 @@ import React, { useState } from "react";
 import Data from "./data/data";
 import Buttons from "./components/Button";
 import Product from './components/Product';
+import DetailProduk_buyer from './pages/DetailProduk_buyer';
 
 const App = () => {
   const [item, setItem] = useState(Data);
@@ -22,14 +23,15 @@ const App = () => {
 
   return (
     <div className="App">
-      <Navbar />
+      {/* <Navbar />
       <Home />
       <Buttons
             filterItem={filterItem}
             setItem={setItem}
             menuItems={menuItems}
           />
-      <Product item={item} />
+      <Product item={item} /> */}
+      <DetailProduk_buyer />
     </div>
   );
 }

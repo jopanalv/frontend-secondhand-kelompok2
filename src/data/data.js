@@ -2,7 +2,7 @@ const Data = [
     {
       id : "1",
       image: "https://c.ndtvimg.com/2021-04/37hi8sl_rava-upma_625x300_17_April_21.jpg?im=FeatureCrop,algorithm=dnn,width=620,height=350",
-      name : "Apple Watch Series 3 38mm GPS, Space Grey, Black Sport Band",
+      name : "Apple Watch Series 3",
       category : "Aksesoris",
       price : "3800000"
     },

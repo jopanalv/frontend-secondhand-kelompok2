@@ -1,15 +1,17 @@
-import React from 'react';
-import { Nav, Button, Navbar, Container } from "react-bootstrap";
+import React, { useState } from 'react';
+import { Nav, Button, Navbar, Container, NavLink } from "react-bootstrap";
 import { MDBCol, MDBIcon } from "mdbreact";
 import { Image } from 'react-bootstrap';
 import Logo from '../assets/images/Rectangle 127.png'
 import Cari from '../assets/images/fi_search.png'
 import Masuk from '../assets/images/fi_log-in.png'
-import { iconName } from "react-icons/fa";
+import * as FaIcons from "react-icons/fa";
+import * as AiIcons from "react-icons/ai";
 
 
 function Navigasi(props) {
-
+  const [sidebar, setSidebar] = useState(false);
+  const showSidebar = () => setSidebar(!sidebar)
 
   return (
     <>
@@ -44,7 +46,6 @@ function Navigasi(props) {
                 <Image className='input-search' src={Cari} />
               </span>
           </div>
-          
         </Container>
       </Navbar>
     </>
