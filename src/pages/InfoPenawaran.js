@@ -5,6 +5,8 @@ import icon_back from "../assets/images/fi_arrow-left.png";
 import data from "../data/InfoPenawar.json";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import pembeli from "../assets/images/Rectangle 33.png";
+import produk from "../assets/images/produk.png";
 
 export default function InfoPenawaran() {
   return (
@@ -17,18 +19,17 @@ export default function InfoPenawaran() {
           </div>
           <div className="col-11">
             <div className="card px-3 mx-auto">
-              <div className="row justify-content-start py-3">
-                <div className="col-2 align-self-center">
+              <div className="d-flex justify-content-start py-3">
+                <div className="align-self-center">
                   <Image
-                    className="rounded img-responsive center-block  mx-auto img-fluid"
-                    src={data.image}
+                    className="rounded mx-3 img-fluid"
+                    src={pembeli}
+                    style={{ width: 50, height: 50 }}
                   />
                 </div>
-                <div className="col-8">
-                  <div className="card-body">
-                    <h4 className="card-title h5 h4-sm fw-bold">{data.name}</h4>
-                    <h6 className="card-text">{data.city}</h6>
-                  </div>
+                <div className="card-body">
+                  <h4 className="card-title h5 h4-sm fw-bold">{data.name}</h4>
+                  <h6 className="card-text">{data.city}</h6>
                 </div>
               </div>
             </div>
@@ -38,14 +39,11 @@ export default function InfoPenawaran() {
             </h4>
 
             <div className="card px-3 py-4">
-              <div className="row justify-content-start">
-                <div className="col-2 align-self-start">
-                  <Image
-                    className="rounded img-responsive center-block d-block mx-auto img-fluid"
-                    src={data.tawaran.productImage}
-                  />
+              <div className="d-flex justify-content-start">
+                <div className="mx-3 align-self-start">
+                  <Image className=" img-fluid" src={produk} />
                 </div>
-                <div className="col-4">
+                <div className="">
                   <div className="card-body p-0 px-3">
                     <h6 className="card-text">Penawaran Produk</h6>
                     <h4 className="card-title h5 h4-sm" id="namaProduk">
@@ -59,13 +57,13 @@ export default function InfoPenawaran() {
                     </h4>
                   </div>
                 </div>
-                <div className="col-6">
+                <div className="ms-auto">
                   <div className="card-body p-0 px-3">
                     <h6 className="card-text text-end">{data.tawaran.date}</h6>
                   </div>
                 </div>
               </div>
-              <div className="justify-content-end d-flex ms-5">
+              <div className="justify-content-md-end justify-content-xs-between d-flex ">
                 <button
                   className="btn btn-outline-primary btn-action px-0 me-2"
                   type="button"
@@ -111,9 +109,8 @@ export default function InfoPenawaran() {
                           transaksi selanjutnya
                         </h4>
                         <div
-                          className="card mx-auto"
+                          className="card mx-3"
                           style={{
-                            width: "27rem",
                             background: "#EEEEEE",
                             borderRadius: "16px",
                           }}
@@ -125,8 +122,7 @@ export default function InfoPenawaran() {
                             <div class="col-3 align-self-center">
                               <Image
                                 className="rounded img-responsive center-block d-block mx-auto img-fluid"
-                                src={data.image}
-                                style={{ width: "90%" }}
+                                src={pembeli}
                               />
                             </div>
                             <div class="col-9">
@@ -142,8 +138,7 @@ export default function InfoPenawaran() {
                             <div class="col-3 align-self-center">
                               <Image
                                 className="rounded img-responsive center-block d-block mx-auto img-fluid"
-                                src={data.tawaran.productImage}
-                                style={{ width: "90%" }}
+                                src={produk}
                               />
                             </div>
                             <div class="col-9">
@@ -173,19 +168,24 @@ export default function InfoPenawaran() {
                       </div>
 
                       <div className="modal-footer">
-                        <div className="mx-auto p-0">
-                          <button
-                            className="btn btn-primary"
-                            type="button"
-                            id="modal-button"
+                        <button
+                          className="btn btn-primary mx-3 "
+                          id="modal-button"
+                        >
+                          <a
+                            href="https://wa.me/6285815470517"
+                            style={{
+                              color: "white",
+                              textDecoration: "none",
+                            }}
                           >
                             Hubungi via Whatsapp
                             <FontAwesomeIcon
                               icon={faWhatsapp}
                               className="ms-2"
                             />
-                          </button>
-                        </div>
+                          </a>
+                        </button>
                       </div>
                     </div>
                   </div>
