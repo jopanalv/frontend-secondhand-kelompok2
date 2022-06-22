@@ -72,18 +72,13 @@ option[value=""][disabled] {
     font-size: 10px;
 }
 
-.btn-penawaran {
-    width: 158px;
-    height: 36px;
-}
-
 #modal-button {
     border-color: #7126B5;
     background: #7126B5;
     border-radius: 16px;
     font-size: 14px;
     padding: 12px 24px;
-    width: 27rem;
+    width: 100%;
 }
 
 .modal-body h4 {
@@ -112,12 +107,6 @@ option[value=""][disabled] {
     #info-penawaran {
         width: 90%;
     }
-
-    .img-fluid {
-        width: 100%;
-    }
-
-    
     
 }
 
