@@ -9,10 +9,10 @@ function Profile() {
       <Navbar judul="Lengkapi Info Akun" />
       <div className="container mt-5" id="profile">
         <div className="row justify-content-center">
-          <div className="col-1 back">
+          <div className="col-lg-1 col-sm-12">
             <Image src={icon_back} />
           </div>
-          <div className="col-11">
+          <div className="col-lg-11 col-sm-12">
             <div class="text-center">
               <Image src={upload} className="rounded" onClick={upload} />
             </div>
