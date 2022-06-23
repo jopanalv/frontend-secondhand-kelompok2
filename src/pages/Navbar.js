@@ -1,18 +1,11 @@
 import { Image } from "react-bootstrap";
-import Logo from "../assets/images/Rectangle 127.png";
 
 function Navbar(props) {
   const { judul } = props;
   return (
     <nav className="navbar navbar-expand-lg shadow-sm p-3 mb-5 bg-body rounded">
-      <div className="container-fluid">
-        <a
-          className="navbar-brand col-4"
-          id="logo"
-          style={{ paddingLeft: "100px" }}
-        >
-          <Image src={Logo} />
-        </a>
+      <div className="container">
+        <a className="navbar-brand" id="logo"></a>
         <button
           className="navbar-toggler"
           type="button"
@@ -22,7 +15,9 @@ function Navbar(props) {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon"></span>
+          <a aria-current="page" id="title">
+            {judul}
+          </a>
         </button>
         <div className="collapse navbar-collapse col-8">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">

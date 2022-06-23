@@ -8,9 +8,18 @@ body {
 /* navbar */
 #title {
     font-size: 16px;
-    text-align: center;
-    padding-left: 150px;
     font-weight: 400;
+    float: none;
+    position: absolute;
+    top: 50%;
+    left: 51%;
+    transform: translate(-45%, -55%);
+}
+
+.navbar-brand {
+    width: 100px;
+    height: 34px;
+    background: #4B1979;
 }
 
 /* profile */
@@ -85,17 +94,20 @@ option[value=""][disabled] {
     font-size: 14px;
 }
 
-/* mobile interface*/
+/* medium device*/
 @media screen and (max-width: 915px){
-    #logo {
-        display: none;
-    }
-    #profile {
-        width: 90%;
+    /* navbar */
+    .navbar-brand {
+        visibility: hidden;
     }
 
-    .back {
-        display: none;
+    #title {
+        left: 49%;
+    }
+
+    /* profile */
+    #profile {
+        width: 90%;
     }
 
     /* info produk */
@@ -107,7 +119,7 @@ option[value=""][disabled] {
     #info-penawaran {
         width: 90%;
     }
-    
+       
 }
 
 @media screen and (min-width: 915px){
@@ -124,7 +136,12 @@ option[value=""][disabled] {
     /* info penawaran */
     #info-penawaran {
         width: 50%;
-    }
+    }  
+}
 
-    
+/* small device */
+@media screen and (max-width: 600px) {
+    #title {
+        left: 49%;
+    }
 }

@@ -9,10 +9,10 @@ export default function InfoProduk() {
       <Navbar />
       <div className="container mt-5" id="info-produk">
         <div className="row justify-content-center">
-          <div className="col-1 back">
+          <div className="col-lg-1 col-sm-12 mb-1">
             <Image src={icon_back} />
           </div>
-          <div className="col-11">
+          <div className="col-lg-11 col-sm-12">
             <form>
               <div className="row mb-3">
                 <label className="form-label">Nama Produk</label>
@@ -54,7 +54,7 @@ export default function InfoProduk() {
               </div>
               <div className="row mb-3">
                 <label className="form-label">Foto Produk</label>
-                <Image src={uploadGambar} style={{ width: "10em" }} />
+                <Image src={uploadGambar} style={{ width: "8em" }} />
               </div>
               <div className="row mb-3">
                 <div className="col-6 p-0 pe-1">

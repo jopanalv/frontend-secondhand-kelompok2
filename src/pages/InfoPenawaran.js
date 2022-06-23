@@ -1,12 +1,12 @@
 import React from "react";
 import { Image } from "react-bootstrap";
-import Navbar from "./Navbar";
-import icon_back from "../assets/images/fi_arrow-left.png";
-import data from "../data/InfoPenawar.json";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Navbar from "./Navbar";
+import icon_back from "../assets/images/fi_arrow-left.png";
 import pembeli from "../assets/images/Rectangle 33.png";
 import produk from "../assets/images/produk.png";
+import data from "../data/InfoPenawar.json";
 
 export default function InfoPenawaran() {
   return (
@@ -14,10 +14,10 @@ export default function InfoPenawaran() {
       <Navbar judul="Info Penawar" />
       <div className="container mt-5" id="info-penawaran">
         <div className="row justify-content-center">
-          <div className="col-1 back">
+          <div className="col-lg-1 col-sm-12 mb-1">
             <Image src={icon_back} />
           </div>
-          <div className="col-11">
+          <div className="col-lg-11 col-sm-12">
             <div className="card px-3 mx-auto">
               <div className="d-flex justify-content-start py-3">
                 <div className="align-self-center">
