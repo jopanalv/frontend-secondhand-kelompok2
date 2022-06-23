@@ -5,9 +5,301 @@ body {
     font-size: 12px;
 } 
 
-  .Container{
-    margin: auto;
+.Container{
+  margin: auto;
+}
+
+  /* NAVBAR */
+  #title {
+    font-size: 16px;
+    text-align: center;
+    padding-left: 150px;
+    font-weight: 400;
   }
+
+  .frame-search {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 12px 24px;
+    gap: 16px;
+
+    position: absolute;
+    width: 444px;
+    height: 48px;
+    left: 260px;
+    top: 14px;
+
+    background: #EEEEEE;
+    border-radius: 16px;
+  }
+
+  .text-search {
+    width: 356px;
+    height: 20px;
+
+    /* Body/14/Regular */
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    /* identical to box height, or 143% */
+
+    color: #8A8A8A;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+  }
+
+  .frame-158 {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 24px;
+
+    position: absolute;
+    width: 120px;
+    height: 24px;
+    left: 1184px;
+    top: 30px;
+  }
+
+  .fi-list {
+    width: 24px;
+    height: 24px;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+
+  .fi-bell {
+    width: 24px;
+    height: 24px;
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  }
+
+  .fi-user {
+    width: 24px;
+    height: 24px;
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+  }
+
+  /* notifikasi */
+  .notif-txt {
+    position: absolute;
+    width: 98px;
+    height: 30px;
+    left: 80px;
+    top: 45px;
+
+    /* Heading/20/Bold */
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    /* identical to box height, or 150% */
+
+    color: #000000;
+  }
+
+  .list-notifikasi {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 16px;
+
+    position: absolute;
+    width: 376px;
+    height: 229px;
+    left: 904px;
+    top: 70px;
+
+    /* Neutral/01 */
+
+    background: #FFFFFF;
+    /* Shadow/High */
+
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 16px;
+    z-index: 1000; /* biar notif ga ketumpuk */
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 16px;
+
+    width: 328px;
+    height: 86px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }  
+
+  .notif {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 16px;
+
+    width: 328px;
+    height: 86px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  }
+
+  .notif-img {
+    width: 48px;
+    height: 48px;
+
+    background: url(./images/Rectangle23.png), #EEEEEE;
+    border-radius: 12px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+
+  .notif-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 4px;
+
+    width: 264px;
+    height: 86px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 1;
+  }
+
+  .notif-ket {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 8px;
+
+    width: 264px;
+    height: 14px;
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+  }
+
+  .notif-ket-txt1 {
+    width: 179px;
+    height: 14px;
+
+    /* Body/10/Regular */
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 14px;
+    /* identical to box height, or 140% */
+
+
+    /* Neutral/03 */
+
+    color: #8A8A8A;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+  }
+
+  .notif-ket-txt2 {
+    width: 61px;
+    height: 14px;
+
+    /* Body/10/Regular */
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 14px;
+
+    /* Neutral/03 */
+
+    color: #8A8A8A;
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  }
+
+  .notif-ket-ellipse {
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+  }
+  
+  .notif-txt1 {
+    width: 264px;
+    height: 20px;
+
+    /* Body/14/Regular */
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    /* identical to box height, or 143% */
+
+    color: #000000;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+  }
+
 
   /* LOGIN */
 
@@ -308,96 +600,1326 @@ body {
         flex-grow: 0;
     }
 
-    @media (max-width: 768px) {
-        .form {
-          /* margin: auto; */
-          left: 10%;
-          top: 25%;
-          width: 480px;
-        }
 
-        .form-title {
-            left: 10%;
-            top: 17%;
-          }
-      
-        .img {
-          display: none;
-        }
+/* SELLER/DAFTAR JUAL */
+  .allert-success {
+    /* Auto layout */
 
-        #toggle {
-            left: 270px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 16px 24px;
+    gap: 16px;
 
-        }
+    position: absolute;
+    width: 500px;
+    height: 52px;
+    left: 470px;
+    top: 100px;
 
-        #toggle-regis {
-            left: 270px;
+    /* Allert/Success */
 
-        }
+    background: #73CA5C;
+    /* Shadow/High */
 
-        .back {
-            padding-top: 20px;
-            padding-left: 20px;
-          }
-        
-        .email {
-            width: 305px;
-        }
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+  }
 
-        .button {
-            width: 305px;
-        }
+  .allert-text {
+    width: 416px;
+    height: 20px;
 
-        .text {
-            width: 255px;
-        }
+    /* Body/14/Medium */
 
-        .frame-regis {
-            left: 30px;
-        }
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    /* identical to box height, or 143% */
 
-        .frame {
-            left: 30px;
-        }
+    /* Neutral/01 */
 
-      }
+    color: #FFFFFF;
 
-      @media (min-width: 992px) {
-        .back {
-          display: none;
-        }
+    /* Inside auto layout */
 
-      }
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+  }
 
-      @media only screen and (max-width: 992px) and (min-width: 768px){
-        .img {
-            display: none;
-        }
-
-        .form {
-            /* margin: auto; */
-            left: 23%;
-            top: 30%;
-            width: 480px;
-          }
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
   
-          .form-title {
-              left: 23%;
-              top: 20%;
-            }
+  .closebtn:hover {
+    color: black;
+}
 
-            .back {
-                padding-top: 25px;
-                padding-left: 20px;
-              }
+  .daftarjual-title {
+    position: absolute;
+    width: 171px;
+    height: 30px;
+    left: 236px;
+    top: 124px;
 
-              #toggle {
-                left: 410px;
-    
-            }
-    
-            #toggle-regis {
-                left: 410px;
-    
-            }
+    /* Heading/20/Bold */
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    /* identical to box height, or 150% */
+
+    color: #000000;
+  }
+
+  .penjual {
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+    gap: 10px;
+
+    position: absolute;
+    width: 968px;
+    height: 80px;
+    left: 236px;
+    top: 178px;
+
+    /* Neutral/01 */
+
+    background: #FFFFFF;
+    /* Shadow/Low */
+
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 16px;
+  }
+
+  .frame-138 {
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 16px;
+
+    width: 936px;
+    height: 48px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+  }
+
+  .foto-penjual {
+    width: 48px;
+    height: 48px;
+
+    background: url(./images/foto_penjual.png);
+    border-radius: 12px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+
+  .frame-137 {
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 4px;
+
+    width: 809px;
+    height: 38px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 1;
+  }
+
+  .nama-penjual {
+    width: 809px;
+    height: 20px;
+
+    /* Body/14/Medium */
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    /* identical to box height, or 143% */
+
+    color: #000000;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+  }
+
+  .kota {
+    width: 809px;
+    height: 14px;
+
+    /* Body/10/Regular */
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 14px;
+    /* identical to box height, or 140% */
+
+
+    /* Neutral/03 */
+
+    color: #8A8A8A;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+  }
+
+  .frame-141 {
+    box-sizing: border-box;
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 4px 12px;
+    gap: 10px;
+
+    width: 47px;
+    height: 26px;
+
+    /* Neutral/01 */
+
+    background: #FFFFFF;
+    /* Primary/Purple/04 */
+
+    border: 1px solid #7126B5;
+    border-radius: 8px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+  }
+
+  .edit {
+    width: 23px;
+    height: 18px;
+
+    /* Body/12/Medium */
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    /* identical to box height, or 150% */
+
+
+    /* Neutral/05 */
+
+    color: #151515;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+
+  .kategori {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 24px;
+
+    position: absolute;
+    width: 268px;
+    height: 248px;
+    left: 236px;
+    top: 282px;
+
+    background: #FFFFFF;
+    /* Shadow/High */
+
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 16px;
+  }
+
+  .kategori-title {
+    width: 69px;
+    height: 24px;
+
+    /* Title/16/Medium */
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    /* identical to box height, or 150% */
+
+
+    color: #000000;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+
+  .frame-162 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 16px;
+
+    width: 220px;
+    height: 152px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  }
+
+  .frame-160 {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px 0px 16px;
+    gap: 8px;
+
+    width: 220px;
+    height: 40px;
+
+    /* Neutral/02 */
+
+    border-bottom: 1px solid #D0D0D0;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+
+  .kategori-fi_box1 {
+    width: 24px;
+    height: 24px;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+
+  .kategori-chevron-right1 {
+    width: 24px;
+    height: 24px;
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+  }
+
+  .kategori-txt1 {
+    width: 156px;
+    height: 24px;
+
+    text-decoration:none;
+
+    /* Title/16/Medium */
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    /* identical to box height, or 150% */
+
+
+    /* Primary/Purple/04 */
+
+    color: #7126B5;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  }
+
+  .daftar-jual {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 24px;
+
+    position: absolute;
+    /* width: 668px; */
+    height: 864px;
+    left: 536px;
+    top: 282px;
+  }
+
+
+  .frame-165 {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 12px;
+
+    width: 668px;
+    height: 198px;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+
+  .frame-150 {
+    box-sizing: border-box;
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 8px 16px;
+    gap: 8px;
+
+    width: 206.67px;
+    height: 198px;
+
+    background: #FFFFFF;
+    /* Neutral/02 */
+
+    border: 1px dashed #D0D0D0;
+    border-radius: 4px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+  }
+
+  .group3 {
+    width: 140px;
+    height: 50px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+
+  .group3-txt {
+    position: absolute;
+    width: 140px;
+    height: 18px;
+    left: 33.33px;
+    top: 102px;
+
+    /* Body/12/Regular */
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    /* identical to box height, or 150% */
+
+    text-align: center;
+
+    /* Neutral/03 */
+
+    color: #8A8A8A;
+  }  
+
+  .fi-plus {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    left: 91.33px;
+    top: 70px;
+  }
+
+  /* .card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 8px 16px;
+    gap: 8px;
+
+    width: 206.67px;
+    height: 198px; */
+
+    /* Neutral/01 */
+
+    /* background: #FFFFFF; */
+    /* Shadow/Low */
+
+    /* box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 4px; */
+
+    /* Inside auto layout */
+
+    /* flex: none;
+    order: 1;
+    flex-grow: 1;
+  } */
+
+  .card {
+    margin-right: 30px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    margin-right: 20px;
+
+    width: 207px;
+    height: 210px;
+  }
+
+  .foto-barang {
+    width: 181px;
+    height: 100px;
+
+    margin-left: 12px;
+
+    /* background: url(./images/Rectangle23.png), #EEEEEE; */
+    border-radius: 4px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+  }
+
+  .frame-149 {
+    /* display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px; */
+
+    width: 190.67px;
+    height: 66px;
+
+    margin-top: 10px;
+    margin-left: 15px;
+
+    /* Inside auto layout */
+
+    /* flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0; */
+  }
+
+  .informasi-barang {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 4px;
+
+    width: 190.67px;
+    height: 38px;
+
+    margin-bottom: 5px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+  }
+
+  .nama-barang {
+    width: 190.67px;
+    height: 20px;
+
+    /* Body/14/Regular */
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    /* identical to box height, or 143% */
+
+    color: #000000;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+  }
+
+  .jenis-barang {
+    width: 190.67px;
+    height: 14px;
+
+    /* Body/10/Regular */
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 14px;
+    /* identical to box height, or 140% */
+
+    /* Neutral/03 */
+
+    color: #8A8A8A;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+  }
+
+  .harga-barang {
+    width: 190.67px;
+    height: 20px;
+
+    /* Body/14/Regular */
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    /* identical to box height, or 143% */
+
+    color: #000000;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+  }
+
+
+  @media only screen and (max-width: 992px) and (min-width: 768px){
+    .img {
+        display: none;
+    }
+
+    .form {
+        /* margin: auto; */
+        left: 23%;
+        top: 30%;
+        width: 480px;
       }
+
+    .form-title {
+        left: 23%;
+        top: 20%;
+      }
+
+    .back {
+        padding-top: 25px;
+        padding-left: 20px;
+      }
+
+      #toggle {
+        left: 410px;
+
+    }
+
+    #toggle-regis {
+        left: 410px;
+
+    }
+
+    .navbar {
+      display: none;
+    }
+
+    .menu {
+      margin-left: 30px;
+      margin-top: 48px;
+    }
+
+    /* NOTIF */
+    .notif-txt {
+      font-size: 28px;
+      line-height: 34px;
+    }
+
+    .list-notifikasi {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 0px;
+      gap: 16px;
+
+      position: absolute;
+      width: 340px;
+      height: 200px;
+      left: 32px;
+      top: 120px;
+
+      background: none;
+      /* Shadow/High */
+  
+      box-shadow: none;
+      border-radius: 1px;
+    }
+
+  
+    .list {
+  
+      width: 450px;
+      height: 108px; 
+
+    }  
+  
+    .notif {
+  
+      width: 410px;
+      height: 108px; 
+  
+    }
+  
+    .notif-img {
+      width: 70px;
+      height: 70px;
+      margin-top: 10px;
+
+    }
+  
+    .notif-text {
+      width: 300px;
+      height: 86px;
+
+    }
+  
+    .notif-ket {
+      width: 300px;
+      height: 24px;
+      margin-bottom: 10px;
+    }
+  
+    .notif-ket-txt1 {
+      width: 420px;
+      font-size: 16px;
+      line-height: 22px;
+    }
+  
+    .notif-ket-txt2 {
+      width: 150px;
+      font-size: 16px;
+      line-height: 22px;
+    }
+
+    .time {
+      width: 495px;
+    }
+  
+    .notif-ket-ellipse {
+      width: 12px;
+      height: 12px;
+    }
+    
+    .notif-txt1 {
+      height: 24px;
+      font-size: 20px;
+      line-height: 28px;
+    }
+
+    .divider {
+      margin-top: 30px;
+      margin-bottom: 15px;
+      width: 710px;
+      height: 2px;
+    }
+
+    /* Daftar Jual */
+    .allert-success {
+      width: 745px;
+      left: 16px;
+      top: 84px;
+      z-index: 1000;
+    }
+
+    .allert-text {
+      width: 444px;
+    }
+
+    .daftarjual-title {
+      left: 80px;
+      top: 45px;
+    }
+
+    .penjual {
+      width: 745px;
+      left: 16px;
+      top: 102px;
+    }
+
+    .frame-138 {
+      width: 680px;
+    }
+
+    .frame-137 {
+      width: 169px;
+    }
+
+    .nama-penjual {
+      width: 169px;
+    }
+
+    .kota {
+      width: 169px;
+    }
+
+    .frame-141 {
+      margin-right:-20px;
+    }
+
+    .daftar-jual {
+      left: 20px;
+      top: 280px;
+    }
+
+    .kategori {
+      display: none;
+    }
+
+    /* Kategori Mobile */
+
+    .kategori-mobile {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      padding: 0px;
+      gap: 16px;
+
+      position: absolute;
+      width: 366px;
+      height: 44px;
+      left: 16px;
+      top: 205px;
+    }
+
+    .kategori-mobile-frame {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      padding: 12px 16px;
+      gap: 8px;
+
+      width: 240px;
+      height: 44px;
+
+      background: #E2D4F0;
+      border-radius: 12px;
+
+      /* Inside auto layout */
+
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+    }
+
+    .active, .kategori-mobile-frame:hover {
+      background: #7126B5;
+    }
+
+    .kategori-mobile-text {
+      text-decoration: none;
+
+      width: 48px;
+      height: 20px;
+      
+      /* Body/14/Regular */
+      
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      /* identical to box height, or 143% */
+      
+      
+      /* Neutral/01 */
+      
+      color: #FFFFFF;
+      
+      
+      /* Inside auto layout */
+      
+      flex: none;
+      order: 1;
+      flex-grow: 0;
+    }
+
+    .kategori-mobile-icon {
+      width: 20px;
+      height: 20px;
+      margin-left: 46px;
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+    }
+
+    /* Diminati */
+
+    .group34 {
+      margin-left: -70px;
+    }
+
+    .diminati-txt {
+      margin-left: 50px;
+      font-size: 14px;
+    }
+  
+  }
+
+  @media (max-width: 768px) {
+
+    .form {
+      /* margin: auto; */
+      left: 10%;
+      top: 25%;
+      width: 480px;
+    }
+
+    .form-title {
+        left: 10%;
+        top: 17%;
+      }
+  
+    .img {
+      display: none;
+    }
+
+    #toggle {
+        left: 270px;
+
+    }
+
+    #toggle-regis {
+        left: 270px;
+
+    }
+
+    .back {
+        padding-top: 20px;
+        padding-left: 20px;
+      }
+    
+    .email {
+        width: 305px;
+    }
+
+    .button {
+        width: 305px;
+    }
+
+    .text {
+        width: 255px;
+    }
+
+    .frame-regis {
+        left: 30px;
+    }
+
+    .frame {
+        left: 30px;
+    }
+
+    /* .txt1 .txt2 {
+      margin-top: 60px;
+    } */
+
+    .navbar {
+      display: none;
+    }
+
+    .list-notifikasi {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 0px;
+      gap: 16px;
+
+      position: absolute;
+      width: 333px;
+      height: 181px;
+      left: 26px;
+      top: 102px;
+
+      background: none;
+      /* Shadow/High */
+  
+      box-shadow: none;
+      border-radius: 1px;
+    }
+
+    .list {
+      width: 333px;
+    }
+
+    .notif {
+      width: 333px;
+    }
+
+    .frame-menu {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 12px;
+      gap: 16px;
+  
+      position: absolute;
+      width: 53px;
+      height: 48px;
+      left: 16px;
+      top: 36px;
+  
+      /* Neutral/01 */
+  
+      background: #FFFFFF;
+      border-radius: 16px;
+    }
+
+    .menu {
+      width: 24px;
+      height: 24px;
+
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+    }
+
+    /* Daftar Jual */
+    .allert-success {
+      width: 354px;
+      left: 16px;
+      top: 84px;
+      z-index: 1000;
+    }
+
+    .allert-text {
+      width: 244px;
+    }
+
+    .daftarjual-title {
+      left: 80px;
+      top: 45px;
+    }
+
+    .penjual {
+      width: 354px;
+      left: 16px;
+      top: 102px;
+    }
+
+    .frame-138 {
+      width: 296px;
+    }
+
+    .frame-137 {
+      width: 169px;
+    }
+
+    .nama-penjual {
+      width: 169px;
+    }
+
+    .kota {
+      width: 169px;
+    }
+
+    .frame-141 {
+      margin-right:-20px;
+    }
+
+    .daftar-jual {
+      left: 20px;
+      top: 260px;
+    }
+    
+    .frame-165 {  
+      width: 368px;
+    }
+
+    .group3-txt{
+      margin-left: -28px;
+      margin-top: 10px;
+    }
+
+    .fi-plus {
+      margin-left: -28px;
+      margin-top: 10px;
+    }
+
+    /* .card {
+      width: 156px;
+    } */
+
+   .foto-barang {
+      width: 132px;
+      height: 80px;
+      margin-left: 12px;
+    }
+
+   
+    .nama-barang {
+      width: 100px;
+      height: 40px;
+      left: 8px;
+      top: 116px;
+    }
+
+    
+    .jenis-barang {
+      width: 140px;
+      /* left: 8px; */
+      /* margin-top: 19px; */
+    }
+
+    .harga-barang {
+      position: absolute;
+      width: 140px;
+      /* left: 8px; */
+      margin-top: 19px;
+    }
+
+    .kategori {
+      display: none;
+    }
+
+    /* Kategori Mobile */
+
+    .kategori-mobile {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      padding: 0px;
+      gap: 16px;
+
+      position: absolute;
+      width: 366px;
+      height: 44px;
+      left: 16px;
+      top: 205px;
+    }
+
+    .kategori-mobile-frame {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      padding: 12px 16px;
+      gap: 8px;
+
+      width: 108px;
+      height: 44px;
+
+      /* Primary/Purple/04 */
+
+      background: #E2D4F0;
+      border-radius: 12px;
+
+      /* Inside auto layout */
+
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+    }
+
+    .active, .kategori-mobile-frame:hover {
+      background: #7126B5;
+    }
+
+    .kategori-mobile-text {
+      text-decoration: none;
+
+      width: 48px;
+      height: 20px;
+      
+      /* Body/14/Regular */
+      
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      /* identical to box height, or 143% */
+      
+      
+      /* Neutral/01 */
+      
+      color: #FFFFFF;
+      
+      
+      /* Inside auto layout */
+      
+      flex: none;
+      order: 1;
+      flex-grow: 0;
+    }
+
+    .kategori-mobile-icon {
+      width: 20px;
+      height: 20px;
+      margin-left: -6px;
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+    }
+
+    /* Diminati */
+
+    .group34 {
+      margin-left: -270px;
+    }
+
+    .diminati-txt {
+      margin-left: 50px;
+      font-size: 14px;
+    }
+
+  }
+
+
+@media (min-width: 992px) {
+
+  .back {
+    display: none;
+  }
+
+  .menu {
+    display: none;
+  }
+
+  .notif-txt {
+    display: none;
+  }
+
+  .kategori-mobile {
+    display: none;
+  }
+
+}  
+
+a {
+  text-decoration: none;
+}
+
+/* Diminati */
+
+.group34 {
+  position: absolute;
+  width: 296px;
+  height: 177px;
+  left: 170px;
+  top: 50px;
+}
+
+.diminati-txt {
+  position: absolute;
+  width: 350px;
+  height: 40px;
+  left: 25px;
+  top: 145px;
+
+  /* Body/14/Regular */
+
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  /* or 143% */
+
+  text-align: center;
+
+  /* Neutral/03 */
+
+  color: #8A8A8A;
+}
+
+.diminati-img {
+  position: absolute;
+  left: 25%;
+  right: 26.11%;
+  top: 10px;
+  bottom: 36.64%;
+  margin-left: 45px;
+}
+
+/* @media (max-width: 768px) {
+  .daftar-jual {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+} */
+
+
