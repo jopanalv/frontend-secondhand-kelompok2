@@ -3,6 +3,7 @@
 body {
     font-family: 'Poppins';
     font-size: 12px;
+<<<<<<< HEAD
 } 
 
 .Container{
@@ -1923,3 +1924,147 @@ a {
 } */
 
 
+=======
+}
+
+/* navbar */
+#title {
+    font-size: 16px;
+    font-weight: 400;
+    float: none;
+    position: absolute;
+    top: 50%;
+    left: 51%;
+    transform: translate(-45%, -55%);
+}
+
+.navbar-brand {
+    width: 100px;
+    height: 34px;
+    background: #4B1979;
+}
+
+/* profile */
+.container {
+    margin: auto;
+}
+
+.form-control {
+    border-radius: 16px;
+}
+
+.form-select {
+    border-radius: 16px;
+}
+
+::placeholder {
+    font-size: 14px;
+    color: #8A8A8A;
+}
+
+option[value=""][disabled] {
+    display: none;
+}
+
+#save {
+    border-color: #7126B5;
+    background: #7126B5;
+    border-radius: 16px;
+}
+
+/* info produk */
+#preview {
+    border-color: #7126B5;
+    border-radius: 16px;
+    color: black;
+}
+
+#preview:hover {
+    background: #7126B5;
+    color: white;
+}
+
+#terbitkan {
+    border-color: #7126B5;
+    background: #7126B5;
+    border-radius: 16px;
+}
+
+.btn-action {
+    width: 100%;
+}
+
+/* info penawaran */
+.card-title {
+    font-size: 14px;
+}
+
+.card-text {
+    font-size: 10px;
+}
+
+#modal-button {
+    border-color: #7126B5;
+    background: #7126B5;
+    border-radius: 16px;
+    font-size: 14px;
+    padding: 12px 24px;
+    width: 100%;
+}
+
+.modal-body h4 {
+    font-size: 14px;
+}
+
+/* medium device*/
+@media screen and (max-width: 915px){
+    /* navbar */
+    .navbar-brand {
+        visibility: hidden;
+    }
+
+    #title {
+        left: 49%;
+    }
+
+    /* profile */
+    #profile {
+        width: 90%;
+    }
+
+    /* info produk */
+    #info-produk {
+        width: 90%;
+    }
+
+    /* info penawaran */
+    #info-penawaran {
+        width: 90%;
+    }
+       
+}
+
+@media screen and (min-width: 915px){
+    /* profile */
+    #profile {
+        width: 50%;
+    }
+
+    /* info produk */
+    #info-produk {
+        width: 50%;
+    }
+
+    /* info penawaran */
+    #info-penawaran {
+        width: 50%;
+    }  
+}
+
+/* small device */
+@media screen and (max-width: 600px) {
+    #title {
+        left: 49%;
+    }
+}
+>>>>>>> 58ecc63c7818a97dd0d6a1fdd8a48569fe0befd3
