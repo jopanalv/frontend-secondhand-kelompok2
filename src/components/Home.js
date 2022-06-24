@@ -8,15 +8,15 @@ import { MDBCol, MDBRow, MDBContainer } from 'mdb-react-ui-kit';
 function Home() {
   return (
     <>
-    <Container>
-      <Row >
-        <Col sm={3}>
+    <div className='container-fluid' id="home">
+      <div className="row content">
+        <div className='col-sm-2'>
           <div className='side_left'></div>
-        </Col>
-        <Col sm={6}>
+        </div>
+        <div className='col'>
           <div className='hero'>
-            <Container>
-                <Row>
+            <div className='container-fluid'>
+                <div className="row">
                   <Col sm={7} md={7} lg={7} className="main-section-left pb-3 pt-5 px-4">
                   <Image src={Gift} className="img-fluid hadiah pt-2" alt="gift" />
                     <h2>
@@ -32,15 +32,15 @@ function Home() {
                   <Col sm={5} md={5} lg={5} className="main-section-right">
                     <Image src={Hero} className="img-fluid gbr_hero" alt="hero" />
                   </Col>
-                </Row>
-              </Container>
+                </div>
               </div>
-        </Col>
-        <Col sm={3}>
+              </div>
+        </div>
+        <div className='col-sm-2'>
           <div className='side_right'></div>
-        </Col>
-      </Row>
-  </Container>
+        </div>
+      </div>
+  </div>
   </>
   );
 }

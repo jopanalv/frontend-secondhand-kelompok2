@@ -1,21 +1,17 @@
-import React, { useState } from 'react';
-import { Nav, Button, Navbar, Container, NavLink } from "react-bootstrap";
-import { MDBCol, MDBIcon } from "mdbreact";
+import React from 'react';
 import { Image } from 'react-bootstrap';
+import { Nav, Button, Navbar, Container, NavLink } from "react-bootstrap";
 import Logo from '../assets/images/Rectangle 127.png'
 import Cari from '../assets/images/fi_search.png'
-import Masuk from '../assets/images/fi_log-in.png'
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
+import list from '../assets/images/fi_list.png'
+import bell from '../assets/images/fi_bell.png'
+import user from '../assets/images/fi_user.png'
+import menu from '../assets/images/fi_menu.png'
 
-
-function Navigasi(props) {
-  const [sidebar, setSidebar] = useState(false);
-  const showSidebar = () => setSidebar(!sidebar)
-
-  return (
-      <div
-        className="navbar navi shadow-sm"
+const Navigasi = () => {
+    return (
+        <div
+        className="navbar navi2 shadow-sm"
       >
         <Container>
           <Navbar.Brand href="/">
@@ -37,15 +33,20 @@ function Navigasi(props) {
                 <Image className='input-search' src={Cari} />
               </span>
           </div>
-          <button className="regis" href="/register">
-               <Image className='log' src={Masuk} />
-               <p className='reg text-white'>
-                 Masuk
-               </p>
-             </button>
+          <div className="frame-158"> 
+                    <img src={list} />
+                    {/* <a href="/notifikasi">    */}
+                        <img src={bell} />
+                    {/* </a>  */}
+                    <img src={user} /> 
+            </div> 
+            <div className="frame-menu">
+                <img src={menu} className='menu' />
+            </div> 
         </Container>
       </div>
-  );
-}
+    );
+ 
+};
 
 export default Navigasi;

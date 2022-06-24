@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { Button, Container, Row, Col, Modal, Form } from "react-bootstrap";
-import Navbar from "../components/Navbar"
+import { Modal, Form } from "react-bootstrap";
 import gambar from "../assets/images/Rectangle 134.png"
 import { Image } from 'react-bootstrap';
-import "../assets/detail.css"
 import penjual from "../assets/images/Rectangle 33.png"
 import back from '../assets/images/fi_arrow-left.png'
-import Data from "../data/data";
+import Navigasi from '../components/Navigasi';
+import Alert from '../components/Alert_produk';
 
 
 function DetailProduk_buyer() {
@@ -27,9 +26,9 @@ function DetailProduk_buyer() {
   
   return (
     <>
-      <Container>
-        {/* <Navbar /> */}
-        <div className="container mx-3 py-3 justify-content-center align-item-center">
+        <Navigasi />
+        {/* <Alert /> */}
+        <div className="container1 mx-5 py-3 justify-content-center align-item-center" id="produk-seller">
         <Image src={back} className='back position-absolute' />
             <div className='box_image'>
               <div>
@@ -43,7 +42,7 @@ function DetailProduk_buyer() {
                 <p className="card-text">Aksesoris</p>
                 <p className="card-text-2 fw-bold">Rp 250000</p>
                 <div class="d-grid gap-2">
-                  <button class="btn btn_teks btn-primary btn-action" type="button">Saya Tertarik dan ingin Nego</button>
+                  <button class="btn_teks btn-action btn1 text-white" type="button" onClick={handleShow}>Saya Tertarik dan Ingin Nego</button>
                 </div>
               </div>
               <div className="card py-1">
@@ -76,7 +75,7 @@ function DetailProduk_buyer() {
           </div>    
             </div>
           <div className='container3'>
-          <button class="btn btn-primary btn-action btn_teks btn-float" type="button" onClick={handleShow}>{isLoading ? 'Menunggu Respon Penjual' : 'Saya Tertarik dan ingin Nego'}</button>
+          <button class="btn1 btn_teks btn-action btn-float text-white" type="button" onClick={handleShow}>Saya Tertarik dan ingin Nego</button>
           </div>
 
           <Modal show={show} onHide={handleClose}>
@@ -115,12 +114,11 @@ function DetailProduk_buyer() {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
+          <button className='btn-kirim btn-teks btn-action text-white' onClick={handleClose}>
             Kirim
-          </Button>
+          </button>
         </Modal.Footer>
       </Modal>
-      </Container>
     </>
   )
 }
