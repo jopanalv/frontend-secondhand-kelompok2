@@ -54,8 +54,10 @@ function Profile() {
                 />
               </div>
               <div className="row mb-3 d-grid gap-2">
-                <button className="btn btn-primary" type="button" id="save">
+                <button className="btn btn-primary text-white" type="button" id="save">
+                <a href="/seller/daftar-jual">
                   Simpan
+                </a>
                 </button>
               </div>
             </form>

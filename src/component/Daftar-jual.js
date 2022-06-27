@@ -86,14 +86,16 @@ const Jual = () => {
                         </div>    
                     </div> */}
 
-                    <div className='col-md-3 col-sm-6 py-3 my-3 card border-1'>
+                    <a href="/info-produk">
+                    <div className='col-md-3 col-sm-6 py-3 my-3 card3 border-1'>
                         <div className='group3'>
                             <img src={plus} className='fi-plus' />
                             <span className='group3-txt'>Tambah Produk</span>
                         </div>    
                     </div>
+                    </a>
                      
-                    <div className="col-md-3 col-sm-6 py-3 my-3 card border-1">
+                    <div className="col-md-3 col-sm-6 py-3 my-3 card3 border-1">
                     <img src={barang} className='foto-barang' />
                         <div className='frame-149'>
                             <div className='informasi-barang'>

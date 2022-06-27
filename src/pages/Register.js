@@ -28,13 +28,15 @@ const Register = () => {
 
                     <div className='button-wrapper'>
 						<button className='button'>
-							<span className='text'>Daftar</span>
+                            <a  href="/">
+							    <span className='text'>Daftar</span>
+                            </a>
 						</button>
 					</div>
 
                     <div className='frame-regis'>
                         <span className='txt1'>Sudah punya akun?</span>
-                        <a  href="/" className='txt2'>Masuk di sini</a>
+                        <a  href="/login" className='txt2'>Masuk di sini</a>
                     </div>
 
                 </div>

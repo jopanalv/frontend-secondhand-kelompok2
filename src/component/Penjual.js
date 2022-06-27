@@ -25,8 +25,11 @@ const Jual = () => {
                         <span className='kota'>Kota</span>
                     </div>
                     <div className='frame-141'>
+                    <a href="/info-profile">
                         <span className='edit'>Edit</span>
+                    </a>
                     </div>
+
                 </div>
             </div> 
             

@@ -22,7 +22,9 @@ const Login = () => {
 
                     <div className='button-wrapper'>
 						<button className='button'>
-							<span className='text'>Masuk</span>
+                            <a  href="/">
+                                <span className='text'>Masuk</span>
+                            </a>
 						</button>
 					</div>
 

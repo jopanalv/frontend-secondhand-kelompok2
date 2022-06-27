@@ -58,22 +58,22 @@ export default function InfoProduk() {
               </div>
               <div className="row mb-3">
                 <div className="col-6 p-0 pe-1">
-                  <button
+                <a href="seller/detail-produk/"><button
                     className="btn btn-outline-primary btn-action "
                     type="button"
                     id="preview"
                   >
                     Preview
-                  </button>
+                  </button></a>
                 </div>
                 <div className="col-6 p-0 ps-1">
-                  <button
+                <a href="seller/daftar-jual"><button
                     className="btn btn-primary btn-action"
                     type="button"
                     id="terbitkan"
                   >
                     Terbitkan
-                  </button>
+                  </button></a>
                 </div>
               </div>
             </form>
