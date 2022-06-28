@@ -1,9 +1,30 @@
 import Image from "react-bootstrap/esm/Image";
 import icon_back from "../assets/images/fi_arrow-left.png";
-import Navbar from "./Navbar";
+import Navbar from "../pages/Navbar";
 import uploadGambar from "../assets/images/Group 2.png";
+import { useDropzone } from "react-dropzone";
+import React, { useCallback, useState } from "react";
 
 export default function InfoProduk() {
+  const [selectedImages, setSelectedImages] = useState([]);
+
+  const onDrop = useCallback((acceptedFiles) => {
+    setSelectedImages(
+      acceptedFiles.map((file) =>
+        Object.assign(file, { preview: URL.createObjectURL(file) })
+      )
+    );
+  }, []);
+  const { getRootProps, getInputProps } = useDropzone({ onDrop });
+
+  const seleted_images = selectedImages?.map((file) => (
+    <div>
+      <img src={file.preview} style={{ width: "8em", height: "8em" }} />
+    </div>
+  ));
+
+  console.log("gambar : ", selectedImages);
+
   return (
     <>
       <Navbar />
@@ -54,26 +75,44 @@ export default function InfoProduk() {
               </div>
               <div className="row mb-3">
                 <label className="form-label">Foto Produk</label>
-                <Image src={uploadGambar} style={{ width: "8em" }} />
+                {selectedImages.length === 0 ? (
+                  <div {...getRootProps()}>
+                    <input {...getInputProps()} />
+                    <Image src={uploadGambar} style={{ width: "8em" }} />
+                  </div>
+                ) : (
+                  <div>
+                    <div {...getRootProps()}>
+                      <input {...getInputProps()} />
+                      <label className="border ms-3 mt-3">
+                        {seleted_images}
+                      </label>
+                    </div>
+                  </div>
+                )}
               </div>
               <div className="row mb-3">
                 <div className="col-6 p-0 pe-1">
-                <a href="seller/detail-produk/"><button
-                    className="btn btn-outline-primary btn-action "
-                    type="button"
-                    id="preview"
-                  >
-                    Preview
-                  </button></a>
+                  <a href="seller/detail-produk/">
+                    <button
+                      className="btn btn-outline-primary btn-action "
+                      type="button"
+                      id="preview"
+                    >
+                      Preview
+                    </button>
+                  </a>
                 </div>
                 <div className="col-6 p-0 ps-1">
-                <a href="seller/daftar-jual"><button
-                    className="btn btn-primary btn-action"
-                    type="button"
-                    id="terbitkan"
-                  >
-                    Terbitkan
-                  </button></a>
+                  <a href="seller/daftar-jual">
+                    <button
+                      className="btn btn-primary btn-action"
+                      type="button"
+                      id="terbitkan"
+                    >
+                      Terbitkan
+                    </button>
+                  </a>
                 </div>
               </div>
             </form>
