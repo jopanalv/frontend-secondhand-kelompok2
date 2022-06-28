@@ -1,9 +1,30 @@
+import { useDropzone } from "react-dropzone";
 import { Image } from "react-bootstrap/";
 import icon_back from "../assets/images/fi_arrow-left.png";
 import upload from "../assets/images/Group 1.png";
 import Navbar from "./Navbar";
+import React, { useCallback, useState } from "react";
 
 function Profile() {
+  const [selectedImages, setSelectedImages] = useState([]);
+
+  const onDrop = useCallback((acceptedFiles) => {
+    setSelectedImages(
+      acceptedFiles.map((file) =>
+        Object.assign(file, { preview: URL.createObjectURL(file) })
+      )
+    );
+  }, []);
+  const { getRootProps, getInputProps } = useDropzone({ onDrop });
+
+  const seleted_images = selectedImages?.map((file) => (
+    <div>
+      <img src={file.preview} style={{ width: "8em", height: "8em" }} />
+    </div>
+  ));
+
+  console.log("gambar : ", selectedImages);
+
   return (
     <>
       <Navbar judul="Lengkapi Info Akun" />
@@ -12,9 +33,21 @@ function Profile() {
           <div className="col-lg-1 col-sm-12 mb-1">
             <Image src={icon_back} />
           </div>
-          <div className="col-lg-11 col-sm-12">
-            <div class="text-center">
-              <Image src={upload} className="rounded" onClick={upload} />
+          <div className="col-lg-11 col-sm-12 ">
+            <div className="text-center">
+              {selectedImages.length === 0 ? (
+                <div {...getRootProps()}>
+                  <input {...getInputProps()} />
+                  <Image src={upload} style={{ width: "8em" }} />
+                </div>
+              ) : (
+                <div>
+                  <div {...getRootProps()}>
+                    <input {...getInputProps()} />
+                    <label className="border ms-3 mt-3">{seleted_images}</label>
+                  </div>
+                </div>
+              )}
             </div>
             <form>
               <div className="row mb-3">
@@ -54,10 +87,12 @@ function Profile() {
                 />
               </div>
               <div className="row mb-3 d-grid gap-2">
-                <button className="btn btn-primary text-white" type="button" id="save">
-                <a href="/seller/daftar-jual">
-                  Simpan
-                </a>
+                <button
+                  className="btn btn-primary text-white"
+                  type="button"
+                  id="save"
+                >
+                  <a href="/seller/daftar-jual">Simpan</a>
                 </button>
               </div>
             </form>
