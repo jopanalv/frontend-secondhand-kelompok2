@@ -8,7 +8,7 @@ const NotifMobile = () => {
         <div className='Container'>
         <span className='notif-txt'>Notifikasi</span>
             <div className="list-notifikasi"> 
-            <div className="list">
+            <div className="list2">
                     <div className="notif">
                         <img className='notif-img' />
                         <div className="notif-text">
@@ -23,7 +23,7 @@ const NotifMobile = () => {
                         </div>    
                     </div>
                 </div>    
-                <div className="list">
+                <div className="list2">
                     <img src={divider} className="divider" /> 
                     <div className="notif">
                         <img className='notif-img' />

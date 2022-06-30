@@ -16,14 +16,24 @@ function Navigasi(props) {
         className="navi shadow-sm"
       >
         <Container>
-          <Navbar.Brand href="/">
-            <Image className='logo_brand' src={Logo} />
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="ms-auto">
-            </Nav>
-          </Navbar.Collapse> 
+        <a 
+                className="navbar-brand col-4" 
+                id="logo" 
+                style={{ paddingLeft: "100px" }} 
+                > 
+                <img src={Logo} /> 
+        </a>
+        <button 
+                className="navbar-toggler" 
+                type="button" 
+                data-bs-toggle="collapse" 
+                data-bs-target="#navbarSupportedContent" 
+                aria-controls="navbarSupportedContent" 
+                aria-expanded="false" 
+                aria-label="Toggle navigation" 
+                > 
+                <span className="navbar-toggler-icon"></span> 
+                </button> 
           <div className="input-group md-form form-sm form-1 pl-0">
             <input
               className="form-control my-0 py-1 pencarian"
