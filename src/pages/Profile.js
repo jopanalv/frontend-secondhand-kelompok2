@@ -4,8 +4,55 @@ import icon_back from "../assets/images/fi_arrow-left.png";
 import upload from "../assets/images/Group 1.png";
 import Navbar from "../component/Navbar2";
 import React, { useCallback, useState } from "react";
+import { useDispatch } from "react-redux";
+import { updateProfile } from "../redux/action/profileAction";
+import axios from "axios";
 
 function Profile() {
+  const [formValue, setformValue] = React.useState({
+    image: "",
+    name: "",
+    city: "",
+    address: "",
+    no_hp: "",
+  });
+
+  const userId = 2;
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    // store the states in the form data
+    const loginFormData = new FormData();
+    loginFormData.append("image", formValue.image);
+    loginFormData.append("name", formValue.name);
+    loginFormData.append("city", formValue.city);
+    loginFormData.append("address", formValue.address);
+    loginFormData.append("no_hp", formValue.no_hp);
+
+    try {
+      // make axios post request
+      const response = await axios({
+        method: "post",
+        url: "http://localhost:8000/api/v1/profile/update/" + userId,
+        data: loginFormData,
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleChange = (event) => {
+    setformValue({
+      ...formValue,
+      [event.target.image]: event.target.value,
+      [event.target.name]: event.target.value,
+      [event.target.city]: event.target.value,
+      [event.target.address]: event.target.value,
+      [event.target.no_hp]: event.target.value,
+    });
+  };
+
   const [selectedImages, setSelectedImages] = useState([]);
 
   const onDrop = useCallback((acceptedFiles) => {
@@ -49,18 +96,26 @@ function Profile() {
                 </div>
               )}
             </div>
-            <form>
+            <form onSubmit={(event) => handleSubmit(event)}>
               <div className="row mb-3">
                 <label className="form-label">Nama*</label>
                 <input
                   type="text"
                   className="form-control"
                   placeholder="Nama"
+                  name="name"
+                  value={formValue.name}
+                  onChange={handleChange}
                 />
               </div>
               <div className="row mb-3">
                 <label className="form-label">Kota*</label>
-                <select className="form-select">
+                <select
+                  className="form-select"
+                  name="city"
+                  value={formValue.city}
+                  onChange={handleChange}
+                >
                   <option value="" disabled selected>
                     Pilih Kota
                   </option>
@@ -76,6 +131,9 @@ function Profile() {
                   className="form-control"
                   style={{ paddingBottom: "48px" }}
                   placeholder="Contoh: Jalan Ikan Hiu 33"
+                  name="address"
+                  value={formValue.address}
+                  onChange={handleChange}
                 />
               </div>
               <div className="row mb-3">
@@ -84,15 +142,18 @@ function Profile() {
                   type="text"
                   className="form-control"
                   placeholder="Contoh: +628123456789"
+                  name="no_hp"
+                  value={formValue.no_hp}
+                  onChange={handleChange}
                 />
               </div>
               <div className="row mb-3 d-grid gap-2">
                 <button
                   className="btn btn-primary text-white"
-                  type="button"
+                  type="submit"
                   id="save"
                 >
-                  <a href="/seller/daftar-jual">Simpan</a>
+                  Simpan
                 </button>
               </div>
             </form>
