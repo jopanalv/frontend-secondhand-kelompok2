@@ -5,8 +5,8 @@ const Product = ({ item }) => {
   return (
     <>
     <Container>
-      <div className="container-fluid">
-        <div className="row category">
+      <div className="container-fluid product">
+        <div className="row justify-content-center category">
           {item.map((Val) => {
             return (
               <div

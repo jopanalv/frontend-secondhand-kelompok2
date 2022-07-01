@@ -4,7 +4,8 @@ import back from '../assets/images/fi_arrow-left.png'
 
 const Login = () => {
     return (
-        <div className='container'>
+        <>
+        <div className='container-fluid'>
             <img src={img} className='img' />
             <img src={back} className='back' />
             <span className='form-title'>Masuk</span>
@@ -21,11 +22,11 @@ const Login = () => {
                     </div>
 
                     <div className='button-wrapper'>
-						<button className='button'>
-                            <a  href="/">
+                    <a  href="/">
+                        <button className='button'>
                                 <span className='text'>Masuk</span>
-                            </a>
 						</button>
+                    </a>
 					</div>
 
                     <div className='frame'>
@@ -35,6 +36,7 @@ const Login = () => {
                 </div>
                 
         </div>
+        </>
     );
 };
 

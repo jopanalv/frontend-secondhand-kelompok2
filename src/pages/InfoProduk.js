@@ -1,6 +1,6 @@
 import Image from "react-bootstrap/esm/Image";
 import icon_back from "../assets/images/fi_arrow-left.png";
-import Navbar from "../pages/Navbar";
+import Navbar from "../component/Navbar2";
 import uploadGambar from "../assets/images/Group 2.png";
 import { useDropzone } from "react-dropzone";
 import React, { useCallback, useState } from "react";
@@ -27,7 +27,7 @@ export default function InfoProduk() {
 
   return (
     <>
-      <Navbar />
+      <Navbar judul="Info Produk"/>
       <div className="container mt-5" id="info-produk">
         <div className="row justify-content-center">
           <div className="col-lg-1 col-sm-12 mb-1">

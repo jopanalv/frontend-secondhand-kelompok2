@@ -2,7 +2,7 @@ import React from "react";
 import { Image } from "react-bootstrap";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Navbar from "./Navbar";
+import Navbar from "../component/Navbar2";
 import icon_back from "../assets/images/fi_arrow-left.png";
 import pembeli from "../assets/images/Rectangle 33.png";
 import produk from "../assets/images/produk.png";
@@ -11,7 +11,7 @@ import data from "../data/InfoPenawar.json";
 export default function InfoPenawaran() {
   return (
     <>
-      <Navbar judul="Info Penawar" />
+      <Navbar judul="Info Penawaran" />
       <div className="container mt-5" id="info-penawaran">
         <div className="row justify-content-center">
           <div className="col-lg-1 col-sm-12 mb-1">

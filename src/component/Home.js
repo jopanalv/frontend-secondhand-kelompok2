@@ -8,11 +8,11 @@ function Home() {
   return (
     <>
     <div className='container-fluid' id="home">
-      <div className="row content">
+      <div className="row" id='content'>
         <div className='col-sm-2'>
           <div className='side_left'></div>
         </div>
-        <div className='col'>
+        <div className='col content-hero'>
           <div className='hero'>
             <div className='container-fluid'>
                 <div className="row">

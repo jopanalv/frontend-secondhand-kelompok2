@@ -4,6 +4,7 @@ import back from '../assets/images/fi_arrow-left.png'
 
 const Register = () => {
     return (
+    <>
         <div className='login'>
             <img src={img} className='img' />
             <img src={back} className='back' />
@@ -27,11 +28,11 @@ const Register = () => {
                     </div>
 
                     <div className='button-wrapper'>
+                    <a  href="/">
 						<button className='button'>
-                            <a  href="/">
 							    <span className='text'>Daftar</span>
-                            </a>
 						</button>
+                    </a>
 					</div>
 
                     <div className='frame-regis'>
@@ -42,6 +43,8 @@ const Register = () => {
                 </div>
                 
         </div>
+    </>
+        
     );
 };
 
