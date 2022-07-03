@@ -6,51 +6,28 @@ import Navbar from "./Navbar";
 import React, { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateProfile } from "../redux/action/profileAction";
-import axios from "axios";
 
 function Profile() {
-  const [formValue, setformValue] = React.useState({
-    image: "",
-    name: "",
-    city: "",
-    address: "",
-    no_hp: "",
-  });
+  const [id, setId] = useState("2");
+  const [image, setImage] = useState("");
+  const [name, setName] = useState("");
+  const [city, setCity] = useState("");
+  const [address, setAddress] = useState("");
+  const [no_hp, setNoHp] = useState("");
 
-  const userId = 2;
-
-  const handleSubmit = async (event) => {
+  const dispatch = useDispatch();
+  const handleSubmit = (event) => {
     event.preventDefault();
-    // store the states in the form data
-    const loginFormData = new FormData();
-    loginFormData.append("image", formValue.image);
-    loginFormData.append("name", formValue.name);
-    loginFormData.append("city", formValue.city);
-    loginFormData.append("address", formValue.address);
-    loginFormData.append("no_hp", formValue.no_hp);
-
-    try {
-      // make axios post request
-      const response = await axios({
-        method: "post",
-        url: "http://localhost:8000/api/v1/profile/update/" + userId,
-        data: loginFormData,
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleChange = (event) => {
-    setformValue({
-      ...formValue,
-      [event.target.image]: event.target.value,
-      [event.target.name]: event.target.value,
-      [event.target.city]: event.target.value,
-      [event.target.address]: event.target.value,
-      [event.target.no_hp]: event.target.value,
-    });
+    dispatch(
+      updateProfile({
+        id: id,
+        image: image,
+        name: name,
+        city: city,
+        address: address,
+        no_hp: no_hp,
+      })
+    );
   };
 
   const [selectedImages, setSelectedImages] = useState([]);
@@ -84,7 +61,12 @@ function Profile() {
             <div className="text-center">
               {selectedImages.length === 0 ? (
                 <div {...getRootProps()}>
-                  <input {...getInputProps()} />
+                  <input
+                    {...getInputProps()}
+                    name="image"
+                    value={image}
+                    onChange={(event) => setImage(event.target.value)}
+                  />
                   <Image src={upload} style={{ width: "8em" }} />
                 </div>
               ) : (
@@ -104,8 +86,8 @@ function Profile() {
                   className="form-control"
                   placeholder="Nama"
                   name="name"
-                  value={formValue.name}
-                  onChange={handleChange}
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
                 />
               </div>
               <div className="row mb-3">
@@ -113,8 +95,8 @@ function Profile() {
                 <select
                   className="form-select"
                   name="city"
-                  value={formValue.city}
-                  onChange={handleChange}
+                  value={city}
+                  onChange={(event) => setCity(event.target.value)}
                 >
                   <option value="" disabled selected>
                     Pilih Kota
@@ -132,8 +114,8 @@ function Profile() {
                   style={{ paddingBottom: "48px" }}
                   placeholder="Contoh: Jalan Ikan Hiu 33"
                   name="address"
-                  value={formValue.address}
-                  onChange={handleChange}
+                  value={address}
+                  onChange={(event) => setAddress(event.target.value)}
                 />
               </div>
               <div className="row mb-3">
@@ -143,8 +125,8 @@ function Profile() {
                   className="form-control"
                   placeholder="Contoh: +628123456789"
                   name="no_hp"
-                  value={formValue.no_hp}
-                  onChange={handleChange}
+                  value={no_hp}
+                  onChange={(event) => setNoHp(event.target.value)}
                 />
               </div>
               <div className="row mb-3 d-grid gap-2">

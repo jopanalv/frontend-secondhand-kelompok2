@@ -1,4 +1,4 @@
-import { UPDATE_PROFILE } from "../../action/profileAction";
+import { UPDATE_PROFILE } from "../../type";
 
 const initialState = {
   updateProfileResult: false,
