@@ -81,7 +81,7 @@ const Register = () => {
         </div>
 
         <div className="frame-regis">
-          <span className="txt1">Sudah punya akun?</span>
+          <span className="txt1 mt-5">Sudah punya akun?</span>
           <a href="/login" className="txt2">
             Masuk di sini
           </a>
