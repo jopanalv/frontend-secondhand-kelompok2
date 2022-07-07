@@ -2,30 +2,24 @@ import { LOGIN_ERROR, LOGIN, LOGOUT } from "../type";
 
 export const addLogin = (data) => async (dispatch) => {
   try {
-    const response = await fetch(
-      "https://be-secondhand-staging.herokuapp.com/api/v1/login",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    );
+    const response = await fetch("http://localhost:8000/api/v1/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
     const result = await response.json();
     console.log(result);
     localStorage.setItem("refreshToken", result.accessToken);
 
-    const userInfo = await fetch(
-      "https://be-secondhand-staging.herokuapp.com/api/v1/whoami",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${result.accessToken}`,
-        },
-      }
-    );
+    const userInfo = await fetch("http://localhost:8000/api/v1/whoami", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${result.accessToken}`,
+      },
+    });
     const user = JSON.parse(JSON.stringify(await userInfo.json()));
 
     console.log(user);

@@ -2,7 +2,7 @@ import { useDropzone } from "react-dropzone";
 import { Image } from "react-bootstrap/";
 import icon_back from "../assets/images/fi_arrow-left.png";
 import upload from "../assets/images/Group 1.png";
-import Navbar from "./Navbar";
+import Navbar from "../component/Navbar2";
 import React, { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateProfile } from "../redux/action/profileAction";

@@ -10,11 +10,23 @@ body {
 }
 
   /* NAVBAR */
+  .navbar-judul{
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
   #title {
     font-size: 16px;
     text-align: center;
-    padding-left: 150px;
     font-weight: 400;
+    font-size: 16px;
+    font-weight: 400;
+    float: none;
+    position: absolute;
+    /* margin-left: 50%;
+    margin-right: 50%; */
+    margin-left: 500px;
+    margin-top: -30px;
   }
 
   .frame-search {
@@ -157,7 +169,24 @@ body {
     flex: none;
     order: 0;
     flex-grow: 0;
-  }  
+  } 
+  .list2 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 16px;
+
+    width: 328px;
+    height: 86px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }   
 
   .notif {
     display: flex;
@@ -305,8 +334,8 @@ body {
 
   .img {
     position: absolute;
-    width: 800px;
-    height: 870px;
+    width: 750px;
+    height: 670px;
     left: 0px;
     top: 0px;
   }
@@ -315,8 +344,8 @@ body {
     position: absolute;
     width: 83px;
     height: 36px;
-    left: 954px;
-    top: 221px;
+    left: 850px;
+    top: 150px;
 
     /* Heading/24/Bold */
 
@@ -341,8 +370,8 @@ body {
     position: absolute;
     width: 452px;
     height: 228px;
-    left: 954px;
-    top: 281px;
+    left: 850px;
+    top: 200px;
   }
 
   .input1 {
@@ -1259,15 +1288,15 @@ body {
   padding: 10px
 }
 .navi2{
-  padding: 10px 10px 10px 10rem;
+  padding: 10px 10px 10px 10px;
 
 }
 .input-group {
   position: absolute;
   width: 444px;
   height: auto;
-  padding-left: 150px;
   margin-top: -35px;
+  left: 260px;
 }
 .pencarian {
   background: #EEEEEE;
@@ -1338,16 +1367,15 @@ body {
 }
 .side_right{
   position: absolute;
-  width: 236px;
+  width: 212px;
   height: 224px;
   top: 148px;
-  margin-left: 20px;
   background: #E2D4F0;
   border-radius: 20px 0px 0px 20px;
 }
 .hero{
   position: absolute;
-  width: 900px;
+  width: 880px;
   height: 288px;
   top: 116px;
   border-radius: 20px;
@@ -1449,7 +1477,6 @@ body {
   background: #FFFFFF;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
-  margin-right: 20px;
 }
 .name {
   font-style: normal;
@@ -1485,11 +1512,17 @@ body {
   height: 52px;
   background: #7126B5;
   border-color: #7126B5;
-  gap: 16px;
-  bottom: 2%;
+  bottom: 5%;
   border-radius: 12px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
-  left: 650px;
+  margin-left: 45%;
+  margin-right: 55%;
+  z-index: 5;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
 }
 
 /* DETAIL PRODUK */
@@ -1531,7 +1564,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  margin-left: 200px;
+  /* margin-left: 200px; */
 }
 .detail_gambar{
   width: 600px;
@@ -1542,7 +1575,7 @@ body {
 }
 
 .card-body-produk{
-  width: 336px;
+  width: 100%;
   height: auto;
   background: #FFFFFF;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
@@ -1580,12 +1613,18 @@ body {
   border-color: #7126B5;
   padding: auto;
 }
+.btn1 a{
+  color: #ffffff;
+}
 .btn2{
   width: 304px;
   height: 48px;
   background: #FFFFFF;
   border: 1px solid #7126B5;
   border-radius: 16px;
+  color: #000000;
+}
+.btn2 a{
   color: #000000;
 }
 .btn-teks{
@@ -1603,7 +1642,8 @@ body {
   margin-top: 20px;
 }
 .gbr-seller{
-  width: auto;
+  width: 48px;
+  height: auto;
 }
 .ket{
   font-weight: 400;
@@ -1616,7 +1656,7 @@ body {
 .container2{
   position: absolute;
   top: 30rem;
-  margin-left: 180px;
+  margin-left: 160px;
   border-radius: 16px;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
   block-size: auto;
@@ -1631,6 +1671,12 @@ body {
     border-radius: 16px;
     border-color: #7126B5;
     padding: auto;
+    margin: 0;
+}
+.modal-footer{
+  justify-content: center; 
+  align-items:center;
+  padding: 5px;
 }
 
 
@@ -1928,31 +1974,27 @@ body {
     .side_right{
       display: none;
     }
-    .container2{
-      margin-top: -5rem;
-    }
     .card-body-produk{
       max-width: 80%;
+      height: auto;
       margin-right: -100px;
     }
-    .card-body-produk .btn1{
-      max-width: 80%;
+     .card-body-produk .btn1{
+      max-width: 50%;
     }
     .card-body-produk .btn2{
-      max-width: 80%;
-    }
-    .card2{
-      max-width: 80%;
-    }
+      max-width: 50%;
+    } 
     .container1{
-      flex-direction: row;
-      gap: 3rem;
-      padding: 2rem 4rem;
-      margin-left: 20rem;
+      /* gap: 1rem;
+      padding: 1rem 2rem;
+      margin-left: 50rem; */
+      width: 60%;
     }
     .container2{
-      max-width: 60%;
+      max-width: 80%;
       margin-top: -10rem;
+      margin-left: 3rem;
     }
     .btn-float{
       display: none;
@@ -1962,6 +2004,10 @@ body {
     }
     .menu-nav {
       display: none;
+    } 
+    .detail_gambar{
+      max-width: 300px;
+      margin-left: 10rem;
     }
   }
 
@@ -2325,11 +2371,8 @@ body {
   .btn-float{
     display: none;
   }
-  .container1{
-    flex-direction: row;
-    gap: 3rem;
-    padding: 2rem 4rem;
-    margin-left: 20rem;
+  .detail_gambar{
+    width: 600px;
   }
   .menu-nav {
     display: none;
@@ -2395,17 +2438,6 @@ a {
 
 } */
 
-
-/* navbar */
-#title {
-    font-size: 16px;
-    font-weight: 400;
-    float: none;
-    position: absolute;
-    top: 50%;
-    left: 51%;
-    transform: translate(-45%, -55%);
-}
 
 
 /* profile */
@@ -2486,11 +2518,6 @@ option[value=""][disabled] {
     .navbar-brand {
         visibility: hidden;
     }
-
-    #title {
-        left: 49%;
-    }
-
     /* profile */
     #profile {
         width: 90%;
@@ -2544,10 +2571,6 @@ option[value=""][disabled] {
 
 /* small device */
 @media screen and (max-width: 650px) {
-    #title {
-        left: 49%;
-    }
-
     /* Navbar */
   .logo_brand{
     display: none;
@@ -2555,6 +2578,7 @@ option[value=""][disabled] {
   .navi{
     box-shadow: #ffffff;
     background-color: #FFE9CA;
+    width: 100%;
     /* z-index: 2; */
     /* max-width: 90%; */
   }
@@ -2562,6 +2586,7 @@ option[value=""][disabled] {
     margin-left: -90px;
     width: 98%;
     height: auto;
+    margin-top: -40px;
   }
   .pencarian{
     background-color: #ffffff;
@@ -2576,10 +2601,16 @@ option[value=""][disabled] {
     display: none;
   }
   /* Hero */
+  #home{
+    background: linear-gradient(180deg, #FFE9C9 59.55%, rgba(255, 233, 202, 0) 100%);
+  }
+  #content{
+    background: linear-gradient(180deg, #FFE9C9 59.55%, rgba(255, 233, 202, 0) 100%);
+  }
   .hero{
-    width: 105%;
+    max-width: 105%;
     height: auto;
-    margin-left: -20px;
+    margin-left: -25px;
     margin-top: -40px;
   }
   .side_left{
@@ -2589,7 +2620,7 @@ option[value=""][disabled] {
     display: none;
   }
   .hadiah{
-    margin-left: 200px;
+    margin-left: 250px;
     width: 30%;
     height: auto;
     margin-top: -20px;
@@ -2601,7 +2632,7 @@ option[value=""][disabled] {
     display: none;
   }
   .main-section-left{
-    max-width: 100%;
+    width: 100%;
     height: auto;
     background: linear-gradient(180deg, #FFE9C9 59.55%, rgba(255, 233, 202, 0) 100%);
     border-radius: 0;
@@ -2617,11 +2648,17 @@ option[value=""][disabled] {
     margin-top: -100px;
     max-width: 100%;
   }
+  #slider{
+    width: 90%;
+  }
+  .product .row{
+    width: 90%;
+  }
   .category{
     margin-top: -100px;
   }
-  .product{
-    min-width: 60%;
+  .card-product{
+    width: 70%;
     height: auto;
   }
   .btn-float1{
@@ -2635,6 +2672,9 @@ option[value=""][disabled] {
     }
     .container1{
       display: block;
+      gap: 0;
+      margin: 0;
+      padding: 0;
     }
     .kembali {
       /* top: 10px;
@@ -2644,11 +2684,12 @@ option[value=""][disabled] {
     }
     .detail_gambar{
       border-radius: 0px;
-      max-width: 150%;
-      align-items: center;
+      max-width: 100%;
+      margin-left: 0;
+      /* align-items: center;
       justify-content: center;
       margin-top: -3rem;
-      margin-left: -3rem;
+      margin-left: -3rem; */
     }
     .card-body-produk{
       display:inline-block;
@@ -2669,9 +2710,9 @@ option[value=""][disabled] {
       margin-top: 15px;
     }
     .container2{
-      margin-top: 0.5rem;
-      margin-left: 50px;
-      width: auto;
+      position: absolute;
+      margin-left: 65px;
+      width: 73%;
       height: auto;
     }
     .container3{
@@ -2683,7 +2724,8 @@ option[value=""][disabled] {
     .btn-float{
       position: fixed;
       bottom: 8%;
-      margin-left: 30px;
+      margin-left: 10%;
+      margin-right: 90%;
     }
     .card2{
       box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
@@ -2699,5 +2741,19 @@ option[value=""][disabled] {
       border-radius: 16px;
       border-color: #7126B5;
       padding: auto;
+  }
+  .btn-float1{
+    position: fixed;
+    margin-left: 40%;
+    margin-right: 60%;
+  }
+  .list{
+    display: none;
+  }
+  .form-modal{
+    padding-top: 80px;
+  }
+  #title{
+    margin-left: 150px;
   }
 }
