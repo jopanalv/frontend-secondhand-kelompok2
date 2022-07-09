@@ -5,8 +5,8 @@ import LoginReducer from "./Login";
 import AddProductReducer from "./AddProduct";
 
 export default combineReducers({
-  ProfileReducer,
-  RegisterReducer,
-  LoginReducer,
-  AddProductReducer,
+  profile: ProfileReducer,
+  register: RegisterReducer,
+  login: LoginReducer,
+  addProduct: AddProductReducer,
 });

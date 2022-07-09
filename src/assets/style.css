@@ -345,7 +345,7 @@ body {
     width: 83px;
     height: 36px;
     left: 850px;
-    top: 150px;
+    top: 100px;
 
     /* Heading/24/Bold */
 
@@ -371,7 +371,7 @@ body {
     width: 452px;
     height: 228px;
     left: 850px;
-    top: 200px;
+    top: 150px;
   }
 
   .input1 {
@@ -568,10 +568,10 @@ body {
         gap: 8px;
 
         position: absolute;
-        width: 238px;
+        width: 250px;
         height: 20px;
         left: 23%;
-        top: 350px;
+        top: 430px;
 
     }
 
@@ -601,7 +601,7 @@ body {
     }
 
     .txt2 {
-        width: 91px;
+        width: 150px;
         height: 20px;
         text-decoration:none;
 
@@ -1290,6 +1290,9 @@ body {
 .navi2{
   padding: 10px 10px 10px 10px;
 
+}
+.custom-margin {
+  margin-top: -20px !important
 }
 .input-group {
   position: absolute;
