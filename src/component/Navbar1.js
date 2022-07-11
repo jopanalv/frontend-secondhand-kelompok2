@@ -1,69 +1,166 @@
-import React, { useState } from 'react';
-import { Nav, Navbar, Container, NavLink } from "react-bootstrap";
-import { Image } from 'react-bootstrap';
-import Logo from '../assets/images/Rectangle 127.png'
-import Masuk from '../assets/images/fi_log-in.png'
-import menu from '../assets/images/fi_menu.png'
-import search from '../assets/images/fi_search.png'
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { Navbar, Container, Button, Dropdown, Offcanvas } from "react-bootstrap";
+import { FiLogIn, FiList, FiUser, FiBell } from "react-icons/fi";
+import { addUser } from "../slice/userSlice";
+import { addSearch } from "../slice/searchingSlice";
+import axios from "axios";
+import { styled } from '@mui/material/styles';
+import InputBase from '@mui/material/InputBase';
+import SearchIcon from '@mui/icons-material/Search';
+import "../assets/style2.css"
+
+const Search = styled('div')(({ theme }) => ({
+  position: 'relative',
+  borderRadius: theme.shape.borderRadius,
+  marginRight: theme.spacing(2),
+  marginLeft: 0,
+  width: '100%',
+  background: '#EEEEEE',
+  borderRadius: '16px',
+  [theme.breakpoints.up('sm')]: {
+      marginLeft: theme.spacing(3),
+      width: 'auto',
+  },
+  display: 'block',
+}));
 
 
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  '& .MuiInputBase-input': {
+      padding: theme.spacing(1, 1, 1, 0),
+      // vertical padding + font size from searchIcon
+      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+      transition: theme.transitions.create('width'),
+      width: '100%',
+      [theme.breakpoints.up('md')]: {
+          width: '35ch',
+      },
+  },
+}));
 
-function Navigasi(props) {
-  const [sidebar, setSidebar] = useState(false);
-  const showSidebar = () => setSidebar(!sidebar)
+export default function Navigasi() {
+  const dispatch = useDispatch();
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [user, setUser] = useState({});
+  const [show, setShow] = useState(false);
+  const [searching, setSearching] = useState("");
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  //change nav color when scrolling
+  const [color, setColor] = useState(false);
+  const changeColor = () => {
+      if (window.scrollY >= 10) {
+          setColor(true)
+      } else {
+          setColor(false)
+      }
+  }
+
+
+  const handleSearch = () => {
+      dispatch(
+          addSearch(searching)
+      )
+  }
+
+  window.addEventListener('scroll', changeColor)
+
+  useEffect(() => {
+      const fetchData = async () => {
+          try {
+              // Check status user login
+              // 1. Get token from localStorage
+              const token = localStorage.getItem("token");
+
+              // 2. Check token validity from API
+              const currentUserRequest = await axios.get(
+                  "http://localhost:8000/api/v1/auth/me",
+                  {
+                      headers: {
+                          Authorization: `Bearer ${token}`,
+                      },
+                  }
+              );
+
+              const currentUserResponse = currentUserRequest.data;
+
+              if (currentUserResponse.status) {
+                  dispatch(
+                      addUser({
+                          user: currentUserResponse.data.user,
+                          token: token,
+                      })
+                  );
+                  setUser(currentUserResponse.data.user);
+              }
+          } catch (err) {
+              setIsLoggedIn(false);
+          }
+      };
+      handleSearch();
+      fetchData();
+  }, [searching]);
 
   return (
     <>
-      <nav className="navi p-3 mb-5 shadow-sm"> 
-        <div className="container-fluid"> 
-            <a 
-            className="navbar-brand col-4" 
-            id="logo" 
-            style={{ paddingLeft: "100px" }} 
-            > 
-            <img src={Logo} /> 
-            </a> 
-            <button 
-            className="navbar-toggler" 
-            type="button" 
-            data-bs-toggle="collapse" 
-            data-bs-target="#navbarSupportedContent" 
-            aria-controls="navbarSupportedContent" 
-            aria-expanded="false" 
-            aria-label="Toggle navigation" 
-            > 
-            <span className="navbar-toggler-icon"></span> 
-            </button> 
-            <div className="input-group md-form form-sm form-1 pl-0">
-            <input
-              className="form-control my-0 py-1 pencarian"
-              type="text"
-              placeholder="Cari di sini ..."
-              aria-label="Search"
-            />
-              <span className="input-group-text purple lighten-3 px-4">
-                <Image className='input-search' src={search} />
-              </span>
-          </div>
+            <Navbar expand="lg" className={color ? 'navbar-scroll' : 'navbar1'} >
+                <Container className="home-navbar" >
+                    <Navbar.Brand className="logo" href="/"></Navbar.Brand>
+                    <div className="me-auto">
+                        <Search>
+                            <SearchIcon className="search-icon" />
+                            <StyledInputBase
+                                onChange={(e) => {
+                                    setSearching(e.target.value)
+                                }}
+                                placeholder="Cari di sini …"
+                                inputProps={{ 'aria-label': 'search' }}
+                            />
+                        </Search>
+                    </div>
+                    <div>
+                        <Navbar.Toggle onClick={handleShow} aria-controls="off-canvas" />
+                        <Navbar.Collapse className="justify-content-end" id="responsive-navbar-nav">
+                            {!isLoggedIn ? (
+                                <Navbar.Offcanvas show={show} onHide={handleClose} id="off-canvas">
+                                    <Offcanvas.Header closeButton>
+                                        <Offcanvas.Title className="title-navbar">Second Hand</Offcanvas.Title>
+                                    </Offcanvas.Header>
+                                    <Offcanvas.Body>
+                                        <Button variant="success" className="btn-register" href="/login">
+                                            <FiLogIn className="regis" />
+                                            Masuk
+                                        </Button>
+                                    </Offcanvas.Body>
+                                </Navbar.Offcanvas>
 
+                            ) : (
+                                <>
+                                    <FiList className="icon-list-header m-3" />
+                                    <FiBell className="icon-bell-header m-3" />
+                                    <Button className="home-navbar-user" href="/account"><FiUser className="icon-user-header" /></Button>
 
-            <a href="/register">
-              <button className="regis">
-               <Image className='log' src={Masuk} />
-               <p className='reg text-white'>
-                 Masuk
-               </p>
-              </button>
-            </a>
-        </div> 
-        </nav>
-
-        <div className="frame-menu-nav">
-            <img src={menu} className='menu-nav' />
-        </div> 
-    </>
+                                    <Offcanvas show={show} onHide={handleClose} id="off-canvas">
+                                        <Offcanvas.Header closeButton>
+                                            <Offcanvas.Title className="title-navbar">Second Hand</Offcanvas.Title>
+                                        </Offcanvas.Header>
+                                        <Offcanvas.Body>
+                                            <Dropdown.Item href="#/action-1">Notifikasi</Dropdown.Item>
+                                            <Dropdown.Item className="mt-2" href="#/action-1">Daftar Jual</Dropdown.Item>
+                                            <Dropdown.Item className="mt-2" href="/account">Akun Saya</Dropdown.Item>
+                                        </Offcanvas.Body>
+                                    </Offcanvas>
+                                </>
+                            )
+                            }
+                        </Navbar.Collapse>
+                    </div>
+                </Container>
+            </Navbar>
+        </>
     
   );
 }
-
-export default Navigasi;

@@ -1,37 +1,79 @@
-import React from "react";
-import { Container } from "react-bootstrap";
+import React, { useEffect } from "react";
+import { Container, Card } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllProduct } from "../redux/action/productActions";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
-const Product = ({ item }) => {
+function Product() {
+  const title = {
+    fontSize: "14px",
+  };
+
+  const image = {
+    width: "91%",
+    height: "100px",
+    objectFit: "cover",
+    margin: "8px",
+  };
+
+  const accesoris = {
+    fontSize: "11px",
+    opacity: "0.5",
+  };
+
+  const { getAllProductResult, getAllProductLoading, getAllProductError } = useSelector((state) => state.productReducer)
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    //panggil action
+    console.log("1. use effect component did mount");
+    dispatch(getAllProduct());
+  }, [dispatch]);
+
   return (
     <>
-    <Container>
-      <div className="container-fluid product">
-        <div className="row justify-content-center category">
-          {item.map((Val) => {
+      <Container className="card-content">
+        {/* Opsi pertama */}
+        {getAllProductResult ? (
+          getAllProductResult.map((Product) => {
             return (
-              <div
-                className="col-md-3 col-sm-6 py-3 my-3 card-product border-1"
-                key={Val.id}
-              >
-                <div className="card-img-top text-center">
-                  <img src={Val.image} className="photo w-75 pb-2" />
-                </div>
-                  <div className="name mb-2">
-                    {Val.name}
-                  </div>
-                  <div className="type mb-3">{Val.category}</div>
-                  <div className="price mb-4">
-                    Rp. {Val.price}
-                  </div>
+              <div className="row justify-content-center category" key={Product.id}>
+                <Link to={`/buyer/detail-produk/` + Product.id}>
+                <Card>
+                  <Card.Img
+                    className="w-75 align-self-center"
+                    variant="top"
+                    multiple
+                    src={`http://localhost:8000/api/v1/public/files/${Product.image[0]}`}
+                    style={image}
+                  />
+                  <Card.Body className="p-2">
+                    <Card.Title className="mb-0" style={title}>
+                      {Product.name}
+                    </Card.Title>
+                    <p className="mb-0" style={accesoris}>
+                      {Product.CategoryId}
+                    </p>
+                    <Card.Text className="mb-1">{Product.price}</Card.Text>
+                  </Card.Body>
+                </Card>
+                </Link>
               </div>
-            );
-          })}
-        </div>
-      </div>
-    </Container>
+              
+            )
+          })
+          // Opsi kedua
+        ) : getAllProductLoading ? (
+          <p>Loading ...</p>
+        ) : (
+          // Opsi ketiga
+          <p>{getAllProductError ? getAllProductError : "Data Kosong"}</p>
+        )
+      }
+      </Container>
     </>
   );
-};
-
+}
 
 export default Product;

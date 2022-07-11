@@ -7,6 +7,7 @@ import React, { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateProfile } from "../redux/action/profileAction";
 import axios from "axios";
+import "../assets/style.css"
 
 function Profile() {
   const [formValue, setformValue] = React.useState({

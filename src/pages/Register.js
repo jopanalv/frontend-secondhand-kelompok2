@@ -1,6 +1,7 @@
 import React from 'react';
 import img from '../assets/images/img.png'
 import back from '../assets/images/fi_arrow-left.png'
+import "../assets/style.css"
 
 const Register = () => {
     return (
