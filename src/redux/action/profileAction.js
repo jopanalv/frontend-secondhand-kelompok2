@@ -1,6 +1,8 @@
 import axios from "axios";
 import { UPDATE_PROFILE } from "../type";
 
+const API_URL = 'http://localhost:5000/api/v1'
+
 export const updateProfile = (data) => {
   return (dispatch) => {
     //loading
@@ -12,27 +14,31 @@ export const updateProfile = (data) => {
         errorMessage: false,
       },
     });
+    const token = localStorage.getItem('accessToken')
 
-    //get API
     axios({
-      method: "POST",
-      url: "http://localhost:8000/api/v1/profile/update/" + data.id,
+      method: "PUT",
+      url: `${API_URL}/profile/update`,
       timeout: 120000,
-      data: data,
-      headers: { "Content-Type": "multipart/form-data" },
+      // withCredentials: true,
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        'Authorization': `Bearer ${token}`
+      },
+      data: data
     })
-      .then((response) => {
+      .then(res => {
         //berhasil get API
         dispatch({
           type: UPDATE_PROFILE,
           payload: {
             loading: false,
-            data: response.data,
+            data: res.data,
             errorMessage: false,
           },
         });
       })
-      .catch((error) => {
+      .catch(error => {
         //error get api
         dispatch({
           type: UPDATE_PROFILE,
@@ -43,5 +49,6 @@ export const updateProfile = (data) => {
           },
         });
       });
-  };
-};
+  }
+}
+

@@ -10,9 +10,6 @@ const initialState = {
 const Login = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN:
-      localStorage.setItem("accessToken", action.payload);
-      localStorage.setItem("user", JSON.stringify(action.user));
-
       return {
         ...state,
         isAuthenticated: true,

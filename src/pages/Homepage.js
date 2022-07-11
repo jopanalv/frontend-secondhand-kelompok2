@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
-import Navbar from '../component/Navbar1'
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import Navbar from '../component/Navbar1';
+import LogedNavbar from '../component/Navbar';
 import Data from "../data/data";
 import Buttons from "../component/Button";
 import Product from '../component/Product';
@@ -8,6 +10,7 @@ import Home from '../component/Home';
 export default function Homepage() {
 
   const [item, setItem] = useState(Data);
+  const auth = useSelector(state => state.login)
 
   const menuItems = [...new Set(Data.map((Val) => Val.category))];
 
@@ -20,7 +23,9 @@ export default function Homepage() {
 
   return (
     <div className='App'>
-      <Navbar />
+      {
+        auth.isAuthenticated ? <LogedNavbar/> : <Navbar/>
+      }
       <Home />
       <Buttons
             filterItem={filterItem}

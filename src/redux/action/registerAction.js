@@ -1,6 +1,8 @@
 import axios from "axios";
 import { ADD_REGISTER } from "../type";
 
+const API_URL = 'http://localhost:5000/api/v1'
+
 export const addRegister = (data) => {
   return (dispatch) => {
     //loading
@@ -16,7 +18,7 @@ export const addRegister = (data) => {
     //get API
     axios({
       method: "POST",
-      url: "http://localhost:8000/api/v1/register",
+      url: `${API_URL}/register`,
       timeout: 120000,
       data: data,
     })
