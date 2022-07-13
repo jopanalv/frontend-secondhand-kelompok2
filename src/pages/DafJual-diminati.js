@@ -1,5 +1,5 @@
 import React from 'react';
-
+import "../assets/style.css"
 import Diminati from '../component/Diminati';
 import Notif from '../component/Notif';
 import Navbar from '../component/Navbar';

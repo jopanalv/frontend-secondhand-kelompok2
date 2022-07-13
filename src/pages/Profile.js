@@ -6,6 +6,11 @@ import upload from "../assets/images/Group 1.png";
 import Navbar from "../component/Navbar2";
 import React, { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
+<<<<<<< HEAD
+import { updateProfile } from "../redux/action/profileAction";
+import "../assets/style.css"
+=======
+>>>>>>> 344affcbbc093abcd89618e4abbee4e122f3c8f3
 
 function Profile() {
   const dispatch = useDispatch()

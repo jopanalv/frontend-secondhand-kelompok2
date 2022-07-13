@@ -1,5 +1,5 @@
 import React from 'react';
-
+import "../assets/style.css"
 import Navbar from '../component/Navbar';
 import Notif from '../component/Notif';
 import Alert from '../component/Alert';

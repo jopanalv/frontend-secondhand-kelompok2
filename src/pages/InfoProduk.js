@@ -4,6 +4,7 @@ import Navbar from "../component/Navbar2";
 import uploadGambar from "../assets/images/Group 2.png";
 import { useDropzone } from "react-dropzone";
 import React, { useCallback, useState } from "react";
+import "../assets/style.css"
 
 export default function InfoProduk() {
   const [selectedImages, setSelectedImages] = useState([]);

@@ -6,39 +6,127 @@ import penjual from "../assets/images/Rectangle 33.png"
 import back from '../assets/images/fi_arrow-left.png'
 import Navigasi from '../component/Navigasi';
 import Alert from '../component/Alert_produk';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { connect } from "react-redux";
+import { Container } from "react-bootstrap";
+import { getSelectedProduct } from "../redux/action/productActions";
+import "../assets/style2.css"
+import { addUser } from "../slice/userSlice";
+import { addSearch } from "../slice/searchingSlice";
+
+// import { selectedProducts, removeSelectedProduct } from '../redux/action/productActions';
+
+// const mapStateToProps = (state) => {
+//   return {
+//     getSelectedProduct: state.productReducer.getSelectedProduct,
+//     getSelectedProductError: state.productReducer.getSelectedProductError,
+//   };
+// };
 
 
-function DetailProduk_buyer() {
+
+const DetailProduk_buyer= () => {
+
   const [show, setShow] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [user, setUser] = useState({});
+  const [searching, setSearching] = useState("");
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [isLoading, setLoading] = useState(false);
+  const { id } = useParams();
+  const { getSelectedProductResult, getSelectedProductLoading, getSelectedProductError } = useSelector((state) => state.productReducer)
+  const dispatch = useDispatch();
+
+  const handleSearch = () => {
+    dispatch(
+        addSearch(searching)
+    )
+}
 
   useEffect(() => {
-    if (isLoading) {
-        setLoading(false);
-    }
-  }, [isLoading]);
+      const fetchData = async () => {
+          try {
+              // Check status user login
+              // 1. Get token from localStorage
+              const token = localStorage.getItem("token");
 
-  const handleClick = () => setLoading(true);
-  
+              // 2. Check token validity from API
+              const currentUserRequest = await axios.get(
+                  "http://localhost:8000/api/v1/auth/me",
+                  {
+                      headers: {
+                          Authorization: `Bearer ${token}`,
+                      },
+                  }
+              );
+
+              const currentUserResponse = currentUserRequest.data;
+
+              if (currentUserResponse.status) {
+                  dispatch(
+                      addUser({
+                          user: currentUserResponse.data.user,
+                          token: token,
+                      })
+                  );
+                  setUser(currentUserResponse.data.user);
+              }
+          } catch (err) {
+              setIsLoggedIn(false);
+          }
+      };
+      handleSearch();
+      fetchData();
+
+    //panggil action
+    console.log("1. use effect component did mount");
+    dispatch(getSelectedProduct(id));
+  }, [dispatch]);
+
+  console.log(getSelectedProduct(id))
+
+  // const { productId } = useParams();
+  // let product = useSelector((state) => state.selectproduct);
+  // const {id, ProfileId, image, name, price, CategoryId} = product;
+  // const dispatch = useDispatch();
+  // const fetchProductDetail = async (id) => {
+  //   const response = await axios
+  //     .get(`http://localhost:8000/api/v1/products/${id}`)
+  //     .catch((err) => {
+  //       console.log("Err: ", err);
+  //     });
+  //   // dispatch(selectedProducts(response.data));
+  // };
+
+  // useEffect(() => {
+  //   if (productId && productId !== "") fetchProductDetail(productId);
+  //   // return () => {
+  //   //   // dispatch(removeSelectedProduct());
+  //   // };
+  // }, [productId]);
   return (
     <>
         <Navigasi />
         {/* <Alert /> */}
-        <div className="container1 mx-5 py-3 justify-content-center align-item-center" id="produk-seller">
+        {getSelectedProductResult ? (
+          getSelectedProductResult.map((productId) => {
+          return (
+        <Container>
+            <div className="container1 mx-5 py-3 justify-content-center align-item-center" id="produk-seller" key={productId.id}>
         <a href="/"><Image src={back} className='kembali position-absolute' /></a>
             <div className='box_image'>
-              <Image src={gambar} className="detail_gambar" alt="detail_gambar" />
+              <Image src={`http://localhost:8000/api/v1/public/files/`} className="detail_gambar" alt="detail_gambar" />
             </div>
             
             <div className='card-body'>
               <div className="card-body-produk px-3">
-                <h5 className="card-title fw-bold">Apple Watch Series 3</h5>
-                <p className="card-text">Aksesoris</p>
-                <p className="card-text-2 fw-bold">Rp 250000</p>
+                <h5 className="card-title fw-bold">{productId.name}</h5>
+                <p className="card-text">{productId.CategoryId}</p>
+                <p className="card-text-2 fw-bold">{productId.price}</p>
                 <div class="d-grid gap-2">
                   <button class="btn_teks btn1 text-white" type="button" onClick={handleShow}>Saya Tertarik dan Ingin Nego</button>
                 </div>
@@ -68,7 +156,7 @@ function DetailProduk_buyer() {
                   Deskripsi
                 </p>
                 <p className='card-text'>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  {productId.description}
                 </p>
             </div> 
           </div>
@@ -119,7 +207,19 @@ function DetailProduk_buyer() {
         </a>
         </Modal.Footer>
       </Modal>
-    </>
+        </Container>
+        
+
   )
+          })
+  ) : getSelectedProductLoading ? (
+    <p>Loading ...</p>
+  ) : (
+    // Opsi ketiga
+    <p>{getSelectedProductError ? getSelectedProductError : "Data Kosong"}</p>
+  )
+}
+</>
+);
 }
 export default DetailProduk_buyer;

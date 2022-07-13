@@ -1,3 +1,5 @@
+import "../assets/style.css"
+
 import React, { useState } from "react";
 import img from "../assets/images/img.png";
 import back from "../assets/images/fi_arrow-left.png";
