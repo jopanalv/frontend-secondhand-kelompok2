@@ -1,54 +1,56 @@
 import { useDropzone } from "react-dropzone";
 import { Image } from "react-bootstrap/";
+import { updateProfile } from "../redux/action/profileAction";
 import icon_back from "../assets/images/fi_arrow-left.png";
 import upload from "../assets/images/Group 1.png";
 import Navbar from "../component/Navbar2";
 import React, { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
+<<<<<<< HEAD
 import { updateProfile } from "../redux/action/profileAction";
 import "../assets/style.css"
+=======
+>>>>>>> 344affcbbc093abcd89618e4abbee4e122f3c8f3
 
 function Profile() {
-  const [id, setId] = useState("2");
-  const [image, setImage] = useState("");
-  const [name, setName] = useState("");
-  const [city, setCity] = useState("");
-  const [address, setAddress] = useState("");
-  const [no_hp, setNoHp] = useState("");
+  const dispatch = useDispatch()
 
-  const dispatch = useDispatch();
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    dispatch(
-      updateProfile({
-        id: id,
-        image: image,
-        name: name,
-        city: city,
-        address: address,
-        no_hp: no_hp,
-      })
-    );
-  };
+  const [name, setName] = useState("")
+  const [city, setCity] = useState("")
+  const [address, setAddress] = useState("")
+  const [no_hp, setNo_hp] = useState("")
+  const [image, setImage] = useState([])
 
-  const [selectedImages, setSelectedImages] = useState([]);
-
-  const onDrop = useCallback((acceptedFiles) => {
-    setSelectedImages(
-      acceptedFiles.map((file) =>
-        Object.assign(file, { preview: URL.createObjectURL(file) })
-      )
-    );
+  const onDrop = useCallback(acceptedFiles => {
+    setImage(acceptedFiles.map(file => Object.assign(file, {
+      preview: URL.createObjectURL(file)
+    })));
   }, []);
+
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
-  const seleted_images = selectedImages?.map((file) => (
-    <div>
-      <img src={file.preview} style={{ width: "8em", height: "8em" }} />
+  const selected_images = image?.map((file) => (
+    <div key={file.lastModified}>
+      <img src={file.preview} alt="foto profile" style={{ width: "8em", height: "8em" }} />
     </div>
   ));
 
-  console.log("gambar : ", selectedImages);
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const formData = new FormData()
+    formData.append('image', image[0])
+    formData.append('name', name)
+    formData.append('city', city)
+    formData.append('address', address)
+    formData.append('no_hp', no_hp)
+    dispatch(updateProfile(formData))
+
+    setName("")
+    setCity("")
+    setAddress("")
+    setNo_hp("")
+    setImage([])
+  }
 
   return (
     <>
@@ -59,27 +61,23 @@ function Profile() {
             <Image src={icon_back} />
           </div>
           <div className="col-lg-11 col-sm-12 ">
-            <div className="text-center">
-              {selectedImages.length === 0 ? (
-                <div {...getRootProps()}>
-                  <input
-                    {...getInputProps()}
-                    name="image"
-                    value={image}
-                    onChange={(event) => setImage(event.target.value)}
-                  />
-                  <Image src={upload} style={{ width: "8em" }} />
-                </div>
-              ) : (
-                <div>
+            <form encType="multipart/form-data" onSubmit={handleSubmit}>
+              <div className="text-center">
+                {image.length === 0 ? (
                   <div {...getRootProps()}>
-                    <input {...getInputProps()} />
-                    <label className="border ms-3 mt-3">{seleted_images}</label>
+                    <input type="file" {...getInputProps()} filename="image" />
+                    <Image src={upload} style={{ width: "8em" }} />
                   </div>
-                </div>
-              )}
-            </div>
-            <form onSubmit={(event) => handleSubmit(event)}>
+                ) : (
+                  <div>
+                    <div {...getRootProps()}>
+                      <input {...getInputProps()} />
+                      <label className="border ms-3 mt-3">{selected_images}</label>
+                    </div>
+                  </div>
+                )}
+              </div>
+              {/* <input filename="image" type="file" onChange={(e) => onPosterUpload(e)} required /> */}
               <div className="row mb-3">
                 <label className="form-label">Nama*</label>
                 <input
@@ -87,8 +85,7 @@ function Profile() {
                   className="form-control"
                   placeholder="Nama"
                   name="name"
-                  value={name}
-                  onChange={(event) => setName(event.target.value)}
+                  value={name} onChange={(e) => setName(e.target.value)}
                 />
               </div>
               <div className="row mb-3">
@@ -96,8 +93,7 @@ function Profile() {
                 <select
                   className="form-select"
                   name="city"
-                  value={city}
-                  onChange={(event) => setCity(event.target.value)}
+                  value={city} onChange={(e) => setCity(e.target.value)}
                 >
                   <option value="" disabled selected>
                     Pilih Kota
@@ -115,8 +111,7 @@ function Profile() {
                   style={{ paddingBottom: "48px" }}
                   placeholder="Contoh: Jalan Ikan Hiu 33"
                   name="address"
-                  value={address}
-                  onChange={(event) => setAddress(event.target.value)}
+                  value={address} onChange={(e) => setAddress(e.target.value)}
                 />
               </div>
               <div className="row mb-3">
@@ -126,8 +121,7 @@ function Profile() {
                   className="form-control"
                   placeholder="Contoh: +628123456789"
                   name="no_hp"
-                  value={no_hp}
-                  onChange={(event) => setNoHp(event.target.value)}
+                  value={no_hp} onChange={(e) => setNo_hp(e.target.value)}
                 />
               </div>
               <div className="row mb-3 d-grid gap-2">

@@ -345,7 +345,7 @@ body {
     width: 83px;
     height: 36px;
     left: 850px;
-    top: 150px;
+    top: 100px;
 
     /* Heading/24/Bold */
 
@@ -371,7 +371,7 @@ body {
     width: 452px;
     height: 228px;
     left: 850px;
-    top: 200px;
+    top: 150px;
   }
 
   .input1 {
@@ -568,10 +568,10 @@ body {
         gap: 8px;
 
         position: absolute;
-        width: 238px;
+        width: 250px;
         height: 20px;
         left: 23%;
-        top: 350px;
+        top: 430px;
 
     }
 
@@ -601,7 +601,7 @@ body {
     }
 
     .txt2 {
-        width: 91px;
+        width: 150px;
         height: 20px;
         text-decoration:none;
 
@@ -1282,7 +1282,6 @@ body {
     flex-grow: 0;
   }
 
-
 /* Responsive */
 
 @media only screen and (max-width: 992px) and (min-width: 768px){
@@ -1561,14 +1560,7 @@ body {
   
   }
 
-  @media screen and (max-width: 1300px) {
-    .side_left{
-      display: none;
-    }
-    .side_right{
-      display: none;
-    }
-  }
+
 
   @media (max-width: 768px) {
     .menu-nav {

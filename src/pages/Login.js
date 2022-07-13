@@ -11,7 +11,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const { isAuthenticated, user, error } = useSelector(
-    (state) => state.LoginReducer
+    (state) => state.login
   );
 
   const [email, setEmail] = useState("");
