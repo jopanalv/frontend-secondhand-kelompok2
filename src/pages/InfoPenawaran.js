@@ -7,6 +7,7 @@ import icon_back from "../assets/images/fi_arrow-left.png";
 import pembeli from "../assets/images/Rectangle 33.png";
 import produk from "../assets/images/produk.png";
 import data from "../data/InfoPenawar.json";
+import "../assets/style.css"
 
 export default function InfoPenawaran() {
   return (

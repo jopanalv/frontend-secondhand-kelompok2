@@ -1,4 +1,5 @@
 import Image from "react-bootstrap/esm/Image";
+import "../assets/style.css";
 import icon_back from "../assets/images/fi_arrow-left.png";
 import Navbar from "../component/Navbar2";
 import uploadGambar from "../assets/images/Group 2.png";
@@ -13,7 +14,6 @@ export default function InfoProduk() {
   const navigate = useNavigate();
 
   const productInfo = useSelector(state => state.addProduct)
-
 
   const [name, setName] = useState("")
   const [price, setPrice] = useState("")
@@ -52,6 +52,16 @@ export default function InfoProduk() {
     // setCategory("")
     // setDesc("")
     // setImage([])
+  }
+
+  const gambar = image[0]
+
+  const productDetail = {
+    name, price, category, desc, gambar
+  }
+
+  const handlePreview = () => {
+    navigate('/seller/preview', { state: {productDetail} })
   }
 
   return (
@@ -127,15 +137,14 @@ export default function InfoProduk() {
               </div>
               <div className="row mb-3">
                 <div className="col-6 p-0 pe-1">
-                  <a href="seller/detail-produk/">
                     <button
                       className="btn btn-outline-primary btn-action "
                       type="button"
                       id="preview"
+                      onClick={() => handlePreview()}
                     >
                       Preview
                     </button>
-                  </a>
                 </div>
                 <div className="col-6 p-0 ps-1">
                     <button

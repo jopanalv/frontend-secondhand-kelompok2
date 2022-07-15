@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { Component } from "react";
 import 'bootstrap/dist/js/bootstrap.bundle';
 import './assets/style.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -13,8 +14,9 @@ import InfoPenawaran from "./pages/InfoPenawaran";
 import Homepage from './pages/Homepage';
 import DetailProduk_buyer from './pages/DetailProduk_buyer';
 import DetailProduk_seller from './pages/DetailProduk_seller';
+import "./assets/style2.css"
 
-function App() {
+function App () {
   return (
     <BrowserRouter>
       <Routes>
@@ -22,8 +24,9 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/buyer/detail-produk/" element={<DetailProduk_buyer />} />
-          <Route path="/seller/detail-produk/" element={<DetailProduk_seller />} />
+          <Route path="/buyer/detail-produk/:id" element={<DetailProduk_buyer />} />
+          <Route path="/seller/detail-produk/:id" element={<DetailProduk_seller />} />
+          <Route path="/seller/preview" element={<DetailProduk_seller />} />
           <Route path="/seller/daftar-jual" element={<DafJual/>} />
           <Route path="/seller/daftar-jual/diminati" element={<DafJualDiminati />} />
           <Route path="/seller/notifikasi" element={<NotifikasiMobile />} />
