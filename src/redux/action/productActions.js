@@ -174,26 +174,23 @@ export const buyProduct = (data) => {
         console.log("3. berhasil dapat data: ", response.data.data)
         //berhasil get API
         dispatch({
-          type: GET_PRODUCT_SELLER,
-          payload: {
-          loading: true,
+          type: BUY_PRODUCT,
+          payload: response.data.data,
+          loading: false,
           data: response.data.data,
           errorMessage: false      
-        }
-        })  
+        })
       })
       .catch((error) => {
         console.log("3. gagal dapat data: ", error.message)
         // gagal get API
         dispatch({
-          type: GET_PRODUCT_SELLER,
-          payload: {
+          type: BUY_PRODUCT,
+          payload: false,
           loading: false,
           data: false,
-          errorMessage: error.message      
-        }
+          errorMessage: error.message
         })
-
       })
   };
 };

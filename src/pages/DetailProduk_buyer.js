@@ -6,8 +6,6 @@ import Navigasi from '../component/Navbar1';
 import Alert from '../component/Alert_produk';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
-import { connect } from "react-redux";
 import { Container } from "react-bootstrap";
 import { getSelectedProduct, buyProduct } from "../redux/action/productActions";
 import "../assets/style2.css"
@@ -183,4 +181,5 @@ const DetailProduk_buyer = () => {
     </>
   );
 }
+
 export default DetailProduk_buyer;

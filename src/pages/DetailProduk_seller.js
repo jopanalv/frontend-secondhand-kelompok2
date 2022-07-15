@@ -7,8 +7,6 @@ import Navigasi from '../component/Navbar1';
 import "../assets/style2.css"
 import { useLocation, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
-import { connect } from "react-redux";
 import { Container } from "react-bootstrap";
 import { getProductSeller } from "../redux/action/productActions";
 import "../assets/style2.css"
