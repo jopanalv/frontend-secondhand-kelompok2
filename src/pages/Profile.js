@@ -7,10 +7,14 @@ import Navbar from "../component/Navbar2";
 import React, { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 <<<<<<< HEAD
+import "../assets/style.css"
+=======
+<<<<<<< HEAD
 import { updateProfile } from "../redux/action/profileAction";
 import "../assets/style.css"
 =======
 >>>>>>> 344affcbbc093abcd89618e4abbee4e122f3c8f3
+>>>>>>> 97665fb40a963c4b52cf83ac4c5523a3c47aef0c
 
 function Profile() {
   const dispatch = useDispatch()
@@ -44,12 +48,6 @@ function Profile() {
     formData.append('address', address)
     formData.append('no_hp', no_hp)
     dispatch(updateProfile(formData))
-
-    setName("")
-    setCity("")
-    setAddress("")
-    setNo_hp("")
-    setImage([])
   }
 
   return (

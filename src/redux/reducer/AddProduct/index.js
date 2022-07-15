@@ -1,7 +1,7 @@
 import { ADD_PRODUCT } from "../../type";
 
 const initialState = {
-  addProductResult: false,
+  addProductResult: "",
   addProductLoading: false,
   addProductError: false,
 };
@@ -11,9 +11,9 @@ const product = (state = initialState, action) => {
     case ADD_PRODUCT:
       return {
         ...state,
-        addProductResult: action.payload.data,
-        addProductLoading: action.payload.loading,
-        addProductError: action.payload.errorMessage,
+        addProductResult: action.payload,
+        addProductLoading: false,
+        addProductError: action.payload.message,
       };
     default:
       return state;

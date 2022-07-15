@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { Container, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProduct } from "../redux/action/productActions";
-import axios from "axios";
 import { Link } from "react-router-dom";
 
 function Product() {
@@ -22,7 +21,7 @@ function Product() {
     opacity: "0.5",
   };
 
-  const { getAllProductResult, getAllProductLoading, getAllProductError } = useSelector((state) => state.productReducer)
+  const { getAllProductResult, getAllProductLoading, getAllProductError } = useSelector((state) => state.product)
   const dispatch = useDispatch();
 
   useEffect(() => {

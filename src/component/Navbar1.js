@@ -2,110 +2,90 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { Navbar, Container, Button, Dropdown, Offcanvas } from "react-bootstrap";
 import { FiLogIn, FiList, FiUser, FiBell } from "react-icons/fi";
-import { addUser } from "../slice/userSlice";
 import { addSearch } from "../slice/searchingSlice";
-import axios from "axios";
 import { styled } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
+import { useNavigate } from 'react-router-dom';
+import { logout } from '../redux/action/loginAction';
 import "../assets/style2.css"
 
 const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
-  borderRadius: theme.shape.borderRadius,
-  marginRight: theme.spacing(2),
-  marginLeft: 0,
-  width: '100%',
-  background: '#EEEEEE',
-  borderRadius: '16px',
-  [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(3),
-      width: 'auto',
-  },
-  display: 'block',
+    position: 'relative',
+    borderRadius: theme.shape.borderRadius,
+    marginRight: theme.spacing(2),
+    marginLeft: 0,
+    width: '100%',
+    background: '#EEEEEE',
+    borderRadius: '16px',
+    [theme.breakpoints.up('sm')]: {
+        marginLeft: theme.spacing(3),
+        width: 'auto',
+    },
+    display: 'block',
 }));
 
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  '& .MuiInputBase-input': {
-      padding: theme.spacing(1, 1, 1, 0),
-      // vertical padding + font size from searchIcon
-      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-      transition: theme.transitions.create('width'),
-      width: '100%',
-      [theme.breakpoints.up('md')]: {
-          width: '35ch',
-      },
-  },
+    '& .MuiInputBase-input': {
+        padding: theme.spacing(1, 1, 1, 0),
+        // vertical padding + font size from searchIcon
+        paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+        transition: theme.transitions.create('width'),
+        width: '100%',
+        [theme.breakpoints.up('md')]: {
+            width: '35ch',
+        },
+    },
 }));
 
 export default function Navigasi() {
-  const dispatch = useDispatch();
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [user, setUser] = useState({});
-  const [show, setShow] = useState(false);
-  const [searching, setSearching] = useState("");
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+    const [show, setShow] = useState(false);
+    const [searching, setSearching] = useState("");
 
-  //change nav color when scrolling
-  const [color, setColor] = useState(false);
-  const changeColor = () => {
-      if (window.scrollY >= 10) {
-          setColor(true)
-      } else {
-          setColor(false)
-      }
-  }
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    const user = useSelector(state => state.login)
+    //change nav color when scrolling
+    const [color, setColor] = useState(false);
+    const changeColor = () => {
+        if (window.scrollY >= 10) {
+            setColor(true)
+        } else {
+            setColor(false)
+        }
+    }
 
 
-  const handleSearch = () => {
-      dispatch(
-          addSearch(searching)
-      )
-  }
+    const handleSearch = () => {
+        dispatch(
+            addSearch(searching)
+        )
+    }
 
-  window.addEventListener('scroll', changeColor)
+    window.addEventListener('scroll', changeColor)
 
-  useEffect(() => {
-      const fetchData = async () => {
-          try {
-              // Check status user login
-              // 1. Get token from localStorage
-              const token = localStorage.getItem("token");
+    useEffect(() => {
+        handleSearch();
+    }, [searching]);
 
-              // 2. Check token validity from API
-              const currentUserRequest = await axios.get(
-                  "http://localhost:8000/api/v1/auth/me",
-                  {
-                      headers: {
-                          Authorization: `Bearer ${token}`,
-                      },
-                  }
-              );
+    const userState = useSelector(state => state.login)
 
-              const currentUserResponse = currentUserRequest.data;
+    const handleSignOut = () => {
+        dispatch(logout())
+        navigate('/login', { replace: true })
+    }
 
-              if (currentUserResponse.status) {
-                  dispatch(
-                      addUser({
-                          user: currentUserResponse.data.user,
-                          token: token,
-                      })
-                  );
-                  setUser(currentUserResponse.data.user);
-              }
-          } catch (err) {
-              setIsLoggedIn(false);
-          }
-      };
-      handleSearch();
-      fetchData();
-  }, [searching]);
+    const handleProfile = () => {
+        navigate('/info-profile', { replace: true })
+    }
 
-  return (
-    <>
+    return (
+        <>
             <Navbar expand="lg" className={color ? 'navbar-scroll' : 'navbar1'} >
                 <Container className="home-navbar" >
                     <Navbar.Brand className="logo" href="/"></Navbar.Brand>
@@ -124,7 +104,7 @@ export default function Navigasi() {
                     <div>
                         <Navbar.Toggle onClick={handleShow} aria-controls="off-canvas" />
                         <Navbar.Collapse className="justify-content-end" id="responsive-navbar-nav">
-                            {!isLoggedIn ? (
+                            {!user.isAuthenticated ? (
                                 <Navbar.Offcanvas show={show} onHide={handleClose} id="off-canvas">
                                     <Offcanvas.Header closeButton>
                                         <Offcanvas.Title className="title-navbar">Second Hand</Offcanvas.Title>
@@ -141,7 +121,20 @@ export default function Navigasi() {
                                 <>
                                     <FiList className="icon-list-header m-3" />
                                     <FiBell className="icon-bell-header m-3" />
-                                    <Button className="home-navbar-user" href="/account"><FiUser className="icon-user-header" /></Button>
+                                    <div class="dropdown">
+                                        <button class="btn" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <FiUser className="icon-user-header" />
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                            <li><h5 class="dropdown-header">Hi, {userState.user.data.Profile.name} </h5></li>
+                                            <li><button class="dropdown-item" type="button" onClick={() => handleProfile()}>Profile</button></li>
+                                            <li><button class="dropdown-item" type="button">Another action</button></li>
+                                            <li><hr class="dropdown-divider" /></li>
+                                            <li><button class="dropdown-item" onClick={() => handleSignOut()}>
+                                                Sign Out
+                                            </button></li>
+                                        </ul>
+                                    </div>
 
                                     <Offcanvas show={show} onHide={handleClose} id="off-canvas">
                                         <Offcanvas.Header closeButton>
@@ -161,6 +154,5 @@ export default function Navigasi() {
                 </Container>
             </Navbar>
         </>
-    
-  );
+    );
 }
