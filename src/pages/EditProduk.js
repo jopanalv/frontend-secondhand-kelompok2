@@ -4,23 +4,29 @@ import icon_back from "../assets/images/fi_arrow-left.png";
 import Navbar from "../component/Navbar2";
 import uploadGambar from "../assets/images/Group 2.png";
 import { useDropzone } from "react-dropzone";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addProduct } from "../redux/action/addProduct";
+import { editProduct, deleteProduct } from "../redux/action/editProduct";
+import { getAllDaftarjual } from "../redux/action/daftarjualActions";
 import {useNavigate} from "react-router-dom";
 import { Link } from "react-router-dom";
+import product from "../redux/reducer/EditProduct";
+import { addSearch } from "../slice/searchingSlice";
+import { useParams } from 'react-router-dom';
 
-export default function InfoProduk() {
+function EditProduk() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const productInfo = useSelector(state => state.addProduct)
+  const { id } = useParams();
 
   const [name, setName] = useState("")
   const [price, setPrice] = useState("")
   const [category, setCategory] = useState("")
   const [desc, setDesc] = useState("")
   const [image, setImage] = useState([])
+
+  const [searching, setSearching] = useState("");
 
   const onDrop = useCallback(acceptedFiles => {
     setImage(acceptedFiles.map(file => Object.assign(file, {
@@ -36,6 +42,10 @@ export default function InfoProduk() {
     </div>
   ));
 
+//   useEffect(() => {
+//     dispatch(getAllDaftarjual(id));
+// }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     const formData = new FormData()
@@ -44,31 +54,41 @@ export default function InfoProduk() {
     formData.append('category', category)
     formData.append('description', desc)
     formData.append('image', image[0])
-    dispatch(addProduct(formData))
+    dispatch(editProduct(formData, id))
 
-  console.log(productInfo)
 
-    // setName("")
-    // setPrice("")
-    // setCategory("")
-    // setDesc("")
-    // setImage([])
+    setName("")
+    setPrice("")
+    setCategory("")
+    setDesc("")
+    setImage([])
+
+    navigate('/seller/daftar-jual')
   }
 
-  const gambar = image[0]
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure You want to delete?"));
+    dispatch(deleteProduct(id));
+    navigate('/seller/daftar-jual')
+}
 
-  const productDetail = {
-    name, price, category, desc, gambar
-  }
+const handleSearch = () => {
+  dispatch(
+    addSearch(searching)
+  )
+}
 
-  const handlePreview = () => {
-    navigate('/seller/preview', { state: {productDetail} })
-  }
+useEffect(() => {
+  handleSearch();
+  //panggil action
+  console.log("1. use effect component did mount");
+  dispatch(editProduct(id));
+}, [dispatch, id]);
 
   return (
     <>
-      <Navbar judul="Info Produk" />
-      <div className="container mt-5" id="info-produk">
+      <Navbar judul="Edit Produk" />
+      <div className="container mt-5" id="edit-produk">
         <div className="row justify-content-center">
           <div className="col-lg-1 col-sm-12 mb-1">
             <Image src={icon_back} />
@@ -137,26 +157,26 @@ export default function InfoProduk() {
                 )}
               </div>
               <div className="row mb-3">
-                <div className="col-6 p-0 pe-1">
+            <div className="col-6 p-0 pe-1">
                     <button
-                      className="btn btn-outline-primary btn-action "
+                      className="btn btn-outline-danger btn-action "
                       type="button"
-                      id="preview"
-                      onClick={() => handlePreview()}
+                      id="delete"
+                      onClick={() => handleDelete(id)}
                     >
-                      Preview
+                      Delete
                     </button>
                 </div>
                 <div className="col-6 p-0 ps-1">
-                <Link to={`/seller/daftar-jual`}>
+                {/* <Link to={`/seller/daftar-jual`}> */}
                     <button
                       className="btn btn-primary btn-action"
                       type="submit"
-                      id="terbitkan"
+                      id="save"
                     >
-                      Terbitkan
+                      Simpan
                     </button>
-                  </Link>  
+                  {/* </Link>   */}
                 </div>
               </div>
             </form>
@@ -166,3 +186,5 @@ export default function InfoProduk() {
     </>
   );
 }
+
+export default EditProduk;
