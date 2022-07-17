@@ -4,24 +4,13 @@ import { Image } from 'react-bootstrap';
 import back from '../assets/images/fi_arrow-left.png'
 import Navigasi from '../component/Navbar1';
 import Alert from '../component/Alert_produk';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { Container } from "react-bootstrap";
 import { getSelectedProduct, buyProduct } from "../redux/action/productActions";
 import "../assets/style2.css"
 import { addUser } from "../slice/userSlice";
 import { addSearch } from "../slice/searchingSlice";
-
-// import { selectedProducts, removeSelectedProduct } from '../redux/action/productActions';
-
-// const mapStateToProps = (state) => {
-//   return {
-//     getSelectedProduct: state.productReducer.getSelectedProduct,
-//     getSelectedProductError: state.productReducer.getSelectedProductError,
-//   };
-// };
-
-
 
 const DetailProduk_buyer = () => {
 
@@ -34,10 +23,6 @@ const DetailProduk_buyer = () => {
 
   const { id } = useParams();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const user = JSON.parse(localStorage.getItem("user"));
-  const buyerId = user.data.id
 
   const handleSearch = () => {
     dispatch(
@@ -49,6 +34,7 @@ const DetailProduk_buyer = () => {
     e.preventDefault()
     dispatch(buyProduct({id, offer}))
     handleClose()
+    
   }
 
   useEffect(() => {
@@ -60,27 +46,6 @@ const DetailProduk_buyer = () => {
   const product = useSelector(state => state.product)
   const productInfo = product.getSelectedProductResult
 
-  console.log(productInfo)
-
-  // const { product } = useParams();
-  // let product = useSelector((state) => state.selectproduct);
-  // const {id, ProfileId, image, name, price, CategoryId} = product;
-  // const dispatch = useDispatch();
-  // const fetchProductDetail = async (id) => {
-  //   const response = await axios
-  //     .get(`http://localhost:8000/api/v1/products/${id}`)
-  //     .catch((err) => {
-  //       console.log("Err: ", err);
-  //     });
-  //   // dispatch(selectedProducts(response.data));
-  // };
-
-  // useEffect(() => {
-  //   if (product && product !== "") fetchProductDetail(product);
-  //   // return () => {
-  //   //   // dispatch(removeSelectedProduct());
-  //   // };
-  // }, [product]);
   return (
     <>
       <Navigasi />

@@ -14,7 +14,7 @@ import InfoPenawaran from "./pages/InfoPenawaran";
 import Homepage from './pages/Homepage';
 import DetailProduk_buyer from './pages/DetailProduk_buyer';
 import DetailProduk_seller from './pages/DetailProduk_seller';
-import "./assets/style2.css"
+import "./assets/style2.css";
 
 function App () {
   return (
@@ -32,7 +32,7 @@ function App () {
           <Route path="/seller/notifikasi" element={<NotifikasiMobile />} />
           <Route path="/info-profile" element={<Profile />} />
           <Route path="/info-produk" element={<InfoProduk />} />
-          <Route path="/info-penawaran" element={<InfoPenawaran />} />
+          <Route path="/info-penawaran/:id" element={<InfoPenawaran />} />
         </Route>
       </Routes>
     </BrowserRouter>

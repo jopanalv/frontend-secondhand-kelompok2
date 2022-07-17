@@ -1,24 +1,20 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { getNotifSeller } from '../redux/action/notifAction';
+import { getNotifBuyer } from '../redux/action/notifAction';
 
-const Notif = () => {
+const NotifBuyer = () => {
     const dispatch = useDispatch();
 
-    const { getNotifSellerResult, getNotifSellerLoading, getNotifSellerError } = useSelector(state => state.notif)
+    const { getNotifBuyerResult, getNotifBuyerLoading, getNotifBuyerError } = useSelector(state => state.notif)
 
     useEffect(() => {
-        dispatch(getNotifSeller())
+        dispatch(getNotifBuyer())
     }, [dispatch])
-
-    console.log(getNotifSellerResult)
 
     return (
         <>
-            {getNotifSellerResult !== null ? (
-                getNotifSellerResult.map((notif) => (
-                    <Link to={`/info-penawaran/${notif.id}`}>
+            {getNotifBuyerResult !== null ? (
+                getNotifBuyerResult.map((notif) => (
                     <div className='container'>
                         <div className="list">
                             <div className="notif">
@@ -35,17 +31,16 @@ const Notif = () => {
                             </div>
                         </div>
                     </div>
-                    </Link>
                 ))
-                ) : getNotifSellerLoading ? (
-                    <p>Loading...</p>
-                ) : getNotifSellerError !== null ? (
-                    <div className='container'>{getNotifSellerError}</div>
-                ) : (
-                    <div className='container'>Notif tidak ada</div>
-                )}
+            ) : getNotifBuyerLoading ? (
+                <p>Loading...</p>
+            ) : getNotifBuyerError !== null ? (
+                <div className='container'>{getNotifBuyerError}</div>
+            ) : (
+                <div className='container'>Notif tidak ada</div>
+            )}
         </>
     );
 };
 
-export default Notif;
+export default NotifBuyer;

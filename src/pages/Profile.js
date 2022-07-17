@@ -6,24 +6,20 @@ import upload from "../assets/images/Group 1.png";
 import Navbar from "../component/Navbar2";
 import React, { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
-<<<<<<< HEAD
-import "../assets/style.css"
-=======
-<<<<<<< HEAD
-import { updateProfile } from "../redux/action/profileAction";
-import "../assets/style.css"
-=======
->>>>>>> 344affcbbc093abcd89618e4abbee4e122f3c8f3
->>>>>>> 97665fb40a963c4b52cf83ac4c5523a3c47aef0c
+import "../assets/style.css";
 
 function Profile() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const [name, setName] = useState("")
-  const [city, setCity] = useState("")
-  const [address, setAddress] = useState("")
-  const [no_hp, setNo_hp] = useState("")
-  const [image, setImage] = useState([])
+  const serializedData = localStorage.getItem("user");
+  let user = JSON.parse(serializedData);
+
+  const [name, setName] = useState(`${user.data.Profile.name}`);
+  const [city, setCity] = useState(`${user.data.Profile.city ?? ''}`);
+  const [address, setAddress] = useState(`${user.data.Profile.address ?? ''}`);
+  const [no_hp, setNo_hp] = useState(`${user.data.Profile.no_hp ?? ''}`);
+  const previewImage = user.data.Profile.image !== null ? 'http://localhost:5000/upload/images/' + user.data.Profile.image : null;
+  const [image, setImage] = useState([]);
 
   const onDrop = useCallback(acceptedFiles => {
     setImage(acceptedFiles.map(file => Object.assign(file, {
@@ -64,7 +60,7 @@ function Profile() {
                 {image.length === 0 ? (
                   <div {...getRootProps()}>
                     <input type="file" {...getInputProps()} filename="image" />
-                    <Image src={upload} style={{ width: "8em" }} />
+                    <Image src={previewImage ?? upload} style={{ width: "8em" }} />
                   </div>
                 ) : (
                   <div>

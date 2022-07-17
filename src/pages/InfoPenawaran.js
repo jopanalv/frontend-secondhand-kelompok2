@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Image } from "react-bootstrap";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,10 +8,28 @@ import pembeli from "../assets/images/Rectangle 33.png";
 import produk from "../assets/images/produk.png";
 import data from "../data/InfoPenawar.json";
 import "../assets/style.css"
+import { useDispatch, useSelector } from "react-redux";
+import {getTransDetail} from "../redux/action/transactionAction"
+import { useParams } from "react-router-dom";
 
 export default function InfoPenawaran() {
+  const dispatch = useDispatch();
+  const {id} = useParams();
+
+  useEffect(() => {
+    dispatch(getTransDetail(id))
+  }, [dispatch,id])
+
+  const {getTransactionResult, getTransactionLoading, getTransactionError} = useSelector(state => state.transaction)
+
+  const data = getTransactionResult
+
+  // console.log(buyer)
+
   return (
     <>
+    {getTransactionResult !== null ? (
+      <>
       <Navbar judul="Info Penawaran" />
       <div className="container mt-5" id="info-penawaran">
         <div className="row justify-content-center">
@@ -24,13 +42,13 @@ export default function InfoPenawaran() {
                 <div className="align-self-center">
                   <Image
                     className="rounded mx-3 img-fluid"
-                    src={pembeli}
+                    src={`http://localhost:5000/upload/images/${data.buyerImage}`}
                     style={{ width: 50, height: 50 }}
                   />
                 </div>
                 <div className="card-body">
-                  <h4 className="card-title h5 h4-sm fw-bold">{data.name}</h4>
-                  <h6 className="card-text">{data.city}</h6>
+                  <h4 className="card-title h5 h4-sm fw-bold">{data.buyerName}</h4>
+                  <h6 className="card-text">{data.buyerCity}</h6>
                 </div>
               </div>
             </div>
@@ -42,25 +60,25 @@ export default function InfoPenawaran() {
             <div className="card px-3 py-4">
               <div className="d-flex justify-content-start">
                 <div className="mx-3 align-self-start">
-                  <Image className=" img-fluid" src={produk} />
+                  <Image className="img-fluid" width={100} src={`http://localhost:5000/upload/images/${data.productImage}`} />
                 </div>
                 <div className="">
                   <div className="card-body p-0 px-3">
                     <h6 className="card-text">Penawaran Produk</h6>
                     <h4 className="card-title h5 h4-sm" id="namaProduk">
-                      {data.tawaran.product}
+                      {data.productName}
                     </h4>
                     <h4 className="card-title h5 h4-sm" id="hargaProduk">
-                      Rp {data.tawaran.price}
+                      Rp {data.productPrice}
                     </h4>
                     <h4 className="card-title h5 h4-sm" id="hargaTawar">
-                      Ditawar Rp {data.tawaran.bid}
+                      Ditawar Rp {data.offer_price}
                     </h4>
                   </div>
                 </div>
                 <div className="ms-auto">
                   <div className="card-body p-0 px-3">
-                    <h6 className="card-text text-end">{data.tawaran.date}</h6>
+                    <h6 className="card-text text-end">{data.date}</h6>
                   </div>
                 </div>
               </div>
@@ -123,15 +141,15 @@ export default function InfoPenawaran() {
                             <div class="col-3 align-self-center">
                               <Image
                                 className="rounded img-responsive center-block d-block mx-auto img-fluid"
-                                src={pembeli}
+                                src={`http://localhost:5000/upload/images/${data.buyerImage}`}
                               />
                             </div>
                             <div class="col-9">
                               <div className="card-body">
                                 <h4 className="card-title h5 h4-sm fw-bold">
-                                  {data.name}
+                                  {data.buyerName}
                                 </h4>
-                                <h6 className="card-text">{data.city}</h6>
+                                <h6 className="card-text">{data.buyerCity}</h6>
                               </div>
                             </div>
                           </div>
@@ -139,7 +157,7 @@ export default function InfoPenawaran() {
                             <div class="col-3 align-self-center">
                               <Image
                                 className="rounded img-responsive center-block d-block mx-auto img-fluid"
-                                src={produk}
+                                src={`http://localhost:5000/upload/images/${data.productImage}`}
                               />
                             </div>
                             <div class="col-9">
@@ -148,19 +166,19 @@ export default function InfoPenawaran() {
                                   className="card-title h5 h4-sm"
                                   id="namaProduk"
                                 >
-                                  {data.tawaran.product}
+                                  {data.productName}
                                 </h4>
                                 <h4
                                   className="card-title h5 h4-sm text-decoration-line-through"
                                   id="hargaProduk"
                                 >
-                                  Rp {data.tawaran.price}
+                                  Rp {data.productPrice}
                                 </h4>
                                 <h4
                                   className="card-title h5 h4-sm"
                                   id="hargaTawar"
                                 >
-                                  Ditawar Rp {data.tawaran.bid}
+                                  Ditawar Rp {data.offer_price}
                                 </h4>
                               </div>
                             </div>
@@ -174,7 +192,7 @@ export default function InfoPenawaran() {
                           id="modal-button"
                         >
                           <a
-                            href="https://wa.me/6285815470517"
+                            href={`https://api.whatsapp.com/send/?phone=${data.buyerHp}`}
                             style={{
                               color: "white",
                               textDecoration: "none",
@@ -196,6 +214,10 @@ export default function InfoPenawaran() {
           </div>
         </div>
       </div>
+      </>
+    ) : (
+      <p>`Loading...`</p>
+    )}
     </>
   );
 }

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { UPDATE_PROFILE } from "../type";
-
-const API_URL = 'http://localhost:5000/api/v1'
+import toast from "react-simple-toasts";
+import { API_URL } from "./api";
 
 export const updateProfile = (data) => {
   return (dispatch) => {
@@ -37,6 +37,14 @@ export const updateProfile = (data) => {
             errorMessage: false,
           },
         });
+        // update user data in local storage
+        const serializedData = localStorage.getItem("user");
+        let user = JSON.parse(serializedData);
+
+        user.data.Profile.image = res.data.data.image;
+        localStorage.setItem("user", JSON.stringify(user));
+
+        toast(`${res.message}`, 3000);
       })
       .catch(error => {
         //error get api
@@ -48,6 +56,7 @@ export const updateProfile = (data) => {
             errorMessage: error.message,
           },
         });
+        toast(`${error.message}`, 3000);
       });
   }
 }

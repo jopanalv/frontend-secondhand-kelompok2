@@ -5,6 +5,7 @@ import back from "../assets/images/fi_arrow-left.png";
 import { addLogin } from "../redux/action/loginAction";
 import { useSelector, useDispatch } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
+import toast from "react-simple-toasts";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -20,15 +21,15 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (email === "") {
-      alert("Please enter your email");
+      toast("Email cannot be empty", 3000)
     }
     if (password === "") {
-      alert("Password cannot be empty");
+      toast("Password cannot be empty", 3000)
     }
-    if (email !== "" && password !== "") {
-      dispatch(addLogin({ email, password }));
-      navigate("../", { replace: true });
+    if (!dispatch(addLogin({ email, password }))) {
+      navigate("../login", { replace: true });
     }
+    navigate("../", { replace: true });
   };
 
   return (
@@ -55,6 +56,7 @@ const Login = () => {
               <input
                 className="email"
                 placeholder="Masukkan password"
+                type="password"
                 name="password"
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
