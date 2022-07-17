@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Modal, Form } from "react-bootstrap";
-import gambar from "../assets/images/Rectangle 134.png"
 import { Image } from 'react-bootstrap';
-import penjual from "../assets/images/Rectangle 33.png"
 import back from '../assets/images/fi_arrow-left.png'
 import Navigasi from '../component/Navbar1';
 import Alert from '../component/Alert_produk';
@@ -92,7 +90,7 @@ const DetailProduk_buyer = () => {
             <div className="card-body-produk px-3">
               <h5 className="card-title fw-bold">{productInfo.name}</h5>
               <p className="card-text">{productInfo.CategoryId}</p>
-              <p className="card-text-2 fw-bold">{productInfo.price}</p>
+              <p className="card-text-2 fw-bold">Rp {productInfo.price}</p>
               <div class="d-grid gap-2">
                 <button class="btn_teks btn1 text-white" type="button" onClick={handleShow}>Saya Tertarik dan Ingin Nego</button>
               </div>
@@ -176,4 +174,5 @@ const DetailProduk_buyer = () => {
     </>
   );
 }
+
 export default DetailProduk_buyer;

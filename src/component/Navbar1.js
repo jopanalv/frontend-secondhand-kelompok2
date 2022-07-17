@@ -154,6 +154,5 @@ export default function Navigasi() {
                 </Container>
             </Navbar>
         </>
-
     );
 }
