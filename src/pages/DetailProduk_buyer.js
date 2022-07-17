@@ -4,10 +4,12 @@ import { Image } from 'react-bootstrap';
 import back from '../assets/images/fi_arrow-left.png'
 import Navigasi from '../component/Navbar1';
 import Alert from '../component/Alert_produk';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { connect } from "react-redux";
 import { Container } from "react-bootstrap";
-import { getSelectedProduct, buyProduct } from "../redux/action/productActions";
+import { getSelectedProduct } from "../redux/action/productActions";
 import "../assets/style2.css"
 import { addUser } from "../slice/userSlice";
 import { addSearch } from "../slice/searchingSlice";
@@ -26,7 +28,6 @@ import { addSearch } from "../slice/searchingSlice";
 const DetailProduk_buyer = () => {
 
   const [show, setShow] = useState(false);
-  const [offer, setOffer] = useState(0);
   const [searching, setSearching] = useState("");
 
   const handleClose = () => setShow(false);
@@ -34,10 +35,6 @@ const DetailProduk_buyer = () => {
 
   const { id } = useParams();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const user = JSON.parse(localStorage.getItem("user"));
-  const buyerId = user.data.id
 
   const handleSearch = () => {
     dispatch(
@@ -45,10 +42,8 @@ const DetailProduk_buyer = () => {
     )
   }
 
-  const handleBuy = (e) => {
-    e.preventDefault()
-    dispatch(buyProduct({id, offer}))
-    handleClose()
+  const handleBuy = () => {
+    
   }
 
   useEffect(() => {
@@ -164,15 +159,13 @@ const DetailProduk_buyer = () => {
                 <Form.Label>Harga Tawar</Form.Label>
                 <Form.Control
                   placeholder="Rp 0.0"
-                  value={offer}
-                  onChange={(e) => setOffer(e.target.value)}
                   autoFocus
                 />
               </Form.Group>
             </Form>
           </Modal.Body>
           <Modal.Footer>
-            <button type='submit' className='btn-kirim btn-teks justify-content-center align-items-center text-white' onClick={handleBuy}>
+            <button className='btn-kirim btn-teks justify-content-center align-items-center text-white' onClick={() => handleBuy()}>
               Kirim
             </button>
           </Modal.Footer>

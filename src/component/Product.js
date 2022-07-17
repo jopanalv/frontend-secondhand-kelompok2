@@ -44,7 +44,7 @@ function Product() {
                     className="w-75 align-self-center"
                     variant="top"
                     multiple
-                    src={`http://localhost:8000/api/v1/public/files/${Product.image[0]}`}
+                    src={`http://localhost:5000/upload/images/` + Product.image}
                     style={image}
                   />
                   <Card.Body className="p-2">

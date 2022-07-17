@@ -11,7 +11,11 @@ export const DafJual = () => {
     return (
         <div>
             <Navigasi />
+<<<<<<< HEAD
+            {/* <Notif /> */}
+=======
             <Notif />
+>>>>>>> 37edfdf457e7a4be35db92414b63ec9dea03f250
             <Alert />
             <Penjual />
             <Jual />
