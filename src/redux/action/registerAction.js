@@ -1,7 +1,7 @@
 import axios from "axios";
 import { ADD_REGISTER } from "../type";
 
-const API_URL = 'http://localhost:5000/api/v1'
+const API_URL = "http://localhost:5000/api/v1";
 
 export const addRegister = (data) => {
   return (dispatch) => {
@@ -38,6 +38,7 @@ export const addRegister = (data) => {
       .catch((error) => {
         //error get api
         console.log("error ", error);
+        alert(error.response.data.message);
         dispatch({
           type: ADD_REGISTER,
           payload: {

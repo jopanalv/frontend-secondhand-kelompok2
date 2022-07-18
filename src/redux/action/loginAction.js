@@ -1,7 +1,7 @@
 import { LOGIN_ERROR, LOGIN, LOGOUT } from "../type";
 import jwtDecode from "jwt-decode";
 
-const API_URL = 'http://localhost:5000/api/v1'
+const API_URL = "http://localhost:5000/api/v1";
 
 export const addLogin = (data) => async (dispatch) => {
   try {
@@ -14,29 +14,32 @@ export const addLogin = (data) => async (dispatch) => {
     });
     const result = await response.json();
     localStorage.setItem("accessToken", result.accessToken);
-    const req = jwtDecode(localStorage.getItem("accessToken"))
+    const req = jwtDecode(localStorage.getItem("accessToken"));
 
     const userInfo = await fetch(`${API_URL}/user/${req.userId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${result.accessToken}`,
+        Authorization: `Bearer ${result.accessToken}`,
       },
     });
     const user = await userInfo.json();
-    console.log(user)
+    console.log(user);
     if (result.accessToken) {
-      localStorage.setItem("user", JSON.stringify(user))
+      localStorage.setItem("user", JSON.stringify(user));
       dispatch({
         type: LOGIN,
         payload: result.accessToken,
         user: user,
       });
+      window.location.href = "/";
     } else {
       loginError(result.error);
+      alert("Error");
     }
   } catch (error) {
     loginError(error);
+    alert("Error");
   }
 };
 
