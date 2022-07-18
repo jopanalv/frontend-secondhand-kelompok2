@@ -1741,9 +1741,10 @@ body {
       margin-top: 10px;
     }
 
-    /* .card {
-      width: 156px;
-    } */
+    .card3 {
+      width: 155px;
+      height: 175px;
+    }
 
    .foto-barang {
       width: 132px;
@@ -1763,14 +1764,14 @@ body {
     .jenis-barang {
       width: 140px;
       /* left: 8px; */
-      /* margin-top: 19px; */
+      margin-top: -20px;
     }
 
     .harga-barang {
       position: absolute;
       width: 140px;
       /* left: 8px; */
-      margin-top: 19px;
+      margin-top: -1px;
     }
 
     .kategori {
