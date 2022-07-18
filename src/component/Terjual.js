@@ -12,20 +12,20 @@ import dollarMob from "../assets/images/mobile-fi_dollar-sign.png"
 import loveMob from "../assets/images/mobile-fi_heart.png"
 
 import { useDispatch, useSelector } from "react-redux";
-import { getAllDaftarjual } from "../redux/action/daftarjualActions";
+import { getAllTerjual } from "../redux/action/daftarjualActions";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
 function Jual() {
 
-    const { getAllDaftarjualResult, getAllDaftarjualLoading, getAllDaftarjualError } = useSelector((state) => state.daftarjualReducer)
+    const { getAllTerjualResult, getAllTerjualLoading, getAllTerjualError } = useSelector((state) => state.daftarjualReducer)
 
     const dispatch = useDispatch();
   
     useEffect(() => {
       //panggil action
       console.log("1. use effect component did mount");
-      dispatch(getAllDaftarjual());
+      dispatch(getAllTerjual());
     }, [dispatch]);
 
     return (
@@ -34,11 +34,13 @@ function Jual() {
             <div className="kategori">
                 <span className="kategori-title">Kategori</span>
                 <div className="frame-162">
+                    <a href="/seller/daftar-jual">
                     <div className="frame-160">
                         <img src={box} className="kategori-fi_box1" />
                         <span className="kategori-txt1">Semua Produk</span>
                         <img src={chevronRight} className="kategori-chevron-right1" />
                     </div>
+                    </a>
                     <a href="/seller/daftar-jual/diminati">
                         <div className="frame-160"> 
                             <img src={love} className="kategori-fi_box1" />
@@ -46,33 +48,31 @@ function Jual() {
                             <img src={chevronRight} className="kategori-chevron-right1" />
                         </div>
                     </a>
-                    <a href="/seller/daftar-jual/terjual">
                     <div className="frame-160">
                         <img src={dollar} className="kategori-fi_box1" />
                         <span className="kategori-txt1">Terjual</span>
                         <img src={chevronRight} className="kategori-chevron-right1" />
                     </div>
-                    </a>
                 </div>
             </div> 
 
             <div className="kategori-mobile">
+                <a href="/seller/daftar-jual">
                 <div className="kategori-mobile-frame active">
                     <img src={boxMob} className="kategori-mobile-icon" />
                     <span className="kategori-mobile-text">Produk</span>
                 </div>
+                </a>
                 <a href="/seller/daftar-jual/diminati">
                     <div className="kategori-mobile-frame">
                         <img src={dollarMob} className="kategori-mobile-icon" />
                         <span className="kategori-mobile-text">Diminati</span>
                     </div>
                 </a>
-                <a href="/seller/daftar-jual/terjual">
                 <div className="kategori-mobile-frame">
                     <img src={loveMob} className="kategori-mobile-icon" />
                     <span className="kategori-mobile-text">Terjual</span>
                 </div>
-                </a>
             </div>
             
             <div className="daftar-jual">
@@ -106,24 +106,16 @@ function Jual() {
                         </div>    
                     </div> */}
 
-                    <Link to={`/info-produk`}>
-                    <div className="col-md-3 col-sm-6 py-3 my-3 card3 border-1">
-                        <div className="group3">
-                            <img src={plus} className="fi-plus" />
-                            <span className="group3-txt">Tambah Produk</span>
-                        </div>    
-                    </div>
-                    </Link>
 
                 {/* Opsi pertama */}
-                {getAllDaftarjualResult ? (
-                getAllDaftarjualResult.map((Product) => {
+                {getAllTerjualResult ? (
+                getAllTerjualResult.map((transaction, Product) => {
 
                 return (
                      
-                    <div className="col-md-3 col-sm-6 py-3 my-3 card3 border-1" key={Product.id}>
+                    <div className="col-md-3 col-sm-6 py-3 my-3 card3 border-1" key={transaction.id}>
                         
-                        <Link to={`/seller/edit-products/` + Product.id}>
+                        <Link to={`/transaction/detail/` + transaction.id}>
                         <img src={`http://localhost:5000/upload/images/` + Product.image} className="foto-barang" />
                         {/* <img src={barang} className="foto-barang" /> */}
                         <div className="frame-149">
@@ -134,7 +126,7 @@ function Jual() {
                                 <div className="jenis-barang">{Product.CategoryId}</div>
                             </div>    
                             <div className="harga-barang">
-                                {Product.price}
+                                {transaction.offer_price}
                             </div>
                         </div>
                         </Link>
@@ -144,11 +136,11 @@ function Jual() {
                 )
                     })
                     // Opsi kedua
-                ) : getAllDaftarjualLoading ? (
+                ) : getAllTerjualLoading ? (
                     <p>Loading ...</p>
                 ) : (
                     // Opsi ketiga
-                    <p>{getAllDaftarjualError ? getAllDaftarjualError : "Data Kosong"}</p>
+                    <p>{getAllTerjualError ? getAllTerjualError : "Data Kosong"}</p>
                 )
                 }
 
