@@ -8,6 +8,7 @@ import Register from "./pages/Register";
 import {NotifikasiMobile} from './pages/NotifikasiMobile';
 import {DafJual} from './pages/DafJual'
 import {DafJualDiminati} from './pages/DafJual-diminati'; 
+import {DafJualTerjual} from './pages/DafJual-terjual'; 
 import InfoProduk from './pages/InfoProduk';
 import Profile from './pages/Profile'
 import InfoPenawaran from "./pages/InfoPenawaran";
@@ -30,6 +31,7 @@ function App () {
           <Route path="/seller/preview" element={<DetailProduk_seller />} />
           <Route path="/seller/daftar-jual" element={<DafJual/>} />
           <Route path="/seller/daftar-jual/diminati" element={<DafJualDiminati />} />
+          <Route path="/seller/daftar-jual/terjual" element={<DafJualTerjual />} />
           <Route path="/seller/edit-products/:id" element={<EditProduk />} />
           <Route path="/seller/notifikasi" element={<NotifikasiMobile />} />
           <Route path="/info-profile" element={<Profile />} />
