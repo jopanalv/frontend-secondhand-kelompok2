@@ -18,9 +18,9 @@ export default function Homepage() {
   return (
     <div className='App'>
       <Navigasi />
-      {
+      {/* {
         auth.isAuthenticated ? <LogedNavbar/> : <Navbar/>
-      }
+      } */}
       <Home />
       <Buttons />
       <Product />

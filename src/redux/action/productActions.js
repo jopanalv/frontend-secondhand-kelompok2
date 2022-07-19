@@ -22,7 +22,7 @@ export const getAllProduct = () => {
     //get API
     axios({
       method: "GET",
-      url: "http://localhost:8000/api/v1/products/",
+      url: "http://localhost:5000/api/v1/products/",
       timeout: 120000
     })
       .then((response) => {
@@ -69,7 +69,7 @@ export const getSelectedProduct = (id) => {
     //get API
     axios({
       method: "GET",
-      url: `http://localhost:8000/api/v1/products/:id` + id,
+      url: `http://localhost:5000/api/v1/products/${id}`,
       timeout: 120000
     })
       .then((response) => {
@@ -78,10 +78,19 @@ export const getSelectedProduct = (id) => {
         dispatch({
           type: GET_SELECTED_PRODUCT,
           payload: {
-          loading: true,
-          data: response.data.data,
-          errorMessage: false      
-        }
+            loading: false,
+            data: {
+              productImage: response.data.data.image,
+              productName: response.data.data.name,
+              productCategory: response.data.data.CategoryId,
+              productPrice: response.data.data.price,
+              productDescription: response.data.data.description,
+              buyerImage: response.data.data.Profile.image,
+              buyerName: response.data.data.Profile.name,
+              buyerCity: response.data.data.Profile.city,
+            },
+            errorMessage: false
+          }
         })  
       })
       .catch((error) => {
@@ -116,7 +125,7 @@ export const getProductSeller = (id) => {
     //get API
     axios({
       method: "GET",
-      url: `http://localhost:8000/api/v1/seller/products/:id` + id,
+      url: `http://localhost:5000/api/v1/seller/products/:id` + id,
       timeout: 120000
     })
       .then((response) => {

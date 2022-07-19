@@ -4,7 +4,7 @@ const initialState = {
   getAllProductResult: false,
   getAllProductLoading: false,
   getAllProductError: false,
-  getSelectedProductResult: false,
+  getSelectedProductResult: null,
   getSelectedProductLoading: false,
   getSelectedProductError: false,
   getProductSellerResult: false,
