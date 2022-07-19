@@ -1409,6 +1409,11 @@ body {
       line-height: 28px;
     }
 
+    .notif-txt2 {
+      font-size: 5px;
+      color: gray;
+    }
+
     .divider {
       margin-top: 30px;
       margin-bottom: 15px;

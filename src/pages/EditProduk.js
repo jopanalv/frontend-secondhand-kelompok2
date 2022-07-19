@@ -56,20 +56,13 @@ function EditProduk() {
     formData.append('image', image[0])
     dispatch(editProduct(formData, id))
 
-
-    setName("")
-    setPrice("")
-    setCategory("")
-    setDesc("")
-    setImage([])
-
-    navigate('/seller/daftar-jual')
+    navigate('/seller/daftar-jual', {replace: true})
   }
 
   const handleDelete = (id) => {
     if (window.confirm("Are you sure You want to delete?"));
     dispatch(deleteProduct(id));
-    navigate('/seller/daftar-jual')
+    navigate('/seller/daftar-jual', {replace: true})
 }
 
 const handleSearch = () => {

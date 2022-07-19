@@ -19,7 +19,6 @@ import { addSearch } from "../slice/searchingSlice";
 const Jual = () => {
 
     const userState = useSelector(state => state.login)
-    const user2State = useSelector(state => state.profile)
 
     return (
 

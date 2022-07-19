@@ -1,6 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from "react";
 import 'bootstrap/dist/js/bootstrap.bundle';
+import 'bootstrap-select/dist/css/bootstrap-select.min.css';
+import 'bootstrap-select/dist/js/bootstrap-select.min';
 import './assets/style.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
@@ -36,7 +38,7 @@ function App () {
           <Route path="/seller/notifikasi" element={<NotifikasiMobile />} />
           <Route path="/info-profile" element={<Profile />} />
           <Route path="/info-produk" element={<InfoProduk />} />
-          <Route path="/info-penawaran" element={<InfoPenawaran />} />
+          <Route path="/info-penawaran/:id" element={<InfoPenawaran />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -9,25 +9,15 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { connect } from "react-redux";
 import { Container } from "react-bootstrap";
-import { getSelectedProduct } from "../redux/action/productActions";
+import { getSelectedProduct, buyProduct } from "../redux/action/productActions";
 import "../assets/style2.css"
 import { addUser } from "../slice/userSlice";
 import { addSearch } from "../slice/searchingSlice";
 
-// import { selectedProducts, removeSelectedProduct } from '../redux/action/productActions';
-
-// const mapStateToProps = (state) => {
-//   return {
-//     getSelectedProduct: state.productReducer.getSelectedProduct,
-//     getSelectedProductError: state.productReducer.getSelectedProductError,
-//   };
-// };
-
-
-
 const DetailProduk_buyer = () => {
 
   const [show, setShow] = useState(false);
+  const [offer, setOffer] = useState(0);
   const [searching, setSearching] = useState("");
 
   const handleClose = () => setShow(false);
@@ -42,7 +32,10 @@ const DetailProduk_buyer = () => {
     )
   }
 
-  const handleBuy = () => {
+  const handleBuy = (e) => {
+    e.preventDefault()
+    dispatch(buyProduct({id, offer}))
+    handleClose()
     
   }
 
@@ -55,27 +48,6 @@ const DetailProduk_buyer = () => {
   const product = useSelector(state => state.product)
   const productInfo = product.getSelectedProductResult
 
-  console.log(productInfo)
-
-  // const { product } = useParams();
-  // let product = useSelector((state) => state.selectproduct);
-  // const {id, ProfileId, image, name, price, CategoryId} = product;
-  // const dispatch = useDispatch();
-  // const fetchProductDetail = async (id) => {
-  //   const response = await axios
-  //     .get(`http://localhost:8000/api/v1/products/${id}`)
-  //     .catch((err) => {
-  //       console.log("Err: ", err);
-  //     });
-  //   // dispatch(selectedProducts(response.data));
-  // };
-
-  // useEffect(() => {
-  //   if (product && product !== "") fetchProductDetail(product);
-  //   // return () => {
-  //   //   // dispatch(removeSelectedProduct());
-  //   // };
-  // }, [product]);
   return (
     <>
       <Navigasi />
@@ -159,13 +131,15 @@ const DetailProduk_buyer = () => {
                 <Form.Label>Harga Tawar</Form.Label>
                 <Form.Control
                   placeholder="Rp 0.0"
+                  value={offer}
+                  onChange={(e) => setOffer(e.target.value)}
                   autoFocus
                 />
               </Form.Group>
             </Form>
           </Modal.Body>
           <Modal.Footer>
-            <button className='btn-kirim btn-teks justify-content-center align-items-center text-white' onClick={() => handleBuy()}>
+            <button className='btn-kirim btn-teks justify-content-center align-items-center text-white' onClick={(e) => handleBuy(e)}>
               Kirim
             </button>
           </Modal.Footer>

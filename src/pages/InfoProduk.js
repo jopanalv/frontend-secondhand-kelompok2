@@ -4,7 +4,7 @@ import icon_back from "../assets/images/fi_arrow-left.png";
 import Navbar from "../component/Navbar2";
 import uploadGambar from "../assets/images/Group 2.png";
 import { useDropzone } from "react-dropzone";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../redux/action/addProduct";
 import {useNavigate} from "react-router-dom";

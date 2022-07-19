@@ -8,7 +8,9 @@ import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from 'react-router-dom';
 import { logout } from '../redux/action/loginAction';
-import "../assets/style2.css"
+import "../assets/style2.css";
+import Notif from './Notif';
+import NotifBuyer from './Notif1';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -49,7 +51,6 @@ export default function Navigasi() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const user = useSelector(state => state.login)
     //change nav color when scrolling
     const [color, setColor] = useState(false);
     const changeColor = () => {
@@ -84,6 +85,12 @@ export default function Navigasi() {
         navigate('/info-profile', { replace: true })
     }
 
+    const handleDashboard = () => {
+        navigate('/seller/daftar-jual', { replace: true })
+    }
+
+    // const role = userState.user.data.role
+
     return (
         <>
             <Navbar expand="lg" className={color ? 'navbar-scroll' : 'navbar1'} >
@@ -104,7 +111,7 @@ export default function Navigasi() {
                     <div>
                         <Navbar.Toggle onClick={handleShow} aria-controls="off-canvas" />
                         <Navbar.Collapse className="justify-content-end" id="responsive-navbar-nav">
-                            {!user.isAuthenticated ? (
+                            {!userState.isAuthenticated ? (
                                 <Navbar.Offcanvas show={show} onHide={handleClose} id="off-canvas">
                                     <Offcanvas.Header closeButton>
                                         <Offcanvas.Title className="title-navbar">Second Hand</Offcanvas.Title>
@@ -120,7 +127,20 @@ export default function Navigasi() {
                             ) : (
                                 <>
                                     <FiList className="icon-list-header m-3" />
-                                    <FiBell className="icon-bell-header m-3" />
+                                    <div class="dropdown">
+                                        <button class="btn" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <FiBell className="icon-bell-header m-3" />
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenu2">
+                                            <li><h5 class="dropdown-header">Notifikasi </h5></li>
+                                            <li>{userState.user.data.role === 'seller' ? (
+                                                <Notif />
+                                            ) : (
+                                                <NotifBuyer />
+                                            )}</li>
+                                        </ul>
+                                    </div>
+
                                     <div class="dropdown">
                                         <button class="btn" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                                             <FiUser className="icon-user-header" />
@@ -128,7 +148,11 @@ export default function Navigasi() {
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                                             <li><h5 class="dropdown-header">Hi, {userState.user.data.Profile.name} </h5></li>
                                             <li><button class="dropdown-item" type="button" onClick={() => handleProfile()}>Profile</button></li>
-                                            <li><button class="dropdown-item" type="button">Another action</button></li>
+                                            <li>{userState.user.data.role === 'seller' ? (
+                                                <button class="dropdown-item" type="button" onClick={() => handleDashboard()}>Dashboard</button>
+                                            ) : (
+                                                <button class="dropdown-item" type="button" onClick={() => handleProfile()}>History</button>
+                                            )}</li>
                                             <li><hr class="dropdown-divider" /></li>
                                             <li><button class="dropdown-item" onClick={() => handleSignOut()}>
                                                 Sign Out

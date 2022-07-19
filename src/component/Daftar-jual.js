@@ -10,7 +10,6 @@ import barang from "../assets/images/Rectangle23.png"
 import boxMob from "../assets/images/mobile-fi_box.png"
 import dollarMob from "../assets/images/mobile-fi_dollar-sign.png"
 import loveMob from "../assets/images/mobile-fi_heart.png"
-
 import { useDispatch, useSelector } from "react-redux";
 import { getAllDaftarjual } from "../redux/action/daftarjualActions";
 import axios from "axios";

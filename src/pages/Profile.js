@@ -1,23 +1,26 @@
 import { useDropzone } from "react-dropzone";
 import { Image } from "react-bootstrap/";
-import { updateProfile } from "../redux/action/profileAction";
+import { getCity, updateProfile } from "../redux/action/profileAction";
 import icon_back from "../assets/images/fi_arrow-left.png";
 import upload from "../assets/images/Group 1.png";
 import Navbar from "../component/Navbar2";
 import React, { useCallback, useState } from "react";
-import { useDispatch } from "react-redux";
-import "../assets/style.css"
-import { updateProfile } from "../redux/action/profileAction";
-import "../assets/style.css"
+import { useDispatch, useSelector } from "react-redux";
+import "../assets/style.css";
+import { useEffect } from "react";
 
 function Profile() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const [name, setName] = useState("")
-  const [city, setCity] = useState("")
-  const [address, setAddress] = useState("")
-  const [no_hp, setNo_hp] = useState("")
-  const [image, setImage] = useState([])
+  const serializedData = localStorage.getItem("user");
+  let user = JSON.parse(serializedData);
+
+  const [name, setName] = useState(`${user.data.Profile.name}`);
+  const [city, setCity] = useState(`${user.data.Profile.city ?? ''}`);
+  const [address, setAddress] = useState(`${user.data.Profile.address ?? ''}`);
+  const [no_hp, setNo_hp] = useState(`${user.data.Profile.no_hp ?? ''}`);
+  const previewImage = user.data.Profile.image !== null ? 'http://localhost:5000/upload/images/' + user.data.Profile.image : null;
+  const [image, setImage] = useState([]);
 
   const onDrop = useCallback(acceptedFiles => {
     setImage(acceptedFiles.map(file => Object.assign(file, {
@@ -44,6 +47,12 @@ function Profile() {
     dispatch(updateProfile(formData))
   }
 
+  useEffect(() => {
+    dispatch(getCity())
+  }, [])
+
+  const { cityResult } = useSelector(state => state.profile)
+
   return (
     <>
       <Navbar judul="Lengkapi Info Akun" />
@@ -58,7 +67,7 @@ function Profile() {
                 {image.length === 0 ? (
                   <div {...getRootProps()}>
                     <input type="file" {...getInputProps()} filename="image" />
-                    <Image src={upload} style={{ width: "8em" }} />
+                    <Image src={previewImage ?? upload} style={{ width: "8em" }} />
                   </div>
                 ) : (
                   <div>
@@ -83,16 +92,16 @@ function Profile() {
               <div className="row mb-3">
                 <label className="form-label">Kota*</label>
                 <select
-                  className="form-select"
+                  className="form-control"
                   name="city"
                   value={city} onChange={(e) => setCity(e.target.value)}
                 >
-                  <option value="" disabled selected>
+                  <option disabled selected>
                     Pilih Kota
                   </option>
-                  <option value="0">Jakarta</option>
-                  <option value="1">Bandung</option>
-                  <option value="2">Bogor</option>
+                  {cityResult && cityResult?.data.map(city => (
+                    <option key={city.id} value={`${city.nama}`}>{city.nama}</option>
+                  ))}
                 </select>
               </div>
               <div className="row mb-3">
