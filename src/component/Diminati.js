@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import box from '../assets/images/fi_box.png'
 import chevronRight from '../assets/images/fi_chevron-right.png'
 import dollar from '../assets/images/fi_dollar-sign.png'
@@ -9,8 +9,23 @@ import DiminatiNot from '../assets/images/Group 33.png'
 import boxMob from '../assets/images/mobile-fi_box.png'
 import dollarMob from '../assets/images/mobile-fi_dollar-sign.png'
 import loveMob from '../assets/images/mobile-fi_heart.png'
+import { getAllWishlist } from '../redux/action/daftarjualActions';
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 const Diminati = () => {
+
+    const { getAllWishlistResult, getAllWishlistLoading, getAllWishlistError } = useSelector((state) => state.daftarjualReducer)
+
+    const dispatch = useDispatch();
+  
+    useEffect(() => {
+      //panggil action
+      console.log("1. use effect component did mount");
+      dispatch(getAllWishlist());
+    }, [dispatch]);
+
+
     return (
 
         <div className='Container'>
@@ -30,11 +45,13 @@ const Diminati = () => {
                         <span className='kategori-txt1'>Diminati</span>
                         <img src={chevronRight} className='kategori-chevron-right1' />
                     </div>
+                    <a href="/seller/daftar-jual/terjual">
                     <div className='frame-160'>
                         <img src={dollar} className='kategori-fi_box1' />
                         <span className='kategori-txt1'>Terjual</span>
                         <img src={chevronRight} className='kategori-chevron-right1' />
                     </div>
+                    </a>
                 </div>
             </div> 
 
@@ -45,56 +62,63 @@ const Diminati = () => {
                         <span className='kategori-mobile-text'>Produk</span>
                     </div>
                 </a>
+                
                 <div className='kategori-mobile-frame active'>
                     <img src={dollarMob} className='kategori-mobile-icon' />
                     <span className='kategori-mobile-text'>Diminati</span>
                 </div>
+                <a href="/seller/daftar-jual/terjual">
                 <div className='kategori-mobile-frame'>
                     <img src={loveMob} className='kategori-mobile-icon' />
                     <span className='kategori-mobile-text'>Terjual</span>
                 </div>
+                </a>
             </div>
 
             <div className='daftar-jual'>
                 
-                {/* Tidak ada produkmu yang diminati */}
-                <div className='group34'>
-                    <img src={DiminatiNot} className='diminati-img' />
-                    <span className='diminati-txt'>Belum ada produkmu yang diminati nih, sabar ya rejeki nggak kemana kok</span>
-                </div>
-
                 {/* Ada produkmu yang diminati */}
-                {/* <div className='diminati'>
-                    <div className="list">
+                {/* Opsi pertama */}
+                {getAllWishlistResult ? (
+                getAllWishlistResult.map((Wishlist, Product) => {
+
+                return (
+                <div className='diminati'>
+
+                    <Link to={`/info-penawaran`}>
+                    <div className="list" key={Wishlist.id}>
                         <div className="notif">
-                            <img className='notif-img' />
+                            <img className='notif-img' src={`http://localhost:5000/upload/images/` + Product.image} />
                             <div className="notif-text">
                                 <div className="notif-ket">
                                     <span className='notif-ket-txt1 time'>Penawaran produk</span>
-                                    <span className='notif-ket-txt2'>20 Apr, 14:04</span>
+                                    <span className='notif-ket-txt2'>{Wishlist.updatedAt}</span>
                                 </div>    
-                                <span className='notif-txt1'>Jam Tangan Casio</span>
-                                <span className='notif-txt1'>Rp 250.000</span>
+                                <span className='notif-txt1'>{Product.name}</span>
+                                <span className='notif-txt1'>{Product.price}</span>
                                 <span className='notif-txt1'>Ditawar Rp 200.000</span>
                             </div>    
                         </div>
                     </div>
-                    <img src={divider} className='divider'/>     
-                    <div className="list">
-                        <div className="notif">
-                            <img className='notif-img' />
-                            <div className="notif-text">
-                                <div className="notif-ket">
-                                    <span className='notif-ket-txt1 time'>Berhasil di terbitkan</span>
-                                    <span className='notif-ket-txt2'>19 Apr, 12:00</span>
-                                </div>    
-                                <span className='notif-txt1'>Jam Tangan Casio</span>
-                                <span className='notif-txt1'>Rp 250.000</span>
-                                <span className='notif-txt1'>Ditawar Rp 200.000</span>
-                            </div>    
-                        </div>
-                    </div>
-                </div> */}
+                    </Link>
+                    <img src={divider} className='divider'/>  
+                </div>
+
+                )
+                })
+                // Opsi kedua
+                ) : getAllWishlistLoading ? (
+                <p>Loading ...</p>
+                ) : (
+                // Opsi ketiga
+                <div className='group34'>{getAllWishlistError ? getAllWishlistError : 
+                
+                <span className='diminati-txt'>Belum ada produkmu yang diminati nih, sabar ya rejeki nggak kemana kok</span>
+                }</div>
+
+                )
+                }
+                
             </div>  
         </div>
         
