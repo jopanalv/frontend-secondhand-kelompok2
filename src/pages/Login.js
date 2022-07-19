@@ -1,3 +1,4 @@
+import "../assets/style.css";
 import React, { useEffect, useState } from "react";
 import img from "../assets/images/img.png";
 import back from "../assets/images/fi_arrow-left.png";
@@ -9,9 +10,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { isAuthenticated, user, error } = useSelector(
-    (state) => state.login
-  );
+  const { isAuthenticated, user, error } = useSelector((state) => state.login);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,7 +25,7 @@ const Login = () => {
     }
     if (email !== "" && password !== "") {
       dispatch(addLogin({ email, password }));
-      navigate("../", { replace: true });
+      // navigate("../", { replace: true });
     }
   };
 
@@ -36,12 +35,13 @@ const Login = () => {
         <div className="container">
           <img src={img} className="img" />
           <img src={back} className="back" />
-          <span className="form-title">Masuk</span>
+          <span className="form-title fw-bold">Masuk</span>
           <form className="form" onSubmit={handleSubmit}>
             <div className="input1">
-              <span className="label1">Email</span>
+              <span className="form-label">Email</span>
               <input
-                className="email"
+                className="form-control"
+                type="email"
                 placeholder="Contoh: johndee@gmail.com"
                 name="email"
                 value={email}
@@ -50,9 +50,10 @@ const Login = () => {
             </div>
 
             <div className="input1">
-              <span className="label1">Password</span>
+              <span className="form-label">Password</span>
               <input
-                className="email"
+                className="form-control"
+                type="password"
                 placeholder="Masukkan password"
                 name="password"
                 value={password}
@@ -61,11 +62,9 @@ const Login = () => {
               <div id="toggle" onclick="showHide();"></div>
             </div>
 
-            <div className="button-wrapper">
-              <button className="button" type="submit">
-                <span className="text">Masuk</span>
-              </button>
-            </div>
+            <button className="button" type="submit">
+              <span className="text">Masuk</span>
+            </button>
 
             <div className="frame">
               <span className="txt1">Belum punya akun?</span>

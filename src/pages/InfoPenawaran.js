@@ -7,6 +7,8 @@ import icon_back from "../assets/images/fi_arrow-left.png";
 import pembeli from "../assets/images/Rectangle 33.png";
 import produk from "../assets/images/produk.png";
 import data from "../data/InfoPenawar.json";
+import "../assets/style.css";
+import { Link } from "@mui/material";
 
 export default function InfoPenawaran() {
   return (
@@ -15,7 +17,9 @@ export default function InfoPenawaran() {
       <div className="container mt-5" id="info-penawaran">
         <div className="row justify-content-center">
           <div className="col-lg-1 col-sm-12 mb-1">
-            <Image src={icon_back} />
+            <Link to="/">
+              <Image src={icon_back} />
+            </Link>
           </div>
           <div className="col-lg-11 col-sm-12">
             <div className="card px-3 mx-auto">
