@@ -758,8 +758,6 @@ body {
   .foto-penjual {
     width: 48px;
     height: 48px;
-
-    background: url(./images/foto_penjual.png);
     border-radius: 12px;
 
     /* Inside auto layout */
@@ -1411,6 +1409,11 @@ body {
       line-height: 28px;
     }
 
+    .notif-txt2 {
+      font-size: 5px;
+      color: gray;
+    }
+
     .divider {
       margin-top: 30px;
       margin-bottom: 15px;
@@ -1743,9 +1746,10 @@ body {
       margin-top: 10px;
     }
 
-    /* .card {
-      width: 156px;
-    } */
+    .card3 {
+      width: 155px;
+      height: 175px;
+    }
 
    .foto-barang {
       width: 132px;
@@ -1765,14 +1769,14 @@ body {
     .jenis-barang {
       width: 140px;
       /* left: 8px; */
-      /* margin-top: 19px; */
+      margin-top: -20px;
     }
 
     .harga-barang {
       position: absolute;
       width: 140px;
       /* left: 8px; */
-      margin-top: 19px;
+      margin-top: -1px;
     }
 
     .kategori {
@@ -1980,6 +1984,10 @@ option[value=""][disabled] {
     border-color: #7126B5;
     border-radius: 16px;
     color: black;
+}
+
+#delete {
+  border-radius: 16px;
 }
 
 #preview:hover {

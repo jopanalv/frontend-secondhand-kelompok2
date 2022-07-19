@@ -17,6 +17,7 @@ function Product() {
     margin: "8px",
   };
 
+
   // const { user } = useSelector((state) => state.auth);
   const { getAllProductResult, getAllProductLoading, getAllProductError } = useSelector((state) => state.product)
   const data = getAllProductResult;

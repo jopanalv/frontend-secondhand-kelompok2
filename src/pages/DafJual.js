@@ -1,18 +1,20 @@
 import React from 'react';
-import "../assets/style.css"
-import Navbar from '../component/Navbar';
-import Notif from '../component/Notif';
-import Alert from '../component/Alert';
+import "../assets/style.css";
+import Navigasi from '../component/Navbar1';
 import Penjual from '../component/Penjual';
 import Jual from '../component/Daftar-jual';
+import Notif from '../component/Notif';
+import Alert from '../component/Alert';
 
 export const DafJual = () => {
+
     return (
         <div>
-            <Navbar />
-            <Notif />
+            <Navigasi />
+            {/* <Notif /> */}
+            {/* <Notif /> */}
             <Alert />
-            <Penjual />
+            {/* <Penjual /> */}
             <Jual />
         </div>
     )

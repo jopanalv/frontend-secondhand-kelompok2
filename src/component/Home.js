@@ -1,8 +1,5 @@
 import React from 'react';
-import { Image } from 'react-bootstrap';
-import Hero from '../assets/images/Rectangle 136.png'
-import Gift from '../assets/images/gift.png'
-import { Card, Button, Container, Row, Col } from "react-bootstrap";
+import { Card, Row, Col } from "react-bootstrap";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
