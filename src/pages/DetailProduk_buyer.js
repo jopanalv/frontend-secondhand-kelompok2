@@ -6,6 +6,8 @@ import Navigasi from '../component/Navbar1';
 import Alert from '../component/Alert_produk';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { connect } from "react-redux";
 import { Container } from "react-bootstrap";
 import { getSelectedProduct, buyProduct } from "../redux/action/productActions";
 import "../assets/style2.css"
@@ -137,7 +139,7 @@ const DetailProduk_buyer = () => {
             </Form>
           </Modal.Body>
           <Modal.Footer>
-            <button type='submit' className='btn-kirim btn-teks justify-content-center align-items-center text-white' onClick={handleBuy}>
+            <button className='btn-kirim btn-teks justify-content-center align-items-center text-white' onClick={(e) => handleBuy(e)}>
               Kirim
             </button>
           </Modal.Footer>

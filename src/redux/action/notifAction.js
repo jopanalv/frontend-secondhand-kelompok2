@@ -73,6 +73,7 @@ export const getNotifBuyer = () => {
         })
             .then((response) => {
                 //berhasil get API
+                console.log('resp'+response.data)
                 dispatch({
                     type: GET_ALL_NOTIF_BUYER,
                     payload: {

@@ -26,10 +26,9 @@ const Login = () => {
     if (password === "") {
       toast("Password cannot be empty", 3000)
     }
-    if (!dispatch(addLogin({ email, password }))) {
-      navigate("../login", { replace: true });
+    if (email !== "" && password  !== "") {
+      dispatch(addLogin({ email, password }))
     }
-    navigate("../", { replace: true });
   };
 
   return (

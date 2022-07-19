@@ -1,12 +1,13 @@
 import { useDropzone } from "react-dropzone";
 import { Image } from "react-bootstrap/";
-import { updateProfile } from "../redux/action/profileAction";
+import { getCity, updateProfile } from "../redux/action/profileAction";
 import icon_back from "../assets/images/fi_arrow-left.png";
 import upload from "../assets/images/Group 1.png";
 import Navbar from "../component/Navbar2";
 import React, { useCallback, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "../assets/style.css";
+import { useEffect } from "react";
 
 function Profile() {
   const dispatch = useDispatch();
@@ -45,6 +46,12 @@ function Profile() {
     formData.append('no_hp', no_hp)
     dispatch(updateProfile(formData))
   }
+
+  useEffect(() => {
+    dispatch(getCity())
+  }, [])
+
+  const { cityResult } = useSelector(state => state.profile)
 
   return (
     <>
@@ -85,16 +92,16 @@ function Profile() {
               <div className="row mb-3">
                 <label className="form-label">Kota*</label>
                 <select
-                  className="form-select"
+                  className="form-control"
                   name="city"
                   value={city} onChange={(e) => setCity(e.target.value)}
                 >
-                  <option value="" disabled selected>
+                  <option disabled selected>
                     Pilih Kota
                   </option>
-                  <option value="0">Jakarta</option>
-                  <option value="1">Bandung</option>
-                  <option value="2">Bogor</option>
+                  {cityResult && cityResult?.data.map(city => (
+                    <option key={city.id} value={`${city.nama}`}>{city.nama}</option>
+                  ))}
                 </select>
               </div>
               <div className="row mb-3">

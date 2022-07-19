@@ -1,5 +1,5 @@
 import axios from "axios";
-import { UPDATE_PROFILE } from "../type";
+import { UPDATE_PROFILE, GET_CITY } from "../type";
 import toast from "react-simple-toasts";
 import { API_URL } from "./api";
 
@@ -44,7 +44,7 @@ export const updateProfile = (data) => {
         user.data.Profile.image = res.data.data.image;
         localStorage.setItem("user", JSON.stringify(user));
 
-        toast(`${res.message}`, 3000);
+        toast(`${res.data.message}`, 3000);
       })
       .catch(error => {
         //error get api
@@ -61,3 +61,36 @@ export const updateProfile = (data) => {
   }
 }
 
+export const getCity = () => {
+  return (dispatch) => {
+    //get API
+    axios({
+      method: "GET",
+      url: `https://kabupatenid.herokuapp.com/kabupaten/list`,
+    })
+      .then((response) => {
+        //berhasil get API
+        console.log("respon" + response.data)
+        dispatch({
+          type: GET_CITY,
+          payload: {
+            loading: false,
+            data: response.data,
+            errorMessage: null
+          }
+        })
+      })
+      .catch((error) => {
+        // gagal get API
+        console.log("error block")
+        dispatch({
+          type: GET_CITY,
+          payload: {
+            loading: false,
+            data: null,
+            errorMessage: error.message
+          }
+        })
+      })
+  };
+};

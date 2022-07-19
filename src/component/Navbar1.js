@@ -85,6 +85,10 @@ export default function Navigasi() {
         navigate('/info-profile', { replace: true })
     }
 
+    const handleDashboard = () => {
+        navigate('/seller/daftar-jual', { replace: true })
+    }
+
     // const role = userState.user.data.role
 
     return (
@@ -144,7 +148,11 @@ export default function Navigasi() {
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                                             <li><h5 class="dropdown-header">Hi, {userState.user.data.Profile.name} </h5></li>
                                             <li><button class="dropdown-item" type="button" onClick={() => handleProfile()}>Profile</button></li>
-                                            <li><button class="dropdown-item" type="button">Another action</button></li>
+                                            <li>{userState.user.data.role === 'seller' ? (
+                                                <button class="dropdown-item" type="button" onClick={() => handleDashboard()}>Dashboard</button>
+                                            ) : (
+                                                <button class="dropdown-item" type="button" onClick={() => handleProfile()}>History</button>
+                                            )}</li>
                                             <li><hr class="dropdown-divider" /></li>
                                             <li><button class="dropdown-item" onClick={() => handleSignOut()}>
                                                 Sign Out

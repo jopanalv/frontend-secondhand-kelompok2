@@ -37,7 +37,9 @@ export const addLogin = (data) => async (dispatch) => {
         });
         toast(`${result.message}`, 3000);
       }
+      // window.location.href = "/"
     }
+    toast(`${result.message}`, 3000);
   } catch (error) {
     toast(`${error.message}`, 3000);
     loginError(error);

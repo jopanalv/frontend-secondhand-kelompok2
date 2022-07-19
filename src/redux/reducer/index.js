@@ -3,7 +3,9 @@ import RegisterReducer from "./Register";
 import ProfileReducer from "./Profile";
 import LoginReducer from "./Login";
 import AddProductReducer from "./AddProduct";
-import ProductReducer from "./Product"
+import EditProductReducer from "./EditProduct";
+import ProductReducer from "./Product";
+import daftarjualReducer from "./DaftarJual"
 import NotifReducer from "./Notif";
 import TransReducer from "./Transaction"
 
@@ -14,5 +16,8 @@ export default combineReducers({
   addProduct: AddProductReducer,
   product: ProductReducer,
   notif: NotifReducer,
-  transaction: TransReducer
+  transaction: TransReducer,
+  editProduct: EditProductReducer,
+  deleteProduct: EditProductReducer,
+  daftarjualReducer
 });

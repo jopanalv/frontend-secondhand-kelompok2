@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_TRANSACTION_DETAIL } from "../type";
+import { GET_TRANSACTION_DETAIL, ACCEPT_TRANSACTION } from "../type";
 import { API_URL } from "./api";
 
 export const getTransDetail = (id) => {
@@ -16,12 +16,12 @@ export const getTransDetail = (id) => {
     })
       .then((response) => {
         //berhasil get API
-        console.log(response.data)
         dispatch({
           type: GET_TRANSACTION_DETAIL,
           payload: {
             loading: false,
             data: {
+              transStatus: response.data.data.transaction.status,
               buyerName: response.data.data.transaction.Profile.name,
               buyerCity: response.data.data.transaction.Profile.city,
               buyerImage: response.data.data.transaction.Profile.image,
@@ -51,3 +51,105 @@ export const getTransDetail = (id) => {
       })
   };
 };
+
+export const acceptTransaction = (id) => {
+  return (dispatch) => {
+    const token = localStorage.getItem('accessToken')
+    axios({
+      method: "PUT",
+      url: `${API_URL}/accept/${id}`,
+      timeout: 120000,
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+    })
+    .then(response => {
+      dispatch({
+        type: ACCEPT_TRANSACTION,
+          payload: {
+            loading: false,
+            data: response.data,
+            errorMessage: null
+          }
+      })
+    })
+    .catch(error => {
+      dispatch({
+        type: ACCEPT_TRANSACTION,
+          payload: {
+            loading: false,
+            data: null,
+            errorMessage: error.message
+          }
+      })
+    })
+  }
+}
+
+export const cancelTransaction = (id) => {
+  return (dispatch) => {
+    const token = localStorage.getItem('accessToken')
+    axios({
+      method: "PUT",
+      url: `${API_URL}/cancel/${id}`,
+      timeout: 120000,
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+    })
+    .then(response => {
+      dispatch({
+        type: ACCEPT_TRANSACTION,
+          payload: {
+            loading: false,
+            data: response.data,
+            errorMessage: null
+          }
+      })
+    })
+    .catch(error => {
+      dispatch({
+        type: ACCEPT_TRANSACTION,
+          payload: {
+            loading: false,
+            data: null,
+            errorMessage: error.message
+          }
+      })
+    })
+  }
+}
+
+export const successTransaction = (id) => {
+  return (dispatch) => {
+    const token = localStorage.getItem('accessToken')
+    axios({
+      method: "PUT",
+      url: `${API_URL}/success/${id}`,
+      timeout: 120000,
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+    })
+    .then(response => {
+      dispatch({
+        type: ACCEPT_TRANSACTION,
+          payload: {
+            loading: false,
+            data: response.data,
+            errorMessage: null
+          }
+      })
+    })
+    .catch(error => {
+      dispatch({
+        type: ACCEPT_TRANSACTION,
+          payload: {
+            loading: false,
+            data: null,
+            errorMessage: error.message
+          }
+      })
+    })
+  }
+}

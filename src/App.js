@@ -1,6 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from "react";
 import 'bootstrap/dist/js/bootstrap.bundle';
+import 'bootstrap-select/dist/css/bootstrap-select.min.css';
+import 'bootstrap-select/dist/js/bootstrap-select.min';
 import './assets/style.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
@@ -14,7 +16,8 @@ import InfoPenawaran from "./pages/InfoPenawaran";
 import Homepage from './pages/Homepage';
 import DetailProduk_buyer from './pages/DetailProduk_buyer';
 import DetailProduk_seller from './pages/DetailProduk_seller';
-import "./assets/style2.css";
+import EditProduk from './pages/EditProduk';
+import "./assets/style2.css"
 
 function App () {
   return (
@@ -29,6 +32,7 @@ function App () {
           <Route path="/seller/preview" element={<DetailProduk_seller />} />
           <Route path="/seller/daftar-jual" element={<DafJual/>} />
           <Route path="/seller/daftar-jual/diminati" element={<DafJualDiminati />} />
+          <Route path="/seller/edit-products/:id" element={<EditProduk />} />
           <Route path="/seller/notifikasi" element={<NotifikasiMobile />} />
           <Route path="/info-profile" element={<Profile />} />
           <Route path="/info-produk" element={<InfoProduk />} />

@@ -7,6 +7,8 @@ import Navigasi from '../component/Navbar1';
 import "../assets/style2.css"
 import { useLocation, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { connect } from "react-redux";
 import { Container } from "react-bootstrap";
 import { getProductSeller } from "../redux/action/productActions";
 import "../assets/style2.css"
@@ -57,14 +59,14 @@ const DetailProduk_seller = () => {
             <Image src={`http://localhost:8000/api/v1/public/files/`} className="detail_gambar" alt="detail_gambar" />
           </div> */}
           <div className='box_image'>
-            <Image src={image} className="detail_gambar" alt="detail_gambar" />
+            <Image src={`image`} className="detail_gambar" alt="detail_gambar" />
           </div>
 
           <div className='card-body'>
             <div className="card-body-produk px-3">
               <h5 className="card-title fw-bold">{product.name}</h5>
               <p className="card-text">{product.category}</p>
-              <p className="card-text-2 fw-bold">Rp {product.price}</p>
+              <p className="card-text-2 fw-bold">{product.price}</p>
               <div class="d-grid gap-2">
                 <button class="btn_teks btn1 text-white" type="button"><a href="/seller/daftar-jual">Terbitkan</a></button>
                 <button class="btn-teks btn2" type="button"><a href="/info-produk">Edit</a></button>
