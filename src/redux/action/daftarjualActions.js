@@ -1,7 +1,8 @@
 import axios from "axios";
 import { GET_ALL_DAFTARJUAL, GET_ALL_WISHLIST, GET_ALL_TERJUAL } from "../type";
+import { API_URL } from "./api";
 
-export const getAllDaftarjual = (data) => {
+export const getAllDaftarjual = () => {
   console.log("2. Masuk Action");
   return (dispatch) => {
     //loading
@@ -19,7 +20,7 @@ export const getAllDaftarjual = (data) => {
     //get API
     axios({
       method: "GET",
-      url: "http://localhost:5000/api/v1/seller/products",
+      url: `${API_URL}/seller/products`,
       timeout: 120000,
        // withCredentials: true,
        headers: {
@@ -55,34 +56,24 @@ export const getAllDaftarjual = (data) => {
   };
 };
 
-export const getAllWishlist = (data) => {
+export const getAllWishlist = () => {
   console.log("2. Masuk Action");
   return (dispatch) => {
-    //loading
-    dispatch({
-      type: GET_ALL_WISHLIST,
-      payload: {
-        loading: true,
-        data: false,
-        errorMessage: false      
-      }
-    })
 
     const token = localStorage.getItem('accessToken')
 
     //get API
     axios({
       method: "GET",
-      url: "http://localhost:5000/api/v1/seller/wishlist/list",
+      url: `${API_URL}/seller/wishlist/list`,
       timeout: 120000,
        // withCredentials: true,
        headers: {
-        'Content-Type': 'multipart/form-data',
         'Authorization': `Bearer ${token}`
       },
     })
       .then((response) => {
-        console.log("3. berhasil dapat data: ", response.data.data)
+        console.log("3. berhasil dapat data: ", response.data)
         //berhasil get API
         dispatch({
           type: GET_ALL_WISHLIST,
@@ -110,7 +101,7 @@ export const getAllWishlist = (data) => {
 };
 
 
-export const getAllTerjual = (data) => {
+export const getAllTerjual = () => {
   console.log("2. Masuk Action");
   return (dispatch) => {
     //loading
@@ -128,7 +119,7 @@ export const getAllTerjual = (data) => {
     //get API
     axios({
       method: "GET",
-      url: "http://localhost:5000/api/v1/transaction/seller",
+      url: `${API_URL}/transaction/seller`,
       timeout: 120000,
        // withCredentials: true,
        headers: {

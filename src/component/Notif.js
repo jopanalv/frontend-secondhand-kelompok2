@@ -17,7 +17,7 @@ const Notif = () => {
     return (
         <>
             {getNotifSellerResult !== null ? (
-                getNotifSellerResult.map((notif) => (
+                getNotifSellerResult && getNotifSellerResult.map((notif) => (
                     <Link to={`/info-penawaran/${notif.id}`}>
                     <div className='container'>
                         <div className="list">

@@ -42,6 +42,9 @@ export const updateProfile = (data) => {
         let user = JSON.parse(serializedData);
 
         user.data.Profile.image = res.data.data.image;
+        user.data.Profile.city = res.data.data.city;
+        user.data.Profile.address = res.data.data.address;
+        user.data.Profile.no_hp = res.data.data.no_hp;
         localStorage.setItem("user", JSON.stringify(user));
 
         toast(`${res.data.message}`, 3000);
