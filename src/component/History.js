@@ -2,9 +2,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getNotifSeller } from '../redux/action/notifAction';
-import {IMG_URL} from "../redux/action/api";
 
-const Notif = () => {
+const History = () => {
     const dispatch = useDispatch();
 
     const { getNotifSellerResult, getNotifSellerLoading, getNotifSellerError } = useSelector(state => state.notif)
@@ -23,7 +22,7 @@ const Notif = () => {
                     <div className='container'>
                         <div className="list">
                             <div className="notif">
-                                <img src={`${IMG_URL}`+notif.Product.image} className='notif-img' />
+                                <img src={`http://localhost:5000/upload/images/${notif.Product.image}`} className='notif-img' />
                                 <div className="notif-text">
                                     <div className="notif-ket">
                                         <span className='notif-ket-txt1'>Penawaran produk</span>
@@ -49,4 +48,4 @@ const Notif = () => {
     );
 };
 
-export default Notif;
+export default History;

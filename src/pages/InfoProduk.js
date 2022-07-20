@@ -7,63 +7,78 @@ import { useDropzone } from "react-dropzone";
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../redux/action/addProduct";
-import {useNavigate} from "react-router-dom";
+import { categoryList } from "../redux/action/productActions";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 export default function InfoProduk() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const productInfo = useSelector(state => state.addProduct)
+  const { categoryResult } = useSelector((state) => state.product);
 
-  const [name, setName] = useState("")
-  const [price, setPrice] = useState("")
-  const [category, setCategory] = useState("")
-  const [desc, setDesc] = useState("")
-  const [image, setImage] = useState([])
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+  const [category, setCategory] = useState("");
+  const [desc, setDesc] = useState("");
+  const [image, setImage] = useState([]);
 
-  const onDrop = useCallback(acceptedFiles => {
-    setImage(acceptedFiles.map(file => Object.assign(file, {
-      preview: URL.createObjectURL(file)
-    })));
+  const onDrop = useCallback((acceptedFiles) => {
+    setImage(
+      acceptedFiles.map((file) =>
+        Object.assign(file, {
+          preview: URL.createObjectURL(file),
+        })
+      )
+    );
   }, []);
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   const selected_images = image?.map((file) => (
     <div key={file.lastModified}>
-      <img src={file.preview} alt="foto profile" style={{ width: "8em", height: "8em" }} />
+      <img
+        src={file.preview}
+        alt="foto profile"
+        style={{ width: "8em", height: "8em" }}
+      />
     </div>
   ));
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    const formData = new FormData()
-    formData.append('name', name)
-    formData.append('price', price)
-    formData.append('category', category)
-    formData.append('description', desc)
-    formData.append('image', image[0])
-    dispatch(addProduct(formData))
-
-  console.log(productInfo)
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("price", price);
+    formData.append("category", category);
+    formData.append("description", desc);
+    formData.append("image", image[0]);
+    dispatch(addProduct(formData));
 
     // setName("")
     // setPrice("")
     // setCategory("")
     // setDesc("")
     // setImage([])
-  }
+  };
 
-  const gambar = image[0]
+  const gambar = image[0];
 
   const productDetail = {
-    name, price, category, desc, gambar
-  }
+    name,
+    price,
+    category,
+    desc,
+    gambar,
+  };
 
   const handlePreview = () => {
-    navigate('/seller/preview', { state: {productDetail} })
-  }
+    navigate("/seller/preview", { state: { productDetail } });
+  };
+
+  useEffect(() => {
+    dispatch(categoryList());
+  }, []);
 
   return (
     <>
@@ -71,7 +86,9 @@ export default function InfoProduk() {
       <div className="container mt-5" id="info-produk">
         <div className="row justify-content-center">
           <div className="col-lg-1 col-sm-12 mb-1">
-            <Image src={icon_back} />
+            <Link to="/">
+              <Image src={icon_back} />
+            </Link>
           </div>
           <div className="col-lg-11 col-sm-12">
             <form encType="multipart/form-data" onSubmit={handleSubmit}>
@@ -82,7 +99,8 @@ export default function InfoProduk() {
                   className="form-control"
                   placeholder="Nama Produk"
                   name="name"
-                  value={name} onChange={(e) => setName(e.target.value)}
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                 />
               </div>
               <div className="row mb-3">
@@ -92,21 +110,27 @@ export default function InfoProduk() {
                   className="form-control"
                   placeholder="Rp 0,00"
                   name="price"
-                  value={price} onChange={(e) => setPrice(e.target.value)}
+                  value={price}
+                  onChange={(e) => setPrice(e.target.value)}
                 />
               </div>
               <div className="row mb-3">
                 <label className="form-label">Kategori</label>
-                <select className="form-select" name="category"
-                  value={category} onChange={(e) => setCategory(e.target.value)}>
+                <select
+                  className="form-select"
+                  name="category"
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                >
                   <option value="" disabled selected>
                     Pilih Kategori
                   </option>
-                  <option value="0">Hobi</option>
-                  <option value="1">Kendaraan</option>
-                  <option value="2">Baju</option>
-                  <option value="3">Elektronik</option>
-                  <option value="4">Kesehatan</option>
+                  {categoryResult &&
+                    categoryResult.map((cat) => (
+                      <option key={cat.id} value={cat.id}>
+                        {cat.name}
+                      </option>
+                    ))}
                 </select>
               </div>
               <div className="row mb-3">
@@ -117,7 +141,8 @@ export default function InfoProduk() {
                   style={{ paddingBottom: "48px" }}
                   placeholder="Contoh: Jalan Ikan Hiu 33"
                   name="description"
-                  value={desc} onChange={(e) => setDesc(e.target.value)}
+                  value={desc}
+                  onChange={(e) => setDesc(e.target.value)}
                 />
               </div>
               <div className="row mb-3">
@@ -131,24 +156,25 @@ export default function InfoProduk() {
                   <div>
                     <div {...getRootProps()}>
                       <input {...getInputProps()} />
-                      <label className="border ms-3 mt-3">{selected_images}</label>
+                      <label className="border ms-3 mt-3">
+                        {selected_images}
+                      </label>
                     </div>
                   </div>
                 )}
               </div>
               <div className="row mb-3">
                 <div className="col-6 p-0 pe-1">
-                    <button
-                      className="btn btn-outline-primary btn-action "
-                      type="button"
-                      id="preview"
-                      onClick={() => handlePreview()}
-                    >
-                      Preview
-                    </button>
+                  <button
+                    className="btn btn-outline-primary btn-action "
+                    type="button"
+                    id="preview"
+                    onClick={() => handlePreview()}
+                  >
+                    Preview
+                  </button>
                 </div>
                 <div className="col-6 p-0 ps-1">
-                <Link to={`/seller/daftar-jual`}>
                     <button
                       className="btn btn-primary btn-action"
                       type="submit"
@@ -156,7 +182,6 @@ export default function InfoProduk() {
                     >
                       Terbitkan
                     </button>
-                  </Link>  
                 </div>
               </div>
             </form>

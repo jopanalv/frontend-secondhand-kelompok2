@@ -12,8 +12,8 @@ import dollarMob from "../assets/images/mobile-fi_dollar-sign.png"
 import loveMob from "../assets/images/mobile-fi_heart.png"
 import { useDispatch, useSelector } from "react-redux";
 import { getAllDaftarjual } from "../redux/action/daftarjualActions";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import { IMG_URL } from "../redux/action/api";
 
 function Jual() {
 
@@ -77,33 +77,6 @@ function Jual() {
             <div className="daftar-jual">
 
                 <div className="frame-165">
-                    {/* <div className="frame-150">
-                        <div className="group3">
-                            <img src={plus} className="fi-plus" />
-                            <span className="group3-txt">Tambah Produk</span>
-                        </div>    
-                    </div>
-                    <div className="card">
-                        <img className="foto-barang" />
-                        <div className="frame-149">
-                            <div className="informasi-barang">
-                                <span className="nama-barang">Jam Tangan Casio</span>
-                                <span className="jenis-barang">Aksesoris</span>
-                            </div>
-                            <span className="harga-barang">Rp 250.000</span>
-                        </div>    
-                    </div> */}
-                    
-                    {/* <div className="card">
-                        <img className="foto-barang" />
-                        <div className="frame-149">
-                            <div className="informasi-barang">
-                                <span className="nama-barang">Jam Tangan Casio</span>
-                                <span className="jenis-barang">Aksesoris</span>
-                            </div>
-                            <span className="harga-barang">Rp 250.000</span>
-                        </div>    
-                    </div> */}
 
                     <Link to={`/info-produk`}>
                     <div className="col-md-3 col-sm-6 py-3 my-3 card3 border-1">
@@ -123,7 +96,7 @@ function Jual() {
                     <div className="col-md-3 col-sm-6 py-3 my-3 card3 border-1" key={Product.id}>
                         
                         <Link to={`/seller/edit-products/` + Product.id}>
-                        <img src={`http://localhost:5000/upload/images/` + Product.image} className="foto-barang" />
+                        <img src={`${IMG_URL}` + Product.image} className="foto-barang" />
                         {/* <img src={barang} className="foto-barang" /> */}
                         <div className="frame-149">
                             <div className="informasi-barang">
