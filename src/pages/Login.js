@@ -9,7 +9,6 @@ import toast from "react-simple-toasts";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const { isAuthenticated, user, error } = useSelector((state) => state.login);
 

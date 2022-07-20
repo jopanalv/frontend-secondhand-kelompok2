@@ -45,6 +45,7 @@ const Register = () => {
               placeholder="Nama Lengkap"
               value={user.name}
               onChange={(e) => setUser({ ...user, name: e.target.value })}
+              required
             />
           </div>
 
@@ -56,6 +57,7 @@ const Register = () => {
               placeholder="Contoh: johndee@gmail.com"
               value={user.email}
               onChange={(e) => setUser({ ...user, email: e.target.value })}
+              required
             />
           </div>
 
@@ -67,6 +69,7 @@ const Register = () => {
               placeholder="Masukkan password"
               value={user.password}
               onChange={(e) => setUser({ ...user, password: e.target.value })}
+              required
             />
             <div id="toggle-regis" onclick="showHide();"></div>
           </div>
@@ -78,6 +81,7 @@ const Register = () => {
               name="role"
               value={user.role}
               onChange={(e) => setUser({ ...user, role: e.target.value })}
+              required
             >
               <option value="" disabled selected>
                 Pilih Role

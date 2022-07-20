@@ -7,18 +7,18 @@ import { useDropzone } from "react-dropzone";
 import React, { useCallback, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editProduct, deleteProduct } from "../redux/action/editProduct";
-import { getAllDaftarjual } from "../redux/action/daftarjualActions";
-import {useNavigate} from "react-router-dom";
-import { Link } from "react-router-dom";
-import product from "../redux/reducer/EditProduct";
+import { useNavigate } from "react-router-dom";
 import { addSearch } from "../slice/searchingSlice";
 import { useParams } from 'react-router-dom';
+import { categoryList } from "../redux/action/productActions";
 
 function EditProduk() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { id } = useParams();
+
+  const { categoryResult } = useSelector((state) => state.product);
 
   const [name, setName] = useState("")
   const [price, setPrice] = useState("")
@@ -42,9 +42,12 @@ function EditProduk() {
     </div>
   ));
 
-//   useEffect(() => {
-//     dispatch(getAllDaftarjual(id));
-// }, []);
+  //   useEffect(() => {
+  //     dispatch(getAllDaftarjual(id));
+  // }, []);
+  useEffect(() => {
+    dispatch(categoryList());
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -56,27 +59,27 @@ function EditProduk() {
     formData.append('image', image[0])
     dispatch(editProduct(formData, id))
 
-    navigate('/seller/daftar-jual', {replace: true})
+    navigate('/seller/daftar-jual', { replace: true })
   }
 
   const handleDelete = (id) => {
     if (window.confirm("Are you sure You want to delete?"));
     dispatch(deleteProduct(id));
-    navigate('/seller/daftar-jual', {replace: true})
-}
+    navigate('/seller/daftar-jual', { replace: true })
+  }
 
-const handleSearch = () => {
-  dispatch(
-    addSearch(searching)
-  )
-}
+  const handleSearch = () => {
+    dispatch(
+      addSearch(searching)
+    )
+  }
 
-useEffect(() => {
-  handleSearch();
-  //panggil action
-  console.log("1. use effect component did mount");
-  dispatch(editProduct(id));
-}, [dispatch, id]);
+  useEffect(() => {
+    handleSearch();
+    //panggil action
+    console.log("1. use effect component did mount");
+    dispatch(editProduct(id));
+  }, [dispatch, id]);
 
   return (
     <>
@@ -150,25 +153,25 @@ useEffect(() => {
                 )}
               </div>
               <div className="row mb-3">
-            <div className="col-6 p-0 pe-1">
-                    <button
-                      className="btn btn-outline-danger btn-action "
-                      type="button"
-                      id="delete"
-                      onClick={() => handleDelete(id)}
-                    >
-                      Delete
-                    </button>
+                <div className="col-6 p-0 pe-1">
+                  <button
+                    className="btn btn-outline-danger btn-action "
+                    type="button"
+                    id="delete"
+                    onClick={() => handleDelete(id)}
+                  >
+                    Delete
+                  </button>
                 </div>
                 <div className="col-6 p-0 ps-1">
-                {/* <Link to={`/seller/daftar-jual`}> */}
-                    <button
-                      className="btn btn-primary btn-action"
-                      type="submit"
-                      id="save"
-                    >
-                      Simpan
-                    </button>
+                  {/* <Link to={`/seller/daftar-jual`}> */}
+                  <button
+                    className="btn btn-primary btn-action"
+                    type="submit"
+                    id="save"
+                  >
+                    Simpan
+                  </button>
                   {/* </Link>   */}
                 </div>
               </div>

@@ -1,4 +1,3 @@
-import { Product } from "../component";
 import Navbar from "../component/Navbar1";
 import gambar from "../assets/images/car01.min.jpg";
 import gambar2 from "../assets/images/Group 33.png";

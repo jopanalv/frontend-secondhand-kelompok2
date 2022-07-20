@@ -3,26 +3,36 @@ import box from "../assets/images/fi_box.png";
 import chevronRight from "../assets/images/fi_chevron-right.png";
 import dollar from "../assets/images/fi_dollar-sign.png";
 import love from "../assets/images/Vector.png";
-import divider from "../assets/images/divider.png";
-import DiminatiNot from "../assets/images/Group 33.png";
 // mobile icon kategori
 import boxMob from "../assets/images/mobile-fi_box.png";
 import dollarMob from "../assets/images/mobile-fi_dollar-sign.png";
 import loveMob from "../assets/images/mobile-fi_heart.png";
 import { getAllWishlist } from "../redux/action/daftarjualActions";
+import { categoryList, getAllProduct } from "../redux/action/productActions";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { IMG_URL } from "../redux/action/api";
 
 const Diminati = () => {
   const { getAllWishlistResult, getAllWishlistLoading, getAllWishlistError } =
     useSelector((state) => state.daftarjualReducer);
+  const {
+    categoryResult,
+  } = useSelector((state) => state.product);
 
   const dispatch = useDispatch();
+
+  const kategori = [];
+
+  if (categoryResult !== null) {
+    kategori.push(...categoryResult);
+  }
 
   useEffect(() => {
     //panggil action
     console.log("1. use effect component did mount");
     dispatch(getAllWishlist());
+    dispatch(categoryList());
   }, [dispatch]);
 
   return (
@@ -81,7 +91,7 @@ const Diminati = () => {
                   <Link to={`/transaction/detail/` + wishlist.Product.id}>
                     <img
                       src={
-                        `http://localhost:5000/upload/images/` +
+                        `${IMG_URL}` +
                         wishlist.Product.image
                       }
                       className="foto-barang"
@@ -91,7 +101,10 @@ const Diminati = () => {
                       <div className="informasi-barang">
                         <div className="nama-barang">{Product.name}</div>
                         <div className="jenis-barang">
-                          {wishlist.Product.CategoryId}
+                          {kategori[wishlist.Product.CategoryId - 1] &&
+                            kategori[wishlist.Product.CategoryId - 1]
+                            ? kategori[wishlist.Product.CategoryId - 1].name
+                            : "tidak ada"}
                         </div>
                       </div>
                       <div className="harga-barang">
@@ -104,21 +117,21 @@ const Diminati = () => {
             );
           })
         ) : // Opsi kedua
-        getAllWishlistLoading ? (
-          <p>Loading ...</p>
-        ) : (
-          // Opsi ketiga
-          <div className="group34">
-            {getAllWishlistError ? (
-              getAllWishlistError
-            ) : (
-              <span className="diminati-txt">
-                Belum ada produkmu yang diminati nih, sabar ya rejeki nggak
-                kemana kok
-              </span>
-            )}
-          </div>
-        )}
+          getAllWishlistLoading ? (
+            <p>Loading ...</p>
+          ) : (
+            // Opsi ketiga
+            <div className="group34">
+              {getAllWishlistError ? (
+                getAllWishlistError
+              ) : (
+                <span className="diminati-txt">
+                  Belum ada produkmu yang diminati nih, sabar ya rejeki nggak
+                  kemana kok
+                </span>
+              )}
+            </div>
+          )}
       </div>
     </div>
   );

@@ -3,17 +3,14 @@ import { Modal, Form } from "react-bootstrap";
 import { Image } from 'react-bootstrap';
 import back from '../assets/images/fi_arrow-left.png'
 import Navigasi from '../component/Navbar1';
-import Alert from '../component/Alert_produk';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
-import { connect } from "react-redux";
 import { Container } from "react-bootstrap";
 import { getSelectedProduct, buyProduct, categoryList } from "../redux/action/productActions";
 import "../assets/style2.css"
-import { addUser } from "../slice/userSlice";
 import { addSearch } from "../slice/searchingSlice";
 import { addWishlist } from "../redux/action/wishlistAction";
+import { IMG_URL } from '../redux/action/api';
 
 const DetailProduk_buyer = () => {
 
@@ -43,7 +40,7 @@ const DetailProduk_buyer = () => {
     e.preventDefault()
     dispatch(addWishlist(id))
   }
-  
+
 
   useEffect(() => {
     handleSearch();
@@ -53,7 +50,7 @@ const DetailProduk_buyer = () => {
     dispatch(categoryList());
   }, [dispatch, id]);
 
-  const {categoryResult} = useSelector(state => state.product)
+  const { categoryResult } = useSelector(state => state.product)
   const product = useSelector(state => state.product)
   const productInfo = product.getSelectedProductResult
 
@@ -70,13 +67,13 @@ const DetailProduk_buyer = () => {
         <div className="container1 mx-5 py-3 justify-content-center align-item-center" id="produk-seller" key={productInfo.id}>
           <a href="/"><Image src={back} className='kembali position-absolute' /></a>
           <div className='box_image'>
-            <Image src={`http://localhost:5000/upload/images/` + productInfo.image} className="detail_gambar" alt="detail_gambar" />
+            <Image src={`${IMG_URL}` + productInfo.image} className="detail_gambar" alt="detail_gambar" />
           </div>
 
           <div className='card-body'>
             <div className="card-body-produk px-3">
               <h5 className="card-title fw-bold">{productInfo.name}</h5>
-              <p className="card-text">{kategori[productInfo.CategoryId] && kategori[productInfo.CategoryId] ? kategori[productInfo.CategoryId-1].name : 'tidak ada'}</p>
+              <p className="card-text">{kategori[productInfo.CategoryId - 1] && kategori[productInfo.CategoryId - 1] ? kategori[productInfo.CategoryId - 1].name : 'tidak ada'}</p>
               <p className="card-text-2 fw-bold">Rp {productInfo.price}</p>
               <div class="d-grid gap-2">
                 <button class="btn_teks btn1 text-white" type="button" onClick={handleShow}>Saya Tertarik dan Ingin Nego</button>
@@ -94,7 +91,7 @@ const DetailProduk_buyer = () => {
                 <div className="col-2 align-self-center">
                   <Image
                     className="rounded img-responsive center-block img-fluid gbr-seller"
-                    src={`http://localhost:5000/upload/images/` + productInfo.sellerImage}
+                    src={`${IMG_URL}` + productInfo.sellerImage}
                   />
                 </div>
                 <div className="col-8">
@@ -137,7 +134,7 @@ const DetailProduk_buyer = () => {
                 <div className="col-2 align-self-center">
                   <Image
                     className="rounded center-block gbr-seller"
-                    src={`http://localhost:5000/upload/images/` + productInfo.image}
+                    src={`${IMG_URL}` + productInfo.image}
                   />
                 </div>
                 <div className="col-8">

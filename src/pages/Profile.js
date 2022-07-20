@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "../assets/style.css";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { IMG_URL } from "../redux/action/api";
 
 function Profile() {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ function Profile() {
   const [no_hp, setNo_hp] = useState(`${user.data.Profile.no_hp ?? ""}`);
   const previewImage =
     user.data.Profile.image !== null
-      ? "http://localhost:5000/upload/images/" + user.data.Profile.image
+      ? `${IMG_URL}` + user.data.Profile.image
       : null;
   const [image, setImage] = useState([]);
 

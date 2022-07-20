@@ -33,10 +33,10 @@ function App() {
             path="/buyer/detail-produk/:id"
             element={<DetailProduk_buyer />}
           />
-          <Route
+          {/* <Route
             path="/seller/detail-produk/:id"
             element={<DetailProduk_seller />}
-          />
+          /> */}
           <Route path="/seller/preview" element={<DetailProduk_seller />} />
           <Route path="/seller/daftar-jual" element={<DafJual />} />
           <Route
