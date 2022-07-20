@@ -5,9 +5,10 @@ import LoginReducer from "./Login";
 import AddProductReducer from "./AddProduct";
 import EditProductReducer from "./EditProduct";
 import ProductReducer from "./Product";
-import daftarjualReducer from "./DaftarJual"
+import daftarjualReducer from "./DaftarJual";
 import NotifReducer from "./Notif";
-import TransReducer from "./Transaction"
+import TransReducer from "./Transaction";
+import WishlistReducer from "./Wishlist";
 
 export default combineReducers({
   profile: ProfileReducer,
@@ -19,5 +20,6 @@ export default combineReducers({
   transaction: TransReducer,
   editProduct: EditProductReducer,
   deleteProduct: EditProductReducer,
-  daftarjualReducer
+  daftarjualReducer,
+  wishlist: WishlistReducer,
 });

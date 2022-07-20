@@ -1,24 +1,24 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getNotifBuyer } from '../redux/action/notifAction';
+import { getNotifSeller } from '../redux/action/notifAction';
 
-const NotifBuyer = () => {
+const History = () => {
     const dispatch = useDispatch();
 
+    const { getNotifSellerResult, getNotifSellerLoading, getNotifSellerError } = useSelector(state => state.notif)
+
     useEffect(() => {
-        dispatch(getNotifBuyer())
+        dispatch(getNotifSeller())
     }, [dispatch])
 
-    const { getNotifBuyerResult, getNotifBuyerLoading, getNotifBuyerError } = useSelector(state => state.notif)
-
-    console.log(getNotifBuyerResult)
+    console.log(getNotifSellerResult)
 
     return (
         <>
-            {getNotifBuyerResult !== null ? (
-                getNotifBuyerResult && getNotifBuyerResult.map((notif) => (
-                    <Link to={''}>
+            {getNotifSellerResult !== null ? (
+                getNotifSellerResult && getNotifSellerResult.map((notif) => (
+                    <Link to={`/info-penawaran/${notif.id}`}>
                     <div className='container'>
                         <div className="list">
                             <div className="notif">
@@ -29,24 +29,23 @@ const NotifBuyer = () => {
                                         <span className='notif-ket-txt2'>{notif.createdAt}</span>
                                     </div>
                                     <span className='notif-txt1'>{notif.Product.name}</span>
-                                    <span className='notif-txt1 text-decoration-line-through'>Rp {notif.Product.price}</span>
-                                    <span className='notif-txt1'>Berhasil Ditawar Rp {notif.offer_price}</span>
-                                    <span className='notif-txt1 text-secondary'>Kamu akan segera dihubungi penjual via whatsapp</span>
+                                    <span className='notif-txt1'>Rp {notif.Product.price}</span>
+                                    <span className='notif-txt1'>Ditawar Rp {notif.offer_price}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     </Link>
                 ))
-            ) : getNotifBuyerLoading ? (
-                <p>Loading...</p>
-            ) : getNotifBuyerError !== null ? (
-                <div className='container'>{getNotifBuyerError}</div>
-            ) : (
-                <div className='container'>Notif tidak ada</div>
-            )}
+                ) : getNotifSellerLoading ? (
+                    <p>Loading...</p>
+                ) : getNotifSellerError !== null ? (
+                    <div className='container'>{getNotifSellerError}</div>
+                ) : (
+                    <div className='container'>Notif tidak ada</div>
+                )}
         </>
     );
 };
 
-export default NotifBuyer;
+export default History;

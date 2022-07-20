@@ -1,6 +1,6 @@
 import axios from "axios";
 import toast from "react-simple-toasts";
-import { GET_ALL_PRODUCT, GET_SELECTED_PRODUCT, GET_PRODUCT_SELLER, BUY_PRODUCT } from "../type";
+import { GET_ALL_PRODUCT, GET_SELECTED_PRODUCT, GET_PRODUCT_SELLER, BUY_PRODUCT, ALL_CATEGORIES } from "../type";
 import { API_URL } from "./api";
 
 export const getAllProduct = () => {
@@ -188,3 +188,24 @@ export const buyProduct = (data) => {
       })
   };
 };
+
+export const categoryList = () => {
+  return (dispatch) => {
+    axios({
+      method: "GET",
+      url: `${API_URL}/category/list`,
+    })
+    .then((response) => {
+      dispatch({
+        type: ALL_CATEGORIES,
+        payload: response.data
+      })
+    })
+    .catch((error) => {
+      dispatch({
+        type: ALL_CATEGORIES,
+        payload: error.message
+      })
+    })
+  }
+}

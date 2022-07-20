@@ -9,571 +9,213 @@ body {
   margin: auto;
 }
 
-  /* NAVBAR */
-  .navbar-judul{
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-  }
-  #title {
-    font-size: 16px;
-    text-align: center;
-    font-weight: 400;
-    font-size: 16px;
-    font-weight: 400;
-    float: none;
-    position: absolute;
-    /* margin-left: 50%;
-    margin-right: 50%; */
-    margin-left: 500px;
-    margin-top: -30px;
-  }
+/* navbar judul saja */
+#title {
+  font-size: 16px;
+  float: none;
+  position: absolute;
+  top: 5%;
+  left: 40%;
+  transform: translate(-30%, -70%);
+}
 
-  .frame-search {
+.frame-search {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 12px 24px;
+  gap: 16px;
+  position: absolute;
+  width: 444px;
+  height: 48px;
+  left: 260px;
+  top: 14px;
+  background: #EEEEEE;
+  border-radius: 16px;
+}
+
+.text-search {
+  font-size: 14px;
+  color: #8A8A8A;
+}
+
+
+
+.fi-list {
+  width: 24px;
+  height: 24px;
+}
+
+.fi-bell {
+  width: 24px;
+  height: 24px;
+}
+
+.fi-user {
+  width: 24px;
+  height: 24px;
+}
+
+/* notifikasi */
+.notif-txt {
+  position: absolute;
+  width: 98px;
+  height: 30px;
+  left: 80px;
+  top: 45px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  color: #000000;
+}
+.list-notifikasi {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  gap: 16px;
+  position: absolute;
+  left: 904px;
+  top: 70px;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+  z-index: 1000; /* biar notif ga ketumpuk */
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+} 
+.list2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 16px;
+  width: 328px;
+  height: 86px;
+}   
+.notif {
+  display: flex;
+  gap: 16px;
+}
+.notif-img {
+  width: 48px;
+  height: 48px;
+  background: url(./images/Rectangle23.png), #EEEEEE;
+  border-radius: 12px;
+}
+.notif-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.notif-ket {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 264px;
+  height: 14px;
+}
+.notif-ket-txt1 {
+  font-size: 10px;
+  color: #8A8A8A;
+  flex-grow: 1;
+}
+.notif-ket-txt2 {
+  font-size: 10px;
+  line-height: 14px;
+  color: #8A8A8A;
+}
+.notif-ket-ellipse {
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+}
+.notif-txt1 {
+  font-size: 14px;
+  line-height: 20px;
+  color: #000000;
+}
+
+
+/* LOGIN */
+.img {
+  position: absolute;
+  width: 600px;
+  height: 670px;
+  left: 0px;
+  top: 0px;
+}
+.form-title {
+  position: absolute;
+  left: 750px;
+  top: 100px;
+  font-size: 24px;
+}
+.form {
+  position: absolute;
+  width: 452px;
+  left: 750px;
+  top: 150px;
+}
+.input1 {
+  height: 70px;
+}
+#toggle{
+  position: absolute;
+  top: 108px;
+  right: 17px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background: url(./images/fi_eye.png);
+  background-size: cover;
+  cursor: pointer;
+}
+.button {
+  width: 452px;
+  height: 40px;
+  background: #7126B5;
+  border-radius: 16px;
+  border-color: #7126B5;
+}
+.text {
+  font-size: 14px;
+  text-align: center;
+  color: #FFFFFF;
+}
+.frame {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 12px 24px;
-    gap: 16px;
-
-    position: absolute;
-    width: 444px;
-    height: 48px;
-    left: 260px;
-    top: 14px;
-
-    background: #EEEEEE;
-    border-radius: 16px;
-  }
-
-  .text-search {
-    width: 356px;
-    height: 20px;
-
-    /* Body/14/Regular */
-
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-    /* identical to box height, or 143% */
-
-    color: #8A8A8A;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 1;
-  }
-
-  .frame-158 {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 24px;
-
-    position: absolute;
-    width: 120px;
-    height: 24px;
-    left: 1184px;
-    top: 30px;
-  }
-
-  .fi-list {
-    width: 24px;
-    height: 24px;
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-  }
-
-  .fi-bell {
-    width: 24px;
-    height: 24px;
-
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-  }
-
-  .fi-user {
-    width: 24px;
-    height: 24px;
-
-    flex: none;
-    order: 2;
-    flex-grow: 0;
-  }
-
-  /* notifikasi */
-  .notif-txt {
-    position: absolute;
-    width: 98px;
-    height: 30px;
-    left: 80px;
-    top: 45px;
-
-    /* Heading/20/Bold */
-
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 30px;
-    /* identical to box height, or 150% */
-
-    color: #000000;
-  }
-
-  .list-notifikasi {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 24px;
-    gap: 16px;
-
-    position: absolute;
-    width: 376px;
-    height: 229px;
-    left: 904px;
-    top: 70px;
-
-    /* Neutral/01 */
-
-    background: #FFFFFF;
-    /* Shadow/High */
-
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
-    border-radius: 16px;
-    z-index: 1000; /* biar notif ga ketumpuk */
-  }
-
-  .list {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 16px;
-
-    width: 328px;
-    height: 86px;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-  } 
-  .list2 {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 16px;
-
-    width: 328px;
-    height: 86px;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-  }   
-
-  .notif {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 16px;
-
-    width: 328px;
-    height: 86px;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-  }
-
-  .notif-img {
-    width: 48px;
-    height: 48px;
-
-    background: url(./images/Rectangle23.png), #EEEEEE;
-    border-radius: 12px;
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-  }
-
-  .notif-text {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 4px;
-
-    width: 264px;
-    height: 86px;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 1;
-    flex-grow: 1;
-  }
-
-  .notif-ket {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
     padding: 0px;
     gap: 8px;
-
-    width: 264px;
-    height: 14px;
-
-    flex: none;
-    order: 0;
-    align-self: stretch;
-    flex-grow: 0;
-  }
-
-  .notif-ket-txt1 {
-    width: 179px;
-    height: 14px;
-
-    /* Body/10/Regular */
-
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 10px;
-    line-height: 14px;
-    /* identical to box height, or 140% */
-
-
-    /* Neutral/03 */
-
-    color: #8A8A8A;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 1;
-  }
-
-  .notif-ket-txt2 {
-    width: 61px;
-    height: 14px;
-
-    /* Body/10/Regular */
-
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 10px;
-    line-height: 14px;
-
-    /* Neutral/03 */
-
-    color: #8A8A8A;
-
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-  }
-
-  .notif-ket-ellipse {
-    flex: none;
-    order: 2;
-    flex-grow: 0;
-  }
-  
-  .notif-txt1 {
-    width: 264px;
-    height: 20px;
-
-    /* Body/14/Regular */
-
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-    /* identical to box height, or 143% */
-
-    color: #000000;
-    /* Inside auto layout */
-
-    flex: none;
-    order: 1;
-    align-self: stretch;
-    flex-grow: 0;
-  }
-
-
-  /* LOGIN */
-
-  .img {
     position: absolute;
-    width: 750px;
-    height: 670px;
-    left: 0px;
-    top: 0px;
-  }
+    left: 23%;
+    top: 200px;
+}
 
-  .form-title {
-    position: absolute;
-    width: 83px;
-    height: 36px;
-    left: 850px;
-    top: 100px;
-
-    /* Heading/24/Bold */
-
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 36px;
-    /* identical to box height, or 150% */
-
-
-    color: #000000;
-  }
-
-  .form {
+/* REGISTER */
+.frame-regis {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
     padding: 0px;
-    gap: 16px;
-
-    position: absolute;
-    width: 452px;
-    height: 228px;
-    left: 850px;
-    top: 150px;
-  }
-
-  .input1 {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 4px;
-
-    width: 452px;
-    height: 70px;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    align-self: stretch;
-    flex-grow: 0;
-  }
-
-  .label1 {
-    width: 33px;
-    height: 18px;
-
-    /* Body/12/Regular */
-
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 18px;
-    /* identical to box height, or 150% */
-
-
-    color: #000000;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-  }
-
-  .email {
-    box-sizing: border-box;
-
-    /* Auto layout */
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 12px 16px;
-    gap: 16px;
-
-    width: 452px;
-    height: 48px;
-
-    background: #FFFFFF;
-    /* Neutral/02 */
-
-    border: 1px solid #D0D0D0;
-    border-radius: 16px;
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 1;
-    align-self: stretch;
-    flex-grow: 0;
-  }
-  
-  #toggle{
-    position: absolute;
-    top: 132px;
-    right: 17px;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
-    background: url(./images/fi_eye.png);
-    background-size: cover;
-    cursor: pointer;
-  }
-
-  #toggle-regis{
-    position: absolute;
-    top: 217px;
-    right: 17px;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
-    background: url(./images/fi_eye.png);
-    background-size: cover;
-    cursor: pointer;
-  }
-
-  .button-wrapper {
-    /* Auto layout */
-
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 8px 0px 0px;
     gap: 8px;
-
-    width: 452px;
-    height: 56px;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 2;
-    flex-grow: 0;
-  }
-
-  .button {
-    /* Auto layout */
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 12px 24px;
-    gap: 4px;
-
-    width: 452px;
-    height: 48px;
-
-    /* Primary/Purple/04 */
-
-    background: #7126B5;
-    border-radius: 16px;
-    border-color: #7126B5;
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-  }
-
-  .text {
-    width: 404px;
-    height: 20px;
-
-    /* Body/14/Medium */
-
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 20px;
-    /* identical to box height, or 143% */
-
-    text-align: center;
-
-    /* Neutral/01 */
-
-    color: #FFFFFF;
+    position: absolute;
+    left: 23%;
+    top: 430px;
+}
+#toggle-regis{
+  position: absolute;
+  top: 178px;
+  right: 17px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background: url(./images/fi_eye.png);
+  background-size: cover;
+  cursor: pointer;
+}
 
 
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 1;
-  }
-
-    .frame {
-        /* Auto layout */
-
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        padding: 0px;
-        gap: 8px;
-
-        position: absolute;
-        width: 238px;
-        height: 20px;
-        left: 23%;
-        top: 280px;
-
-    }
-
-    .frame-regis {
-        /* Auto layout */
-
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        padding: 0px;
-        gap: 8px;
-
-        position: absolute;
-        width: 250px;
-        height: 20px;
-        left: 23%;
-        top: 430px;
-
-    }
 
     .txt1 {
         width: 140px;
@@ -698,57 +340,35 @@ body {
     height: 30px;
     left: 236px;
     top: 124px;
-
-    /* Heading/20/Bold */
-
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 700;
     font-size: 20px;
     line-height: 30px;
-    /* identical to box height, or 150% */
-
-    color: #000000;
   }
 
   .penjual {
-    /* Auto layout */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 16px;
     gap: 10px;
-
     position: absolute;
     width: 968px;
     height: 80px;
     left: 236px;
     top: 178px;
-
-    /* Neutral/01 */
-
     background: #FFFFFF;
-    /* Shadow/Low */
-
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
     border-radius: 16px;
   }
 
   .frame-138 {
-    /* Auto layout */
-
     display: flex;
     flex-direction: row;
     align-items: center;
     padding: 0px;
     gap: 16px;
-
     width: 936px;
     height: 48px;
-
-
-    /* Inside auto layout */
-
     flex: none;
     order: 0;
     align-self: stretch;
@@ -758,19 +378,16 @@ body {
   .foto-penjual {
     width: 48px;
     height: 48px;
+
+    background: url(./images/foto_penjual.png);
     border-radius: 12px;
-
-    /* Inside auto layout */
-
     flex: none;
     order: 0;
     flex-grow: 0;
   }
 
   .frame-137 {
-    /* Auto layout */
-
-    display: flex;
+  display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 0px;
@@ -778,10 +395,6 @@ body {
 
     width: 809px;
     height: 38px;
-
-
-    /* Inside auto layout */
-
     flex: none;
     order: 1;
     flex-grow: 1;
@@ -790,20 +403,9 @@ body {
   .nama-penjual {
     width: 809px;
     height: 20px;
-
-    /* Body/14/Medium */
-
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 500;
     font-size: 14px;
     line-height: 20px;
-    /* identical to box height, or 143% */
-
-    color: #000000;
-
-    /* Inside auto layout */
-
     flex: none;
     order: 0;
     align-self: stretch;
@@ -813,24 +415,10 @@ body {
   .kota {
     width: 809px;
     height: 14px;
-
-    /* Body/10/Regular */
-
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 400;
     font-size: 10px;
     line-height: 14px;
-    /* identical to box height, or 140% */
-
-
-    /* Neutral/03 */
-
     color: #8A8A8A;
-
-
-    /* Inside auto layout */
-
     flex: none;
     order: 1;
     align-self: stretch;
@@ -839,9 +427,6 @@ body {
 
   .frame-141 {
     box-sizing: border-box;
-
-    /* Auto layout */
-
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -850,17 +435,9 @@ body {
 
     width: 47px;
     height: 26px;
-
-    /* Neutral/01 */
-
     background: #FFFFFF;
-    /* Primary/Purple/04 */
-
     border: 1px solid #7126B5;
     border-radius: 8px;
-
-    /* Inside auto layout */
-
     flex: none;
     order: 2;
     flex-grow: 0;
@@ -869,24 +446,9 @@ body {
   .edit {
     width: 23px;
     height: 18px;
-
-    /* Body/12/Medium */
-
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 500;
     font-size: 12px;
     line-height: 18px;
-    /* identical to box height, or 150% */
-
-
-    /* Neutral/05 */
-
-    color: #151515;
-
-
-    /* Inside auto layout */
-
     flex: none;
     order: 0;
     flex-grow: 0;
@@ -906,8 +468,6 @@ body {
     top: 282px;
 
     background: #FFFFFF;
-    /* Shadow/High */
-
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
     border-radius: 16px;
   }
@@ -915,22 +475,9 @@ body {
   .kategori-title {
     width: 69px;
     height: 24px;
-
-    /* Title/16/Medium */
-
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 500;
     font-size: 16px;
     line-height: 24px;
-    /* identical to box height, or 150% */
-
-
-    color: #000000;
-
-
-    /* Inside auto layout */
-
     flex: none;
     order: 0;
     flex-grow: 0;
@@ -945,9 +492,6 @@ body {
 
     width: 220px;
     height: 152px;
-
-    /* Inside auto layout */
-
     flex: none;
     order: 1;
     flex-grow: 0;
@@ -963,13 +507,7 @@ body {
 
     width: 220px;
     height: 40px;
-
-    /* Neutral/02 */
-
     border-bottom: 1px solid #D0D0D0;
-
-    /* Inside auto layout */
-
     flex: none;
     order: 0;
     flex-grow: 0;
@@ -996,25 +534,11 @@ body {
   .kategori-txt1 {
     width: 156px;
     height: 24px;
-
     text-decoration:none;
-
-    /* Title/16/Medium */
-
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 500;
     font-size: 16px;
     line-height: 24px;
-    /* identical to box height, or 150% */
-
-
-    /* Primary/Purple/04 */
-
     color: #7126B5;
-
-    /* Inside auto layout */
-
     flex: none;
     order: 1;
     flex-grow: 0;
@@ -1029,7 +553,6 @@ body {
     gap: 24px;
 
     position: absolute;
-    /* width: 668px; */
     height: 864px;
     left: 536px;
     top: 282px;
@@ -1053,9 +576,6 @@ body {
 
   .frame-150 {
     box-sizing: border-box;
-
-    /* Auto layout */
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1067,13 +587,8 @@ body {
     height: 198px;
 
     background: #FFFFFF;
-    /* Neutral/02 */
-
     border: 1px dashed #D0D0D0;
     border-radius: 4px;
-
-    /* Inside auto layout */
-
     flex: none;
     order: 0;
     flex-grow: 1;
@@ -1082,9 +597,6 @@ body {
   .group3 {
     width: 140px;
     height: 50px;
-
-    /* Inside auto layout */
-
     flex: none;
     order: 0;
     flex-grow: 0;
@@ -1096,20 +608,10 @@ body {
     height: 18px;
     left: 33.33px;
     top: 102px;
-
-    /* Body/12/Regular */
-
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 400;
     font-size: 12px;
     line-height: 18px;
-    /* identical to box height, or 150% */
-
     text-align: center;
-
-    /* Neutral/03 */
-
     color: #8A8A8A;
   }  
 
@@ -1120,25 +622,6 @@ body {
     left: 91.33px;
     top: 70px;
   }
-
-  /* .card {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 8px 8px 16px;
-    gap: 8px;
-
-    width: 206.67px;
-    height: 198px; 
-
-    background: #FFFFFF;
-
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
-    border-radius: 4px; 
-    flex: none;
-    order: 1;
-    flex-grow: 1;
-  }  */
 
   .card3 {
     margin-right: 30px;
@@ -1154,14 +637,9 @@ body {
   .foto-barang {
     width: 181px;
     height: 100px;
-
     margin-left: 12px;
-
     /* background: url(./images/Rectangle23.png), #EEEEEE; */
     border-radius: 4px;
-
-    /* Inside auto layout */
-
     flex: none;
     order: 0;
     align-self: stretch;
@@ -1169,24 +647,11 @@ body {
   }
 
   .frame-149 {
-    /* display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 8px; */
-
     width: 190.67px;
     height: 66px;
 
     margin-top: 10px;
     margin-left: 15px;
-
-    /* Inside auto layout */
-
-    /* flex: none;
-    order: 1;
-    align-self: stretch;
-    flex-grow: 0; */
   }
 
   .informasi-barang {
@@ -1195,14 +660,9 @@ body {
     align-items: flex-start;
     padding: 0px;
     gap: 4px;
-
     width: 190.67px;
     height: 38px;
-
     margin-bottom: 5px;
-
-    /* Inside auto layout */
-
     flex: none;
     order: 0;
     align-self: stretch;
@@ -1212,20 +672,9 @@ body {
   .nama-barang {
     width: 190.67px;
     height: 20px;
-
-    /* Body/14/Regular */
-
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
-    /* identical to box height, or 143% */
-
-    color: #000000;
-
-    /* Inside auto layout */
-
     flex: none;
     order: 0;
     align-self: stretch;
@@ -1235,22 +684,10 @@ body {
   .jenis-barang {
     width: 190.67px;
     height: 14px;
-
-    /* Body/10/Regular */
-
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 400;
     font-size: 10px;
     line-height: 14px;
-    /* identical to box height, or 140% */
-
-    /* Neutral/03 */
-
     color: #8A8A8A;
-
-    /* Inside auto layout */
-
     flex: none;
     order: 1;
     align-self: stretch;
@@ -1260,20 +697,10 @@ body {
   .harga-barang {
     width: 190.67px;
     height: 20px;
-
-    /* Body/14/Regular */
-
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
-    /* identical to box height, or 143% */
-
     color: #000000;
-
-    /* Inside auto layout */
-
     flex: none;
     order: 1;
     align-self: stretch;
@@ -1304,11 +731,6 @@ body {
       }
 
       #toggle {
-        left: 410px;
-
-    }
-
-    #toggle-regis {
         left: 410px;
 
     }
@@ -1407,11 +829,6 @@ body {
       height: 24px;
       font-size: 20px;
       line-height: 28px;
-    }
-
-    .notif-txt2 {
-      font-size: 5px;
-      color: gray;
     }
 
     .divider {
@@ -1518,24 +935,10 @@ body {
 
       width: 48px;
       height: 20px;
-      
-      /* Body/14/Regular */
-      
-      font-family: 'Poppins';
-      font-style: normal;
       font-weight: 400;
       font-size: 14px;
       line-height: 20px;
-      /* identical to box height, or 143% */
-      
-      
-      /* Neutral/01 */
-      
       color: #FFFFFF;
-      
-      
-      /* Inside auto layout */
-      
       flex: none;
       order: 1;
       flex-grow: 0;
@@ -1584,17 +987,6 @@ body {
     .img {
       display: none;
     }
-
-    #toggle {
-        left: 270px;
-
-    }
-
-    #toggle-regis {
-        left: 270px;
-
-    }
-
     .back {
         padding-top: 20px;
         padding-left: 20px;
@@ -1612,22 +1004,9 @@ body {
         width: 255px;
     }
 
-    .frame-regis {
-        left: 30px;
-    }
-
     .frame {
         left: 30px;
     }
-
-    /* .txt1 .txt2 {
-      margin-top: 60px;
-    } */
-
-    /* .navbar {
-      display: none;
-    } */
-
     .list-notifikasi {
       display: flex;
       flex-direction: column;
@@ -1668,9 +1047,6 @@ body {
       height: 48px;
       left: 16px;
       top: 36px;
-  
-      /* Neutral/01 */
-  
       background: #FFFFFF;
       border-radius: 16px;
     }
@@ -1745,12 +1121,6 @@ body {
       margin-left: -28px;
       margin-top: 10px;
     }
-
-    .card3 {
-      width: 155px;
-      height: 175px;
-    }
-
    .foto-barang {
       width: 132px;
       height: 80px;
@@ -1763,20 +1133,16 @@ body {
       height: 40px;
       left: 8px;
       top: 116px;
-    }
-
-    
+    }    
     .jenis-barang {
       width: 140px;
-      /* left: 8px; */
-      margin-top: -20px;
+
     }
 
     .harga-barang {
       position: absolute;
       width: 140px;
-      /* left: 8px; */
-      margin-top: -1px;
+      margin-top: 19px;
     }
 
     .kategori {
@@ -1808,14 +1174,8 @@ body {
 
       width: 108px;
       height: 44px;
-
-      /* Primary/Purple/04 */
-
       background: #E2D4F0;
       border-radius: 12px;
-
-      /* Inside auto layout */
-
       flex: none;
       order: 0;
       flex-grow: 0;
@@ -1830,24 +1190,10 @@ body {
 
       width: 48px;
       height: 20px;
-      
-      /* Body/14/Regular */
-      
-      font-family: 'Poppins';
-      font-style: normal;
       font-weight: 400;
       font-size: 14px;
       line-height: 20px;
-      /* identical to box height, or 143% */
-      
-      
-      /* Neutral/01 */
-      
       color: #FFFFFF;
-      
-      
-      /* Inside auto layout */
-      
       flex: none;
       order: 1;
       flex-grow: 0;
@@ -1914,20 +1260,10 @@ a {
   height: 40px;
   left: 25px;
   top: 145px;
-
-  /* Body/14/Regular */
-
-  font-family: 'Poppins';
-  font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 20px;
-  /* or 143% */
-
   text-align: center;
-
-  /* Neutral/03 */
-
   color: #8A8A8A;
 }
 
@@ -1940,130 +1276,152 @@ a {
   margin-left: 45px;
 }
 
-/* @media (max-width: 768px) {
-  .daftar-jual {
-    width: 100%;
-    display: block;
-    margin-bottom: 20px;
-  }
-
-} */
-
-
-
 /* profile */
 .container {
-    margin: auto;
+  margin: auto;
 }
 
 .form-control {
-    border-radius: 16px;
+  border-radius: 16px;
 }
 
 .form-select {
-    border-radius: 16px;
+  border-radius: 16px;
 }
 
 ::placeholder {
-    font-size: 14px;
-    color: #8A8A8A;
+  font-size: 14px;
+  color: #8A8A8A;
 }
 
 option[value=""][disabled] {
-    display: none;
+  display: none;
 }
 
 #save {
-    border-color: #7126B5;
-    background: #7126B5;
-    border-radius: 16px;
+  border-color: #7126B5;
+  background: #7126B5;
+  border-radius: 16px;
 }
 
 /* info produk */
 #preview {
-    border-color: #7126B5;
-    border-radius: 16px;
-    color: black;
-}
-
-#delete {
+  border-color: #7126B5;
   border-radius: 16px;
+  color: black;
 }
 
 #preview:hover {
-    background: #7126B5;
-    color: white;
+  background: #7126B5;
+  color: white;
 }
 
 #terbitkan {
-    border-color: #7126B5;
-    background: #7126B5;
-    border-radius: 16px;
+  border-color: #7126B5;
+  background: #7126B5;
+  border-radius: 16px;
 }
 
 .btn-action {
-    width: 100%;
+  width: 100%;
 }
 
 /* info penawaran */
 .card-title {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .card-text {
-    font-size: 10px;
+  font-size: 10px;
 }
 
 #modal-button {
-    border-color: #7126B5;
-    background: #7126B5;
-    border-radius: 16px;
-    font-size: 14px;
-    padding: 12px 24px;
-    width: 100%;
+  border-color: #7126B5;
+  background: #7126B5;
+  border-radius: 16px;
+  font-size: 14px;
+  padding: 12px 24px;
+  width: 100%;
 }
 
 .modal-body h4 {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 /* medium device*/
 @media screen and (max-width: 915px){
-    /* navbar */
-    .navbar-brand {
-        visibility: hidden;
-    }
-    /* profile */
-    #profile {
-        width: 90%;
-    }
+  /* login */
+  .button {
+    width: 550px;
+  }
+  .form {
+    width: 550px
+  }
+  
+  /* navbar */
+  .navbar-brand {
+    visibility: hidden;
+  }
 
-    /* info produk */
-    #info-produk {
-        width: 90%;
-    }
+  /* profile */
+  #profile {
+      width: 90%;
+  }
 
-    /* info penawaran */
-    #info-penawaran {
-        width: 90%;
-    }  
+  /* info produk */
+  #info-produk {
+      width: 90%;
+  }
+
+  /* info penawaran */
+  #info-penawaran {
+      width: 90%;
+  }  
+
+  /* navbar judul aja */
+  #title {
+    top: 4%;
+    left: 45%;
+  }
 }
 
 @media screen and (min-width: 915px){
-    /* profile */
-    #profile {
-        width: 50%;
-    }
+  /* profile */
+  #profile {
+      width: 50%;
+  }
 
-    /* info produk */
-    #info-produk {
-        width: 50%;
-    }
+  /* info produk */
+  #info-produk {
+      width: 50%;
+  }
 
-    /* info penawaran */
-    #info-penawaran {
-        width: 50%;
-    }  
+  /* info penawaran */
+  #info-penawaran {
+      width: 50%;
+  } 
+  #title {
+    left: 49%;
+} 
 }
 
+/* small device */
+@media screen and (max-width: 700px) {
+  /* navbar judul aja */
+  #title {
+    top: 6%;
+    left: 43%;
+  }
 
+  /* login */
+  .form {
+    width: 300px;
+  }
+  .button {
+    width: 300px;
+  }
+  /* register */
+  .frame-regis{
+    left: 10%;
+  }
+}

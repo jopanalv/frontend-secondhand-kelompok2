@@ -9,10 +9,11 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { connect } from "react-redux";
 import { Container } from "react-bootstrap";
-import { getSelectedProduct, buyProduct } from "../redux/action/productActions";
+import { getSelectedProduct, buyProduct, categoryList } from "../redux/action/productActions";
 import "../assets/style2.css"
 import { addUser } from "../slice/userSlice";
 import { addSearch } from "../slice/searchingSlice";
+import { addWishlist } from "../redux/action/wishlistAction";
 
 const DetailProduk_buyer = () => {
 
@@ -34,19 +35,33 @@ const DetailProduk_buyer = () => {
 
   const handleBuy = (e) => {
     e.preventDefault()
-    dispatch(buyProduct({id, offer}))
+    dispatch(buyProduct({ id, offer }))
     handleClose()
-    
   }
+
+  const handleWishlist = (e) => {
+    e.preventDefault()
+    dispatch(addWishlist(id))
+  }
+  
 
   useEffect(() => {
     handleSearch();
     //panggil action
     console.log("1. use effect component did mount");
     dispatch(getSelectedProduct(id));
+    dispatch(categoryList());
   }, [dispatch, id]);
+
+  const {categoryResult} = useSelector(state => state.product)
   const product = useSelector(state => state.product)
   const productInfo = product.getSelectedProductResult
+
+  const kategori = [];
+
+  if (categoryResult !== null) {
+    kategori.push(...categoryResult)
+  }
 
   return (
     <>
@@ -61,10 +76,17 @@ const DetailProduk_buyer = () => {
           <div className='card-body'>
             <div className="card-body-produk px-3">
               <h5 className="card-title fw-bold">{productInfo.name}</h5>
-              <p className="card-text">{productInfo.CategoryId}</p>
+              <p className="card-text">{kategori[productInfo.CategoryId] && kategori[productInfo.CategoryId] ? kategori[productInfo.CategoryId-1].name : 'tidak ada'}</p>
               <p className="card-text-2 fw-bold">Rp {productInfo.price}</p>
               <div class="d-grid gap-2">
                 <button class="btn_teks btn1 text-white" type="button" onClick={handleShow}>Saya Tertarik dan Ingin Nego</button>
+                <button
+                  class="btn_teks btn1 text-white"
+                  type="button"
+                  onClick={(e) => handleWishlist(e)}
+                >
+                  Tambahkan ke Wishlist
+                </button>
               </div>
             </div>
             <div className="card-body-produk mt-3">

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Container, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProduct } from "../redux/action/productActions";
+import { categoryList, getAllProduct } from "../redux/action/productActions";
 import { Link } from "react-router-dom";
 
 function Product() {
@@ -21,13 +21,25 @@ function Product() {
     opacity: "0.5",
   };
 
-  const { getAllProductResult, getAllProductLoading, getAllProductError } = useSelector((state) => state.product)
+  const {
+    getAllProductResult,
+    getAllProductLoading,
+    getAllProductError,
+    categoryResult,
+  } = useSelector((state) => state.product);
   const dispatch = useDispatch();
+
+  const kategori = [];
+
+  if (categoryResult !== null) {
+    kategori.push(...categoryResult);
+  }
 
   useEffect(() => {
     //panggil action
     console.log("1. use effect component did mount");
     dispatch(getAllProduct());
+    dispatch(categoryList());
   }, [dispatch]);
 
   return (
@@ -37,39 +49,43 @@ function Product() {
         {getAllProductResult ? (
           getAllProductResult.map((Product) => {
             return (
-              <div className="row justify-content-center category" key={Product.id}>
+              <div
+                className="row justify-content-center category"
+                key={Product.id}
+              >
                 <Link to={`/buyer/detail-produk/` + Product.id}>
-                <Card>
-                  <Card.Img
-                    className="w-75 align-self-center"
-                    variant="top"
-                    multiple
-                    src={`http://localhost:5000/upload/images/${Product.image}`}
-                    style={image}
-                  />
-                  <Card.Body className="p-2">
-                    <Card.Title className="mb-0" style={title}>
-                      {Product.name}
-                    </Card.Title>
-                    <p className="mb-0" style={accesoris}>
-                      {Product.CategoryId}
-                    </p>
-                    <Card.Text className="mb-1">{Product.price}</Card.Text>
-                  </Card.Body>
-                </Card>
+                  <Card>
+                    <Card.Img
+                      className="w-75 align-self-center"
+                      variant="top"
+                      multiple
+                      src={`http://localhost:5000/upload/images/${Product.image}`}
+                      style={image}
+                    />
+                    <Card.Body className="p-2">
+                      <Card.Title className="mb-0" style={title}>
+                        {Product.name}
+                      </Card.Title>
+                      <p className="mb-0" style={accesoris}>
+                        {kategori[Product.CategoryId] &&
+                        kategori[Product.CategoryId]
+                          ? kategori[Product.CategoryId - 1].name
+                          : "tidak ada"}
+                      </p>
+                      <Card.Text className="mb-1">{Product.price}</Card.Text>
+                    </Card.Body>
+                  </Card>
                 </Link>
               </div>
-              
-            )
+            );
           })
-          // Opsi kedua
-        ) : getAllProductLoading ? (
+        ) : // Opsi kedua
+        getAllProductLoading ? (
           <p>Loading ...</p>
         ) : (
           // Opsi ketiga
           <p>{getAllProductError ? getAllProductError : "Data Kosong"}</p>
-        )
-      }
+        )}
       </Container>
     </>
   );
