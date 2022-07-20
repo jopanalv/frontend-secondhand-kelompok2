@@ -1,28 +1,21 @@
 import React, { useState, useEffect } from 'react'
-import gambar from "../assets/images/Rectangle 134.png"
 import { Image } from 'react-bootstrap';
-import penjual from "../assets/images/Rectangle 33.png"
 import back from '../assets/images/fi_arrow-left.png'
 import Navigasi from '../component/Navbar1';
 import "../assets/style2.css"
 import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
-import { connect } from "react-redux";
 import { Container } from "react-bootstrap";
-import { getProductSeller } from "../redux/action/productActions";
+import { getProductSeller, categoryList } from "../redux/action/productActions";
 import "../assets/style2.css"
-import { addUser } from "../slice/userSlice";
 import { addSearch } from "../slice/searchingSlice";
+import { IMG_URL } from '../redux/action/api';
+import { addProduct } from "../redux/action/addProduct";
 
 const DetailProduk_seller = () => {
 
-  const { state } = useLocation();
-  const navigate = useNavigate();
-
-  const product = state.productDetail
-
-  const image = product.image
+  const product = JSON.parse(localStorage.getItem('product'))
+  const user = JSON.parse(localStorage.getItem('user'))
 
   const [show, setShow] = useState(false);
   const [searching, setSearching] = useState("");
@@ -31,7 +24,6 @@ const DetailProduk_seller = () => {
   const handleShow = () => setShow(true);
 
   const { id } = useParams();
-  const { getProductSellerResult, getProductSellerLoading, getProductSellerError } = useSelector((state) => state.product)
   const dispatch = useDispatch();
 
   const handleSearch = () => {
@@ -40,8 +32,35 @@ const DetailProduk_seller = () => {
     )
   }
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("name", product.name);
+    formData.append("price", product.price);
+    formData.append("CategoryId", product.category);
+    formData.append("description", product.description);
+    formData.append("image", product.image.path);
+    dispatch(addProduct(formData));
+
+  };
+
+  console.log(product.image)
+
   const handleEdit = () => {
-    navigate('/info-produk')
+    // navigate('/info-produk')
+    localStorage.removeItem("product")
+    window.close();
+
+  }
+
+  const {
+    categoryResult
+  } = useSelector((state) => state.product);
+
+  const kategori = [];
+
+  if (categoryResult !== null) {
+    kategori.push(...categoryResult);
   }
 
   useEffect(() => {
@@ -50,6 +69,7 @@ const DetailProduk_seller = () => {
     //panggil action
     console.log("1. use effect component did mount");
     dispatch(getProductSeller(id));
+    dispatch(categoryList());
   }, [dispatch]);
 
   return (
@@ -62,16 +82,19 @@ const DetailProduk_seller = () => {
             <Image src={`http://localhost:8000/api/v1/public/files/`} className="detail_gambar" alt="detail_gambar" />
           </div> */}
           <div className='box_image'>
-            <Image src={`image`} className="detail_gambar" alt="detail_gambar" />
+            <Image src={product.image.preview} className="detail_gambar" alt="detail_gambar" />
           </div>
 
           <div className='card-body'>
             <div className="card-body-produk px-3">
               <h5 className="card-title fw-bold">{product.name}</h5>
-              <p className="card-text">{product.category}</p>
+              <p className="card-text">{kategori[product.category - 1] &&
+                kategori[product.category - 1]
+                ? kategori[product.category - 1].name
+                : "tidak ada"}</p>
               <p className="card-text-2 fw-bold">{product.price}</p>
               <div class="d-grid gap-2">
-                <button class="btn_teks btn1 text-white" type="button"><a href="/seller/daftar-jual">Terbitkan</a></button>
+                <button class="btn_teks btn1 text-white" type="button" onClick={(e) => handleSubmit(e)}>Terbitkan</button>
                 <button class="btn_teks btn2" type="button" onClick={() => handleEdit()}>Edit</button>
               </div>
             </div>
@@ -80,13 +103,13 @@ const DetailProduk_seller = () => {
                 <div className="col-2 align-self-center">
                   <Image
                     className="rounded img-responsive center-block img-fluid gbr-seller"
-                    src={`http://localhost:5000/upload/images/` + product.sellerImage}
+                    src={`${IMG_URL}` + user.data.Profile.image}
                   />
                 </div>
                 <div className="col-8">
                   <div className="card-body-seller py-1">
-                    <h4 className="card-title-seller fw-bold btn-teks">{product.sellerName}</h4>
-                    <h6 className="card-text-seller ket">{product.sellerCity}</h6>
+                    <h4 className="card-title-seller fw-bold btn-teks">{user.data.Profile.name}</h4>
+                    <h6 className="card-text-seller ket">{user.data.Profile.city}</h6>
                   </div>
                 </div>
               </div>
@@ -100,13 +123,14 @@ const DetailProduk_seller = () => {
                 Deskripsi
               </p>
               <p className='card-text'>
-                {product.desc}
+                {product.description}
               </p>
             </div>
           </div>
         </div>
         <div className='container3'>
-          <button class="btn_teks btn1 btn-float text-white" type="button"><a href="/seller/daftar-jual">Terbitkan</a></button>
+          <button class="btn_teks btn1 btn-float text-white" type="button" onClick={(e) => handleSubmit(e)}>Terbitkan</button>
+
         </div>
       </Container>
     </>

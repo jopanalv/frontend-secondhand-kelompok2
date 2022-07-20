@@ -1,8 +1,6 @@
 import { EDIT_PRODUCT, GET_ALL_DAFTARJUAL, DELETE_PRODUCT } from "../type";
 import axios from "axios";
-import jwtDecode from "jwt-decode"
-
-const API_URL = 'http://localhost:5000/api/v1'
+import {API_URL} from "./api";
 
 export const editProduct = (data, id) => {
   return (dispatch) => {

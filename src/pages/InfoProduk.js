@@ -50,7 +50,7 @@ export default function InfoProduk() {
     const formData = new FormData();
     formData.append("name", name);
     formData.append("price", price);
-    formData.append("category", category);
+    formData.append("CategoryId", category);
     formData.append("description", desc);
     formData.append("image", image[0]);
     dispatch(addProduct(formData));
@@ -62,18 +62,17 @@ export default function InfoProduk() {
     // setImage([])
   };
 
-  const gambar = image[0];
-
-  const productDetail = {
-    name,
-    price,
-    category,
-    desc,
-    gambar,
-  };
 
   const handlePreview = () => {
-    navigate("/seller/preview", { state: { productDetail } });
+    // navigate("/seller/preview", { state: { productDetail } });
+    localStorage.setItem('product', JSON.stringify({
+      name: name,
+      price: price,
+      category: parseInt(category),
+      description: desc,
+      image: image[0]
+    }))
+    window.open('/seller/preview', '_blank')
   };
 
   useEffect(() => {
@@ -175,7 +174,6 @@ export default function InfoProduk() {
                   </button>
                 </div>
                 <div className="col-6 p-0 ps-1">
-                  <Link to={`/seller/daftar-jual`}>
                     <button
                       className="btn btn-primary btn-action"
                       type="submit"
@@ -183,7 +181,6 @@ export default function InfoProduk() {
                     >
                       Terbitkan
                     </button>
-                  </Link>
                 </div>
               </div>
             </form>

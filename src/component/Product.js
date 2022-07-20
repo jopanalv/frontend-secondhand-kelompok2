@@ -3,6 +3,7 @@ import { Container, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { categoryList, getAllProduct } from "../redux/action/productActions";
 import { Link } from "react-router-dom";
+import { IMG_URL } from "../redux/action/api";
 
 function Product() {
   const title = {
@@ -59,7 +60,7 @@ function Product() {
                       className="w-75 align-self-center"
                       variant="top"
                       multiple
-                      src={`http://localhost:5000/upload/images/${Product.image}`}
+                      src={`${IMG_URL}`+Product.image}
                       style={image}
                     />
                     <Card.Body className="p-2">
@@ -67,9 +68,9 @@ function Product() {
                         {Product.name}
                       </Card.Title>
                       <p className="mb-0" style={accesoris}>
-                        {kategori[Product.CategoryId] &&
-                        kategori[Product.CategoryId]
-                          ? kategori[Product.CategoryId - 1].name
+                        {kategori[Product.CategoryId-1] &&
+                        kategori[Product.CategoryId-1]
+                          ? kategori[Product.CategoryId-1].name
                           : "tidak ada"}
                       </p>
                       <Card.Text className="mb-1">{Product.price}</Card.Text>

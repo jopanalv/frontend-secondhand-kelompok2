@@ -1,7 +1,6 @@
 import axios from "axios";
 import { GET_ALL_NOTIF_SELLER, GET_ALL_NOTIF_BUYER } from "../type";
-
-const API_URL = 'http://localhost:5000/api/v1'
+import {API_URL} from "./api";
 
 export const getNotifSeller = () => {
     return (dispatch) => {

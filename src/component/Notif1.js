@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getNotifBuyer } from '../redux/action/notifAction';
+import { IMG_URL } from '../redux/action/api';
 
 const NotifBuyer = () => {
     const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const NotifBuyer = () => {
                     <div className='container'>
                         <div className="list">
                             <div className="notif">
-                                <img src={`http://localhost:5000/upload/images/${notif.Product.image}`} className='notif-img' />
+                                <img src={`${IMG_URL}`+notif.Product.image} className='notif-img' />
                                 <div className="notif-text">
                                     <div className="notif-ket">
                                         <span className='notif-ket-txt1'>Penawaran produk</span>

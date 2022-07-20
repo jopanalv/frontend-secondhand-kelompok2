@@ -261,7 +261,7 @@ export default function Navigasi() {
                       <Dropdown.Item href="#/action-1">
                         Notifikasi
                       </Dropdown.Item>
-                      <Dropdown.Item className="mt-2" href="#/action-1">
+                      <Dropdown.Item className="mt-2" href="/seller/daftar-jual">
                         Daftar Jual
                       </Dropdown.Item>
                       <Dropdown.Item className="mt-2" href="/info-profile">

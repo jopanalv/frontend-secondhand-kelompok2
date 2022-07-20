@@ -4,9 +4,6 @@ import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Navbar from "../component/Navbar2";
 import icon_back from "../assets/images/fi_arrow-left.png";
-import pembeli from "../assets/images/Rectangle 33.png";
-import produk from "../assets/images/produk.png";
-import data from "../data/InfoPenawar.json";
 import "../assets/style.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -16,6 +13,7 @@ import {
   successTransaction,
 } from "../redux/action/transactionAction";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { IMG_URL } from "../redux/action/api";
 
 export default function InfoPenawaran() {
   const dispatch = useDispatch();
@@ -58,10 +56,10 @@ export default function InfoPenawaran() {
     e.preventDefault();
     if (status === "success") {
       handleSuccess(e);
-      navigate("../seller/daftar-jual", { replace: true });
+      navigate("../seller/daftar-jual");
     } else {
       handleCancel(e);
-      navigate("../seller/daftar-jual", { replace: true });
+      navigate("../seller/daftar-jual");
     }
   };
 
@@ -83,7 +81,7 @@ export default function InfoPenawaran() {
                     <div className="align-self-center">
                       <Image
                         className="rounded mx-3 img-fluid"
-                        src={`http://localhost:5000/upload/images/${data.buyerImage}`}
+                        src={`${IMG_URL}`+data.buyerImage}
                         style={{ width: 50, height: 50 }}
                       />
                     </div>
@@ -106,7 +104,7 @@ export default function InfoPenawaran() {
                       <Image
                         className="img-fluid"
                         width={100}
-                        src={`http://localhost:5000/upload/images/${data.productImage}`}
+                        src={`${IMG_URL}`+data.productImage}
                       />
                     </div>
                     <div className="">
@@ -229,7 +227,7 @@ export default function InfoPenawaran() {
                                 <div class="col-3 align-self-center">
                                   <Image
                                     className="rounded img-responsive center-block d-block mx-auto img-fluid"
-                                    src={`http://localhost:5000/upload/images/${data.buyerImage}`}
+                                    src={`${IMG_URL}`+data.buyerImage}
                                   />
                                 </div>
                                 <div class="col-9">
@@ -247,7 +245,7 @@ export default function InfoPenawaran() {
                                 <div class="col-3 align-self-center">
                                   <Image
                                     className="rounded img-responsive center-block d-block mx-auto img-fluid"
-                                    src={`http://localhost:5000/upload/images/${data.productImage}`}
+                                    src={`${IMG_URL}`+data.productImage}
                                   />
                                 </div>
                                 <div class="col-9">

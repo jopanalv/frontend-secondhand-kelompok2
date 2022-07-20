@@ -3,9 +3,6 @@ import box from "../assets/images/fi_box.png";
 import chevronRight from "../assets/images/fi_chevron-right.png";
 import dollar from "../assets/images/fi_dollar-sign.png";
 import love from "../assets/images/Vector.png";
-import plus from "../assets/images/fi_plus.png";
-import Diminati from "../assets/images/Group 33.png";
-import barang from "../assets/images/Rectangle23.png";
 // mobile icon kategori
 import boxMob from "../assets/images/mobile-fi_box.png";
 import dollarMob from "../assets/images/mobile-fi_dollar-sign.png";
@@ -13,19 +10,30 @@ import loveMob from "../assets/images/mobile-fi_heart.png";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getAllTerjual } from "../redux/action/daftarjualActions";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import { IMG_URL } from "../redux/action/api";
+import { categoryList, getAllProduct } from "../redux/action/productActions";
 
 function Jual() {
   const { getAllTerjualResult, getAllTerjualLoading, getAllTerjualError } =
     useSelector((state) => state.daftarjualReducer);
+  const {
+    categoryResult,
+  } = useSelector((state) => state.product);
 
   const dispatch = useDispatch();
+
+  const kategori = [];
+
+  if (categoryResult !== null) {
+    kategori.push(...categoryResult);
+  }
 
   useEffect(() => {
     //panggil action
     console.log("1. use effect component did mount");
     dispatch(getAllTerjual());
+    dispatch(categoryList());
   }, [dispatch]);
 
   return (
@@ -76,33 +84,6 @@ function Jual() {
 
       <div className="daftar-jual">
         <div className="frame-165">
-          {/* <div className="frame-150">
-                        <div className="group3">
-                            <img src={plus} className="fi-plus" />
-                            <span className="group3-txt">Tambah Produk</span>
-                        </div>    
-                    </div>
-                    <div className="card">
-                        <img className="foto-barang" />
-                        <div className="frame-149">
-                            <div className="informasi-barang">
-                                <span className="nama-barang">Jam Tangan Casio</span>
-                                <span className="jenis-barang">Aksesoris</span>
-                            </div>
-                            <span className="harga-barang">Rp 250.000</span>
-                        </div>    
-                    </div> */}
-
-          {/* <div className="card">
-                        <img className="foto-barang" />
-                        <div className="frame-149">
-                            <div className="informasi-barang">
-                                <span className="nama-barang">Jam Tangan Casio</span>
-                                <span className="jenis-barang">Aksesoris</span>
-                            </div>
-                            <span className="harga-barang">Rp 250.000</span>
-                        </div>    
-                    </div> */}
 
           {/* Opsi pertama */}
           {getAllTerjualResult ? (
@@ -115,7 +96,7 @@ function Jual() {
                   <Link to={`/transaction/detail/` + transaction.id}>
                     <img
                       src={
-                        `http://localhost:5000/upload/images/` +
+                        `${IMG_URL}` +
                         transaction.Product.image
                       }
                       className="foto-barang"
@@ -126,6 +107,10 @@ function Jual() {
                         <div className="nama-barang">{Product.name}</div>
                         <div className="jenis-barang">
                           {transaction.Product.CategoryId}
+                          {kategori[transaction.Product.CategoryId - 1] &&
+                            kategori[transaction.Product.CategoryId - 1]
+                            ? kategori[transaction.Product.CategoryId - 1].name
+                            : "tidak ada"}
                         </div>
                       </div>
                       <div className="harga-barang">
@@ -137,21 +122,21 @@ function Jual() {
               );
             })
           ) : // Opsi kedua
-          getAllTerjualLoading ? (
-            <p>Loading ...</p>
-          ) : (
-            // Opsi ketiga
-            <div className="group34">
-              {getAllTerjualError ? (
-                getAllTerjualError
-              ) : (
-                <span className="diminati-txt">
-                  Belum ada produk yang terjual
-                </span>
-              )}
-            </div>
-            // <p>{getAllTerjualError ? getAllTerjualError : "Data Kosong"}</p>
-          )}
+            getAllTerjualLoading ? (
+              <p>Loading ...</p>
+            ) : (
+              // Opsi ketiga
+              <div className="group34">
+                {getAllTerjualError ? (
+                  getAllTerjualError
+                ) : (
+                  <span className="diminati-txt">
+                    Belum ada produk yang terjual
+                  </span>
+                )}
+              </div>
+              // <p>{getAllTerjualError ? getAllTerjualError : "Data Kosong"}</p>
+            )}
         </div>
         {/* </div> */}
       </div>
