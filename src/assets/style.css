@@ -162,15 +162,13 @@ body {
 .input1 {
   height: 70px;
 }
-#toggle{
+.toggle{
   position: absolute;
   top: 108px;
   right: 17px;
   transform: translateY(-50%);
   width: 20px;
   height: 20px;
-  background: url(./images/fi_eye.png);
-  background-size: cover;
   cursor: pointer;
 }
 .button {
@@ -195,27 +193,24 @@ body {
 }
 
 /* REGISTER */
-.frame-regis {
-    display: flex;
-    padding: 0px;
-    gap: 8px;
-    position: absolute;
-    left: 23%;
-    top: 430px;
-}
-#toggle-regis{
-  position: absolute;
-  top: 178px;
-  right: 17px;
-  transform: translateY(-50%);
-  width: 20px;
-  height: 20px;
-  background: url(./images/fi_eye.png);
-  background-size: cover;
-  cursor: pointer;
-}
+    .frame-regis {
+        display: flex;
+        padding: 0px;
+        gap: 8px;
+        position: absolute;
+        left: 23%;
+        top: 430px;
+    }
 
-
+    .toggle-regis{
+      position: absolute;
+      top: 178px;
+      right: 17px;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
 
     .txt1 {
         width: 140px;
@@ -730,7 +725,7 @@ body {
         padding-left: 20px;
       }
 
-      #toggle {
+    .toggle {
         left: 410px;
 
     }

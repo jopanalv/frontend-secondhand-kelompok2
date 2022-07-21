@@ -14,6 +14,7 @@ import {
 } from "../redux/action/transactionAction";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { IMG_URL } from "../redux/action/api";
+import { showFormattedDate } from "../utils/formatDate";
 
 export default function InfoPenawaran() {
   const dispatch = useDispatch();
@@ -123,7 +124,7 @@ export default function InfoPenawaran() {
                     </div>
                     <div className="ms-auto">
                       <div className="card-body p-0 px-3">
-                        <h6 className="card-text text-end">{data.date}</h6>
+                        <h6 className="card-text text-end">{showFormattedDate(data.date)}</h6>
                       </div>
                     </div>
                   </div>

@@ -3,7 +3,7 @@ import { Modal, Form } from "react-bootstrap";
 import { Image } from "react-bootstrap";
 import back from "../assets/images/fi_arrow-left.png";
 import Navigasi from "../component/Navbar1";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Container } from "react-bootstrap";
 import {
@@ -27,6 +27,7 @@ const DetailProduk_buyer = () => {
 
   const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSearch = () => {
     dispatch(addSearch(searching));
@@ -43,6 +44,10 @@ const DetailProduk_buyer = () => {
     dispatch(addWishlist(id));
   };
 
+  const handleEditProduct = () => {
+    navigate(`/seller/edit-products/${id}`, { replace: true });
+  };
+
   useEffect(() => {
     handleSearch();
     //panggil action
@@ -53,7 +58,10 @@ const DetailProduk_buyer = () => {
 
   const { categoryResult } = useSelector((state) => state.product);
   const product = useSelector((state) => state.product);
+  const { user } = useSelector((state) => state.login);
   const productInfo = product.getSelectedProductResult;
+
+  console.log(productInfo);
 
   const kategori = [];
 
@@ -92,20 +100,51 @@ const DetailProduk_buyer = () => {
               </p>
               <p className="card-text-2 fw-bold">Rp {productInfo.price}</p>
               <div class="d-grid gap-2">
-                <button
-                  class="btn_teks btn1 text-white"
-                  type="button"
-                  onClick={handleShow}
-                >
-                  Saya Tertarik dan Ingin Nego
-                </button>
-                <button
-                  class="btn_teks btn1 text-white"
-                  type="button"
-                  onClick={(e) => handleWishlist(e)}
-                >
-                  Tambahkan ke Wishlist
-                </button>
+                {productInfo.sellerId === user.data.id ? (
+                  <button
+                    class="btn_teks btn1 text-white"
+                    type="button"
+                    onClick={() => handleEditProduct()}
+                  >
+                    Edit
+                  </button>
+                ) : user.data.role === "seller" ? (
+                  <>
+                    <button
+                      class="btn_teks btn1 btn-secondary text-white"
+                      type="button"
+                      onClick={handleShow}
+                      disabled
+                    >
+                      Saya Tertarik dan Ingin Nego
+                    </button>
+                    <button
+                      class="btn_teks btn-secondary btn1 text-white"
+                      type="button"
+                      onClick={(e) => handleWishlist(e)}
+                      disabled
+                    >
+                      Tambahkan ke Wishlist
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button
+                      class="btn_teks btn1 text-white"
+                      type="button"
+                      onClick={handleShow}
+                    >
+                      Saya Tertarik dan Ingin Nego
+                    </button>
+                    <button
+                      class="btn_teks btn1 text-white"
+                      type="button"
+                      onClick={(e) => handleWishlist(e)}
+                    >
+                      Tambahkan ke Wishlist
+                    </button>
+                  </>
+                )}
               </div>
             </div>
             <div className="card-body-produk mt-3">

@@ -70,7 +70,8 @@ export const getSelectedProduct = (id) => {
               CategoryId: response.data.data.CategoryId,
               sellerName: response.data.data.Profile.name,
               sellerCity: response.data.data.Profile.city,
-              sellerImage: response.data.data.Profile.image
+              sellerImage: response.data.data.Profile.image,
+              sellerId: response.data.data.Profile.id
             },
             errorMessage: false
           }
@@ -146,7 +147,6 @@ export const buyProduct = (data) => {
         errorMessage: false
       }
     })
-    console.log(data)
     //get API
     axios({
       method: "POST",
