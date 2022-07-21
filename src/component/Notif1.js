@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getNotifBuyer } from '../redux/action/notifAction';
 import { IMG_URL } from '../redux/action/api';
+import { showFormattedDate } from '../utils/formatDate';
 
 const NotifBuyer = () => {
     const dispatch = useDispatch();
@@ -27,7 +28,7 @@ const NotifBuyer = () => {
                                 <div className="notif-text">
                                     <div className="notif-ket">
                                         <span className='notif-ket-txt1'>Penawaran produk</span>
-                                        <span className='notif-ket-txt2'>{notif.createdAt}</span>
+                                        <span className='notif-ket-txt2'>{showFormattedDate(notif.createdAt)}</span>
                                     </div>
                                     <span className='notif-txt1'>{notif.Product.name}</span>
                                     <span className='notif-txt1 text-decoration-line-through'>Rp {notif.Product.price}</span>

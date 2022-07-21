@@ -10,7 +10,8 @@ import { editProduct, deleteProduct } from "../redux/action/editProduct";
 import { useNavigate } from "react-router-dom";
 import { addSearch } from "../slice/searchingSlice";
 import { useParams } from 'react-router-dom';
-import { categoryList } from "../redux/action/productActions";
+import { categoryList, getSelectedProduct } from "../redux/action/productActions";
+import { IMG_URL } from "../redux/action/api";
 
 function EditProduk() {
   const dispatch = useDispatch();
@@ -18,13 +19,19 @@ function EditProduk() {
 
   const { id } = useParams();
 
-  const { categoryResult } = useSelector((state) => state.product);
+  const { categoryResult, getSelectedProductResult } = useSelector((state) => state.product);
 
-  const [name, setName] = useState("")
-  const [price, setPrice] = useState("")
-  const [category, setCategory] = useState("")
-  const [desc, setDesc] = useState("")
+  console.log(getSelectedProductResult)
+
+  const [name, setName] = useState(getSelectedProductResult.name)
+  const [price, setPrice] = useState(getSelectedProductResult.price ?? "")
+  const [category, setCategory] = useState(getSelectedProductResult.CategoryId ?? "")
+  const [desc, setDesc] = useState(getSelectedProductResult.description ?? "")
   const [image, setImage] = useState([])
+  const previewImage =
+    getSelectedProductResult.image !== null
+      ? `${IMG_URL}` + getSelectedProductResult.image
+      : null;
 
   const [searching, setSearching] = useState("");
 
@@ -79,6 +86,7 @@ function EditProduk() {
     //panggil action
     console.log("1. use effect component did mount");
     dispatch(editProduct(id));
+    dispatch(getSelectedProduct(id));
   }, [dispatch, id]);
 
   return (
@@ -118,11 +126,12 @@ function EditProduk() {
                   <option value="" disabled selected>
                     Pilih Kategori
                   </option>
-                  <option value="0">Hobi</option>
-                  <option value="1">Kendaraan</option>
-                  <option value="2">Baju</option>
-                  <option value="3">Elektronik</option>
-                  <option value="4">Kesehatan</option>
+                  {categoryResult &&
+                    categoryResult.map((cat) => (
+                      <option key={cat.id} value={cat.id}>
+                        {cat.name}
+                      </option>
+                    ))}
                 </select>
               </div>
               <div className="row mb-3">
@@ -141,7 +150,7 @@ function EditProduk() {
                 {image.length === 0 ? (
                   <div {...getRootProps()}>
                     <input type="file" {...getInputProps()} filename="image" />
-                    <Image src={uploadGambar} style={{ width: "8em" }} />
+                    <Image src={previewImage ?? uploadGambar} style={{ width: "8em" }} />
                   </div>
                 ) : (
                   <div>
