@@ -1,34 +1,19 @@
-import React, { useState } from 'react'
-import Navbar from '../component/Navbar1'
-import Data from "../data/data";
+import Navigasi from '../component/Navbar1'
+import React, { useState } from 'react';
 import Buttons from "../component/Button";
-import Product from '../component/Product';
 import Home from '../component/Home';
+import { Product } from "../component"
+import "../assets/style2.css"
 
 export default function Homepage() {
-
-  const [item, setItem] = useState(Data);
-
-  const menuItems = [...new Set(Data.map((Val) => Val.category))];
-
-  const filterItem = (curcat) => {
-    const newItem = Data.filter((newVal) => {
-      return newVal.category === curcat;
-    });
-    setItem(newItem);
-  };
+  // const auth = useSelector(state => state.login)
 
   return (
     <div className='App'>
-      <Navbar />
+      <Navigasi />
       <Home />
-      <Buttons
-            filterItem={filterItem}
-            setItem={setItem}
-            menuItems={menuItems}
-          />
-      <Product item={item} />
-      <a href="/info-produk"><button class="btn-float1 btn_teks text-white" type="button">+ Jual</button></a>
+      <Buttons />
+      <Product />
     </div>
   )
 }

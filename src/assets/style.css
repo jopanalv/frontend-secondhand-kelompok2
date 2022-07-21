@@ -9,542 +9,213 @@ body {
   margin: auto;
 }
 
-  /* NAVBAR */
-  #title {
-    font-size: 16px;
-    text-align: center;
-    padding-left: 150px;
-    font-weight: 400;
-  }
+/* navbar judul saja */
+#title {
+  font-size: 16px;
+  float: none;
+  position: absolute;
+  top: 5%;
+  left: 40%;
+  transform: translate(-30%, -70%);
+}
 
-  .frame-search {
+.frame-search {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 12px 24px;
+  gap: 16px;
+  position: absolute;
+  width: 444px;
+  height: 48px;
+  left: 260px;
+  top: 14px;
+  background: #EEEEEE;
+  border-radius: 16px;
+}
+
+.text-search {
+  font-size: 14px;
+  color: #8A8A8A;
+}
+
+
+
+.fi-list {
+  width: 24px;
+  height: 24px;
+}
+
+.fi-bell {
+  width: 24px;
+  height: 24px;
+}
+
+.fi-user {
+  width: 24px;
+  height: 24px;
+}
+
+/* notifikasi */
+.notif-txt {
+  position: absolute;
+  width: 98px;
+  height: 30px;
+  left: 80px;
+  top: 45px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  color: #000000;
+}
+.list-notifikasi {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  gap: 16px;
+  position: absolute;
+  left: 904px;
+  top: 70px;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+  z-index: 1000; /* biar notif ga ketumpuk */
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+} 
+.list2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 16px;
+  width: 328px;
+  height: 86px;
+}   
+.notif {
+  display: flex;
+  gap: 16px;
+}
+.notif-img {
+  width: 48px;
+  height: 48px;
+  background: url(./images/Rectangle23.png), #EEEEEE;
+  border-radius: 12px;
+}
+.notif-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.notif-ket {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 264px;
+  height: 14px;
+}
+.notif-ket-txt1 {
+  font-size: 10px;
+  color: #8A8A8A;
+  flex-grow: 1;
+}
+.notif-ket-txt2 {
+  font-size: 10px;
+  line-height: 14px;
+  color: #8A8A8A;
+}
+.notif-ket-ellipse {
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+}
+.notif-txt1 {
+  font-size: 14px;
+  line-height: 20px;
+  color: #000000;
+}
+
+
+/* LOGIN */
+.img {
+  position: absolute;
+  width: 600px;
+  height: 670px;
+  left: 0px;
+  top: 0px;
+}
+.form-title {
+  position: absolute;
+  left: 750px;
+  top: 100px;
+  font-size: 24px;
+}
+.form {
+  position: absolute;
+  width: 452px;
+  left: 750px;
+  top: 150px;
+}
+.input1 {
+  height: 70px;
+}
+#toggle{
+  position: absolute;
+  top: 108px;
+  right: 17px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background: url(./images/fi_eye.png);
+  background-size: cover;
+  cursor: pointer;
+}
+.button {
+  width: 452px;
+  height: 40px;
+  background: #7126B5;
+  border-radius: 16px;
+  border-color: #7126B5;
+}
+.text {
+  font-size: 14px;
+  text-align: center;
+  color: #FFFFFF;
+}
+.frame {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 12px 24px;
-    gap: 16px;
-
-    position: absolute;
-    width: 444px;
-    height: 48px;
-    left: 260px;
-    top: 14px;
-
-    background: #EEEEEE;
-    border-radius: 16px;
-  }
-
-  .text-search {
-    width: 356px;
-    height: 20px;
-
-    /* Body/14/Regular */
-
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-    /* identical to box height, or 143% */
-
-    color: #8A8A8A;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 1;
-  }
-
-  .frame-158 {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 24px;
-
-    position: absolute;
-    width: 120px;
-    height: 24px;
-    left: 1184px;
-    top: 30px;
-  }
-
-  .fi-list {
-    width: 24px;
-    height: 24px;
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-  }
-
-  .fi-bell {
-    width: 24px;
-    height: 24px;
-
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-  }
-
-  .fi-user {
-    width: 24px;
-    height: 24px;
-
-    flex: none;
-    order: 2;
-    flex-grow: 0;
-  }
-
-  /* notifikasi */
-  .notif-txt {
-    position: absolute;
-    width: 98px;
-    height: 30px;
-    left: 80px;
-    top: 45px;
-
-    /* Heading/20/Bold */
-
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 30px;
-    /* identical to box height, or 150% */
-
-    color: #000000;
-  }
-
-  .list-notifikasi {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 24px;
-    gap: 16px;
-
-    position: absolute;
-    width: 376px;
-    height: 229px;
-    left: 904px;
-    top: 70px;
-
-    /* Neutral/01 */
-
-    background: #FFFFFF;
-    /* Shadow/High */
-
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
-    border-radius: 16px;
-    z-index: 1000; /* biar notif ga ketumpuk */
-  }
-
-  .list {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 16px;
-
-    width: 328px;
-    height: 86px;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-  }  
-
-  .notif {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 16px;
-
-    width: 328px;
-    height: 86px;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-  }
-
-  .notif-img {
-    width: 48px;
-    height: 48px;
-
-    background: url(./images/Rectangle23.png), #EEEEEE;
-    border-radius: 12px;
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-  }
-
-  .notif-text {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 4px;
-
-    width: 264px;
-    height: 86px;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 1;
-    flex-grow: 1;
-  }
-
-  .notif-ket {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
     padding: 0px;
     gap: 8px;
-
-    width: 264px;
-    height: 14px;
-
-    flex: none;
-    order: 0;
-    align-self: stretch;
-    flex-grow: 0;
-  }
-
-  .notif-ket-txt1 {
-    width: 179px;
-    height: 14px;
-
-    /* Body/10/Regular */
-
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 10px;
-    line-height: 14px;
-    /* identical to box height, or 140% */
-
-
-    /* Neutral/03 */
-
-    color: #8A8A8A;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 1;
-  }
-
-  .notif-ket-txt2 {
-    width: 61px;
-    height: 14px;
-
-    /* Body/10/Regular */
-
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 10px;
-    line-height: 14px;
-
-    /* Neutral/03 */
-
-    color: #8A8A8A;
-
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-  }
-
-  .notif-ket-ellipse {
-    flex: none;
-    order: 2;
-    flex-grow: 0;
-  }
-  
-  .notif-txt1 {
-    width: 264px;
-    height: 20px;
-
-    /* Body/14/Regular */
-
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-    /* identical to box height, or 143% */
-
-    color: #000000;
-    /* Inside auto layout */
-
-    flex: none;
-    order: 1;
-    align-self: stretch;
-    flex-grow: 0;
-  }
-
-
-  /* LOGIN */
-
-  .img {
     position: absolute;
-    width: 800px;
-    height: 870px;
-    left: 0px;
-    top: 0px;
-  }
+    left: 23%;
+    top: 200px;
+}
 
-  .form-title {
-    position: absolute;
-    width: 83px;
-    height: 36px;
-    left: 954px;
-    top: 221px;
-
-    /* Heading/24/Bold */
-
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 36px;
-    /* identical to box height, or 150% */
-
-
-    color: #000000;
-  }
-
-  .form {
+/* REGISTER */
+.frame-regis {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
     padding: 0px;
-    gap: 16px;
-
-    position: absolute;
-    width: 452px;
-    height: 228px;
-    left: 954px;
-    top: 281px;
-  }
-
-  .input1 {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 4px;
-
-    width: 452px;
-    height: 70px;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    align-self: stretch;
-    flex-grow: 0;
-  }
-
-  .label1 {
-    width: 33px;
-    height: 18px;
-
-    /* Body/12/Regular */
-
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 18px;
-    /* identical to box height, or 150% */
-
-
-    color: #000000;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-  }
-
-  .email {
-    box-sizing: border-box;
-
-    /* Auto layout */
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 12px 16px;
-    gap: 16px;
-
-    width: 452px;
-    height: 48px;
-
-    background: #FFFFFF;
-    /* Neutral/02 */
-
-    border: 1px solid #D0D0D0;
-    border-radius: 16px;
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 1;
-    align-self: stretch;
-    flex-grow: 0;
-  }
-  
-  #toggle{
-    position: absolute;
-    top: 132px;
-    right: 17px;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
-    background: url(./images/fi_eye.png);
-    background-size: cover;
-    cursor: pointer;
-  }
-
-  #toggle-regis{
-    position: absolute;
-    top: 217px;
-    right: 17px;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
-    background: url(./images/fi_eye.png);
-    background-size: cover;
-    cursor: pointer;
-  }
-
-  .button-wrapper {
-    /* Auto layout */
-
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 8px 0px 0px;
     gap: 8px;
-
-    width: 452px;
-    height: 56px;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 2;
-    flex-grow: 0;
-  }
-
-  .button {
-    /* Auto layout */
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 12px 24px;
-    gap: 4px;
-
-    width: 452px;
-    height: 48px;
-
-    /* Primary/Purple/04 */
-
-    background: #7126B5;
-    border-radius: 16px;
-    border-color: #7126B5;
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-  }
-
-  .text {
-    width: 404px;
-    height: 20px;
-
-    /* Body/14/Medium */
-
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 20px;
-    /* identical to box height, or 143% */
-
-    text-align: center;
-
-    /* Neutral/01 */
-
-    color: #FFFFFF;
+    position: absolute;
+    left: 23%;
+    top: 430px;
+}
+#toggle-regis{
+  position: absolute;
+  top: 178px;
+  right: 17px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background: url(./images/fi_eye.png);
+  background-size: cover;
+  cursor: pointer;
+}
 
 
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 1;
-  }
-
-    .frame {
-        /* Auto layout */
-
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        padding: 0px;
-        gap: 8px;
-
-        position: absolute;
-        width: 238px;
-        height: 20px;
-        left: 23%;
-        top: 280px;
-
-    }
-
-    .frame-regis {
-        /* Auto layout */
-
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        padding: 0px;
-        gap: 8px;
-
-        position: absolute;
-        width: 238px;
-        height: 20px;
-        left: 23%;
-        top: 350px;
-
-    }
 
     .txt1 {
         width: 140px;
@@ -572,7 +243,7 @@ body {
     }
 
     .txt2 {
-        width: 91px;
+        width: 150px;
         height: 20px;
         text-decoration:none;
 
@@ -669,57 +340,35 @@ body {
     height: 30px;
     left: 236px;
     top: 124px;
-
-    /* Heading/20/Bold */
-
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 700;
     font-size: 20px;
     line-height: 30px;
-    /* identical to box height, or 150% */
-
-    color: #000000;
   }
 
   .penjual {
-    /* Auto layout */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 16px;
     gap: 10px;
-
     position: absolute;
     width: 968px;
     height: 80px;
     left: 236px;
     top: 178px;
-
-    /* Neutral/01 */
-
     background: #FFFFFF;
-    /* Shadow/Low */
-
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
     border-radius: 16px;
   }
 
   .frame-138 {
-    /* Auto layout */
-
     display: flex;
     flex-direction: row;
     align-items: center;
     padding: 0px;
     gap: 16px;
-
     width: 936px;
     height: 48px;
-
-
-    /* Inside auto layout */
-
     flex: none;
     order: 0;
     align-self: stretch;
@@ -732,18 +381,13 @@ body {
 
     background: url(./images/foto_penjual.png);
     border-radius: 12px;
-
-    /* Inside auto layout */
-
     flex: none;
     order: 0;
     flex-grow: 0;
   }
 
   .frame-137 {
-    /* Auto layout */
-
-    display: flex;
+  display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 0px;
@@ -751,10 +395,6 @@ body {
 
     width: 809px;
     height: 38px;
-
-
-    /* Inside auto layout */
-
     flex: none;
     order: 1;
     flex-grow: 1;
@@ -763,20 +403,9 @@ body {
   .nama-penjual {
     width: 809px;
     height: 20px;
-
-    /* Body/14/Medium */
-
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 500;
     font-size: 14px;
     line-height: 20px;
-    /* identical to box height, or 143% */
-
-    color: #000000;
-
-    /* Inside auto layout */
-
     flex: none;
     order: 0;
     align-self: stretch;
@@ -786,24 +415,10 @@ body {
   .kota {
     width: 809px;
     height: 14px;
-
-    /* Body/10/Regular */
-
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 400;
     font-size: 10px;
     line-height: 14px;
-    /* identical to box height, or 140% */
-
-
-    /* Neutral/03 */
-
     color: #8A8A8A;
-
-
-    /* Inside auto layout */
-
     flex: none;
     order: 1;
     align-self: stretch;
@@ -812,9 +427,6 @@ body {
 
   .frame-141 {
     box-sizing: border-box;
-
-    /* Auto layout */
-
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -823,17 +435,9 @@ body {
 
     width: 47px;
     height: 26px;
-
-    /* Neutral/01 */
-
     background: #FFFFFF;
-    /* Primary/Purple/04 */
-
     border: 1px solid #7126B5;
     border-radius: 8px;
-
-    /* Inside auto layout */
-
     flex: none;
     order: 2;
     flex-grow: 0;
@@ -842,24 +446,9 @@ body {
   .edit {
     width: 23px;
     height: 18px;
-
-    /* Body/12/Medium */
-
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 500;
     font-size: 12px;
     line-height: 18px;
-    /* identical to box height, or 150% */
-
-
-    /* Neutral/05 */
-
-    color: #151515;
-
-
-    /* Inside auto layout */
-
     flex: none;
     order: 0;
     flex-grow: 0;
@@ -879,8 +468,6 @@ body {
     top: 282px;
 
     background: #FFFFFF;
-    /* Shadow/High */
-
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
     border-radius: 16px;
   }
@@ -888,22 +475,9 @@ body {
   .kategori-title {
     width: 69px;
     height: 24px;
-
-    /* Title/16/Medium */
-
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 500;
     font-size: 16px;
     line-height: 24px;
-    /* identical to box height, or 150% */
-
-
-    color: #000000;
-
-
-    /* Inside auto layout */
-
     flex: none;
     order: 0;
     flex-grow: 0;
@@ -918,9 +492,6 @@ body {
 
     width: 220px;
     height: 152px;
-
-    /* Inside auto layout */
-
     flex: none;
     order: 1;
     flex-grow: 0;
@@ -936,13 +507,7 @@ body {
 
     width: 220px;
     height: 40px;
-
-    /* Neutral/02 */
-
     border-bottom: 1px solid #D0D0D0;
-
-    /* Inside auto layout */
-
     flex: none;
     order: 0;
     flex-grow: 0;
@@ -969,25 +534,11 @@ body {
   .kategori-txt1 {
     width: 156px;
     height: 24px;
-
     text-decoration:none;
-
-    /* Title/16/Medium */
-
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 500;
     font-size: 16px;
     line-height: 24px;
-    /* identical to box height, or 150% */
-
-
-    /* Primary/Purple/04 */
-
     color: #7126B5;
-
-    /* Inside auto layout */
-
     flex: none;
     order: 1;
     flex-grow: 0;
@@ -1002,7 +553,6 @@ body {
     gap: 24px;
 
     position: absolute;
-    /* width: 668px; */
     height: 864px;
     left: 536px;
     top: 282px;
@@ -1026,9 +576,6 @@ body {
 
   .frame-150 {
     box-sizing: border-box;
-
-    /* Auto layout */
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1040,13 +587,8 @@ body {
     height: 198px;
 
     background: #FFFFFF;
-    /* Neutral/02 */
-
     border: 1px dashed #D0D0D0;
     border-radius: 4px;
-
-    /* Inside auto layout */
-
     flex: none;
     order: 0;
     flex-grow: 1;
@@ -1055,9 +597,6 @@ body {
   .group3 {
     width: 140px;
     height: 50px;
-
-    /* Inside auto layout */
-
     flex: none;
     order: 0;
     flex-grow: 0;
@@ -1069,20 +608,10 @@ body {
     height: 18px;
     left: 33.33px;
     top: 102px;
-
-    /* Body/12/Regular */
-
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 400;
     font-size: 12px;
     line-height: 18px;
-    /* identical to box height, or 150% */
-
     text-align: center;
-
-    /* Neutral/03 */
-
     color: #8A8A8A;
   }  
 
@@ -1093,25 +622,6 @@ body {
     left: 91.33px;
     top: 70px;
   }
-
-  /* .card {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 8px 8px 16px;
-    gap: 8px;
-
-    width: 206.67px;
-    height: 198px; 
-
-    background: #FFFFFF;
-
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
-    border-radius: 4px; 
-    flex: none;
-    order: 1;
-    flex-grow: 1;
-  }  */
 
   .card3 {
     margin-right: 30px;
@@ -1127,14 +637,9 @@ body {
   .foto-barang {
     width: 181px;
     height: 100px;
-
     margin-left: 12px;
-
     /* background: url(./images/Rectangle23.png), #EEEEEE; */
     border-radius: 4px;
-
-    /* Inside auto layout */
-
     flex: none;
     order: 0;
     align-self: stretch;
@@ -1142,24 +647,11 @@ body {
   }
 
   .frame-149 {
-    /* display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 8px; */
-
     width: 190.67px;
     height: 66px;
 
     margin-top: 10px;
     margin-left: 15px;
-
-    /* Inside auto layout */
-
-    /* flex: none;
-    order: 1;
-    align-self: stretch;
-    flex-grow: 0; */
   }
 
   .informasi-barang {
@@ -1168,14 +660,9 @@ body {
     align-items: flex-start;
     padding: 0px;
     gap: 4px;
-
     width: 190.67px;
     height: 38px;
-
     margin-bottom: 5px;
-
-    /* Inside auto layout */
-
     flex: none;
     order: 0;
     align-self: stretch;
@@ -1185,20 +672,9 @@ body {
   .nama-barang {
     width: 190.67px;
     height: 20px;
-
-    /* Body/14/Regular */
-
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
-    /* identical to box height, or 143% */
-
-    color: #000000;
-
-    /* Inside auto layout */
-
     flex: none;
     order: 0;
     align-self: stretch;
@@ -1208,22 +684,10 @@ body {
   .jenis-barang {
     width: 190.67px;
     height: 14px;
-
-    /* Body/10/Regular */
-
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 400;
     font-size: 10px;
     line-height: 14px;
-    /* identical to box height, or 140% */
-
-    /* Neutral/03 */
-
     color: #8A8A8A;
-
-    /* Inside auto layout */
-
     flex: none;
     order: 1;
     align-self: stretch;
@@ -1233,414 +697,17 @@ body {
   .harga-barang {
     width: 190.67px;
     height: 20px;
-
-    /* Body/14/Regular */
-
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
-    /* identical to box height, or 143% */
-
     color: #000000;
-
-    /* Inside auto layout */
-
     flex: none;
     order: 1;
     align-self: stretch;
     flex-grow: 0;
   }
 
-/* HOMEPAGE */
-/* Navbar */
-.navi{
-  padding: 10px
-}
-.navi2{
-  padding: 10px 10px 10px 10rem;
-
-}
-.input-group {
-  position: absolute;
-  width: 444px;
-  height: auto;
-  padding-left: 150px;
-  margin-top: -35px;
-}
-.pencarian {
-  background: #EEEEEE;
-  border-radius: 16px;
-  border-color: #EEEEEE;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  color: #8A8A8A;
-  padding: 14px 0 14px 24px;
-}
-.searching {
-  border: none;
-  border-radius: 16px;
-}
-.input-group-text{
-  border: none;
-  border-radius: 0px 20px 20px 0px;
-}
-.input-search{
-  width: 24px;
-  height: 24px;
-}
-.text-search {
-  width: 356px;
-  height: 20px;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  color: #8A8A8A;
-  flex: none;
-  order: 0;
-  flex-grow: 1;
-}
-.regis {
-  padding: 14px 16px 14px 16px;
-  gap: 8px;
-  width: 105px;
-  height: 48px;
-  background: #7126B5;
-  border-radius: 12px;
-  border-color: #7126B5;
-  display: flex;
-  flex-direction: row;
-  position: absolute;
-  margin-left: 1184px;
-  margin-top: -40px;
-}
-.frame-menu-nav {
-  padding: 8px;
-  position: absolute;
-  left: 10px;
-  top: 10px;
-  background: #FFFFFF;
-  border-radius: 16px;
-}
-
-/* Home */
-.side_left{
-  position: absolute;
-  width: 236px;
-  height: 224px;
-  left: -16px;
-  top: 148px;
-  background: #B6D4A8;
-  border-radius: 20px;
-}
-.side_right{
-  position: absolute;
-  width: 236px;
-  height: 224px;
-  top: 148px;
-  margin-left: 20px;
-  background: #E2D4F0;
-  border-radius: 20px 0px 0px 20px;
-}
-.hero{
-  position: absolute;
-  width: 900px;
-  height: 288px;
-  top: 116px;
-  border-radius: 20px;
-}
-.main-section-left{
-	top: 20px;
-	z-index: 2;
-  border-radius: 20px 0px 0px 20px;
-  background: #FFE9CA;
-  padding: 0;
-  margin: 0;
-}
-.main-section-left .h2{
-  font-style: normal;
-  font-weight: 700;
-  font-size: 36px;
-  line-height: 54px;
-  color: #151515;
-}
-.main-section-left .p{
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  color: #151515;
-}
-.main-section-left .diskon{
-  font-style: normal;
-  font-weight: 600;
-  font-size: 32px;
-  line-height: 36px;
-  color: #FA2C5A;
-}
-.hadiah{
-  position: relative;
-	z-index: 1;
-  margin-left: 390px;
-  position: absolute;
-  width: 151px;
-  height: 135px;
-  top: 80px;
-}
-.gbr_hero{
-  width: 650px;
-  height: 288px;
-  margin-left: -20px;
-  border-radius: 0px 20px 20px 0px;
-}
-.main-section-right{
-  background-image: url('./images/Rectangle\ 137.png');
-  background-repeat: no-repeat;
-  opacity: 0.8;
-  border-radius: 0px 20px 20px 0px;
-}
-
-/* Filter Kategori */
-.kata_2{
-  position: absolute;
-  top: 444px;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 24px;
-}
-.category{
-  position: absolute;
-  top: 550px;
-}
-.tab-category{
-  position: absolute;
-  top: 485px;
-  z-index: 2;
-  overflow-x: scroll;
-  width: auto;
-}
-.tab-category .btn {
-  background: #E2D4F0;
-  border-color: #E2D4F0;
-  border-radius: 12px;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  color: #3C3C3C;
-  height: 44px;
-}
-
-.tab-category .btn:hover,
-.tab-category .btn.active {
-  color: #ffffff !important;
-  border-color: #7126B5 !important;
-  background-color: #7126B5 !important;
-  border-radius: 12px;
-}
-
-/* Product */
-.card-product {
-  margin-right: 30px;
-  background: #FFFFFF;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
-  border-radius: 4px;
-  margin-right: 20px;
-}
-.name {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-}
-.type {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 10px;
-  line-height: 14px;
-  color: #8A8A8A;
-}
-.price {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-}
-.product_image{
-  width: 165.33px;
-  height: 100px;
-  border-radius: 4px;
-}
-.btn-float1{
-  position: fixed;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 16px 24px;
-  width: 115px;
-  height: 52px;
-  background: #7126B5;
-  border-color: #7126B5;
-  gap: 16px;
-  bottom: 2%;
-  border-radius: 12px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
-  left: 650px;
-}
-
-/* DETAIL PRODUK */
-/* Navbar */
-.frame-158-menu {
-  display: flex;
-  flex-direction: row;
-  gap: 24px;
-  position: absolute;
-  width: 120px;
-  height: 24px;
-  margin-left: 1184px;
-  margin-top: -30px;
-}
-.fi-list {
-  width: 24px;
-  height: 24px;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-}
-.fi-bell {
-  width: 24px;
-  height: 24px;
-  flex: none;
-  order: 1;
-  flex-grow: 0;
-}
-.fi-user {
-  width: 24px;
-  height: 24px;
-  flex: none;
-  order: 2;
-  flex-grow: 0;
-}
-
-/* Content 1 (Gambar) */
-.container1{
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  margin-left: 200px;
-}
-.detail_gambar{
-  width: 600px;
-  height: 436px;
-  border-radius: 16px;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
-  block-size: auto;
-}
-
-.card-body-produk{
-  width: 336px;
-  height: auto;
-  background: #FFFFFF;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
-  border-radius: 16px;
-  padding: 10px;
-}
-.card-title{
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 500;
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-  color: #000000;
-}
-.card-text{
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  color: #8A8A8A;
-}
-.card-text-2{
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  color: #000000;
-}
-.btn1{
-  width: 304px;
-  height: 48px;
-  background: #7126B5;
-  border-radius: 16px;
-  border-color: #7126B5;
-  padding: auto;
-}
-.btn2{
-  width: 304px;
-  height: 48px;
-  background: #FFFFFF;
-  border: 1px solid #7126B5;
-  border-radius: 16px;
-  color: #000000;
-}
-.btn-teks{
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-}
-.card2{
-  width: 336px;
-  height: auto;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
-  border-radius: 16px;
-  margin-top: 20px;
-}
-.gbr-seller{
-  width: auto;
-}
-.ket{
-  font-weight: 400;
-  font-size: 10px;
-  line-height: 14px;
-  color: #8A8A8A;
-}
-
-/* Content 2 (Deskripsi) */
-.container2{
-  position: absolute;
-  top: 30rem;
-  margin-left: 180px;
-  border-radius: 16px;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
-  block-size: auto;
-  width: 600px;
-  height: auto;
-}
-
-.btn-kirim{
-    width: 450px;
-    height: 48px;
-    background: #7126B5;
-    border-radius: 16px;
-    border-color: #7126B5;
-    padding: auto;
-}
-
-
 /* Responsive */
-
-@media screen and (max-width: 1500px){
-  .regis{
-    left: -5rem;
-  }
-}
 
 @media only screen and (max-width: 992px) and (min-width: 768px){
     .img {
@@ -1664,11 +731,6 @@ body {
       }
 
       #toggle {
-        left: 410px;
-
-    }
-
-    #toggle-regis {
         left: 410px;
 
     }
@@ -1873,24 +935,10 @@ body {
 
       width: 48px;
       height: 20px;
-      
-      /* Body/14/Regular */
-      
-      font-family: 'Poppins';
-      font-style: normal;
       font-weight: 400;
       font-size: 14px;
       line-height: 20px;
-      /* identical to box height, or 143% */
-      
-      
-      /* Neutral/01 */
-      
       color: #FFFFFF;
-      
-      
-      /* Inside auto layout */
-      
       flex: none;
       order: 1;
       flex-grow: 0;
@@ -1918,87 +966,12 @@ body {
   
   }
 
-  @media only screen and (max-width: 992px) and (min-width: 650px){
-    .kembali {
-      display: none;
-    }
-    .side_left{
-      display: none;
-    }
-    .side_right{
-      display: none;
-    }
-    .container2{
-      margin-top: -5rem;
-    }
-    .card-body-produk{
-      max-width: 80%;
-      margin-right: -100px;
-    }
-    .card-body-produk .btn1{
-      max-width: 80%;
-    }
-    .card-body-produk .btn2{
-      max-width: 80%;
-    }
-    .card2{
-      max-width: 80%;
-    }
-    .container1{
-      flex-direction: row;
-      gap: 3rem;
-      padding: 2rem 4rem;
-      margin-left: 20rem;
-    }
-    .container2{
-      max-width: 60%;
-      margin-top: -10rem;
-    }
-    .btn-float{
-      display: none;
-    }
-    .hero{
-      width: 70%;
-    }
-    .menu-nav {
-      display: none;
-    }
-  }
 
-  @media screen and (min-device-width: 1200px) {
-    .container1 {
-      flex-direction: row;
-      gap: 3rem;
-      padding: 2rem 4rem;
-      margin-left: 20rem;
-    }
-    .container2{
-      top: 35rem;
-    }
-    .frame-158-menu{
-      left:-5rem;
-    }
-  }
-
-  @media screen and (max-width: 1300px) {
-    .side_left{
-      display: none;
-    }
-    .side_right{
-      display: none;
-    }
-  }
 
   @media (max-width: 768px) {
     .menu-nav {
       width: 24px;
       height: 24px;
-    }
-    .side_left{
-      display: none;
-    }
-    .side_right{
-      display: none;
     }
     .form {
       left: 10%;
@@ -2014,17 +987,6 @@ body {
     .img {
       display: none;
     }
-
-    #toggle {
-        left: 270px;
-
-    }
-
-    #toggle-regis {
-        left: 270px;
-
-    }
-
     .back {
         padding-top: 20px;
         padding-left: 20px;
@@ -2042,22 +1004,9 @@ body {
         width: 255px;
     }
 
-    .frame-regis {
-        left: 30px;
-    }
-
     .frame {
         left: 30px;
     }
-
-    /* .txt1 .txt2 {
-      margin-top: 60px;
-    } */
-
-    .navbar {
-      display: none;
-    }
-
     .list-notifikasi {
       display: flex;
       flex-direction: column;
@@ -2098,9 +1047,6 @@ body {
       height: 48px;
       left: 16px;
       top: 36px;
-  
-      /* Neutral/01 */
-  
       background: #FFFFFF;
       border-radius: 16px;
     }
@@ -2175,11 +1121,6 @@ body {
       margin-left: -28px;
       margin-top: 10px;
     }
-
-    /* .card {
-      width: 156px;
-    } */
-
    .foto-barang {
       width: 132px;
       height: 80px;
@@ -2192,19 +1133,15 @@ body {
       height: 40px;
       left: 8px;
       top: 116px;
-    }
-
-    
+    }    
     .jenis-barang {
       width: 140px;
-      /* left: 8px; */
-      /* margin-top: 19px; */
+
     }
 
     .harga-barang {
       position: absolute;
       width: 140px;
-      /* left: 8px; */
       margin-top: 19px;
     }
 
@@ -2237,14 +1174,8 @@ body {
 
       width: 108px;
       height: 44px;
-
-      /* Primary/Purple/04 */
-
       background: #E2D4F0;
       border-radius: 12px;
-
-      /* Inside auto layout */
-
       flex: none;
       order: 0;
       flex-grow: 0;
@@ -2259,24 +1190,10 @@ body {
 
       width: 48px;
       height: 20px;
-      
-      /* Body/14/Regular */
-      
-      font-family: 'Poppins';
-      font-style: normal;
       font-weight: 400;
       font-size: 14px;
       line-height: 20px;
-      /* identical to box height, or 143% */
-      
-      
-      /* Neutral/01 */
-      
       color: #FFFFFF;
-      
-      
-      /* Inside auto layout */
-      
       flex: none;
       order: 1;
       flex-grow: 0;
@@ -2304,9 +1221,7 @@ body {
 
   }
 
-
 @media (min-width: 992px) {
-
   .back {
     display: none;
   }
@@ -2320,21 +1235,6 @@ body {
   }
 
   .kategori-mobile {
-    display: none;
-  }
-  .btn-float{
-    display: none;
-  }
-  .container1{
-    flex-direction: row;
-    gap: 3rem;
-    padding: 2rem 4rem;
-    margin-left: 20rem;
-  }
-  .menu-nav {
-    display: none;
-  }
-  .kembali{
     display: none;
   }
 
@@ -2360,20 +1260,10 @@ a {
   height: 40px;
   left: 25px;
   top: 145px;
-
-  /* Body/14/Regular */
-
-  font-family: 'Poppins';
-  font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 20px;
-  /* or 143% */
-
   text-align: center;
-
-  /* Neutral/03 */
-
   color: #8A8A8A;
 }
 
@@ -2386,318 +1276,152 @@ a {
   margin-left: 45px;
 }
 
-/* @media (max-width: 768px) {
-  .daftar-jual {
-    width: 100%;
-    display: block;
-    margin-bottom: 20px;
-  }
-
-} */
-
-
-/* navbar */
-#title {
-    font-size: 16px;
-    font-weight: 400;
-    float: none;
-    position: absolute;
-    top: 50%;
-    left: 51%;
-    transform: translate(-45%, -55%);
-}
-
-
 /* profile */
 .container {
-    margin: auto;
+  margin: auto;
 }
 
 .form-control {
-    border-radius: 16px;
+  border-radius: 16px;
 }
 
 .form-select {
-    border-radius: 16px;
+  border-radius: 16px;
 }
 
 ::placeholder {
-    font-size: 14px;
-    color: #8A8A8A;
+  font-size: 14px;
+  color: #8A8A8A;
 }
 
 option[value=""][disabled] {
-    display: none;
+  display: none;
 }
 
 #save {
-    border-color: #7126B5;
-    background: #7126B5;
-    border-radius: 16px;
+  border-color: #7126B5;
+  background: #7126B5;
+  border-radius: 16px;
 }
 
 /* info produk */
 #preview {
-    border-color: #7126B5;
-    border-radius: 16px;
-    color: black;
+  border-color: #7126B5;
+  border-radius: 16px;
+  color: black;
 }
 
 #preview:hover {
-    background: #7126B5;
-    color: white;
+  background: #7126B5;
+  color: white;
 }
 
 #terbitkan {
-    border-color: #7126B5;
-    background: #7126B5;
-    border-radius: 16px;
+  border-color: #7126B5;
+  background: #7126B5;
+  border-radius: 16px;
 }
 
 .btn-action {
-    width: 100%;
+  width: 100%;
 }
 
 /* info penawaran */
 .card-title {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .card-text {
-    font-size: 10px;
+  font-size: 10px;
 }
 
 #modal-button {
-    border-color: #7126B5;
-    background: #7126B5;
-    border-radius: 16px;
-    font-size: 14px;
-    padding: 12px 24px;
-    width: 100%;
+  border-color: #7126B5;
+  background: #7126B5;
+  border-radius: 16px;
+  font-size: 14px;
+  padding: 12px 24px;
+  width: 100%;
 }
 
 .modal-body h4 {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 /* medium device*/
 @media screen and (max-width: 915px){
-    /* navbar */
-    .navbar-brand {
-        visibility: hidden;
-    }
+  /* login */
+  .button {
+    width: 550px;
+  }
+  .form {
+    width: 550px
+  }
+  
+  /* navbar */
+  .navbar-brand {
+    visibility: hidden;
+  }
 
-    #title {
-        left: 49%;
-    }
+  /* profile */
+  #profile {
+      width: 90%;
+  }
 
-    /* profile */
-    #profile {
-        width: 90%;
-    }
+  /* info produk */
+  #info-produk {
+      width: 90%;
+  }
 
-    /* info produk */
-    #info-produk {
-        width: 90%;
-    }
+  /* info penawaran */
+  #info-penawaran {
+      width: 90%;
+  }  
 
-    /* info penawaran */
-    #info-penawaran {
-        width: 90%;
-    }
-    .side_left{
-      display: none;
-    }
-    .side_right{
-      display: none;
-    }
-    .regis{
-      display: none;
-    }
-    .hadiah{
-      margin-left: 15rem;
-    }
-    .tab-category{
-      width: 85%;
-    }
-    .frame-158-menu{
-      display: none;
-    }  
+  /* navbar judul aja */
+  #title {
+    top: 4%;
+    left: 45%;
+  }
 }
 
 @media screen and (min-width: 915px){
-    /* profile */
-    #profile {
-        width: 50%;
-    }
+  /* profile */
+  #profile {
+      width: 50%;
+  }
 
-    /* info produk */
-    #info-produk {
-        width: 50%;
-    }
+  /* info produk */
+  #info-produk {
+      width: 50%;
+  }
 
-    /* info penawaran */
-    #info-penawaran {
-        width: 50%;
-    }  
+  /* info penawaran */
+  #info-penawaran {
+      width: 50%;
+  } 
+  #title {
+    left: 49%;
+} 
 }
 
 /* small device */
-@media screen and (max-width: 650px) {
-    #title {
-        left: 49%;
-    }
-
-    /* Navbar */
-  .logo_brand{
-    display: none;
-  }
-  .navi{
-    box-shadow: #ffffff;
-    background-color: #FFE9CA;
-    /* z-index: 2; */
-    /* max-width: 90%; */
-  }
-  .input-group{
-    margin-left: -90px;
-    width: 98%;
-    height: auto;
-  }
-  .pencarian{
-    background-color: #ffffff;
-    color: #000000;
-    border-color: #ffffff;
-  }
-  .input-group-text{
-    background-color: #ffffff;
-    border-color: #ffffff;
-  }
-  .regis{
-    display: none;
-  }
-  /* Hero */
-  .hero{
-    width: 105%;
-    height: auto;
-    margin-left: -20px;
-    margin-top: -40px;
-  }
-  .side_left{
-    display: none;
-  }
-  .side_right{
-    display: none;
-  }
-  .hadiah{
-    margin-left: 200px;
-    width: 30%;
-    height: auto;
-    margin-top: -20px;
-  }
-  .gbr_hero{
-    display: none;
-  }
-  .main-section-right{
-    display: none;
-  }
-  .main-section-left{
-    max-width: 100%;
-    height: auto;
-    background: linear-gradient(180deg, #FFE9C9 59.55%, rgba(255, 233, 202, 0) 100%);
-    border-radius: 0;
-    margin-top: -25px;
-    padding-left: -50px;
-  }
-  /* Filter */
-  .kata_2{
-    margin-top: -100px;
-    z-index: 2;
-  }
-  .tab-category{
-    margin-top: -100px;
-    max-width: 100%;
-  }
-  .category{
-    margin-top: -100px;
-  }
-  .product{
-    min-width: 60%;
-    height: auto;
-  }
-  .btn-float1{
-    position: fixed;
-    margin-left: -550px;
+@media screen and (max-width: 700px) {
+  /* navbar judul aja */
+  #title {
+    top: 6%;
+    left: 43%;
   }
 
-    /* Detail Produk */
-    .frame-158-menu{
-      display: none;
-    }
-    .container1{
-      display: block;
-    }
-    .kembali {
-      /* top: 10px;
-      margin-left: -10px; */
-      background-color: #FFFFFF;
-      border-radius: 20px;
-    }
-    .detail_gambar{
-      border-radius: 0px;
-      max-width: 150%;
-      align-items: center;
-      justify-content: center;
-      margin-top: -3rem;
-      margin-left: -3rem;
-    }
-    .card-body-produk{
-      display:inline-block;
-      /* width: 328px;
-      height: auto; */
-      margin-top: -30px;
-    }
-    .card-body-produk .btn1{
-      display: none;
-    }
-    .card-body-produk .btn2{
-      display: none;
-    }
-    .card2{
-      position: absolute;
-      /* width: 328px;
-      height: auto; */
-      margin-top: 15px;
-    }
-    .container2{
-      margin-top: 0.5rem;
-      margin-left: 50px;
-      width: auto;
-      height: auto;
-    }
-    .container3{
-      justify-content: center;
-      align-items: center;
-      width: auto;
-      margin-left: 7%;
-    }
-    .btn-float{
-      position: fixed;
-      bottom: 8%;
-      margin-left: 30px;
-    }
-    .card2{
-      box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
-    border-radius: 16px;
-    }
-    .navi2{
-      display: none;
-    }
-    .btn-kirim{
-      max-width: 350px;
-      height: 48px;
-      background: #7126B5;
-      border-radius: 16px;
-      border-color: #7126B5;
-      padding: auto;
+  /* login */
+  .form {
+    width: 300px;
+  }
+  .button {
+    width: 300px;
+  }
+  /* register */
+  .frame-regis{
+    left: 10%;
   }
 }
