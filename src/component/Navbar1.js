@@ -91,6 +91,10 @@ export default function Navigasi() {
     navigate("/seller/daftar-jual", { replace: true });
   };
 
+  const handleWishlist = () => {
+    navigate("/wishlist", { replace: true });
+  };
+
   // const role = userState.user.data.role
 
   return (
@@ -228,13 +232,23 @@ export default function Navigasi() {
                             Dashboard
                           </button>
                         ) : (
-                          <button
-                            class="dropdown-item"
-                            type="button"
-                            onClick={() => handleProfile()}
-                          >
-                            History
-                          </button>
+                          <>
+                            <button
+                              class="dropdown-item"
+                              type="button"
+                              onClick={() => handleProfile()}
+                            >
+                              History
+                            </button>
+
+                            <button
+                              class="dropdown-item"
+                              type="button"
+                              onClick={() => handleWishlist()}
+                            >
+                              Wishlist
+                            </button>
+                          </>
                         )}
                       </li>
                       <li>
@@ -261,7 +275,10 @@ export default function Navigasi() {
                       <Dropdown.Item href="#/action-1">
                         Notifikasi
                       </Dropdown.Item>
-                      <Dropdown.Item className="mt-2" href="/seller/daftar-jual">
+                      <Dropdown.Item
+                        className="mt-2"
+                        href="/seller/daftar-jual"
+                      >
                         Daftar Jual
                       </Dropdown.Item>
                       <Dropdown.Item className="mt-2" href="/info-profile">
