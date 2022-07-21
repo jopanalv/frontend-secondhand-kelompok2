@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getNotifSeller } from '../redux/action/notifAction';
-import {IMG_URL} from "../redux/action/api";
+import { IMG_URL } from "../redux/action/api";
+import { showFormattedDate } from '../utils/formatDate';
 
 const Notif = () => {
     const dispatch = useDispatch();
@@ -20,31 +21,31 @@ const Notif = () => {
             {getNotifSellerResult !== null ? (
                 getNotifSellerResult && getNotifSellerResult.map((notif) => (
                     <Link to={`/info-penawaran/${notif.id}`}>
-                    <div className='container'>
-                        <div className="list">
-                            <div className="notif">
-                                <img src={`${IMG_URL}`+notif.Product.image} className='notif-img' />
-                                <div className="notif-text">
-                                    <div className="notif-ket">
-                                        <span className='notif-ket-txt1'>Penawaran produk</span>
-                                        <span className='notif-ket-txt2'>{notif.createdAt}</span>
+                        <div className='container'>
+                            <div className="list">
+                                <div className="notif">
+                                    <img src={`${IMG_URL}` + notif.Product.image} className='notif-img' />
+                                    <div className="notif-text">
+                                        <div className="notif-ket">
+                                            <span className='notif-ket-txt1'>Penawaran produk</span>
+                                            <span className='notif-ket-txt2'>{showFormattedDate(notif.createdAt)}</span>
+                                        </div>
+                                        <span className='notif-txt1'>{notif.Product.name}</span>
+                                        <span className='notif-txt1'>Rp {notif.Product.price}</span>
+                                        <span className='notif-txt1'>Ditawar Rp {notif.offer_price}</span>
                                     </div>
-                                    <span className='notif-txt1'>{notif.Product.name}</span>
-                                    <span className='notif-txt1'>Rp {notif.Product.price}</span>
-                                    <span className='notif-txt1'>Ditawar Rp {notif.offer_price}</span>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     </Link>
                 ))
-                ) : getNotifSellerLoading ? (
-                    <p>Loading...</p>
-                ) : getNotifSellerError !== null ? (
-                    <div className='container'>{getNotifSellerError}</div>
-                ) : (
-                    <div className='container'>Notif tidak ada</div>
-                )}
+            ) : getNotifSellerLoading ? (
+                <p>Loading...</p>
+            ) : getNotifSellerError !== null ? (
+                <div className='container'>{getNotifSellerError}</div>
+            ) : (
+                <div className='container'>Notif tidak ada</div>
+            )}
         </>
     );
 };

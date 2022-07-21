@@ -39,7 +39,9 @@ export const addLogin = (data) => async (dispatch) => {
       }
       // window.location.href = "/"
     }
-    toast(`${result.message}`, 3000);
+    if (result.statusCode === 401) {
+      throw result     
+    }
   } catch (error) {
     toast(`${error.message}`, 3000);
     loginError(error);
