@@ -1,17 +1,17 @@
+import "../assets/style.css";
 import React, { useEffect, useState } from "react";
 import img from "../assets/images/img.png";
 import back from "../assets/images/fi_arrow-left.png";
+import eye from "../assets/images/fi_eye.png";
 import { addLogin } from "../redux/action/loginAction";
 import { useSelector, useDispatch } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
+import toast from "react-simple-toasts";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
-  const { isAuthenticated, user, error } = useSelector(
-    (state) => state.login
-  );
+  const { isAuthenticated, user, error } = useSelector((state) => state.login);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,15 +19,21 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (email === "") {
-      alert("Please enter your email");
+      toast("Email cannot be empty", 3000);
     }
     if (password === "") {
-      alert("Password cannot be empty");
+      toast("Password cannot be empty", 3000);
     }
     if (email !== "" && password !== "") {
       dispatch(addLogin({ email, password }));
-      navigate("../", { replace: true });
     }
+  };
+
+  const [passwordShown, setPasswordShown] = useState(false);
+  const togglePassword = () => {
+    // When the handler is invoked
+    // inverse the boolean state of passwordShown
+    setPasswordShown(!passwordShown);
   };
 
   return (
@@ -36,12 +42,13 @@ const Login = () => {
         <div className="container">
           <img src={img} className="img" />
           <img src={back} className="back" />
-          <span className="form-title">Masuk</span>
+          <span className="form-title fw-bold">Masuk</span>
           <form className="form" onSubmit={handleSubmit}>
             <div className="input1">
-              <span className="label1">Email</span>
+              <span className="form-label">Email</span>
               <input
-                className="email"
+                className="form-control"
+                type="email"
                 placeholder="Contoh: johndee@gmail.com"
                 name="email"
                 value={email}
@@ -50,15 +57,17 @@ const Login = () => {
             </div>
 
             <div className="input1">
-              <span className="label1">Password</span>
+              <span className="form-label">Password</span>
               <input
-                className="email"
+                className="form-control"
                 placeholder="Masukkan password"
+                type={passwordShown ? "text" : "password"}
+                id="pass"
                 name="password"
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
               />
-              <div id="toggle" onclick="showHide();"></div>
+              <img src={eye} className="toggle" onClick={togglePassword} />
             </div>
 
             <div className="button-wrapper">
@@ -80,6 +89,9 @@ const Login = () => {
       )}
     </>
   );
+
 };
+
+
 
 export default Login;

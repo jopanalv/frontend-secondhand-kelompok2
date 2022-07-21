@@ -1,7 +1,7 @@
 import axios from "axios";
-import { UPDATE_PROFILE } from "../type";
-
-const API_URL = 'http://localhost:5000/api/v1'
+import { UPDATE_PROFILE, GET_CITY } from "../type";
+import toast from "react-simple-toasts";
+import { API_URL } from "./api";
 
 export const updateProfile = (data) => {
   return (dispatch) => {
@@ -37,6 +37,17 @@ export const updateProfile = (data) => {
             errorMessage: false,
           },
         });
+        // update user data in local storage
+        const serializedData = localStorage.getItem("user");
+        let user = JSON.parse(serializedData);
+
+        user.data.Profile.image = res.data.data.image;
+        user.data.Profile.city = res.data.data.city;
+        user.data.Profile.address = res.data.data.address;
+        user.data.Profile.no_hp = res.data.data.no_hp;
+        localStorage.setItem("user", JSON.stringify(user));
+
+        toast(`${res.data.message}`, 3000);
       })
       .catch(error => {
         //error get api
@@ -48,7 +59,41 @@ export const updateProfile = (data) => {
             errorMessage: error.message,
           },
         });
+        toast(`${error.message}`, 3000);
       });
   }
 }
 
+export const getCity = () => {
+  return (dispatch) => {
+    //get API
+    axios({
+      method: "GET",
+      url: `https://kabupatenid.herokuapp.com/kabupaten/list`,
+    })
+      .then((response) => {
+        //berhasil get API
+        console.log("respon" + response.data)
+        dispatch({
+          type: GET_CITY,
+          payload: {
+            loading: false,
+            data: response.data,
+            errorMessage: null
+          }
+        })
+      })
+      .catch((error) => {
+        // gagal get API
+        console.log("error block")
+        dispatch({
+          type: GET_CITY,
+          payload: {
+            loading: false,
+            data: null,
+            errorMessage: error.message
+          }
+        })
+      })
+  };
+};

@@ -1,7 +1,7 @@
 import axios from "axios";
+import toast from "react-simple-toasts";
 import { ADD_REGISTER } from "../type";
-
-const API_URL = 'http://localhost:5000/api/v1'
+import {API_URL} from "./api";
 
 export const addRegister = (data) => {
   return (dispatch) => {
@@ -33,6 +33,7 @@ export const addRegister = (data) => {
             errorMessage: false,
           },
         });
+        toast(`${response.message}`, 3000);
         window.location.href = "/login";
       })
       .catch((error) => {
@@ -46,6 +47,7 @@ export const addRegister = (data) => {
             errorMessage: error.message,
           },
         });
+        toast(`${error.message}`, 3000);
       });
   };
 };

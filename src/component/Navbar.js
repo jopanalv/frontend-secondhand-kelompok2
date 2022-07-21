@@ -8,7 +8,6 @@ import list from '../assets/images/fi_list.png'
 import bell from '../assets/images/fi_bell.png'
 import user from '../assets/images/fi_user.png'
 import menu from '../assets/images/fi_menu.png'
-import Notif from './Notif'
 import { logout } from '../redux/action/loginAction';
 
 const Navbar = () => {
