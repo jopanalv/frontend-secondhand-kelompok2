@@ -3,6 +3,12 @@ import gambar from "../assets/images/car01.min.jpg";
 import gambar2 from "../assets/images/Group 33.png";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import {
+  deleteWishlist,
+  getListWishlistBuyer,
+} from "../redux/action/wishlistAction";
 
 export default function Wishlist() {
   const title = {
@@ -21,6 +27,27 @@ export default function Wishlist() {
     opacity: "0.5",
   };
 
+  const { user } = useSelector((state) => state.login);
+
+  const {
+    getListWishlistBuyerResult,
+    getListWishlistBuyerLoading,
+    getListWishlistBuyerError,
+    deleteWishlistResult,
+  } = useSelector((state) => state.wishlist);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getListWishlistBuyer());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (deleteWishlistResult) {
+      dispatch(getListWishlistBuyer());
+    }
+  }, [deleteWishlistResult, dispatch]);
+  console.log(getListWishlistBuyerResult);
+
   return (
     <div>
       <Navbar />
@@ -31,76 +58,75 @@ export default function Wishlist() {
         >
           Wishlist
         </h2>
+        <p className="text-center mb-4">
+          Klik Logo Hati Jika Ingin Menghapus Wishlist
+        </p>
 
-        <div className="d-flex justify-content-center null-illustration p-5">
-          <div>
-            <img src={gambar2} alt="" className="img-fluid mb-3" />
-            <p>Produk tidak ditemukan</p>
-          </div>
-        </div>
-        <div className="d-flex justify-content-center category">
-          <Link className="mx-2" to={""}>
-            <Card>
-              <Card.Img
-                className="w-75 align-self-center"
-                variant="top"
-                multiple
-                src={gambar}
-                style={image}
-              />
-              <Card.Body className="p-2">
-                <Card.Title className="mb-0" style={title}>
-                  Mobil
-                </Card.Title>
-                <p className="mb-0" style={accesoris}>
-                  Kendaraan
-                </p>
-                <Card.Text className="mb-1">100000</Card.Text>
-              </Card.Body>
-            </Card>
-          </Link>
+        <div className="row">
+          {getListWishlistBuyerResult ? (
+            getListWishlistBuyerResult.data.length === 0 ? (
+              <div className="d-flex justify-content-center null-illustration p-5">
+                <div className="text-center">
+                  <img src={gambar2} alt="" className="img-fluid mb-3" />
+                  <p>Produk tidak ditemukan</p>
+                </div>
+              </div>
+            ) : (
+              getListWishlistBuyerResult.data.map((item, index) => {
+                return (
+                  <div className="col-lg-3 col-md-6 col-sm-6">
+                    <Link className="mx-2" to={""}>
+                      <Card>
+                        <Card.Img
+                          className="w-75 align-self-center"
+                          variant="top"
+                          multiple
+                          src={gambar}
+                          style={image}
+                        />
+                        <div className="d-flex justify-content-around mx-4">
+                          <Card.Body className="p-2">
+                            <Card.Title className="mb-0" style={title}>
+                              {item.Product.name}
+                            </Card.Title>
 
-          <Link className="mx-2" to={""}>
-            <Card>
-              <Card.Img
-                className="w-75 align-self-center"
-                variant="top"
-                multiple
-                src={gambar}
-                style={image}
-              />
-              <Card.Body className="p-2">
-                <Card.Title className="mb-0" style={title}>
-                  Mobil
-                </Card.Title>
-                <p className="mb-0" style={accesoris}>
-                  Kendaraan
-                </p>
-                <Card.Text className="mb-1">100000</Card.Text>
-              </Card.Body>
-            </Card>
-          </Link>
-
-          <Link className="mx-2" to={""}>
-            <Card>
-              <Card.Img
-                className="w-75 align-self-center"
-                variant="top"
-                multiple
-                src={gambar}
-                style={image}
-              />
-              <Card.Body className="p-2">
-                <Card.Title className="mb-0" style={title}>
-                  Mobil
-                </Card.Title>
-                <p className="mb-0" style={accesoris}>
-                  Kendaraan
-                </p>
-                <Card.Text className="mb-1">100000</Card.Text>
-              </Card.Body>
-            </Card>
-          </Link>
+                            <p className="mb-0" style={accesoris}>
+                              Kategori
+                              {/* belom kategorinya */}
+                            </p>
+                            <Card.Text className="mb-1">
+                              Rp. {item.Product.price}
+                            </Card.Text>
+                          </Card.Body>
+                          <button
+                            style={{
+                              textDecoration: "none",
+                              color: "purple",
+                              backgroundColor: "transparent",
+                              border: "none",
+                            }}
+                            onClick={() => dispatch(deleteWishlist(item.id))}
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="bottom"
+                            title="Delete Wihslist"
+                            className="align-self-center"
+                          >
+                            <i className="fa-solid fa-heart fa-xl"></i>
+                          </button>
+                        </div>
+                      </Card>
+                    </Link>
+                  </div>
+                );
+              })
+            )
+          ) : getListWishlistBuyerLoading ? (
+            <h3>Loading ...</h3>
+          ) : (
+            <p>
+              {getListWishlistBuyerError ? getListWishlistBuyerError : "Error"}
+            </p>
+          )}
         </div>
       </section>
     </div>
