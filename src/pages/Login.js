@@ -2,6 +2,7 @@ import "../assets/style.css";
 import React, { useEffect, useState } from "react";
 import img from "../assets/images/img.png";
 import back from "../assets/images/fi_arrow-left.png";
+import eye from "../assets/images/fi_eye.png";
 import { addLogin } from "../redux/action/loginAction";
 import { useSelector, useDispatch } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
@@ -26,6 +27,13 @@ const Login = () => {
     if (email !== "" && password !== "") {
       dispatch(addLogin({ email, password }));
     }
+  };
+
+  const [passwordShown, setPasswordShown] = useState(false);
+  const togglePassword = () => {
+    // When the handler is invoked
+    // inverse the boolean state of passwordShown
+    setPasswordShown(!passwordShown);
   };
 
   return (
@@ -53,12 +61,13 @@ const Login = () => {
               <input
                 className="form-control"
                 placeholder="Masukkan password"
-                type="password"
+                type={passwordShown ? "text" : "password"}
+                id="pass"
                 name="password"
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
               />
-              <div id="toggle" onclick="showHide();"></div>
+              <img src={eye} className="toggle" onClick={togglePassword} />
             </div>
 
             <div className="button-wrapper">
@@ -80,6 +89,9 @@ const Login = () => {
       )}
     </>
   );
+
 };
+
+
 
 export default Login;
