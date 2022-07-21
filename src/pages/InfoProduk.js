@@ -62,17 +62,19 @@ export default function InfoProduk() {
     // setImage([])
   };
 
-
   const handlePreview = () => {
     // navigate("/seller/preview", { state: { productDetail } });
-    localStorage.setItem('product', JSON.stringify({
-      name: name,
-      price: price,
-      category: parseInt(category),
-      description: desc,
-      image: image[0]
-    }))
-    window.open('/seller/preview', '_blank')
+    localStorage.setItem(
+      "product",
+      JSON.stringify({
+        name: name,
+        price: price,
+        category: parseInt(category),
+        description: desc,
+        image: image[0],
+      })
+    );
+    window.open("/seller/preview", "_blank");
   };
 
   useEffect(() => {
@@ -138,7 +140,7 @@ export default function InfoProduk() {
                   type="text"
                   className="form-control"
                   style={{ paddingBottom: "48px" }}
-                  placeholder="Contoh: Jalan Ikan Hiu 33"
+                  placeholder="Dennos Y68 Smart watch Y68 Tahan Air IP68 Monitor Denyut Jantung"
                   name="description"
                   value={desc}
                   onChange={(e) => setDesc(e.target.value)}
@@ -174,13 +176,13 @@ export default function InfoProduk() {
                   </button>
                 </div>
                 <div className="col-6 p-0 ps-1">
-                    <button
-                      className="btn btn-primary btn-action"
-                      type="submit"
-                      id="terbitkan"
-                    >
-                      Terbitkan
-                    </button>
+                  <button
+                    className="btn btn-primary btn-action"
+                    type="submit"
+                    id="terbitkan"
+                  >
+                    Terbitkan
+                  </button>
                 </div>
               </div>
             </form>

@@ -82,7 +82,7 @@ const Diminati = () => {
         </a>
       </div>
 
-      <div className="row justify-content-center daftar-jual">
+      <div className="row daftar-jual">
         {getAllWishlistResult ? (
           getAllWishlistResult.map((wishlist, Product) => {
             return (
