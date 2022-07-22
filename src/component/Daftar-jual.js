@@ -85,16 +85,16 @@ function Jual() {
 
             <div className="daftar-jual">
 
-                <div className="frame-165">
+            <Link to={`/info-produk`}>
+                <div className="card1">
+                    <div className="group3">
+                        <img src={plus} className="fi-plus" />
+                        <span className="group3-txt">Tambah Produk</span>
+                    </div>    
+                </div>
+                </Link>
 
-                    <Link to={`/info-produk`}>
-                        <div className="col-md-3 col-sm-6 py-3 my-3 card3 border-1">
-                            <div className="group3">
-                                <img src={plus} className="fi-plus" />
-                                <span className="group3-txt">Tambah Produk</span>
-                            </div>
-                        </div>
-                    </Link>
+                <div className="frame-165 row justify-content-left">
 
                     {/* Opsi pertama */}
                     {getAllDaftarjualResult ? (

@@ -65,7 +65,7 @@ function Jual() {
 
       <div className="kategori-mobile">
         <a href="/seller/daftar-jual">
-          <div className="kategori-mobile-frame active">
+          <div className="kategori-mobile-frame">
             <img src={boxMob} className="kategori-mobile-icon" />
             <span className="kategori-mobile-text">Produk</span>
           </div>
@@ -76,14 +76,14 @@ function Jual() {
             <span className="kategori-mobile-text">Diminati</span>
           </div>
         </a>
-        <div className="kategori-mobile-frame">
+        <div className="kategori-mobile-frame active">
           <img src={loveMob} className="kategori-mobile-icon" />
           <span className="kategori-mobile-text">Terjual</span>
         </div>
       </div>
 
       <div className="daftar-jual">
-        <div className="frame-165">
+        <div className="frame-165 row justify-content-left">
 
           {/* Opsi pertama */}
           {getAllTerjualResult ? (
