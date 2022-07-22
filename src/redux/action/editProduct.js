@@ -1,6 +1,7 @@
 import { EDIT_PRODUCT, GET_ALL_DAFTARJUAL, DELETE_PRODUCT } from "../type";
 import axios from "axios";
 import { API_URL } from "./api";
+import toast from "react-simple-toasts";
 
 export const editProduct = (data, id) => {
   return (dispatch) => {
@@ -68,6 +69,7 @@ export const deleteProduct = (id) => {
     })
       .then((response) => {
         console.log(response);
+        toast(`Success delete product`, 3000);
         dispatch(DELETE_PRODUCT());
         // dispatch(GET_ALL_DAFTARJUAL());
       })
