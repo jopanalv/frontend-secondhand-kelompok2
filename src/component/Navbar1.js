@@ -17,6 +17,7 @@ import { logout } from "../redux/action/loginAction";
 import "../assets/style2.css";
 import Notif from "./Notif";
 import NotifBuyer from "./Notif1";
+import { getNotifSeller } from "../redux/action/notifAction";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -100,6 +101,15 @@ export default function Navigasi() {
   };
   // const role = userState.user.data.role
 
+  // notif
+  const { getNotifSellerResult } = useSelector((state) => state.notif);
+
+  useEffect(() => {
+    dispatch(getNotifSeller());
+  }, [dispatch]);
+
+  console.log(getNotifSellerResult);
+
   return (
     <>
       <Navbar expand="lg" className={color ? "navbar-scroll" : "navbar1"}>
@@ -155,7 +165,16 @@ export default function Navigasi() {
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      <FiBell className="icon-bell-header m-3" />
+                      {/* <FiBell className="icon-bell-header m-3" /> */}
+                      {getNotifSellerResult ? (
+                        getNotifSellerResult.length > 0 ? (
+                          <i className="fas fa-bell fa-lg " data-count="."></i>
+                        ) : (
+                          <i className="fas fa-bell fa-lg "></i>
+                        )
+                      ) : (
+                        <i className="fas fa-bell fa-lg "></i>
+                      )}
                     </button>
                     <ul
                       class="dropdown-menu dropdown-menu-end"
@@ -182,7 +201,8 @@ export default function Navigasi() {
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      <FiUser className="icon-user-header" />
+                      {/* <FiUser className="icon-user-header" /> */}
+                      <i class="fa-solid fa-user"></i>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                       <li>
