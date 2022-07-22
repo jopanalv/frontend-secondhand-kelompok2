@@ -101,7 +101,7 @@ const Diminati = () => {
                     {/* <img src={barang} className="foto-barang" /> */}
                     <div className="frame-149">
                       <div className="informasi-barang">
-                        <div className="nama-barang">{Product.name}</div>
+                        <div className="nama-barang">{wishlist.Product.name}</div>
                         <div className="jenis-barang">
                           {kategori[wishlist.Product.CategoryId - 1] &&
                             kategori[wishlist.Product.CategoryId - 1]

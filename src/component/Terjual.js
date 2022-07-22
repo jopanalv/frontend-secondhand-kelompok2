@@ -104,9 +104,8 @@ function Jual() {
                     {/* <img src={barang} className="foto-barang" /> */}
                     <div className="frame-149">
                       <div className="informasi-barang">
-                        <div className="nama-barang">{Product.name}</div>
+                        <div className="nama-barang">{transaction.Product.name}</div>
                         <div className="jenis-barang">
-                          {transaction.Product.CategoryId}
                           {kategori[transaction.Product.CategoryId - 1] &&
                             kategori[transaction.Product.CategoryId - 1]
                             ? kategori[transaction.Product.CategoryId - 1].name
