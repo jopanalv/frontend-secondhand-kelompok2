@@ -1491,6 +1491,17 @@ option[value=""][disabled] {
   color: white;
 }
 
+#delete {
+  border-color: #7126B5;
+  border-radius: 16px;
+  color: black;
+}
+
+#delete:hover {
+  background: #7126B5;
+  color: white;
+}
+
 #terbitkan {
   border-color: #7126B5;
   background: #7126B5;
@@ -1551,7 +1562,12 @@ option[value=""][disabled] {
   /* info penawaran */
   #info-penawaran {
       width: 90%;
-  }  
+  } 
+  
+  /* edit produk */
+  #edit-produk {
+    width: 90%;
+  }
 
   /* navbar judul aja */
   #title {
@@ -1575,6 +1591,12 @@ option[value=""][disabled] {
   #info-penawaran {
       width: 50%;
   } 
+
+  /* edit produk */
+  #edit-produk {
+    width: 50%;
+  }
+
   #title {
     left: 49%;
 } 
