@@ -19,7 +19,6 @@ import DetailProduk_buyer from "./pages/DetailProduk_buyer";
 import DetailProduk_seller from "./pages/DetailProduk_seller";
 import EditProduk from "./pages/EditProduk";
 import Wishlist from "./pages/Wishlist";
-import "./assets/style2.css";
 
 function App() {
   return (
@@ -30,7 +29,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route
-            path="/buyer/detail-produk/:id"
+            path="/detail-produk/:id"
             element={<DetailProduk_buyer />}
           />
           {/* <Route
