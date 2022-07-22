@@ -85,7 +85,6 @@ function EditProduk() {
   };
 
   const handleDelete = (id) => {
-    if (window.confirm("Are you sure You want to delete?"));
     dispatch(deleteProduct(id));
     navigate("/seller/daftar-jual", { replace: true });
   };
