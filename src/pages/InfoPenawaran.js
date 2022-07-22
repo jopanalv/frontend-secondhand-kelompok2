@@ -53,13 +53,18 @@ export default function InfoPenawaran() {
     setStatus(e);
   };
 
+  console.log(status);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (status === "success") {
       handleSuccess(e);
-      navigate("../seller/daftar-jual");
-    } else {
+      navigate("../seller/daftar-jual/terjual");
+    } else if (status === "cancel") {
       handleCancel(e);
+      navigate("../seller/daftar-jual");
+    } else if (status === "") {
+      navigate(`../info-penawaran/${id}`);
+    } else {
       navigate("../seller/daftar-jual");
     }
   };
@@ -412,7 +417,7 @@ export default function InfoPenawaran() {
                                 type="radio"
                                 name="exampleRadios"
                                 id="exampleRadios1"
-                                value="success"
+                                value="cancel"
                                 onChange={(e) => handleStatus(e.target.value)}
                               />
                               <label
@@ -428,8 +433,8 @@ export default function InfoPenawaran() {
                                 type="radio"
                                 name="exampleRadios"
                                 id="exampleRadios1"
-                                value="cancel"
                                 onChange={(e) => handleStatus(e.target.value)}
+                                value=""
                               />
                               <label
                                 className="form-check-label"
