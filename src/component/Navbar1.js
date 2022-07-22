@@ -95,6 +95,9 @@ export default function Navigasi() {
     navigate("/wishlist", { replace: true });
   };
 
+  const handleHistory = () => {
+    navigate("/history", { replace: true });
+  };
   // const role = userState.user.data.role
 
   return (
@@ -198,23 +201,24 @@ export default function Navigasi() {
                       </li>
                       <li>
                         {userState.user.data.role === "seller" ? (
-                          <button
-                            class="dropdown-item"
-                            type="button"
-                            onClick={() => handleDashboard()}
-                          >
-                            Dashboard
-                          </button>
-                        ) : (
                           <>
                             <button
                               class="dropdown-item"
                               type="button"
-                              onClick={() => handleProfile()}
+                              onClick={() => handleDashboard()}
+                            >
+                              Dashboard
+                            </button>
+                            <button
+                              class="dropdown-item"
+                              type="button"
+                              onClick={() => handleHistory()}
                             >
                               History
                             </button>
-
+                          </>
+                        ) : (
+                          <>
                             <button
                               class="dropdown-item"
                               type="button"
@@ -247,36 +251,53 @@ export default function Navigasi() {
                     </Offcanvas.Header>
                     <Offcanvas.Body>
                       {userState.user.data.role === "seller" ? (
-                        <><Dropdown.Item href="#">
-                          Notifikasi
-                        </Dropdown.Item>
-                          <Dropdown.Item className="mt-2" onClick={() => handleDashboard()}>
+                        <>
+                          <Dropdown.Item href="#">Notifikasi</Dropdown.Item>
+                          <Dropdown.Item
+                            className="mt-2"
+                            onClick={() => handleDashboard()}
+                          >
                             Dashboard
                           </Dropdown.Item>
-                          <Dropdown.Item className="mt-2" onClick={() => handleProfile()}>
+                          <Dropdown.Item
+                            className="mt-2"
+                            onClick={() => handleProfile()}
+                          >
                             Profile
                           </Dropdown.Item>
-                          <Dropdown.Item className="mt-2" onClick={() => handleSignOut()}>
+                          <Dropdown.Item
+                            className="mt-2"
+                            onClick={() => handleSignOut()}
+                          >
                             Sign Out
-                          </Dropdown.Item></>
+                          </Dropdown.Item>
+                        </>
                       ) : (
-                        <><Dropdown.Item href="#">
-                          Notifikasi
-                        </Dropdown.Item>
-                          <Dropdown.Item className="mt-2" onClick={() => handleWishlist()}>
+                        <>
+                          <Dropdown.Item href="#">Notifikasi</Dropdown.Item>
+                          <Dropdown.Item
+                            className="mt-2"
+                            onClick={() => handleWishlist()}
+                          >
                             Wishlist
                           </Dropdown.Item>
-                          <Dropdown.Item className="mt-2" onClick={''}>
+                          <Dropdown.Item className="mt-2" onClick={""}>
                             History
                           </Dropdown.Item>
-                          <Dropdown.Item className="mt-2" onClick={() => handleProfile()}>
+                          <Dropdown.Item
+                            className="mt-2"
+                            onClick={() => handleProfile()}
+                          >
                             Profile
                           </Dropdown.Item>
-                          <Dropdown.Item className="mt-2" onClick={() => handleSignOut()}>
+                          <Dropdown.Item
+                            className="mt-2"
+                            onClick={() => handleSignOut()}
+                          >
                             Sign Out
-                          </Dropdown.Item></>
+                          </Dropdown.Item>
+                        </>
                       )}
-
                     </Offcanvas.Body>
                   </Offcanvas>
                 </>

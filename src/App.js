@@ -20,6 +20,7 @@ import DetailProduk_seller from "./pages/DetailProduk_seller";
 import EditProduk from "./pages/EditProduk";
 import Wishlist from "./pages/Wishlist";
 import "./assets/style2.css";
+import History from "./pages/History";
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
           <Route path="/info-produk" element={<InfoProduk />} />
           <Route path="/info-penawaran/:id" element={<InfoPenawaran />} />
           <Route path="/wishlist" element={<Wishlist />} />
+          <Route path="/history" element={<History />} />
         </Route>
       </Routes>
     </BrowserRouter>
