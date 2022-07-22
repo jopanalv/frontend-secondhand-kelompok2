@@ -14,7 +14,7 @@ export default function Homepage() {
     <div className='App'>
       <Navigasi />
       <Home />
-      {user.data.role === 'seller' ? (<Buttons />) : null}
+      {user?.data.role === 'seller' ? (<Buttons />) : null}
       <Product />
     </div>
   )

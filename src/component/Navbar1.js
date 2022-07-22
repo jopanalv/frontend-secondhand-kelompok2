@@ -152,32 +152,6 @@ export default function Navigasi() {
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      <FiList className="icon-list-header m-3" />
-                    </button>
-                    <ul
-                      class="dropdown-menu dropdown-menu-end"
-                      aria-labelledby="dropdownMenu2"
-                    >
-                      <li>
-                        <h5 class="dropdown-header">History </h5>
-                      </li>
-                      <li>
-                        {userState.user.data.role === "seller" ? (
-                          <Notif />
-                        ) : (
-                          <NotifBuyer />
-                        )}
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="dropdown">
-                    <button
-                      class="btn"
-                      type="button"
-                      id="dropdownMenu2"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
                       <FiBell className="icon-bell-header m-3" />
                     </button>
                     <ul
@@ -210,7 +184,7 @@ export default function Navigasi() {
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                       <li>
                         <h5 class="dropdown-header">
-                          Hi, {userState.user.data.Profile.name}{" "}
+                          Hi, {userState.user.data.Profile.name}
                         </h5>
                       </li>
                       <li>
@@ -272,18 +246,37 @@ export default function Navigasi() {
                       </Offcanvas.Title>
                     </Offcanvas.Header>
                     <Offcanvas.Body>
-                      <Dropdown.Item href="#/action-1">
-                        Notifikasi
-                      </Dropdown.Item>
-                      <Dropdown.Item
-                        className="mt-2"
-                        href="/seller/daftar-jual"
-                      >
-                        Daftar Jual
-                      </Dropdown.Item>
-                      <Dropdown.Item className="mt-2" href="/info-profile">
-                        Akun Saya
-                      </Dropdown.Item>
+                      {userState.user.data.role === "seller" ? (
+                        <><Dropdown.Item href="#">
+                          Notifikasi
+                        </Dropdown.Item>
+                          <Dropdown.Item className="mt-2" onClick={() => handleDashboard()}>
+                            Dashboard
+                          </Dropdown.Item>
+                          <Dropdown.Item className="mt-2" onClick={() => handleProfile()}>
+                            Profile
+                          </Dropdown.Item>
+                          <Dropdown.Item className="mt-2" onClick={() => handleSignOut()}>
+                            Sign Out
+                          </Dropdown.Item></>
+                      ) : (
+                        <><Dropdown.Item href="#">
+                          Notifikasi
+                        </Dropdown.Item>
+                          <Dropdown.Item className="mt-2" onClick={() => handleWishlist()}>
+                            Wishlist
+                          </Dropdown.Item>
+                          <Dropdown.Item className="mt-2" onClick={''}>
+                            History
+                          </Dropdown.Item>
+                          <Dropdown.Item className="mt-2" onClick={() => handleProfile()}>
+                            Profile
+                          </Dropdown.Item>
+                          <Dropdown.Item className="mt-2" onClick={() => handleSignOut()}>
+                            Sign Out
+                          </Dropdown.Item></>
+                      )}
+
                     </Offcanvas.Body>
                   </Offcanvas>
                 </>
