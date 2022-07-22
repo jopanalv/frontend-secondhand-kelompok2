@@ -32,25 +32,23 @@ const DetailProduk_seller = () => {
     )
   }
 
-  const handleSubmit = async (e) => {
+  const handleTerbit = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("name", product.name);
-    formData.append("price", product.price);
-    formData.append("CategoryId", product.category);
-    formData.append("description", product.description);
-    formData.append("image", product.image.path);
-    dispatch(addProduct(formData));
+    // const formData = new FormData();
+    // formData.append("name", product.name);
+    // formData.append("price", product.price);
+    // formData.append("CategoryId", product.category);
+    // formData.append("description", product.description);
+    // formData.append("image", product.image);
+    // dispatch(addProduct(formData));
+    window.close();
 
   };
-
-  console.log(product.image)
 
   const handleEdit = () => {
     // navigate('/info-produk')
     localStorage.removeItem("product")
     window.close();
-
   }
 
   const {
@@ -94,7 +92,7 @@ const DetailProduk_seller = () => {
                 : "tidak ada"}</p>
               <p className="card-text-2 fw-bold">{product.price}</p>
               <div class="d-grid gap-2">
-                <button class="btn_teks btn1 text-white" type="button" onClick={(e) => handleSubmit(e)}>Terbitkan</button>
+                <button class="btn_teks btn1 text-white" type="button" onClick={(e) => handleTerbit(e)}>Terbitkan</button>
                 <button class="btn_teks btn2" type="button" onClick={() => handleEdit()}>Edit</button>
               </div>
             </div>
@@ -129,7 +127,7 @@ const DetailProduk_seller = () => {
           </div>
         </div>
         <div className='container3'>
-          <button class="btn_teks btn1 btn-float text-white" type="button" onClick={(e) => handleSubmit(e)}>Terbitkan</button>
+          <button class="btn_teks btn1 btn-float text-white" type="button" onClick={(e) => handleTerbit(e)}>Terbitkan</button>
 
         </div>
       </Container>
