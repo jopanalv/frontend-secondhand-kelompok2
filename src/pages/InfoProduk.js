@@ -140,7 +140,7 @@ export default function InfoProduk() {
                   type="text"
                   className="form-control"
                   style={{ paddingBottom: "48px" }}
-                  placeholder="Dennos Y68 Smart watch Y68 Tahan Air IP68 Monitor Denyut Jantung"
+                  placeholder="Contoh: Dennos Y68 Smart watch Y68 Tahan Air IP68 Monitor Denyut Jantung"
                   name="description"
                   value={desc}
                   onChange={(e) => setDesc(e.target.value)}
