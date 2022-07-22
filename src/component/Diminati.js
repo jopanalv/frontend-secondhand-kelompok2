@@ -82,12 +82,14 @@ const Diminati = () => {
         </a>
       </div>
 
-      <div className="row daftar-jual">
+      <div className="daftar-jual">
+      <div className="frame-165 row justify-content-left">
+
         {getAllWishlistResult ? (
           getAllWishlistResult.map((wishlist, Product) => {
+
             return (
-              <div className="col-md-3 col-sm-6 py-3 my-3 " key={wishlist.id}>
-                <div className="card3 border-1 mx-2">
+              <div className="col-md-3 col-sm-6 py-3 my-3 card3 border-1" key={wishlist.id}>
                   <Link to={`/transaction/detail/` + wishlist.Product.id}>
                     <img
                       src={
@@ -113,7 +115,6 @@ const Diminati = () => {
                     </div>
                   </Link>
                 </div>
-              </div>
             );
           })
         ) : // Opsi kedua
@@ -132,6 +133,7 @@ const Diminati = () => {
               )}
             </div>
           )}
+      </div>     
       </div>
     </div>
   );

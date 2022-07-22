@@ -553,20 +553,10 @@ body {
     top: 282px;
   }
 
-
   .frame-165 {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 12px;
-
-    width: 668px;
+    gap: 10px;
+    width: 800px;
     height: 198px;
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
   }
 
   .frame-150 {
@@ -601,8 +591,8 @@ body {
     position: absolute;
     width: 140px;
     height: 18px;
-    left: 33.33px;
-    top: 102px;
+    left: 240px; 
+    top: 75px;
     font-weight: 400;
     font-size: 12px;
     line-height: 18px;
@@ -614,8 +604,16 @@ body {
     position: absolute;
     width: 24px;
     height: 24px;
-    left: 91.33px;
-    top: 70px;
+    left: 300px;
+    top: 40px;
+  }
+
+  .card1 {
+    border: 2px dashed rgba(0, 0, 0, 0.15);
+    width: 683px;
+    height: 130px;
+    margin-left: -13px;
+    margin-bottom: -10px;
   }
 
   .card3 {
@@ -632,7 +630,7 @@ body {
   .foto-barang {
     width: 181px;
     height: 100px;
-    margin-left: 12px;
+    align-items: center;
     /* background: url(./images/Rectangle23.png), #EEEEEE; */
     border-radius: 4px;
     flex: none;
@@ -646,7 +644,6 @@ body {
     height: 66px;
 
     margin-top: 10px;
-    margin-left: 15px;
   }
 
   .informasi-barang {
@@ -948,20 +945,33 @@ body {
       flex-grow: 0;
     }
 
-    /* Diminati */
+    /* Daftar Jual in Medium screen */
 
-    .group34 {
-      margin-left: -70px;
+    .frame-165 {
+      width: 780px;
+      gap: 15px;
+    }
+    
+    .card3 {
+      margin-left: 10px;
+      width: 218px;
     }
 
-    .diminati-txt {
-      margin-left: 50px;
-      font-size: 14px;
+    .card1 {
+      margin-left: -3px;
+      width: 747px
     }
+
+    .fi-plus {
+      left: 330px
+    }
+
+    .group3-txt {
+      left: 270px;
+    }
+
   
   }
-
-
 
   @media (max-width: 768px) {
     .menu-nav {
@@ -1069,17 +1079,17 @@ body {
 
     .daftarjual-title {
       left: 80px;
-      top: 45px;
+      top: 60px;
     }
 
     .penjual {
-      width: 354px;
+      width: 745px;
       left: 16px;
       top: 102px;
     }
 
     .frame-138 {
-      width: 296px;
+      width: 680px;
     }
 
     .frame-137 {
@@ -1100,44 +1110,7 @@ body {
 
     .daftar-jual {
       left: 20px;
-      top: 260px;
-    }
-    
-    .frame-165 {  
-      width: 368px;
-    }
-
-    .group3-txt{
-      margin-left: -28px;
-      margin-top: 10px;
-    }
-
-    .fi-plus {
-      margin-left: -28px;
-      margin-top: 10px;
-    }
-   .foto-barang {
-      width: 132px;
-      height: 80px;
-      margin-left: 12px;
-    }
-
-   
-    .nama-barang {
-      width: 100px;
-      height: 40px;
-      left: 8px;
-      top: 116px;
-    }    
-    .jenis-barang {
-      width: 140px;
-
-    }
-
-    .harga-barang {
-      position: absolute;
-      width: 140px;
-      margin-top: 19px;
+      top: 280px;
     }
 
     .kategori {
@@ -1167,10 +1140,14 @@ body {
       padding: 12px 16px;
       gap: 8px;
 
-      width: 108px;
+      width: 240px;
       height: 44px;
+
       background: #E2D4F0;
       border-radius: 12px;
+
+      /* Inside auto layout */
+
       flex: none;
       order: 0;
       flex-grow: 0;
@@ -1185,15 +1162,179 @@ body {
 
       width: 48px;
       height: 20px;
+      
+      /* Body/14/Regular */
+      
+      font-family: 'Poppins';
+      font-style: normal;
       font-weight: 400;
       font-size: 14px;
       line-height: 20px;
+      /* identical to box height, or 143% */
+      
+      
+      /* Neutral/01 */
+      
       color: #FFFFFF;
+      
+      
+      /* Inside auto layout */
+      
       flex: none;
       order: 1;
       flex-grow: 0;
     }
 
+    .kategori-mobile-icon {
+      width: 20px;
+      height: 20px;
+      margin-left: 46px;
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+    }
+
+    .frame-165 {
+      width: 780px;
+      gap: 15px;
+    }
+    
+    .card3 {
+      margin-left: 10px;
+      width: 218px;
+    }
+
+    .card1 {
+      margin-left: -3px;
+      width: 747px
+    }
+
+    .fi-plus {
+      left: 330px
+    }
+
+    .group3-txt {
+      left: 270px;
+    }
+
+  }
+
+  /* Daftar Jual in Handphone screen */
+
+  @media  (max-width: 480px) {
+  
+    .daftarjual-title {
+      left: 80px;
+      top: 60px;
+    }
+  
+  
+    .penjual {
+      width: 354px;
+      left: 16px;
+      top: 102px;
+    }
+  
+    .frame-138 {
+      width: 296px;
+    }
+  
+    .frame-137 {
+      width: 169px;
+    }
+  
+    .nama-penjual {
+      width: 169px;
+    }
+  
+    .kota {
+      width: 169px;
+    }
+  
+    .frame-141 {
+      margin-right:-20px;
+    }
+  
+    .daftar-jual {
+      left: 20px;
+      top: 260px;
+    }
+  
+   
+    .kategori {
+      display: none;
+    }
+  
+    /* Kategori Mobile */
+  
+    .kategori-mobile {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      padding: 0px;
+      gap: 16px;
+  
+      position: absolute;
+      width: 366px;
+      height: 44px;
+      left: 16px;
+      top: 205px;
+    }
+  
+    .kategori-mobile-frame {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      padding: 12px 16px;
+      gap: 8px;
+  
+      width: 108px;
+      height: 44px;
+  
+      /* Primary/Purple/04 */
+  
+      background: #E2D4F0;
+      border-radius: 12px;
+  
+      /* Inside auto layout */
+  
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+    }
+  
+    .active, .kategori-mobile-frame:hover {
+      background: #7126B5;
+    }
+  
+    .kategori-mobile-text {
+      text-decoration: none;
+  
+      width: 48px;
+      height: 20px;
+      
+      /* Body/14/Regular */
+      
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      /* identical to box height, or 143% */
+      
+      
+      /* Neutral/01 */
+      
+      color: #FFFFFF;
+      
+      
+      /* Inside auto layout */
+      
+      flex: none;
+      order: 1;
+      flex-grow: 0;
+    }
+  
     .kategori-mobile-icon {
       width: 20px;
       height: 20px;
@@ -1203,18 +1344,57 @@ body {
       flex-grow: 0;
     }
 
-    /* Diminati */
-
-    .group34 {
-      margin-left: -270px;
+     .frame-165 {
+      width: 375px;
+      gap: 5px;
     }
-
-    .diminati-txt {
-      margin-left: 50px;
-      font-size: 14px;
+    
+    .card3 {
+      margin-left: 10px;
+      width: 155px;
+      height: 175px;
     }
-
+  
+    .card1 {
+      margin-left: -3px;
+      width: 355px
+    }
+  
+    .fi-plus {
+      left: 170px
+    }
+  
+    .group3-txt {
+      left: 110px;
+    }
+  
+   .foto-barang {
+      width: 132px;
+      height: 80px;
+    }
+  
+    .nama-barang {
+      width: 100px;
+      height: 40px;
+      left: 8px;
+      top: 116px;
+    }
+  
+    .jenis-barang {
+      width: 140px;
+      /* left: 8px; */
+      margin-top: -20px;
+    }
+  
+    .harga-barang {
+      position: absolute;
+      width: 140px;
+      /* left: 8px; */
+      margin-top: -1px;
+    }
+  
   }
+  
 
 @media (min-width: 992px) {
   .back {
