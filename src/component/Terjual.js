@@ -17,9 +17,7 @@ import { categoryList, getAllProduct } from "../redux/action/productActions";
 function Jual() {
   const { getAllTerjualResult, getAllTerjualLoading, getAllTerjualError } =
     useSelector((state) => state.daftarjualReducer);
-  const {
-    categoryResult,
-  } = useSelector((state) => state.product);
+  const { categoryResult } = useSelector((state) => state.product);
 
   const dispatch = useDispatch();
 
@@ -65,7 +63,7 @@ function Jual() {
 
       <div className="kategori-mobile">
         <a href="/seller/daftar-jual">
-          <div className="kategori-mobile-frame active">
+          <div className="kategori-mobile-frame">
             <img src={boxMob} className="kategori-mobile-icon" />
             <span className="kategori-mobile-text">Produk</span>
           </div>
@@ -76,15 +74,14 @@ function Jual() {
             <span className="kategori-mobile-text">Diminati</span>
           </div>
         </a>
-        <div className="kategori-mobile-frame">
+        <div className="kategori-mobile-frame active">
           <img src={loveMob} className="kategori-mobile-icon" />
           <span className="kategori-mobile-text">Terjual</span>
         </div>
       </div>
 
       <div className="daftar-jual">
-        <div className="frame-165">
-
+        <div className="frame-165 row justify-content-left">
           {/* Opsi pertama */}
           {getAllTerjualResult ? (
             getAllTerjualResult.map((transaction, Product) => {
@@ -95,26 +92,24 @@ function Jual() {
                 >
                   <Link to={`/transaction/detail/` + transaction.id}>
                     <img
-                      src={
-                        `${IMG_URL}` +
-                        transaction.Product.image
-                      }
+                      src={`${IMG_URL}` + transaction.Product.image}
                       className="foto-barang"
                     />
                     {/* <img src={barang} className="foto-barang" /> */}
                     <div className="frame-149">
                       <div className="informasi-barang">
-                        <div className="nama-barang">{Product.name}</div>
+                        <div className="nama-barang">
+                          {transaction.Product.name}
+                        </div>
                         <div className="jenis-barang">
-                          {transaction.Product.CategoryId}
                           {kategori[transaction.Product.CategoryId - 1] &&
-                            kategori[transaction.Product.CategoryId - 1]
+                          kategori[transaction.Product.CategoryId - 1]
                             ? kategori[transaction.Product.CategoryId - 1].name
                             : "tidak ada"}
                         </div>
                       </div>
                       <div className="harga-barang">
-                        {transaction.offer_price}
+                        Ditawar : Rp {transaction.offer_price}
                       </div>
                     </div>
                   </Link>
@@ -122,21 +117,21 @@ function Jual() {
               );
             })
           ) : // Opsi kedua
-            getAllTerjualLoading ? (
-              <p>Loading ...</p>
-            ) : (
-              // Opsi ketiga
-              <div className="group34">
-                {getAllTerjualError ? (
-                  getAllTerjualError
-                ) : (
-                  <span className="diminati-txt">
-                    Belum ada produk yang terjual
-                  </span>
-                )}
-              </div>
-              // <p>{getAllTerjualError ? getAllTerjualError : "Data Kosong"}</p>
-            )}
+          getAllTerjualLoading ? (
+            <p>Loading ...</p>
+          ) : (
+            // Opsi ketiga
+            <div className="group34">
+              {getAllTerjualError ? (
+                getAllTerjualError
+              ) : (
+                <span className="diminati-txt">
+                  Belum ada produk yang terjual
+                </span>
+              )}
+            </div>
+            // <p>{getAllTerjualError ? getAllTerjualError : "Data Kosong"}</p>
+          )}
         </div>
         {/* </div> */}
       </div>

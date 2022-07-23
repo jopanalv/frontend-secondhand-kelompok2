@@ -104,9 +104,9 @@ const DetailProduk_buyer = () => {
                   ? kategori[productInfo.CategoryId - 1].name
                   : "tidak ada"}
                   </p>
-                  <p className="card-text-2 fw-bold">Rp {productInfo.price}</p>
-                  <div class="d-flex flex-column gap-3 mt-3">
-                  {productInfo.sellerId === user.data.id ? (
+              <p className="card-text-2 fw-bold">Rp {productInfo.price}</p>
+              <div class="d-grid gap-2">
+                {productInfo.sellerId === user?.data.id ? (
                   <button
                     class="btn_teks btn1 text-white"
                     type="button"
@@ -114,7 +114,7 @@ const DetailProduk_buyer = () => {
                   >
                     Edit
                   </button>
-                ) : user.data.role === "seller" ? (
+                ) : user?.data.role === "seller" ? (
                   <>
                     <button
                       class="btn_teks btn1 btn-secondary text-white"

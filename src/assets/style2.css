@@ -1,5 +1,25 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins');
 
+/* NAVBAR LONCENG */
+.fas[data-count] {
+  position: relative;
+}
+
+.fas[data-count]:after {
+  position: absolute;
+  right: -0.75em;
+  top: -1.725em;
+  content: attr(data-count);
+  padding: 0.5em;
+  border-radius: 10em;
+  line-height: 0.9em;
+  color: white;
+  background: #4B1979;
+  text-align: center;
+  min-width: 2em;
+  font: bold 0.4em sans-serif;
+}
+
 /* HOMEPAGE */
 /* Navbar */
 .logo {

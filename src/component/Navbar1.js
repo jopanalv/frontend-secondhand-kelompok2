@@ -17,6 +17,7 @@ import { logout } from "../redux/action/loginAction";
 import "../assets/style2.css";
 import Notif from "./Notif";
 import NotifBuyer from "./Notif1";
+import { getNotifSeller } from "../redux/action/notifAction";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -95,7 +96,19 @@ export default function Navigasi() {
     navigate("/wishlist", { replace: true });
   };
 
+  const handleHistory = () => {
+    navigate("/history", { replace: true });
+  };
   // const role = userState.user.data.role
+
+  // notif
+  const { getNotifSellerResult } = useSelector((state) => state.notif);
+
+  useEffect(() => {
+    dispatch(getNotifSeller());
+  }, [dispatch]);
+
+  console.log(getNotifSellerResult);
 
   return (
     <>
@@ -152,33 +165,16 @@ export default function Navigasi() {
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      <FiList className="icon-list-header m-3" />
-                    </button>
-                    <ul
-                      class="dropdown-menu dropdown-menu-end"
-                      aria-labelledby="dropdownMenu2"
-                    >
-                      <li>
-                        <h5 class="dropdown-header">History </h5>
-                      </li>
-                      <li>
-                        {userState.user.data.role === "seller" ? (
-                          <Notif />
+                      {/* <FiBell className="icon-bell-header m-3" /> */}
+                      {getNotifSellerResult ? (
+                        getNotifSellerResult.length > 0 ? (
+                          <i className="fas fa-bell fa-lg " data-count="."></i>
                         ) : (
-                          <NotifBuyer />
-                        )}
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="dropdown">
-                    <button
-                      class="btn"
-                      type="button"
-                      id="dropdownMenu2"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      <FiBell className="icon-bell-header m-3" />
+                          <i className="fas fa-bell fa-lg "></i>
+                        )
+                      ) : (
+                        <i className="fas fa-bell fa-lg "></i>
+                      )}
                     </button>
                     <ul
                       class="dropdown-menu dropdown-menu-end"
@@ -205,12 +201,13 @@ export default function Navigasi() {
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      <FiUser className="icon-user-header" />
+                      {/* <FiUser className="icon-user-header" /> */}
+                      <i class="fa-solid fa-user"></i>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                       <li>
                         <h5 class="dropdown-header">
-                          Hi, {userState.user.data.Profile.name}{" "}
+                          Hi, {userState.user.data.Profile.name}
                         </h5>
                       </li>
                       <li>
@@ -224,23 +221,24 @@ export default function Navigasi() {
                       </li>
                       <li>
                         {userState.user.data.role === "seller" ? (
-                          <button
-                            class="dropdown-item"
-                            type="button"
-                            onClick={() => handleDashboard()}
-                          >
-                            Dashboard
-                          </button>
-                        ) : (
                           <>
                             <button
                               class="dropdown-item"
                               type="button"
-                              onClick={() => handleProfile()}
+                              onClick={() => handleDashboard()}
+                            >
+                              Dashboard
+                            </button>
+                            <button
+                              class="dropdown-item"
+                              type="button"
+                              onClick={() => handleHistory()}
                             >
                               History
                             </button>
-
+                          </>
+                        ) : (
+                          <>
                             <button
                               class="dropdown-item"
                               type="button"
@@ -272,18 +270,54 @@ export default function Navigasi() {
                       </Offcanvas.Title>
                     </Offcanvas.Header>
                     <Offcanvas.Body>
-                      <Dropdown.Item href="#/action-1">
-                        Notifikasi
-                      </Dropdown.Item>
-                      <Dropdown.Item
-                        className="mt-2"
-                        href="/seller/daftar-jual"
-                      >
-                        Daftar Jual
-                      </Dropdown.Item>
-                      <Dropdown.Item className="mt-2" href="/info-profile">
-                        Akun Saya
-                      </Dropdown.Item>
+                      {userState.user.data.role === "seller" ? (
+                        <>
+                          <Dropdown.Item href="#">Notifikasi</Dropdown.Item>
+                          <Dropdown.Item
+                            className="mt-2"
+                            onClick={() => handleDashboard()}
+                          >
+                            Dashboard
+                          </Dropdown.Item>
+                          <Dropdown.Item
+                            className="mt-2"
+                            onClick={() => handleProfile()}
+                          >
+                            Profile
+                          </Dropdown.Item>
+                          <Dropdown.Item
+                            className="mt-2"
+                            onClick={() => handleSignOut()}
+                          >
+                            Sign Out
+                          </Dropdown.Item>
+                        </>
+                      ) : (
+                        <>
+                          <Dropdown.Item href="#">Notifikasi</Dropdown.Item>
+                          <Dropdown.Item
+                            className="mt-2"
+                            onClick={() => handleWishlist()}
+                          >
+                            Wishlist
+                          </Dropdown.Item>
+                          <Dropdown.Item className="mt-2" onClick={""}>
+                            History
+                          </Dropdown.Item>
+                          <Dropdown.Item
+                            className="mt-2"
+                            onClick={() => handleProfile()}
+                          >
+                            Profile
+                          </Dropdown.Item>
+                          <Dropdown.Item
+                            className="mt-2"
+                            onClick={() => handleSignOut()}
+                          >
+                            Sign Out
+                          </Dropdown.Item>
+                        </>
+                      )}
                     </Offcanvas.Body>
                   </Offcanvas>
                 </>

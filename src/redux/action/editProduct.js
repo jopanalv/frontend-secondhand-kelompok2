@@ -1,6 +1,7 @@
 import { EDIT_PRODUCT, GET_ALL_DAFTARJUAL, DELETE_PRODUCT } from "../type";
 import axios from "axios";
-import {API_URL} from "./api";
+import { API_URL } from "./api";
+import toast from "react-simple-toasts";
 
 export const editProduct = (data, id) => {
   return (dispatch) => {
@@ -14,7 +15,7 @@ export const editProduct = (data, id) => {
       },
     });
 
-    const token = localStorage.getItem('accessToken')
+    const token = localStorage.getItem("accessToken");
 
     axios({
       method: "PUT",
@@ -22,12 +23,12 @@ export const editProduct = (data, id) => {
       timeout: 120000,
       // withCredentials: true,
       headers: {
-        'Content-Type': 'multipart/form-data',
-        'Authorization': `Bearer ${token}`
+        "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${token}`,
       },
-      data: data
+      data: data,
     })
-      .then(res => {
+      .then((res) => {
         //berhasil get API
         dispatch({
           type: EDIT_PRODUCT,
@@ -38,7 +39,7 @@ export const editProduct = (data, id) => {
           },
         });
       })
-      .catch(error => {
+      .catch((error) => {
         //error get api
         dispatch({
           type: EDIT_PRODUCT,
@@ -49,13 +50,12 @@ export const editProduct = (data, id) => {
           },
         });
       });
-  }
-}
+  };
+};
 
 export const deleteProduct = (id) => {
   return (dispatch) => {
-
-    const token = localStorage.getItem('accessToken')
+    const token = localStorage.getItem("accessToken");
 
     axios({
       method: "DELETE",
@@ -63,17 +63,18 @@ export const deleteProduct = (id) => {
       timeout: 120000,
       // withCredentials: true,
       headers: {
-        'Content-Type': 'multipart/form-data',
-        'Authorization': `Bearer ${token}`
+        "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${token}`,
       },
     })
-    .then(response => {
-      console.log(response);
-      dispatch(DELETE_PRODUCT());
-      // dispatch(GET_ALL_DAFTARJUAL());
-  })
-  .catch(error => {
-      console.log(error);
-  });
-  }
-}
+      .then((response) => {
+        console.log(response);
+        toast(`Success delete product`, 3000);
+        dispatch(DELETE_PRODUCT());
+        // dispatch(GET_ALL_DAFTARJUAL());
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+};

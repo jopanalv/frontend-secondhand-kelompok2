@@ -16,9 +16,7 @@ import { IMG_URL } from "../redux/action/api";
 const Diminati = () => {
   const { getAllWishlistResult, getAllWishlistLoading, getAllWishlistError } =
     useSelector((state) => state.daftarjualReducer);
-  const {
-    categoryResult,
-  } = useSelector((state) => state.product);
+  const { categoryResult } = useSelector((state) => state.product);
 
   const dispatch = useDispatch();
 
@@ -82,41 +80,42 @@ const Diminati = () => {
         </a>
       </div>
 
-      <div className="row daftar-jual">
-        {getAllWishlistResult ? (
-          getAllWishlistResult.map((wishlist, Product) => {
-            return (
-              <div className="col-md-3 col-sm-6 py-3 my-3 " key={wishlist.id}>
-                <div className="card3 border-1 mx-2">
+      <div className="daftar-jual">
+        <div className="frame-165 row justify-content-left">
+          {getAllWishlistResult ? (
+            getAllWishlistResult.map((wishlist, Product) => {
+              return (
+                <div
+                  className="col-md-3 col-sm-6 py-3 my-3 card3 border-1"
+                  key={wishlist.id}
+                >
                   <Link to={`/transaction/detail/` + wishlist.Product.id}>
                     <img
-                      src={
-                        `${IMG_URL}` +
-                        wishlist.Product.image
-                      }
+                      src={`${IMG_URL}` + wishlist.Product.image}
                       className="foto-barang"
                     />
                     {/* <img src={barang} className="foto-barang" /> */}
                     <div className="frame-149">
                       <div className="informasi-barang">
-                        <div className="nama-barang">{Product.name}</div>
+                        <div className="nama-barang">
+                          {wishlist.Product.name}
+                        </div>
                         <div className="jenis-barang">
                           {kategori[wishlist.Product.CategoryId - 1] &&
-                            kategori[wishlist.Product.CategoryId - 1]
+                          kategori[wishlist.Product.CategoryId - 1]
                             ? kategori[wishlist.Product.CategoryId - 1].name
                             : "tidak ada"}
                         </div>
                       </div>
                       <div className="harga-barang">
-                        {wishlist.Product.price}
+                        Rp {wishlist.Product.price}
                       </div>
                     </div>
                   </Link>
                 </div>
-              </div>
-            );
-          })
-        ) : // Opsi kedua
+              );
+            })
+          ) : // Opsi kedua
           getAllWishlistLoading ? (
             <p>Loading ...</p>
           ) : (
@@ -132,6 +131,7 @@ const Diminati = () => {
               )}
             </div>
           )}
+        </div>
       </div>
     </div>
   );

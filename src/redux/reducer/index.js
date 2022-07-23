@@ -9,6 +9,7 @@ import daftarjualReducer from "./DaftarJual";
 import NotifReducer from "./Notif";
 import TransReducer from "./Transaction";
 import WishlistReducer from "./Wishlist";
+import HistoryReducer from "./History";
 
 export default combineReducers({
   profile: ProfileReducer,
@@ -22,4 +23,5 @@ export default combineReducers({
   deleteProduct: EditProductReducer,
   daftarjualReducer,
   wishlist: WishlistReducer,
+  history: HistoryReducer,
 });
