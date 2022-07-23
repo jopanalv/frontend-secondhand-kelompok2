@@ -3,8 +3,11 @@ import Data from "../data/data";
 import { Container, Button } from "react-bootstrap";
 import { FiSearch } from "react-icons/fi";
 import { BsPlus } from "react-icons/bs";
+import { useSelector } from "react-redux";
 
 function Buttons() {
+    const { user } = useSelector((state) => state.login);
+
   return (
     <>
     <Container className="category">
@@ -30,7 +33,7 @@ function Buttons() {
                             <FiSearch className="align-self-center" /> Kesehatan
                         </Button>
                     </div>
-                    
+                    {user?.data.role === "seller" ? 
                     <a href="/info-produk"><Button className="d-flex gap-2 px-3 py-2 fixed-bottom button-sell mb-4">
                         
                         <BsPlus
@@ -39,7 +42,8 @@ function Buttons() {
                         />{" "}
                         Jual
                         
-                    </Button></a>
+                    </Button></a> : null
+                    }
                 </div>
 
             </Container>

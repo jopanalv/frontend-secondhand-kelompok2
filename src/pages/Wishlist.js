@@ -10,6 +10,7 @@ import {
   getListWishlistBuyer,
 } from "../redux/action/wishlistAction";
 import { categoryList } from "../redux/action/productActions";
+import { IMG_URL } from "../redux/action/api";
 
 export default function Wishlist() {
   const title = {
@@ -36,9 +37,7 @@ export default function Wishlist() {
     getListWishlistBuyerError,
     deleteWishlistResult,
   } = useSelector((state) => state.wishlist);
-  const {
-    categoryResult,
-  } = useSelector((state) => state.product);
+  const { categoryResult } = useSelector((state) => state.product);
 
   const kategori = [];
 
@@ -76,7 +75,7 @@ export default function Wishlist() {
         <div className="row">
           {getListWishlistBuyerResult ? (
             getListWishlistBuyerResult.data.length === 0 ? (
-              <div className="d-flex justify-content-center null-illustration p-5">
+              <div className="d-flex justify-content-center p-3">
                 <div className="text-center">
                   <img src={gambar2} alt="" className="img-fluid mb-3" />
                   <p>Produk tidak ditemukan</p>
@@ -92,7 +91,7 @@ export default function Wishlist() {
                           className="w-75 align-self-center"
                           variant="top"
                           multiple
-                          src={gambar}
+                          src={`${IMG_URL}` + item.Product.image}
                           style={image}
                         />
                         <div className="d-flex justify-content-around mx-4">
@@ -103,7 +102,7 @@ export default function Wishlist() {
 
                             <p className="mb-0" style={accesoris}>
                               {kategori[item.Product.CategoryId - 1] &&
-                                kategori[item.Product.CategoryId - 1]
+                              kategori[item.Product.CategoryId - 1]
                                 ? kategori[item.Product.CategoryId - 1].name
                                 : "tidak ada"}
                             </p>
