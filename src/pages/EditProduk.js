@@ -7,10 +7,13 @@ import { useDropzone } from "react-dropzone";
 import React, { useCallback, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editProduct, deleteProduct } from "../redux/action/editProduct";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { addSearch } from "../slice/searchingSlice";
-import { useParams } from 'react-router-dom';
-import { categoryList, getSelectedProduct } from "../redux/action/productActions";
+import { useParams } from "react-router-dom";
+import {
+  categoryList,
+  getSelectedProduct,
+} from "../redux/action/productActions";
 import { IMG_URL } from "../redux/action/api";
 
 function EditProduk() {
@@ -19,15 +22,19 @@ function EditProduk() {
 
   const { id } = useParams();
 
-  const { categoryResult, getSelectedProductResult } = useSelector((state) => state.product);
+  const { categoryResult, getSelectedProductResult } = useSelector(
+    (state) => state.product
+  );
 
-  console.log(getSelectedProductResult)
+  console.log(getSelectedProductResult);
 
-  const [name, setName] = useState(getSelectedProductResult.name)
-  const [price, setPrice] = useState(getSelectedProductResult.price ?? "")
-  const [category, setCategory] = useState(getSelectedProductResult.CategoryId ?? "")
-  const [desc, setDesc] = useState(getSelectedProductResult.description ?? "")
-  const [image, setImage] = useState([])
+  const [name, setName] = useState(getSelectedProductResult.name);
+  const [price, setPrice] = useState(getSelectedProductResult.price ?? "");
+  const [category, setCategory] = useState(
+    getSelectedProductResult.CategoryId ?? ""
+  );
+  const [desc, setDesc] = useState(getSelectedProductResult.description ?? "");
+  const [image, setImage] = useState([]);
   const previewImage =
     getSelectedProductResult.image !== null
       ? `${IMG_URL}` + getSelectedProductResult.image
@@ -35,17 +42,25 @@ function EditProduk() {
 
   const [searching, setSearching] = useState("");
 
-  const onDrop = useCallback(acceptedFiles => {
-    setImage(acceptedFiles.map(file => Object.assign(file, {
-      preview: URL.createObjectURL(file)
-    })));
+  const onDrop = useCallback((acceptedFiles) => {
+    setImage(
+      acceptedFiles.map((file) =>
+        Object.assign(file, {
+          preview: URL.createObjectURL(file),
+        })
+      )
+    );
   }, []);
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   const selected_images = image?.map((file) => (
     <div key={file.lastModified}>
-      <img src={file.preview} alt="foto profile" style={{ width: "8em", height: "8em" }} />
+      <img
+        src={file.preview}
+        alt="foto profile"
+        style={{ width: "8em", height: "8em" }}
+      />
     </div>
   ));
 
@@ -57,29 +72,26 @@ function EditProduk() {
   }, []);
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    const formData = new FormData()
-    formData.append('name', name)
-    formData.append('price', price)
-    formData.append('category', category)
-    formData.append('description', desc)
-    formData.append('image', image[0])
-    dispatch(editProduct(formData, id))
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("price", price);
+    formData.append("category", category);
+    formData.append("description", desc);
+    formData.append("image", image[0]);
+    dispatch(editProduct(formData, id));
 
-    navigate('/seller/daftar-jual', { replace: true })
-  }
+    navigate("/seller/daftar-jual", { replace: true });
+  };
 
   const handleDelete = (id) => {
-    if (window.confirm("Are you sure You want to delete?"));
     dispatch(deleteProduct(id));
-    navigate('/seller/daftar-jual', { replace: true })
-  }
+    navigate("/seller/daftar-jual", { replace: true });
+  };
 
   const handleSearch = () => {
-    dispatch(
-      addSearch(searching)
-    )
-  }
+    dispatch(addSearch(searching));
+  };
 
   useEffect(() => {
     handleSearch();
@@ -95,7 +107,9 @@ function EditProduk() {
       <div className="container mt-5" id="edit-produk">
         <div className="row justify-content-center">
           <div className="col-lg-1 col-sm-12 mb-1">
-            <Image src={icon_back} />
+            <Link to="/">
+              <Image src={icon_back} />
+            </Link>
           </div>
           <div className="col-lg-11 col-sm-12">
             <form encType="multipart/form-data" onSubmit={handleSubmit}>
@@ -106,7 +120,8 @@ function EditProduk() {
                   className="form-control"
                   placeholder="Nama Produk"
                   name="name"
-                  value={name} onChange={(e) => setName(e.target.value)}
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                 />
               </div>
               <div className="row mb-3">
@@ -116,13 +131,18 @@ function EditProduk() {
                   className="form-control"
                   placeholder="Rp 0,00"
                   name="price"
-                  value={price} onChange={(e) => setPrice(e.target.value)}
+                  value={price}
+                  onChange={(e) => setPrice(e.target.value)}
                 />
               </div>
               <div className="row mb-3">
                 <label className="form-label">Kategori</label>
-                <select className="form-select" name="category"
-                  value={category} onChange={(e) => setCategory(e.target.value)}>
+                <select
+                  className="form-select"
+                  name="category"
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                >
                   <option value="" disabled selected>
                     Pilih Kategori
                   </option>
@@ -140,9 +160,10 @@ function EditProduk() {
                   type="text"
                   className="form-control"
                   style={{ paddingBottom: "48px" }}
-                  placeholder="Contoh: Jalan Ikan Hiu 33"
+                  placeholder="Contoh: Dennos Y68 Smart watch Y68 Tahan Air IP68 Monitor Denyut Jantung"
                   name="description"
-                  value={desc} onChange={(e) => setDesc(e.target.value)}
+                  value={desc}
+                  onChange={(e) => setDesc(e.target.value)}
                 />
               </div>
               <div className="row mb-3">
@@ -150,13 +171,18 @@ function EditProduk() {
                 {image.length === 0 ? (
                   <div {...getRootProps()}>
                     <input type="file" {...getInputProps()} filename="image" />
-                    <Image src={previewImage ?? uploadGambar} style={{ width: "8em" }} />
+                    <Image
+                      src={previewImage ?? uploadGambar}
+                      style={{ width: "8em" }}
+                    />
                   </div>
                 ) : (
                   <div>
                     <div {...getRootProps()}>
                       <input {...getInputProps()} />
-                      <label className="border ms-3 mt-3">{selected_images}</label>
+                      <label className="border ms-3 mt-3">
+                        {selected_images}
+                      </label>
                     </div>
                   </div>
                 )}
@@ -164,7 +190,7 @@ function EditProduk() {
               <div className="row mb-3">
                 <div className="col-6 p-0 pe-1">
                   <button
-                    className="btn btn-outline-danger btn-action "
+                    className="btn btn-outline-primary btn-action  "
                     type="button"
                     id="delete"
                     onClick={() => handleDelete(id)}

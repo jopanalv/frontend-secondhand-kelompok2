@@ -82,7 +82,7 @@ export default function InfoPenawaran() {
                     <div className="align-self-center">
                       <Image
                         className="rounded mx-3 img-fluid"
-                        src={`${IMG_URL}`+data.buyerImage}
+                        src={`${IMG_URL}` + data.buyerImage}
                         style={{ width: 50, height: 50 }}
                       />
                     </div>
@@ -105,7 +105,7 @@ export default function InfoPenawaran() {
                       <Image
                         className="img-fluid"
                         width={100}
-                        src={`${IMG_URL}`+data.productImage}
+                        src={`${IMG_URL}` + data.productImage}
                       />
                     </div>
                     <div className="">
@@ -124,7 +124,9 @@ export default function InfoPenawaran() {
                     </div>
                     <div className="ms-auto">
                       <div className="card-body p-0 px-3">
-                        <h6 className="card-text text-end">{showFormattedDate(data.date)}</h6>
+                        <h6 className="card-text text-end">
+                          {showFormattedDate(data.date)}
+                        </h6>
                       </div>
                     </div>
                   </div>
@@ -171,6 +173,8 @@ export default function InfoPenawaran() {
                           type="button"
                           id="preview"
                           style={{ width: "158px" }}
+                          data-bs-toggle="modal"
+                          data-bs-target="#modalTolak"
                           onClick={(e) => handleCancel(e)}
                         >
                           Tolak
@@ -189,6 +193,7 @@ export default function InfoPenawaran() {
                       </div>
                     )}
 
+                    {/* modal terima penawaran */}
                     <div
                       className="modal fade"
                       id="modalPenawaran"
@@ -228,7 +233,7 @@ export default function InfoPenawaran() {
                                 <div class="col-3 align-self-center">
                                   <Image
                                     className="rounded img-responsive center-block d-block mx-auto img-fluid"
-                                    src={`${IMG_URL}`+data.buyerImage}
+                                    src={`${IMG_URL}` + data.buyerImage}
                                   />
                                 </div>
                                 <div class="col-9">
@@ -246,7 +251,7 @@ export default function InfoPenawaran() {
                                 <div class="col-3 align-self-center">
                                   <Image
                                     className="rounded img-responsive center-block d-block mx-auto img-fluid"
-                                    src={`${IMG_URL}`+data.productImage}
+                                    src={`${IMG_URL}` + data.productImage}
                                   />
                                 </div>
                                 <div class="col-9">
@@ -298,7 +303,7 @@ export default function InfoPenawaran() {
                         </div>
                       </div>
                     </div>
-
+                    {/* modal status */}
                     <div
                       className="modal fade"
                       id="modalStatus"
@@ -364,9 +369,85 @@ export default function InfoPenawaran() {
 
                           <div className="modal-footer">
                             <button
-                              className="btn btn-primary mx-3 "
+                              className="btn btn-primary mx-3"
                               id="modal-button"
                               onClick={(e) => handleSubmit(e)}
+                              type="button"
+                              data-bs-dismiss="modal"
+                              aria-label="Close"
+                            >
+                              {" "}
+                              Kirim
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* modal tolak penawaran */}
+                    <div
+                      className="modal fade"
+                      id="modalTolak"
+                      tabindex="-1"
+                      aria-labelledby="exampleModalLabel1"
+                      aria-hidden="true"
+                    >
+                      <div className="modal-dialog">
+                        <div className="modal-content">
+                          <div className="modal-header">
+                            <button
+                              type="button"
+                              className="btn-close"
+                              data-bs-dismiss="modal"
+                              aria-label="Close"
+                            ></button>
+                          </div>
+                          <div className="modal-body mx-4 ">
+                            <h4 className="fw-bold my-3 text-center">
+                              Apakah kamu yakin menolak tawaran ini?
+                            </h4>
+                            <div className="form-check my-4">
+                              <input
+                                className="form-check-input"
+                                type="radio"
+                                name="exampleRadios"
+                                id="exampleRadios1"
+                                value="success"
+                                onChange={(e) => handleStatus(e.target.value)}
+                              />
+                              <label
+                                className="form-check-label"
+                                for="exampleRadios1"
+                              >
+                                <h4>Ya, saya yakin</h4>
+                              </label>
+                            </div>
+                            <div className="form-check mb-4">
+                              <input
+                                className="form-check-input"
+                                type="radio"
+                                name="exampleRadios"
+                                id="exampleRadios1"
+                                value="cancel"
+                                onChange={(e) => handleStatus(e.target.value)}
+                              />
+                              <label
+                                className="form-check-label"
+                                for="exampleRadios1"
+                              >
+                                <h4>Tidak, saya pikirkan kembali</h4>
+                              </label>
+                            </div>
+                          </div>
+
+                          <div className="modal-footer">
+                            <button
+                              className="btn btn-primary mx-3"
+                              id="modal-button"
+                              onClick={(e) => handleSubmit(e)}
+                              type="button"
+                              data-bs-dismiss="modal"
+                              aria-label="Close"
                             >
                               {" "}
                               Kirim

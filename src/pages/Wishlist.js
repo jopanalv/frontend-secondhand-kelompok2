@@ -9,6 +9,7 @@ import {
   deleteWishlist,
   getListWishlistBuyer,
 } from "../redux/action/wishlistAction";
+import { categoryList } from "../redux/action/productActions";
 
 export default function Wishlist() {
   const title = {
@@ -35,10 +36,21 @@ export default function Wishlist() {
     getListWishlistBuyerError,
     deleteWishlistResult,
   } = useSelector((state) => state.wishlist);
+  const {
+    categoryResult,
+  } = useSelector((state) => state.product);
+
+  const kategori = [];
+
+  if (categoryResult !== null) {
+    kategori.push(...categoryResult);
+  }
 
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getListWishlistBuyer());
+    dispatch(categoryList());
   }, [dispatch]);
 
   useEffect(() => {
@@ -46,7 +58,6 @@ export default function Wishlist() {
       dispatch(getListWishlistBuyer());
     }
   }, [deleteWishlistResult, dispatch]);
-  console.log(getListWishlistBuyerResult);
 
   return (
     <div>
@@ -91,8 +102,10 @@ export default function Wishlist() {
                             </Card.Title>
 
                             <p className="mb-0" style={accesoris}>
-                              Kategori
-                              {/* belom kategorinya */}
+                              {kategori[item.Product.CategoryId - 1] &&
+                                kategori[item.Product.CategoryId - 1]
+                                ? kategori[item.Product.CategoryId - 1].name
+                                : "tidak ada"}
                             </p>
                             <Card.Text className="mb-1">
                               Rp. {item.Product.price}
