@@ -32,9 +32,9 @@ function Product() {
 
   const kategori = [];
 
-  if (categoryResult !== null) {
-    kategori.push(...categoryResult);
-  }
+  // if (categoryResult !== null) {
+  //   kategori.push(...categoryResult);
+  // }
 
   useEffect(() => {
     //panggil action
@@ -54,7 +54,7 @@ function Product() {
                 className="row justify-content-center category"
                 key={Product.id}
               >
-                <Link to={`/buyer/detail-produk/` + Product.id}>
+                <Link to={`/detail-produk/` + Product.id}>
                   <Card>
                     <Card.Img
                       className="w-75 align-self-center"
