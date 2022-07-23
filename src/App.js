@@ -19,7 +19,6 @@ import DetailProduk_buyer from "./pages/DetailProduk_buyer";
 import DetailProduk_seller from "./pages/DetailProduk_seller";
 import EditProduk from "./pages/EditProduk";
 import Wishlist from "./pages/Wishlist";
-import "./assets/style2.css";
 import History from "./pages/History";
 
 function App() {

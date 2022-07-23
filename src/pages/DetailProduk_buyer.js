@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Carousel, Card, Button, Row, Col, Modal, Stack, Form } from "react-bootstrap";
 import { Image } from "react-bootstrap";
 import back from "../assets/images/fi_arrow-left.png";
-import Navigasi from "../component/Navbar1";
+import Navigasi from "../component/Navigasi";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Container } from "react-bootstrap";
@@ -76,7 +76,6 @@ const DetailProduk_buyer = () => {
   return (
     <>
       <Navigasi />
-      {/* <Alert /> */}
       {getSelectedProductResult !== null ? (
         <Container>
           <Row className='mt-5' key={productInfo.id}>

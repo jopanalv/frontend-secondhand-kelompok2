@@ -14,7 +14,7 @@ import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../redux/action/loginAction";
-import "../assets/style2.css";
+import "../assets/style.css";
 import Notif from "./Notif";
 import NotifBuyer from "./Notif1";
 import { getNotifSeller } from "../redux/action/notifAction";

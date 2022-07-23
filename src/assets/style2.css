@@ -72,6 +72,12 @@
 .dropdown-toggle::after {
   display: none !important;
 }
+.dropdown {
+  position: relative;
+  width: 76px;
+  height: 64px;
+  display: flex;
+}
 
 #off-canvas {
   width: 50%;
@@ -486,7 +492,12 @@ z-index: 1;
 .menu-nav {
   display: none;
 } 
+.btn1{
+  width: 95%;
+  height: auto;
 }
+}
+
 @media (min-width: 992px) {
 .menu-nav {
   display: none;
@@ -574,6 +585,13 @@ z-index: 1;
 .form-modal{
   padding-top: 80px;
 }
+.btn-float{
+  position: fixed;
+  bottom: 10%;
+  margin-left: 15%;
+  margin-right: 85%;
+  z-index: 10;
+}
 }
 
 @media screen and (min-device-width: 1200px) {
@@ -591,7 +609,7 @@ z-index: 1;
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
 .btn-float{
   display: none;
 }

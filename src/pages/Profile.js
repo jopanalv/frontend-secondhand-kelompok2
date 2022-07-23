@@ -10,6 +10,7 @@ import "../assets/style.css";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { IMG_URL } from "../redux/action/api";
+import Dropdown from "../component/Dropdown";
 
 function Profile() {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ function Profile() {
   const serializedData = localStorage.getItem("user");
   let user = JSON.parse(serializedData);
 
+  const [value, setValue] = useState(null)
   const [name, setName] = useState(`${user.data.Profile.name}`);
   const [city, setCity] = useState(`${user.data.Profile.city ?? ""}`);
   const [address, setAddress] = useState(`${user.data.Profile.address ?? ""}`);
@@ -110,7 +112,7 @@ function Profile() {
                   onChange={(e) => setName(e.target.value)}
                 />
               </div>
-              <div className="row mb-3">
+              {/* <div className="row mb-3">
                 <label className="form-label">Kota*</label>
                 <select
                   className="form-control"
@@ -118,7 +120,11 @@ function Profile() {
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
                 >
+                  
                   <option selected>{city ? city : "Pilih Kota"}</option>
+                  <div className="search-bar">
+                    <input type="text" placeholder="Search"/>
+                  </div>
                   {cityResult &&
                     cityResult?.data.map((city) => (
                       <option key={city.id} value={`${city.nama}`}>
@@ -126,7 +132,14 @@ function Profile() {
                       </option>
                     ))}
                 </select>
-              </div>
+              </div> */}
+              <Dropdown 
+              options={city}
+              label="nama"
+              value={value}
+              onChange={val => setValue(val)}
+              />
+              
               <div className="row mb-3">
                 <label className="form-label">Alamat*</label>
                 <input
