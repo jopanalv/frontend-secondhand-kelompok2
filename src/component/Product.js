@@ -32,9 +32,9 @@ function Product() {
 
   const kategori = [];
 
-  // if (categoryResult !== null) {
-  //   kategori.push(...categoryResult);
-  // }
+  if (categoryResult !== null) {
+    kategori.push(...categoryResult);
+  }
 
   useEffect(() => {
     //panggil action

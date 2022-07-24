@@ -71,16 +71,16 @@ const DetailProduk_buyer = () => {
 
   const kategori = [];
 
-  // if (categoryResult !== null) {
-  //   kategori.push(...categoryResult);
-  // }
+  if (categoryResult !== null) {
+    kategori.push(...categoryResult);
+  }
 
   useEffect(() => {
     handleSearch();
     //panggil action
     console.log("1. use effect component did mount");
     dispatch(getSelectedProduct(id));
-    // dispatch(categoryList());
+    dispatch(categoryList());
   }, [dispatch, id]);
 
   console.log(getSelectedProduct(id));

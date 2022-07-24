@@ -26,9 +26,9 @@ function Jual() {
 
   const kategori = [];
 
-  // if (categoryResult !== null) {
-  //     kategori.push(...categoryResult);
-  // }
+  if (categoryResult !== null) {
+      kategori.push(...categoryResult);
+  }
 
   useEffect(() => {
     //panggil action
@@ -112,11 +112,10 @@ function Jual() {
                       <div className="informasi-barang">
                         <div className="nama-barang">{Product.name}</div>
                         <div className="jenis-barang">
-                          {/* {kategori[Product.CategoryId - 1] &&
+                          {kategori[Product.CategoryId - 1] &&
                                                     kategori[Product.CategoryId - 1]
                                                     ? kategori[Product.CategoryId - 1].name
-                                                    : "tidak ada"} */}
-                          KATEGORI
+                                                    : "tidak ada"}
                         </div>
                       </div>
                       <div className="harga-barang">{Product.price}</div>

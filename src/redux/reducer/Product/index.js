@@ -1,10 +1,10 @@
-import { GET_ALL_PRODUCT, GET_SELECTED_PRODUCT, GET_PRODUCT_SELLER, BUY_PRODUCT } from "../../type";
+import { GET_ALL_PRODUCT, GET_SELECTED_PRODUCT, GET_PRODUCT_SELLER, BUY_PRODUCT, ALL_CATEGORIES } from "../../type";
 
 const initialState = {
   getAllProductResult: false,
   getAllProductLoading: false,
   getAllProductError: false,
-  getSelectedProductResult: null,
+  getSelectedProductResult: false,
   getSelectedProductLoading: false,
   getSelectedProductError: false,
   getProductSellerResult: false,
@@ -12,7 +12,9 @@ const initialState = {
   getProductSellerError: false,
   buyProductResult: false,
   buyProductLoading: false,
-  buyProductError: false
+  buyProductError: false,
+  categoryResult: null,
+  categoryError: null
 }
 
 const Product = (state = initialState, action) => {
@@ -48,6 +50,13 @@ const Product = (state = initialState, action) => {
         buyProductResult: action.payload.data,
         buyProductLoading: action.payload.data,
         buyProductError: action.payload.data
+      }
+      case ALL_CATEGORIES:
+      console.log("4. Masuk Reducer", action)
+      return {
+        ...state,
+        categoryResult: action.payload.data,
+        categoryError: action.payload.data
       }
     default:
       return state;
