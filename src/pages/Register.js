@@ -7,6 +7,7 @@ import eye from "../assets/images/fi_eye.png";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import { addRegister } from "../redux/action/registerAction";
+import "../component/Special-character"
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -38,6 +39,8 @@ const Register = () => {
     setPasswordShown(!passwordShown);
   };
 
+
+
   return (
     <>
       <div className="login">
@@ -50,6 +53,7 @@ const Register = () => {
             <input
               className="form-control"
               type="name"
+              id="input"
               placeholder="Nama Lengkap"
               value={user.name}
               onChange={(e) => setUser({ ...user, name: e.target.value })}

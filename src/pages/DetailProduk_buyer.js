@@ -165,7 +165,7 @@ const DetailProduk_buyer = () => {
             </Col>
 
 
-            <div className='container3'>
+            <div className='container3 justify-content-center align-items-center'>
               <button class="btn_teks btn-float text-white" type="button" onClick={handleShow}>Saya Tertarik dan ingin Nego</button>
             </div>
 

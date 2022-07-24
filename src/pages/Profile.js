@@ -105,6 +105,7 @@ function Profile() {
                 <label className="form-label">Nama*</label>
                 <input
                   type="text"
+                  allow-only reg-ex="^[a-zA-Z0-9]+$"
                   className="form-control"
                   placeholder="Nama"
                   name="name"
@@ -134,7 +135,8 @@ function Profile() {
                 </select>
               </div> */}
               <Dropdown 
-              options={city}
+              options={cityResult &&
+                cityResult?.data}
               label="nama"
               value={value}
               onChange={val => setValue(val)}
