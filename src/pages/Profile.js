@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import { IMG_URL } from "../redux/action/api";
 import Dropdown from "../component/Dropdown";
 
-function Profile() {
+function Profile(props) {
   const dispatch = useDispatch();
 
   const serializedData = localStorage.getItem("user");
@@ -68,6 +68,22 @@ function Profile() {
 
   const { cityResult } = useSelector((state) => state.profile);
 
+  const handleNameChange = evt => {
+    const newName = evt.target.value.replace(
+      /[^a-zA-Z\s]/g,
+      ""
+    );
+    setName(newName);
+  };
+
+  const handleNumberChange = evt => {
+    const newNo = evt.target.value.replace(
+      /\D/g, ''
+    );
+    setNo_hp(newNo);
+  };
+
+  
   return (
     <>
       <Navbar judul="Lengkapi Info Akun" />
@@ -108,8 +124,9 @@ function Profile() {
                   className="form-control"
                   placeholder="Nama"
                   name="name"
+                  errorMessage = "Username should be 3-16 charactersand shoudn't include any special character"
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={handleNameChange}
                   required
                 />
               </div>
@@ -135,12 +152,13 @@ function Profile() {
                 </select>
               </div>
               {/* <Dropdown 
+              options={cityResult}
               options={city}
               label="nama"
               value={value}
               onChange={val => setValue(val)}
               /> */}
-
+              
               <div className="row mb-3">
                 <label className="form-label">Alamat*</label>
                 <input
@@ -149,6 +167,7 @@ function Profile() {
                   style={{ paddingBottom: "48px" }}
                   placeholder="Contoh: Jalan Ikan Hiu 33"
                   name="address"
+                  errorMessage = "Address should be 3-16 charactersand shoudn't include any special character"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
                   required
@@ -157,12 +176,11 @@ function Profile() {
               <div className="row mb-3">
                 <label className="form-label">No Handphone*</label>
                 <input
-                  type="text"
                   className="form-control"
                   placeholder="Contoh: +628123456789"
                   name="no_hp"
                   value={no_hp}
-                  onChange={(e) => setNo_hp(e.target.value)}
+                  onChange={handleNumberChange}
                   required
                 />
               </div>

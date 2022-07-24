@@ -1,13 +1,15 @@
 import React from "react";
 import Data from "../data/data";
-import { Container, Button } from "react-bootstrap";
+import { Container, Button, Row, Col } from "react-bootstrap";
 import { FiSearch } from "react-icons/fi";
 import { BsPlus } from "react-icons/bs";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function Buttons() {
     const { user } = useSelector((state) => state.login);
-
+    const navigate = useNavigate();
+    
   return (
     <>
     <Container className="category">
@@ -34,15 +36,18 @@ function Buttons() {
                         </Button>
                     </div>
                     {user?.data.role === "seller" ? 
-                    <a href="/info-produk"><Button className="d-flex gap-2 px-3 py-2 fixed-bottom button-sell mb-4">
-                        
+                    <Row>
+                        <Col md="auto" xs="auto">
+                        <Button className="d-flex gap-2 px-3 py-2 fixed-bottom button-sell mb-4" onClick={() => navigate("/info-produk")}>
                         <BsPlus
                             className="align-self-center "
                             style={{ fontSize: "24px" }}
                         />{" "}
                         Jual
-                        
-                    </Button></a> : null
+                    </Button>
+                    </Col>
+                    </Row>
+                     : null
                     }
                 </div>
 

@@ -50,6 +50,7 @@ const Register = () => {
             <input
               className="form-control"
               type="name"
+              id="input"
               placeholder="Nama Lengkap"
               value={user.name}
               onChange={(e) => setUser({ ...user, name: e.target.value })}
