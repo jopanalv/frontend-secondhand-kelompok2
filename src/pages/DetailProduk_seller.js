@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { Image } from 'react-bootstrap';
 import back from '../assets/images/fi_arrow-left.png'
-import Navigasi from '../component/Navbar1';
+import Navigasi from '../component/Navigasi';
 import "../assets/style2.css"
 import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { Carousel, Card, Button, Row, Col, Container } from "react-bootstrap";
 import { getProductSeller, categoryList } from "../redux/action/productActions";
-import "../assets/style2.css"
 import { DescriptionProduct } from "../component/DescriptionProduct"
 import { addSearch } from "../slice/searchingSlice";
 import { IMG_URL } from '../redux/action/api';
@@ -58,9 +57,9 @@ const DetailProduk_seller = () => {
 
   const kategori = [];
 
-  if (categoryResult !== null) {
-    kategori.push(...categoryResult);
-  }
+  // if (categoryResult !== null) {
+  //   kategori.push(...categoryResult);
+  // }
 
   useEffect(() => {
     handleSearch();

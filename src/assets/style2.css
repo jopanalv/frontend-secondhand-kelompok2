@@ -475,6 +475,10 @@ z-index: 1;
   width: 95%;
   height: auto;
 }
+.btn2{
+  width: 95%;
+  height: auto;
+}
 .btn-float{
   position: fixed;
   bottom: 10%;
@@ -503,6 +507,9 @@ z-index: 1;
     margin-top: -50px;
   }
   .btn1{
+    display: none;
+  }
+  .btn2{
     display: none;
   }
   .btn-float{
