@@ -102,7 +102,7 @@ const DetailProduk_buyer = () => {
                 kategori[productInfo.CategoryId - 1]
                   ? kategori[productInfo.CategoryId - 1].name
                   : "tidak ada"}
-              </p>
+                  </p>
               <p className="card-text-2 fw-bold">Rp {productInfo.price}</p>
               <div class="d-grid gap-2">
                 {productInfo.sellerId === user?.data.id ? (
