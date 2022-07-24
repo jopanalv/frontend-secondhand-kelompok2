@@ -36,6 +36,13 @@ const Login = () => {
     setPasswordShown(!passwordShown);
   };
 
+  const handleEmailChange = evt => {
+    const newEmail = evt.target.value.replace(
+      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/g,
+      ""
+    );
+    setEmail(newEmail);
+  };
 
   return (
     <>

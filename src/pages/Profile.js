@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import { IMG_URL } from "../redux/action/api";
 import Dropdown from "../component/Dropdown";
 
-function Profile() {
+function Profile(props) {
   const dispatch = useDispatch();
 
   const serializedData = localStorage.getItem("user");
@@ -68,6 +68,22 @@ function Profile() {
 
   const { cityResult } = useSelector((state) => state.profile);
 
+  const handleNameChange = evt => {
+    const newName = evt.target.value.replace(
+      /[^a-zA-Z\s]/g,
+      ""
+    );
+    setName(newName);
+  };
+
+  const handleNumberChange = evt => {
+    const newNo = evt.target.value.replace(
+      /\D/g, ''
+    );
+    setNo_hp(newNo);
+  };
+
+  
   return (
     <>
       <Navbar judul="Lengkapi Info Akun" />
@@ -105,18 +121,20 @@ function Profile() {
                 <label className="form-label">Nama*</label>
                 <input
                   type="text"
-                  allow-only reg-ex="^[a-zA-Z0-9]+$"
                   className="form-control"
                   placeholder="Nama"
                   name="name"
+                  required = "true"
+                  errorMessage = "Username should be 3-16 charactersand shoudn't include any special character"
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={handleNameChange}
                 />
               </div>
-              {/* <div className="row mb-3">
+              <div className="row mb-3">
                 <label className="form-label">Kota*</label>
                 <select
                   className="form-control"
+                  required = "true"
                   name="city"
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
@@ -133,14 +151,13 @@ function Profile() {
                       </option>
                     ))}
                 </select>
-              </div> */}
-              <Dropdown 
-              options={cityResult &&
-                cityResult?.data}
+              </div>
+              {/* <Dropdown 
+              options={cityResult}
               label="nama"
               value={value}
               onChange={val => setValue(val)}
-              />
+              /> */}
               
               <div className="row mb-3">
                 <label className="form-label">Alamat*</label>
@@ -150,6 +167,8 @@ function Profile() {
                   style={{ paddingBottom: "48px" }}
                   placeholder="Contoh: Jalan Ikan Hiu 33"
                   name="address"
+                  required = "true"
+                  errorMessage = "Address should be 3-16 charactersand shoudn't include any special character"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
                 />
@@ -157,12 +176,12 @@ function Profile() {
               <div className="row mb-3">
                 <label className="form-label">No Handphone*</label>
                 <input
-                  type="text"
                   className="form-control"
                   placeholder="Contoh: +628123456789"
                   name="no_hp"
+                  required = "true"
                   value={no_hp}
-                  onChange={(e) => setNo_hp(e.target.value)}
+                  onChange={handleNumberChange}
                 />
               </div>
               <div className="row mb-3 d-grid gap-2">

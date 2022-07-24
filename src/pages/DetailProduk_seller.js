@@ -5,9 +5,10 @@ import Navigasi from '../component/Navbar1';
 import "../assets/style2.css"
 import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { Container } from "react-bootstrap";
+import { Carousel, Card, Button, Row, Col, Container } from "react-bootstrap";
 import { getProductSeller, categoryList } from "../redux/action/productActions";
 import "../assets/style2.css"
+import { DescriptionProduct } from "../component/DescriptionProduct"
 import { addSearch } from "../slice/searchingSlice";
 import { IMG_URL } from '../redux/action/api';
 import { addProduct } from "../redux/action/addProduct";
@@ -74,18 +75,23 @@ const DetailProduk_seller = () => {
     <>
       <Navigasi />
       <Container>
-        <div className="container1 mx-5 py-3 justify-content-center align-item-center" id="produk-seller">
+      <Row className='mt-5'>
+      <Col md={8}>
           <a href="/"><Image src={back} className='kembali position-absolute' /></a>
-          {/* <div className='box_image'>
-            <Image src={`http://localhost:8000/api/v1/public/files/`} className="detail_gambar" alt="detail_gambar" />
-          </div> */}
-          <div className='box_image'>
-            <Image src={product.image.preview} className="detail_gambar" alt="detail_gambar" />
+          <div>
+          <div className="slider-product">
+              <Carousel className="box_image" items={1} margin={10}>
+                    <Carousel.Item interval={2000}>
+                    <Image src={product.image.preview} className="detail_gambar" alt="detail_gambar" />                    </Carousel.Item>
+              </Carousel>
           </div>
+          </div>
+          </Col>
 
-          <div className='card-body'>
-            <div className="card-body-produk px-3">
-              <h5 className="card-title fw-bold">{product.name}</h5>
+      <Col md={4}>
+        <Card>
+        <div className='card-body'>
+            <h5 className="card-title fw-bold">{product.name}</h5>
               <p className="card-text">{kategori[product.category - 1] &&
                 kategori[product.category - 1]
                 ? kategori[product.category - 1].name
@@ -95,41 +101,26 @@ const DetailProduk_seller = () => {
                 <button class="btn_teks btn1 text-white" type="button" onClick={(e) => handleTerbit(e)}>Terbitkan</button>
                 <button class="btn_teks btn2" type="button" onClick={() => handleEdit()}>Edit</button>
               </div>
-            </div>
-            <div className="card-body-produk mt-3">
-              <div className="row">
-                <div className="col-2 align-self-center">
-                  <Image
-                    className="rounded img-responsive center-block img-fluid gbr-seller"
-                    src={`${IMG_URL}` + user.data.Profile.image}
-                  />
-                </div>
-                <div className="col-8">
-                  <div className="card-body-seller py-1">
-                    <h4 className="card-title-seller fw-bold btn-teks">{user.data.Profile.name}</h4>
+          </div>
+        </Card>
+          
+        <Card className="d-flex flex-row gap-3 px-3 py-3 mt-3 text-black data">
+                <Card.Img
+                  className="rounded img-responsive center-block img-fluid gbr-seller"
+                  src={`${IMG_URL}` + user.data.Profile.image}
+                />
+                <h4 className="card-title-seller fw-bold btn-teks">{user.data.Profile.name}</h4>
                     <h6 className="card-text-seller ket">{user.data.Profile.city}</h6>
-                  </div>
-                </div>
-              </div>
+              </Card>
+        </Col>
+        <div className='container3 justify-content-center align-items-center'>
+              <button class="btn_teks btn-float text-white" type="button" onClick={(e) => handleTerbit(e)}>Terbitkan</button>
             </div>
-          </div>
-        </div>
-        <div className='container2'>
-          <div className='card-body'>
-            <div className='desc px-2 py-2 align-item-center'>
-              <p className='btn_teks fw-bold'>
-                Deskripsi
-              </p>
-              <p className='card-text'>
-                {product.description}
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className='container3'>
-          <button class="btn_teks btn1 btn-float text-white" type="button" onClick={(e) => handleTerbit(e)}>Terbitkan</button>
-
-        </div>
+          
+            <Col md={8}>
+              <DescriptionProduct description={product.description} />
+            </Col>
+        </Row>
       </Container>
     </>
   );

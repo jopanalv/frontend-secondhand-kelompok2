@@ -35,15 +35,15 @@ export default function Dropdown({options, label, value, onChange}) {
     setOpen(e && e.target === ref.current);
   }
 
-  function filter(options){
-    return options.filter(
+  function filter(cityResult){
+    return cityResult.filter(
       (city) =>
       city[label].toLowerCase().indexOf(query.toLowerCase()) > -1
       );
   }
   function displayValue(){
     if(query.length > 0) return query
-    if (value) return value.name;
+    if (value) return value[label];
     return "";
   }
 
@@ -81,10 +81,9 @@ export default function Dropdown({options, label, value, onChange}) {
         <div className={`arrrow ${open ? "open" : null}`} />
       </div>
       <div className={`options ${open ? "open" : null}`}>
-      {filter(cityResult &&
-                    cityResult?.data).map((city) => (
+      {filter(cityResult).map((city) => (
                       <div className={`option ${value === city ? "selected" : null}`}
-                      key={city.id} value={`${city.nama}`} 
+                      // key={option.id} value={`${city.nama}`} 
                       onClick={() => selectedOption(city)}
                       onTouchEnd={() => selectedOption(city)}
                       >

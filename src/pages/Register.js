@@ -7,7 +7,6 @@ import eye from "../assets/images/fi_eye.png";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import { addRegister } from "../redux/action/registerAction";
-import "../component/Special-character"
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -38,8 +37,6 @@ const Register = () => {
     // inverse the boolean state of passwordShown
     setPasswordShown(!passwordShown);
   };
-
-
 
   return (
     <>
