@@ -7,6 +7,7 @@ import love from "../assets/images/Vector.png";
 import boxMob from "../assets/images/mobile-fi_box.png";
 import dollarMob from "../assets/images/mobile-fi_dollar-sign.png";
 import loveMob from "../assets/images/mobile-fi_heart.png";
+import gambar2 from "../assets/images/Group 33.png";
 import { getAllWishlist } from "../redux/action/daftarjualActions";
 import { categoryList, getAllProduct } from "../redux/action/productActions";
 import { Link } from "react-router-dom";
@@ -22,9 +23,9 @@ const Diminati = () => {
 
   const kategori = [];
 
-  if (categoryResult !== null) {
-    kategori.push(...categoryResult);
-  }
+  // if (categoryResult !== null) {
+  //   kategori.push(...categoryResult);
+  // }
 
   useEffect(() => {
     //panggil action
@@ -83,53 +84,56 @@ const Diminati = () => {
       <div className="daftar-jual">
         <div className="frame-165 row justify-content-left">
           {getAllWishlistResult ? (
-            getAllWishlistResult.map((wishlist, Product) => {
-              return (
-                <div
-                  className="col-md-3 col-sm-6 py-3 my-3 card3 border-1"
-                  key={wishlist.id}
-                >
-                  <Link to={`/transaction/detail/` + wishlist.Product.id}>
-                    <img
-                      src={`${IMG_URL}` + wishlist.Product.image}
-                      className="foto-barang"
-                    />
-                    {/* <img src={barang} className="foto-barang" /> */}
-                    <div className="frame-149">
-                      <div className="informasi-barang">
-                        <div className="nama-barang">
-                          {wishlist.Product.name}
-                        </div>
-                        <div className="jenis-barang">
-                          {kategori[wishlist.Product.CategoryId - 1] &&
+            getAllWishlistResult.length === 0 ? (
+              <div className="d-flex justify-content-center p-3">
+                <div className="text-center">
+                  <img src={gambar2} alt="" className="img-fluid mb-3" />
+                  <p>
+                    Belum ada produkmu yang diminati nih, sabar ya rejeki nggak
+                    kemana kok
+                  </p>
+                </div>
+              </div>
+            ) : (
+              getAllWishlistResult.map((wishlist, Product) => {
+                return (
+                  <div
+                    className="col-md-3 col-sm-6 py-3 my-3 card3 border-1"
+                    key={wishlist.id}
+                  >
+                    <Link to={`/detail-produk/${wishlist.Product.id}`}>
+                      <img
+                        src={`${IMG_URL}` + wishlist.Product.image}
+                        className="foto-barang"
+                      />
+                      {/* <img src={barang} className="foto-barang" /> */}
+                      <div className="frame-149">
+                        <div className="informasi-barang">
+                          <div className="nama-barang">
+                            {wishlist.Product.name}
+                          </div>
+                          <div className="jenis-barang">
+                            {/* {kategori[wishlist.Product.CategoryId - 1] &&
                           kategori[wishlist.Product.CategoryId - 1]
                             ? kategori[wishlist.Product.CategoryId - 1].name
-                            : "tidak ada"}
+                            : "tidak ada"} */}
+                            KATEGORI
+                          </div>
+                        </div>
+                        <div className="harga-barang">
+                          Rp {wishlist.Product.price}
                         </div>
                       </div>
-                      <div className="harga-barang">
-                        Rp {wishlist.Product.price}
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              );
-            })
-          ) : // Opsi kedua
-          getAllWishlistLoading ? (
+                    </Link>
+                  </div>
+                );
+              })
+            )
+          ) : getAllWishlistLoading ? (
             <p>Loading ...</p>
           ) : (
             // Opsi ketiga
-            <div className="group34">
-              {getAllWishlistError ? (
-                getAllWishlistError
-              ) : (
-                <span className="diminati-txt">
-                  Belum ada produkmu yang diminati nih, sabar ya rejeki nggak
-                  kemana kok
-                </span>
-              )}
-            </div>
+            <p>{getAllWishlistError ? getAllWishlistError : "Error"}</p>
           )}
         </div>
       </div>

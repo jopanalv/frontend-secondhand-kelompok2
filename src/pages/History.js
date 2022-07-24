@@ -44,9 +44,9 @@ export default function History() {
 
   const kategori = [];
 
-  if (categoryResult !== null) {
-    kategori.push(...categoryResult);
-  }
+  // if (categoryResult !== null) {
+  //   kategori.push(...categoryResult);
+  // }
 
   const dispatch = useDispatch();
 
@@ -96,10 +96,11 @@ export default function History() {
                           </Card.Title>
 
                           <p className="mb-0" style={accesoris}>
-                            {kategori[item.Product.CategoryId - 1] &&
+                            {/* {kategori[item.Product.CategoryId - 1] &&
                             kategori[item.Product.CategoryId - 1]
                               ? kategori[item.Product.CategoryId - 1].name
-                              : "tidak ada"}
+                              : "tidak ada"} */}
+                            KATEGORI
                           </p>
                           <Card.Text className="mb-1">
                             Rp. {item.Product.price}

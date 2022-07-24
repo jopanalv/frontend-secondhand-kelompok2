@@ -102,6 +102,7 @@ export default function InfoProduk() {
                   name="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
+                  required
                 />
               </div>
               <div className="row mb-3">
@@ -113,6 +114,7 @@ export default function InfoProduk() {
                   name="price"
                   value={price}
                   onChange={(e) => setPrice(e.target.value)}
+                  required
                 />
               </div>
               <div className="row mb-3">
@@ -144,6 +146,7 @@ export default function InfoProduk() {
                   name="description"
                   value={desc}
                   onChange={(e) => setDesc(e.target.value)}
+                  required
                 />
               </div>
               <div className="row mb-3">

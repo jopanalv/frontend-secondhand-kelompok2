@@ -22,6 +22,7 @@ export default function Wishlist() {
     height: "100px",
     objectFit: "cover",
     margin: "8px",
+    marginLeft: "70px",
   };
 
   const accesoris = {
@@ -41,9 +42,9 @@ export default function Wishlist() {
 
   const kategori = [];
 
-  if (categoryResult !== null) {
-    kategori.push(...categoryResult);
-  }
+  // if (categoryResult !== null) {
+  //   kategori.push(...categoryResult);
+  // }
 
   const dispatch = useDispatch();
 
@@ -84,11 +85,29 @@ export default function Wishlist() {
             ) : (
               getListWishlistBuyerResult.data.map((item, index) => {
                 return (
-                  <div className="col-lg-3 col-md-6 col-sm-6">
-                    <Link className="mx-2" to={""}>
-                      <Card>
+                  <div className="col-lg-3 col-md-6 col-sm-6 mb-3 ">
+                    <Card>
+                      <button
+                        style={{
+                          textDecoration: "none",
+                          color: "purple",
+                          backgroundColor: "transparent",
+                          border: "none",
+                        }}
+                        onClick={() => dispatch(deleteWishlist(item.id))}
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="bottom"
+                        title="Delete Wihslist"
+                        className="d-flex flex-row-reverse mt-4 me-2"
+                      >
+                        <i className="fa-solid fa-heart fa-xl"></i>
+                      </button>
+                      <Link
+                        className="mx-2"
+                        to={`/detail-produk/${item.Product.id}`}
+                      >
                         <Card.Img
-                          className="w-75 align-self-center"
+                          className="w-50 align-items-center "
                           variant="top"
                           multiple
                           src={`${IMG_URL}` + item.Product.image}
@@ -101,33 +120,19 @@ export default function Wishlist() {
                             </Card.Title>
 
                             <p className="mb-0" style={accesoris}>
-                              {kategori[item.Product.CategoryId - 1] &&
+                              {/* {kategori[item.Product.CategoryId - 1] &&
                               kategori[item.Product.CategoryId - 1]
                                 ? kategori[item.Product.CategoryId - 1].name
-                                : "tidak ada"}
+                                : "tidak ada"} */}
+                              Kategori
                             </p>
                             <Card.Text className="mb-1">
                               Rp. {item.Product.price}
                             </Card.Text>
                           </Card.Body>
-                          <button
-                            style={{
-                              textDecoration: "none",
-                              color: "purple",
-                              backgroundColor: "transparent",
-                              border: "none",
-                            }}
-                            onClick={() => dispatch(deleteWishlist(item.id))}
-                            data-bs-toggle="tooltip"
-                            data-bs-placement="bottom"
-                            title="Delete Wihslist"
-                            className="align-self-center"
-                          >
-                            <i className="fa-solid fa-heart fa-xl"></i>
-                          </button>
                         </div>
-                      </Card>
-                    </Link>
+                      </Link>
+                    </Card>
                   </div>
                 );
               })

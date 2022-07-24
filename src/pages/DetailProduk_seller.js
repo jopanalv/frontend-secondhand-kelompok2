@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from 'react'
-import { Image } from 'react-bootstrap';
-import back from '../assets/images/fi_arrow-left.png'
-import Navigasi from '../component/Navigasi';
-import "../assets/style2.css"
-import { useLocation, useParams, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Image } from "react-bootstrap";
+import back from "../assets/images/fi_arrow-left.png";
+import Navigasi from "../component/Navbar1";
+import "../assets/style2.css";
+import { useLocation, useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Carousel, Card, Button, Row, Col, Container } from "react-bootstrap";
 import { getProductSeller, categoryList } from "../redux/action/productActions";
 import { DescriptionProduct } from "../component/DescriptionProduct"
+import "../assets/style2.css";
 import { addSearch } from "../slice/searchingSlice";
-import { IMG_URL } from '../redux/action/api';
+import { IMG_URL } from "../redux/action/api";
 import { addProduct } from "../redux/action/addProduct";
 
 const DetailProduk_seller = () => {
-
-  const product = JSON.parse(localStorage.getItem('product'))
-  const user = JSON.parse(localStorage.getItem('user'))
+  const product = JSON.parse(localStorage.getItem("product"));
+  const user = JSON.parse(localStorage.getItem("user"));
 
   const [show, setShow] = useState(false);
   const [searching, setSearching] = useState("");
@@ -27,10 +27,8 @@ const DetailProduk_seller = () => {
   const dispatch = useDispatch();
 
   const handleSearch = () => {
-    dispatch(
-      addSearch(searching)
-    )
-  }
+    dispatch(addSearch(searching));
+  };
 
   const handleTerbit = async (e) => {
     e.preventDefault();
@@ -42,18 +40,15 @@ const DetailProduk_seller = () => {
     // formData.append("image", product.image);
     // dispatch(addProduct(formData));
     window.close();
-
   };
 
   const handleEdit = () => {
     // navigate('/info-produk')
-    localStorage.removeItem("product")
+    localStorage.removeItem("product");
     window.close();
-  }
+  };
 
-  const {
-    categoryResult
-  } = useSelector((state) => state.product);
+  const { categoryResult } = useSelector((state) => state.product);
 
   const kategori = [];
 
@@ -81,7 +76,8 @@ const DetailProduk_seller = () => {
           <div className="slider-product">
               <Carousel className="box_image" items={1} margin={10}>
                     <Carousel.Item interval={2000}>
-                    <Image src={product.image.preview} className="detail_gambar" alt="detail_gambar" />                    </Carousel.Item>
+                    <Image src={product.image.preview} className="detail_gambar" alt="detail_gambar" />                    
+                    </Carousel.Item>
               </Carousel>
           </div>
           </div>
@@ -91,15 +87,30 @@ const DetailProduk_seller = () => {
         <Card>
         <div className='card-body'>
             <h5 className="card-title fw-bold">{product.name}</h5>
-              <p className="card-text">{kategori[product.category - 1] &&
+              <p className="card-text">
+                {kategori[product.category - 1] &&
                 kategori[product.category - 1]
-                ? kategori[product.category - 1].name
-                : "tidak ada"}</p>
+                  ? kategori[product.category - 1].name
+                  : "tidak ada"}
+              </p>
               <p className="card-text-2 fw-bold">{product.price}</p>
               <div class="d-grid gap-2">
-                <button class="btn_teks btn1 text-white" type="button" onClick={(e) => handleTerbit(e)}>Terbitkan</button>
-                <button class="btn_teks btn2" type="button" onClick={() => handleEdit()}>Edit</button>
+                <button
+                  class="btn_teks btn1 text-white"
+                  type="button"
+                  onClick={(e) => handleTerbit(e)}
+                >
+                  Terbitkan
+                </button>
+                <button
+                  class="btn_teks btn2"
+                  type="button"
+                  onClick={() => handleEdit()}
+                >
+                  Edit
+                </button>
               </div>
+
           </div>
         </Card>
           
@@ -123,5 +134,5 @@ const DetailProduk_seller = () => {
       </Container>
     </>
   );
-}
+};
 export default DetailProduk_seller;

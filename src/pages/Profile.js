@@ -18,7 +18,7 @@ function Profile(props) {
   const serializedData = localStorage.getItem("user");
   let user = JSON.parse(serializedData);
 
-  const [value, setValue] = useState(null)
+  const [value, setValue] = useState(null);
   const [name, setName] = useState(`${user.data.Profile.name}`);
   const [city, setCity] = useState(`${user.data.Profile.city ?? ""}`);
   const [address, setAddress] = useState(`${user.data.Profile.address ?? ""}`);
@@ -124,25 +124,24 @@ function Profile(props) {
                   className="form-control"
                   placeholder="Nama"
                   name="name"
-                  required = "true"
                   errorMessage = "Username should be 3-16 charactersand shoudn't include any special character"
                   value={name}
                   onChange={handleNameChange}
+                  required
                 />
               </div>
               <div className="row mb-3">
                 <label className="form-label">Kota*</label>
                 <select
                   className="form-control"
-                  required = "true"
                   name="city"
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
+                  required
                 >
-                  
                   <option selected>{city ? city : "Pilih Kota"}</option>
                   <div className="search-bar">
-                    <input type="text" placeholder="Search"/>
+                    <input type="text" placeholder="Search" />
                   </div>
                   {cityResult &&
                     cityResult?.data.map((city) => (
@@ -154,6 +153,7 @@ function Profile(props) {
               </div>
               {/* <Dropdown 
               options={cityResult}
+              options={city}
               label="nama"
               value={value}
               onChange={val => setValue(val)}
@@ -167,10 +167,10 @@ function Profile(props) {
                   style={{ paddingBottom: "48px" }}
                   placeholder="Contoh: Jalan Ikan Hiu 33"
                   name="address"
-                  required = "true"
                   errorMessage = "Address should be 3-16 charactersand shoudn't include any special character"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
+                  required
                 />
               </div>
               <div className="row mb-3">
@@ -179,9 +179,9 @@ function Profile(props) {
                   className="form-control"
                   placeholder="Contoh: +628123456789"
                   name="no_hp"
-                  required = "true"
                   value={no_hp}
                   onChange={handleNumberChange}
+                  required
                 />
               </div>
               <div className="row mb-3 d-grid gap-2">
