@@ -7,6 +7,7 @@ import love from "../assets/images/Vector.png";
 import boxMob from "../assets/images/mobile-fi_box.png";
 import dollarMob from "../assets/images/mobile-fi_dollar-sign.png";
 import loveMob from "../assets/images/mobile-fi_heart.png";
+import gambar2 from "../assets/images/Group 33.png";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getAllTerjual } from "../redux/action/daftarjualActions";
@@ -23,9 +24,9 @@ function Jual() {
 
   const kategori = [];
 
-  if (categoryResult !== null) {
-    kategori.push(...categoryResult);
-  }
+  // if (categoryResult !== null) {
+  //   kategori.push(...categoryResult);
+  // }
 
   useEffect(() => {
     //panggil action
@@ -82,55 +83,54 @@ function Jual() {
 
       <div className="daftar-jual">
         <div className="frame-165 row justify-content-left">
-          {/* Opsi pertama */}
           {getAllTerjualResult ? (
-            getAllTerjualResult.map((transaction, Product) => {
-              return (
-                <div
-                  className="col-md-3 col-sm-6 py-3 my-3 card3 border-1"
-                  key={transaction.id}
-                >
-                  <Link to={`/transaction/detail/` + transaction.id}>
-                    <img
-                      src={`${IMG_URL}` + transaction.Product.image}
-                      className="foto-barang"
-                    />
-                    {/* <img src={barang} className="foto-barang" /> */}
-                    <div className="frame-149">
-                      <div className="informasi-barang">
-                        <div className="nama-barang">
-                          {transaction.Product.name}
-                        </div>
-                        <div className="jenis-barang">
-                          {kategori[transaction.Product.CategoryId - 1] &&
+            getAllTerjualResult.length === 0 ? (
+              <div className="d-flex justify-content-center p-3">
+                <div className="text-center">
+                  <img src={gambar2} alt="" className="img-fluid mb-3" />
+                  <p>Belum ada produk yang terjual</p>
+                </div>
+              </div>
+            ) : (
+              getAllTerjualResult.map((transaction, Product) => {
+                return (
+                  <div
+                    className="col-md-3 col-sm-6 py-3 my-3 card3 border-1"
+                    key={transaction.id}
+                  >
+                    <Link to={""}>
+                      <img
+                        src={`${IMG_URL}` + transaction.Product.image}
+                        className="foto-barang"
+                      />
+                      {/* <img src={barang} className="foto-barang" /> */}
+                      <div className="frame-149">
+                        <div className="informasi-barang">
+                          <div className="nama-barang">
+                            {transaction.Product.name}
+                          </div>
+                          <div className="jenis-barang">
+                            {/* {kategori[transaction.Product.CategoryId - 1] &&
                           kategori[transaction.Product.CategoryId - 1]
                             ? kategori[transaction.Product.CategoryId - 1].name
-                            : "tidak ada"}
+                            : "tidak ada"} */}
+                            KATEGORI
+                          </div>
+                        </div>
+                        <div className="harga-barang">
+                          Ditawar : Rp {transaction.offer_price}
                         </div>
                       </div>
-                      <div className="harga-barang">
-                        Ditawar : Rp {transaction.offer_price}
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              );
-            })
-          ) : // Opsi kedua
-          getAllTerjualLoading ? (
+                    </Link>
+                  </div>
+                );
+              })
+            )
+          ) : getAllTerjualLoading ? (
             <p>Loading ...</p>
           ) : (
             // Opsi ketiga
-            <div className="group34">
-              {getAllTerjualError ? (
-                getAllTerjualError
-              ) : (
-                <span className="diminati-txt">
-                  Belum ada produk yang terjual
-                </span>
-              )}
-            </div>
-            // <p>{getAllTerjualError ? getAllTerjualError : "Data Kosong"}</p>
+            <p>{getAllTerjualError ? getAllTerjualError : "Error"}</p>
           )}
         </div>
         {/* </div> */}

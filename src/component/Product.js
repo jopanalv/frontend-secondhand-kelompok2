@@ -57,10 +57,10 @@ function Product() {
                 <Link to={`/detail-produk/` + Product.id}>
                   <Card>
                     <Card.Img
-                      className="w-75 align-self-center"
+                      className="w-50 align-self-center"
                       variant="top"
                       multiple
-                      src={`${IMG_URL}`+Product.image}
+                      src={`${IMG_URL}` + Product.image}
                       style={image}
                     />
                     <Card.Body className="p-2">
@@ -68,9 +68,9 @@ function Product() {
                         {Product.name}
                       </Card.Title>
                       <p className="mb-0" style={accesoris}>
-                        {kategori[Product.CategoryId-1] &&
-                        kategori[Product.CategoryId-1]
-                          ? kategori[Product.CategoryId-1].name
+                        {kategori[Product.CategoryId - 1] &&
+                        kategori[Product.CategoryId - 1]
+                          ? kategori[Product.CategoryId - 1].name
                           : "tidak ada"}
                       </p>
                       <Card.Text className="mb-1">{Product.price}</Card.Text>

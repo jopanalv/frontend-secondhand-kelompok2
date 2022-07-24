@@ -539,6 +539,10 @@ body {
     flex-grow: 0;
   }
 
+  .kategori-txt1:hover {
+    color: #bd00de;
+  }
+
   .daftar-jual {
     display: flex;
     flex-direction: column;
@@ -628,8 +632,9 @@ body {
   }
 
   .foto-barang {
-    width: 181px;
+    width: 150px;
     height: 100px;
+    padding-left: 40px;
     align-items: center;
     /* background: url(./images/Rectangle23.png), #EEEEEE; */
     border-radius: 4px;
@@ -843,7 +848,7 @@ body {
     }
 
     .daftarjual-title {
-      left: 80px;
+      left: 20px;
       top: 45px;
     }
 
@@ -1078,7 +1083,7 @@ body {
     }
 
     .daftarjual-title {
-      left: 80px;
+      left: 20px;
       top: 60px;
     }
 
@@ -1224,7 +1229,7 @@ body {
   @media  (max-width: 480px) {
   
     .daftarjual-title {
-      left: 80px;
+      left: 20px;
       top: 60px;
     }
   
@@ -1371,6 +1376,7 @@ body {
    .foto-barang {
       width: 132px;
       height: 80px;
+      padding-left: 0;
     }
   
     .nama-barang {
