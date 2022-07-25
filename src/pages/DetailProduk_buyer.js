@@ -71,16 +71,16 @@ const DetailProduk_buyer = () => {
 
   const kategori = [];
 
-  // if (categoryResult !== null) {
-  //   kategori.push(...categoryResult);
-  // }
+  if (categoryResult !== null) {
+    kategori.push(...categoryResult);
+  }
 
   useEffect(() => {
     handleSearch();
     //panggil action
     console.log("1. use effect component did mount");
     dispatch(getSelectedProduct(id));
-    // dispatch(categoryList());
+    dispatch(categoryList());
   }, [dispatch, id]);
 
   console.log(getSelectedProduct(id));
@@ -116,7 +116,7 @@ const DetailProduk_buyer = () => {
                   <h5 className="card-title fw-bold">{productInfo.name}</h5>
                   <p className="card-text">
                     {kategori[productInfo.CategoryId - 1] &&
-                    kategori[productInfo.CategoryId - 1]
+                      kategori[productInfo.CategoryId - 1]
                       ? kategori[productInfo.CategoryId - 1].name
                       : "tidak ada"}
                   </p>
@@ -227,7 +227,11 @@ const DetailProduk_buyer = () => {
                     controlId="exampleForm.ControlInput1"
                   >
                     <Form.Label>Harga Tawar</Form.Label>
-                    <Form.Control placeholder="Rp 0.0" autoFocus />
+                    <Form.Control
+                      placeholder="Rp 0.0"
+                      value={offer}
+                      onChange={(e) => setOffer(e.target.value)}
+                      autoFocus />
                   </Form.Group>
                 </Form>
               </Modal.Body>

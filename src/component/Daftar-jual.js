@@ -26,9 +26,9 @@ function Jual() {
 
   const kategori = [];
 
-  // if (categoryResult !== null) {
-  //     kategori.push(...categoryResult);
-  // }
+  if (categoryResult !== null) {
+    kategori.push(...categoryResult);
+  }
 
   useEffect(() => {
     //panggil action
@@ -112,11 +112,10 @@ function Jual() {
                       <div className="informasi-barang">
                         <div className="nama-barang">{Product.name}</div>
                         <div className="jenis-barang">
-                          {/* {kategori[Product.CategoryId - 1] &&
-                                                    kategori[Product.CategoryId - 1]
-                                                    ? kategori[Product.CategoryId - 1].name
-                                                    : "tidak ada"} */}
-                          KATEGORI
+                          {kategori[Product.CategoryId - 1] &&
+                            kategori[Product.CategoryId - 1]
+                            ? kategori[Product.CategoryId - 1].name
+                            : "tidak ada"}
                         </div>
                       </div>
                       <div className="harga-barang">{Product.price}</div>
@@ -126,14 +125,14 @@ function Jual() {
               );
             })
           ) : // Opsi kedua
-          getAllDaftarjualLoading ? (
-            <p>Loading ...</p>
-          ) : (
-            // Opsi ketiga
-            <p>
-              {getAllDaftarjualError ? getAllDaftarjualError : "Data Kosong"}
-            </p>
-          )}
+            getAllDaftarjualLoading ? (
+              <p>Loading ...</p>
+            ) : (
+              // Opsi ketiga
+              <p>
+                {getAllDaftarjualError ? getAllDaftarjualError : "Data Kosong"}
+              </p>
+            )}
         </div>
         {/* </div> */}
       </div>

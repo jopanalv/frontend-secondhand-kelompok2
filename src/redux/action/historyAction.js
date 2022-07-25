@@ -1,5 +1,4 @@
 import axios from "axios";
-import toast from "react-simple-toasts";
 import { GET_ALL_HISTORY } from "../type";
 import { API_URL } from "./api";
 
@@ -18,10 +17,10 @@ export const getAllHistory = () => {
     //get API
     axios({
       method: "GET",
+      url: `${API_URL}/transaction/buyer`,
       headers: {
         Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
-      url: `${API_URL}/transaction/seller`,
       timeout: 120000,
     })
       .then((response) => {

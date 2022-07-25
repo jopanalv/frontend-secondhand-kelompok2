@@ -102,13 +102,13 @@ export default function Navigasi() {
   // const role = userState.user.data.role
 
   // notif
-  const { getNotifSellerResult } = useSelector((state) => state.notif);
+  const { getNotifSellerResult, getNotifBuyerResult } = useSelector((state) => state.notif);
 
   useEffect(() => {
     dispatch(getNotifSeller());
   }, [dispatch]);
 
-  console.log(getNotifSellerResult);
+  console.log(getNotifSellerResult?.length > 0 ? 'ada' : 'nol');
 
   const [filter, setFilter] = useState("")
 
@@ -170,15 +170,19 @@ export default function Navigasi() {
                       aria-expanded="false"
                     >
                       {/* <FiBell className="icon-bell-header m-3" /> */}
-                      {getNotifSellerResult ? (
-                        getNotifSellerResult.length > 0 ? (
-                          <i className="fas fa-bell fa-lg " data-count="."></i>
+                      {userState.user.data.role === "seller" ?
+                        <>{getNotifSellerResult?.length > 0 ? (
+                          <i className="fas fa-bell fa-lg " data-count="!"></i>
                         ) : (
                           <i className="fas fa-bell fa-lg "></i>
-                        )
-                      ) : (
-                        <i className="fas fa-bell fa-lg "></i>
-                      )}
+                        )}</>
+                        : <>{getNotifBuyerResult?.length > 0 ? (
+                          <i className="fas fa-bell fa-lg " data-count="!"></i>
+                        ) : (
+                          <i className="fas fa-bell fa-lg "></i>
+                        )}</>
+                      }
+
                     </button>
                     <ul
                       class="dropdown-menu dropdown-menu-end"
@@ -233,13 +237,6 @@ export default function Navigasi() {
                             >
                               Dashboard
                             </button>
-                            <button
-                              class="dropdown-item"
-                              type="button"
-                              onClick={() => handleHistory()}
-                            >
-                              History
-                            </button>
                           </>
                         ) : (
                           <>
@@ -249,6 +246,13 @@ export default function Navigasi() {
                               onClick={() => handleWishlist()}
                             >
                               Wishlist
+                            </button>
+                            <button
+                              class="dropdown-item"
+                              type="button"
+                              onClick={() => handleHistory()}
+                            >
+                              History
                             </button>
                           </>
                         )}

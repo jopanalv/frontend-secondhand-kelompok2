@@ -44,9 +44,9 @@ export default function History() {
 
   const kategori = [];
 
-  // if (categoryResult !== null) {
-  //   kategori.push(...categoryResult);
-  // }
+  if (categoryResult !== null) {
+    kategori.push(...categoryResult);
+  }
 
   const dispatch = useDispatch();
 
@@ -96,11 +96,10 @@ export default function History() {
                           </Card.Title>
 
                           <p className="mb-0" style={accesoris}>
-                            {/* {kategori[item.Product.CategoryId - 1] &&
-                            kategori[item.Product.CategoryId - 1]
+                            {kategori[item.Product.CategoryId - 1] &&
+                              kategori[item.Product.CategoryId - 1]
                               ? kategori[item.Product.CategoryId - 1].name
-                              : "tidak ada"} */}
-                            KATEGORI
+                              : "tidak ada"}
                           </p>
                           <Card.Text className="mb-1">
                             Rp. {item.Product.price}
@@ -125,7 +124,7 @@ export default function History() {
           ) : getAllHistoryLoading ? (
             <h3>Loading ...</h3>
           ) : (
-            <p>{getAllHistoryError ? getAllHistoryError : "Error"}</p>
+            <p>{getAllHistoryError ? getAllHistoryError : "History Kosong"}</p>
           )}
         </div>
       </section>
