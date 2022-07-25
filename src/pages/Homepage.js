@@ -2,7 +2,7 @@ import Navigasi from "../component/Navbar1";
 import React, { useState } from "react";
 import Buttons from "../component/Button";
 import Home from "../component/Home";
-import { Product } from "../component";
+import Product from "../component/Product";
 import "../assets/style2.css";
 import { useSelector } from "react-redux";
 

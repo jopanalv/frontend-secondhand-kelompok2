@@ -42,9 +42,9 @@ export default function Wishlist() {
 
   const kategori = [];
 
-  // if (categoryResult !== null) {
-  //   kategori.push(...categoryResult);
-  // }
+  if (categoryResult !== null) {
+    kategori.push(...categoryResult);
+  }
 
   const dispatch = useDispatch();
 
@@ -120,11 +120,10 @@ export default function Wishlist() {
                             </Card.Title>
 
                             <p className="mb-0" style={accesoris}>
-                              {/* {kategori[item.Product.CategoryId - 1] &&
-                              kategori[item.Product.CategoryId - 1]
+                              {kategori[item.Product.CategoryId - 1] &&
+                                kategori[item.Product.CategoryId - 1]
                                 ? kategori[item.Product.CategoryId - 1].name
-                                : "tidak ada"} */}
-                              Kategori
+                                : "tidak ada"}
                             </p>
                             <Card.Text className="mb-1">
                               Rp. {item.Product.price}

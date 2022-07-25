@@ -1,6 +1,6 @@
 import axios from "axios";
 import { GET_ALL_NOTIF_SELLER, GET_ALL_NOTIF_BUYER } from "../type";
-import {API_URL} from "./api";
+import { API_URL } from "./api";
 
 export const getNotifSeller = () => {
     return (dispatch) => {
@@ -16,7 +16,7 @@ export const getNotifSeller = () => {
 
         const token = localStorage.getItem('accessToken')
         //get API
-        axios({
+       axios({
             method: "GET",
             url: `${API_URL}/notif/seller`,
             timeout: 120000,
@@ -72,7 +72,7 @@ export const getNotifBuyer = () => {
         })
             .then((response) => {
                 //berhasil get API
-                console.log('resp'+response.data)
+                console.log('resp' + response.data)
                 dispatch({
                     type: GET_ALL_NOTIF_BUYER,
                     payload: {
