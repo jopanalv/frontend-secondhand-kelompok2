@@ -110,6 +110,9 @@ export default function Navigasi() {
 
   console.log(getNotifSellerResult);
 
+  const [filter, setFilter] = useState("")
+
+  
   return (
     <>
       <Navbar expand="lg" className={color ? "navbar-scroll" : "navbar1"}>
@@ -124,6 +127,7 @@ export default function Navigasi() {
                 }}
                 placeholder="Cari di sini …"
                 inputProps={{ "aria-label": "search" }}
+                value={filter}
               />
             </Search>
           </div>
