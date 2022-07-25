@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_TRANSACTION_DETAIL, ACCEPT_TRANSACTION } from "../type";
+import { GET_TRANSACTION_DETAIL, ACCEPT_TRANSACTION, CANCEL_TRANSACTION, SUCCESS_TRANSACTION } from "../type";
 import { API_URL } from "./api";
 
 export const getTransDetail = (id) => {
@@ -99,7 +99,7 @@ export const cancelTransaction = (id) => {
     })
     .then(response => {
       dispatch({
-        type: ACCEPT_TRANSACTION,
+        type: CANCEL_TRANSACTION,
           payload: {
             loading: false,
             data: response.data,
@@ -109,7 +109,7 @@ export const cancelTransaction = (id) => {
     })
     .catch(error => {
       dispatch({
-        type: ACCEPT_TRANSACTION,
+        type: CANCEL_TRANSACTION,
           payload: {
             loading: false,
             data: null,
@@ -133,7 +133,7 @@ export const successTransaction = (id) => {
     })
     .then(response => {
       dispatch({
-        type: ACCEPT_TRANSACTION,
+        type: SUCCESS_TRANSACTION,
           payload: {
             loading: false,
             data: response.data,
@@ -143,7 +143,7 @@ export const successTransaction = (id) => {
     })
     .catch(error => {
       dispatch({
-        type: ACCEPT_TRANSACTION,
+        type: SUCCESS_TRANSACTION,
           payload: {
             loading: false,
             data: null,

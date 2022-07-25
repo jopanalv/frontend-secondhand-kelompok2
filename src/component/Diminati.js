@@ -23,9 +23,9 @@ const Diminati = () => {
 
   const kategori = [];
 
-  // if (categoryResult !== null) {
-  //   kategori.push(...categoryResult);
-  // }
+  if (categoryResult !== null) {
+    kategori.push(...categoryResult);
+  }
 
   useEffect(() => {
     //panggil action
@@ -113,11 +113,10 @@ const Diminati = () => {
                             {wishlist.Product.name}
                           </div>
                           <div className="jenis-barang">
-                            {/* {kategori[wishlist.Product.CategoryId - 1] &&
-                          kategori[wishlist.Product.CategoryId - 1]
-                            ? kategori[wishlist.Product.CategoryId - 1].name
-                            : "tidak ada"} */}
-                            KATEGORI
+                            {kategori[wishlist.Product.CategoryId - 1] &&
+                              kategori[wishlist.Product.CategoryId - 1]
+                              ? kategori[wishlist.Product.CategoryId - 1].name
+                              : "tidak ada"}
                           </div>
                         </div>
                         <div className="harga-barang">

@@ -56,6 +56,7 @@
   position: relative;
   width: 76px;
   height: 64px;
+  display: flex;
 }
 
 #off-canvas {
@@ -252,6 +253,26 @@ z-index: 1;
 }
 
 /* DETAIL PRODUK */
+/* NAVBAR LONCENG */ 
+.fas[data-count] { 
+  position: relative; 
+} 
+ 
+.fas[data-count]:after { 
+  position: absolute; 
+  right: -0.75em; 
+  top: -1.725em; 
+  content: attr(data-count); 
+  /* padding: 0.5em;  */
+  border-radius: 5em; 
+  line-height: 0.9em; 
+  color: white; 
+  background: tomato; 
+  text-align: center; 
+  min-width: 2em; 
+  font: bold 0.4em sans-serif; 
+}
+
 /* Navbar */
 .frame-158-menu {
   display: flex;
@@ -708,7 +729,6 @@ z-index: 1;
   }
 }
 
-
   @media screen and (min-width: 1024px) {
     .category div button { 
         border: 1px solid rgba(226, 212, 240, 1); 
@@ -723,7 +743,6 @@ z-index: 1;
       grid-gap: 20px;
     }
     
-       
     .category div button.button-sell { 
         width: 7%;  
     } 

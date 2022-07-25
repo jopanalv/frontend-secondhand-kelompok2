@@ -197,270 +197,269 @@ export default function InfoPenawaran() {
                         </button>
                       </div>
                     )}
-
-                    {/* modal terima penawaran */}
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* modal terima penawaran */}
+            <div
+              className="modal fade"
+              id="modalPenawaran"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div className="modal-dialog">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <button
+                      type="button"
+                      className="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div className="modal-body">
+                    <h4 className="fw-bold text-center">
+                      Yeay kamu berhasil mendapat harga yang sesuai!
+                    </h4>
+                    <h4 className="text-center">
+                      Segera hubungi pembeli melalui whatsapp untuk
+                      transaksi selanjutnya
+                    </h4>
                     <div
-                      className="modal fade"
-                      id="modalPenawaran"
-                      tabindex="-1"
-                      aria-labelledby="exampleModalLabel"
-                      aria-hidden="true"
+                      className="card mx-3"
+                      style={{
+                        background: "#EEEEEE",
+                        borderRadius: "16px",
+                      }}
                     >
-                      <div className="modal-dialog">
-                        <div className="modal-content">
-                          <div className="modal-header">
-                            <button
-                              type="button"
-                              className="btn-close"
-                              data-bs-dismiss="modal"
-                              aria-label="Close"
-                            ></button>
-                          </div>
-                          <div className="modal-body">
-                            <h4 className="fw-bold text-center">
-                              Yeay kamu berhasil mendapat harga yang sesuai!
+                      <h4 className="fw-bold text-center mt-1">
+                        Product Match
+                      </h4>
+                      <div class="row justify-content-center">
+                        <div class="col-3 align-self-center">
+                          <Image
+                            className="rounded img-responsive center-block d-block mx-auto img-fluid"
+                            src={`${IMG_URL}` + data.buyerImage}
+                          />
+                        </div>
+                        <div class="col-9">
+                          <div className="card-body">
+                            <h4 className="card-title h5 h4-sm fw-bold">
+                              {data.buyerName}
                             </h4>
-                            <h4 className="text-center">
-                              Segera hubungi pembeli melalui whatsapp untuk
-                              transaksi selanjutnya
-                            </h4>
-                            <div
-                              className="card mx-3"
-                              style={{
-                                background: "#EEEEEE",
-                                borderRadius: "16px",
-                              }}
-                            >
-                              <h4 className="fw-bold text-center mt-1">
-                                Product Match
-                              </h4>
-                              <div class="row justify-content-center">
-                                <div class="col-3 align-self-center">
-                                  <Image
-                                    className="rounded img-responsive center-block d-block mx-auto img-fluid"
-                                    src={`${IMG_URL}` + data.buyerImage}
-                                  />
-                                </div>
-                                <div class="col-9">
-                                  <div className="card-body">
-                                    <h4 className="card-title h5 h4-sm fw-bold">
-                                      {data.buyerName}
-                                    </h4>
-                                    <h6 className="card-text">
-                                      {data.buyerCity}
-                                    </h6>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="row justify-content-center mt-2">
-                                <div class="col-3 align-self-center">
-                                  <Image
-                                    className="rounded img-responsive center-block d-block mx-auto img-fluid"
-                                    src={`${IMG_URL}` + data.productImage}
-                                  />
-                                </div>
-                                <div class="col-9">
-                                  <div className="card-body p-0 px-3">
-                                    <h4
-                                      className="card-title h5 h4-sm"
-                                      id="namaProduk"
-                                    >
-                                      {data.productName}
-                                    </h4>
-                                    <h4
-                                      className="card-title h5 h4-sm text-decoration-line-through"
-                                      id="hargaProduk"
-                                    >
-                                      Rp {data.productPrice}
-                                    </h4>
-                                    <h4
-                                      className="card-title h5 h4-sm"
-                                      id="hargaTawar"
-                                    >
-                                      Ditawar Rp {data.offer_price}
-                                    </h4>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
+                            <h6 className="card-text">
+                              {data.buyerCity}
+                            </h6>
                           </div>
-
-                          <div className="modal-footer">
-                            <button
-                              className="btn btn-primary mx-3 "
-                              id="modal-button"
+                        </div>
+                      </div>
+                      <div class="row justify-content-center mt-2">
+                        <div class="col-3 align-self-center">
+                          <Image
+                            className="rounded img-responsive center-block d-block mx-auto img-fluid"
+                            src={`${IMG_URL}` + data.productImage}
+                          />
+                        </div>
+                        <div class="col-9">
+                          <div className="card-body p-0 px-3">
+                            <h4
+                              className="card-title h5 h4-sm"
+                              id="namaProduk"
                             >
-                              <a
-                                href={`https://api.whatsapp.com/send/?phone=${data.buyerHp}`}
-                                style={{
-                                  color: "white",
-                                  textDecoration: "none",
-                                }}
-                              >
-                                Hubungi via Whatsapp
-                                <FontAwesomeIcon
-                                  icon={faWhatsapp}
-                                  className="ms-2"
-                                />
-                              </a>
-                            </button>
+                              {data.productName}
+                            </h4>
+                            <h4
+                              className="card-title h5 h4-sm text-decoration-line-through"
+                              id="hargaProduk"
+                            >
+                              Rp {data.productPrice}
+                            </h4>
+                            <h4
+                              className="card-title h5 h4-sm"
+                              id="hargaTawar"
+                            >
+                              Ditawar Rp {data.offer_price}
+                            </h4>
                           </div>
                         </div>
                       </div>
                     </div>
-                    {/* modal status */}
-                    <div
-                      className="modal fade"
-                      id="modalStatus"
-                      tabindex="-1"
-                      aria-labelledby="exampleModalLabel1"
-                      aria-hidden="true"
+                  </div>
+
+                  <div className="modal-footer">
+                    <button
+                      className="btn btn-primary mx-3 "
+                      id="modal-button"
                     >
-                      <div className="modal-dialog">
-                        <div className="modal-content">
-                          <div className="modal-header">
-                            <button
-                              type="button"
-                              className="btn-close"
-                              data-bs-dismiss="modal"
-                              aria-label="Close"
-                            ></button>
-                          </div>
-                          <div className="modal-body mx-4">
-                            <h4 className="fw-bold my-3">
-                              Perbarui status penjualan produkmu
-                            </h4>
-                            <div className="form-check my-4">
-                              <input
-                                className="form-check-input"
-                                type="radio"
-                                name="exampleRadios"
-                                id="exampleRadios1"
-                                value="success"
-                                onChange={(e) => handleStatus(e.target.value)}
-                              />
-                              <label
-                                className="form-check-label"
-                                for="exampleRadios1"
-                              >
-                                <h4 className="fw-bold">Berhasil terjual</h4>
-                                <p className="text-secondary">
-                                  Kamu telah sepakat menjual produk ini kepada
-                                  pembeli
-                                </p>
-                              </label>
-                            </div>
-                            <div className="form-check mb-4">
-                              <input
-                                className="form-check-input"
-                                type="radio"
-                                name="exampleRadios"
-                                id="exampleRadios1"
-                                value="cancel"
-                                onChange={(e) => handleStatus(e.target.value)}
-                              />
-                              <label
-                                className="form-check-label"
-                                for="exampleRadios1"
-                              >
-                                <h4 className="fw-bold">Batalkan transaksi</h4>
-                                <p className="text-secondary">
-                                  Kamu membatalkan transaksi produk ini dengan
-                                  pembeli
-                                </p>
-                              </label>
-                            </div>
-                          </div>
-
-                          <div className="modal-footer">
-                            <button
-                              className="btn btn-primary mx-3"
-                              id="modal-button"
-                              onClick={(e) => handleSubmit(e)}
-                              type="button"
-                              data-bs-dismiss="modal"
-                              aria-label="Close"
-                            >
-                              {" "}
-                              Kirim
-                            </button>
-                          </div>
-                        </div>
-                      </div>
+                      <a
+                        href={`https://api.whatsapp.com/send/?phone=${data.buyerHp}`}
+                        style={{
+                          color: "white",
+                          textDecoration: "none",
+                        }}
+                      >
+                        Hubungi via Whatsapp
+                        <FontAwesomeIcon
+                          icon={faWhatsapp}
+                          className="ms-2"
+                        />
+                      </a>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* modal status */}
+            <div
+              className="modal fade"
+              id="modalStatus"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel1"
+              aria-hidden="true"
+            >
+              <div className="modal-dialog">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <button
+                      type="button"
+                      className="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div className="modal-body mx-4">
+                    <h4 className="fw-bold my-3">
+                      Perbarui status penjualan produkmu
+                    </h4>
+                    <div className="form-check my-4">
+                      <input
+                        className="form-check-input"
+                        type="radio"
+                        name="exampleRadios"
+                        id="exampleRadios1"
+                        value="success"
+                        onChange={(e) => handleStatus(e.target.value)}
+                      />
+                      <label
+                        className="form-check-label"
+                        for="exampleRadios1"
+                      >
+                        <h4 className="fw-bold">Berhasil terjual</h4>
+                        <p className="text-secondary">
+                          Kamu telah sepakat menjual produk ini kepada
+                          pembeli
+                        </p>
+                      </label>
                     </div>
+                    <div className="form-check mb-4">
+                      <input
+                        className="form-check-input"
+                        type="radio"
+                        name="exampleRadios"
+                        id="exampleRadios1"
+                        value="cancel"
+                        onChange={(e) => handleStatus(e.target.value)}
+                      />
+                      <label
+                        className="form-check-label"
+                        for="exampleRadios1"
+                      >
+                        <h4 className="fw-bold">Batalkan transaksi</h4>
+                        <p className="text-secondary">
+                          Kamu membatalkan transaksi produk ini dengan
+                          pembeli
+                        </p>
+                      </label>
+                    </div>
+                  </div>
 
-                    {/* modal tolak penawaran */}
-                    <div
-                      className="modal fade"
-                      id="modalTolak"
-                      tabindex="-1"
-                      aria-labelledby="exampleModalLabel1"
-                      aria-hidden="true"
+                  <div className="modal-footer">
+                    <button
+                      className="btn btn-primary mx-3"
+                      id="modal-button"
+                      onClick={(e) => handleSubmit(e)}
+                      type="button"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
                     >
-                      <div className="modal-dialog">
-                        <div className="modal-content">
-                          <div className="modal-header">
-                            <button
-                              type="button"
-                              className="btn-close"
-                              data-bs-dismiss="modal"
-                              aria-label="Close"
-                            ></button>
-                          </div>
-                          <div className="modal-body mx-4 ">
-                            <h4 className="fw-bold my-3 text-center">
-                              Apakah kamu yakin menolak tawaran ini?
-                            </h4>
-                            <div className="form-check my-4">
-                              <input
-                                className="form-check-input"
-                                type="radio"
-                                name="exampleRadios"
-                                id="exampleRadios1"
-                                value="cancel"
-                                onChange={(e) => handleStatus(e.target.value)}
-                              />
-                              <label
-                                className="form-check-label"
-                                for="exampleRadios1"
-                              >
-                                <h4>Ya, saya yakin</h4>
-                              </label>
-                            </div>
-                            <div className="form-check mb-4">
-                              <input
-                                className="form-check-input"
-                                type="radio"
-                                name="exampleRadios"
-                                id="exampleRadios1"
-                                onChange={(e) => handleStatus(e.target.value)}
-                                value=""
-                              />
-                              <label
-                                className="form-check-label"
-                                for="exampleRadios1"
-                              >
-                                <h4>Tidak, saya pikirkan kembali</h4>
-                              </label>
-                            </div>
-                          </div>
+                      {" "}
+                      Kirim
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-                          <div className="modal-footer">
-                            <button
-                              className="btn btn-primary mx-3"
-                              id="modal-button"
-                              onClick={(e) => handleSubmit(e)}
-                              type="button"
-                              data-bs-dismiss="modal"
-                              aria-label="Close"
-                            >
-                              {" "}
-                              Kirim
-                            </button>
-                          </div>
-                        </div>
-                      </div>
+            {/* modal tolak penawaran */}
+            <div
+              className="modal fade"
+              id="modalTolak"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel1"
+              aria-hidden="true"
+            >
+              <div className="modal-dialog">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <button
+                      type="button"
+                      className="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div className="modal-body mx-4 ">
+                    <h4 className="fw-bold my-3 text-center">
+                      Apakah kamu yakin menolak tawaran ini?
+                    </h4>
+                    <div className="form-check my-4">
+                      <input
+                        className="form-check-input"
+                        type="radio"
+                        name="exampleRadios"
+                        id="exampleRadios1"
+                        value="cancel"
+                        onChange={(e) => handleStatus(e.target.value)}
+                      />
+                      <label
+                        className="form-check-label"
+                        for="exampleRadios1"
+                      >
+                        <h4>Ya, saya yakin</h4>
+                      </label>
                     </div>
+                    <div className="form-check mb-4">
+                      <input
+                        className="form-check-input"
+                        type="radio"
+                        name="exampleRadios"
+                        id="exampleRadios1"
+                        onChange={(e) => handleStatus(e.target.value)}
+                        value=""
+                      />
+                      <label
+                        className="form-check-label"
+                        for="exampleRadios1"
+                      >
+                        <h4>Tidak, saya pikirkan kembali</h4>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div className="modal-footer">
+                    <button
+                      className="btn btn-primary mx-3"
+                      id="modal-button"
+                      onClick={(e) => handleSubmit(e)}
+                      type="button"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      {" "}
+                      Kirim
+                    </button>
                   </div>
                 </div>
               </div>
