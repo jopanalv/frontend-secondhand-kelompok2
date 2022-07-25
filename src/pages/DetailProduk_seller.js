@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Image } from "react-bootstrap";
 import back from "../assets/images/fi_arrow-left.png";
-import Navigasi from "../component/Navbar1";
+import Navigasi from "../component/Navigasi";
 import "../assets/style2.css";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Carousel, Card, Button, Row, Col, Container } from "react-bootstrap";
 import { getProductSeller, categoryList } from "../redux/action/productActions";
 import { DescriptionProduct } from "../component/DescriptionProduct"
-import "../assets/style2.css";
 import { addSearch } from "../slice/searchingSlice";
 import { IMG_URL } from "../redux/action/api";
 import { addProduct } from "../redux/action/addProduct";
@@ -76,7 +75,10 @@ const DetailProduk_seller = () => {
           <div className="slider-product">
               <Carousel className="box_image" items={1} margin={10}>
                     <Carousel.Item interval={2000}>
-                    <Image src={product.image.preview} className="detail_gambar" alt="detail_gambar" />                    
+                      <Image 
+                      src={product.image.preview} 
+                      className="d-block h-auto detail-gambar" 
+                      alt="detail_gambar" />                    
                     </Carousel.Item>
               </Carousel>
           </div>
@@ -123,13 +125,14 @@ const DetailProduk_seller = () => {
                     <h6 className="card-text-seller ket">{user.data.Profile.city}</h6>
               </Card>
         </Col>
-        <div className='container3 justify-content-center align-items-center'>
-              <button class="btn_teks btn-float text-white" type="button" onClick={(e) => handleTerbit(e)}>Terbitkan</button>
-            </div>
           
             <Col md={8}>
               <DescriptionProduct description={product.description} />
             </Col>
+
+            <footer className='container3 justify-content-center align-items-center fixed-bottom'>
+              <button class="btn_teks btn-float text-white" type="button" onClick={(e) => handleTerbit(e)}>Terbitkan</button>
+            </footer>
         </Row>
       </Container>
     </>

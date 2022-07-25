@@ -11,7 +11,7 @@ import {
 } from "react-bootstrap";
 import { Image } from "react-bootstrap";
 import back from "../assets/images/fi_arrow-left.png";
-import Navigasi from "../component/Navbar1";
+import Navigasi from "../component/Navigasi";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Container } from "react-bootstrap";
@@ -101,7 +101,7 @@ const DetailProduk_buyer = () => {
                     <Carousel.Item interval={2000}>
                       <Image
                         src={`${IMG_URL}` + productInfo.image}
-                        className="d-block w-100 h-auto detail-gambar"
+                        className="d-block h-auto detail-gambar"
                         alt="detail_gambar"
                       />
                     </Carousel.Item>
